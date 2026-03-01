@@ -2,6 +2,7 @@ import SwiftUI
 import SwiftData
 import UserNotifications
 import CoreLocation
+import AppTrackingTransparency
 
 @main
 struct FastyDiscountApp: App {
@@ -32,6 +33,14 @@ struct FastyDiscountApp: App {
     /// never released while the app is running. The delegate is set in `init()`
     /// — before any notification can arrive — as required by Apple's documentation.
     private let notificationActionHandler: NotificationActionHandler
+
+    /// Ad service used throughout the app for banner and interstitial ads.
+    /// Injected into the SwiftUI environment as a concrete observable type.
+    ///
+    /// NOTE: After integrating the Google Mobile Ads SPM package via Xcode,
+    /// replace `MockAdMobService` with `AdMobService` here and update the
+    /// `@Environment(MockAdMobService.self)` declarations in views accordingly.
+    private let adService = MockAdMobService()
 
     /// Geofence manager responsible for monitoring store-location regions and
     /// sending location-based notifications. Retained here so the
@@ -102,6 +111,7 @@ struct FastyDiscountApp: App {
             .environment(appState)
             .environment(appearanceManager)
             .environment(locationPermissionManager)
+            .environment(adService)
             .preferredColorScheme(appearanceManager.colorScheme)
             .alert(
                 "Data Unavailable",
@@ -120,6 +130,19 @@ struct FastyDiscountApp: App {
                 onPDFDrop: { url in droppedPDFURL = url }
             )
             .task {
+                // MARK: App Tracking Transparency (ATT)
+                // Request tracking authorization before loading any ads.
+                // Required by App Store guidelines when using advertising identifiers.
+                // ATT prompt will only appear once; subsequent launches skip the dialog.
+                //
+                // NOTE: When GoogleMobileAds SDK is integrated, call
+                // GADMobileAds.sharedInstance().start(completionHandler:) inside the
+                // .authorized case (or unconditionally after requesting authorization).
+                //
+                // Example:
+                // GADMobileAds.sharedInstance().start { _ in }
+                await requestTrackingAuthorizationIfNeeded()
+
                 // Register the dvg-expiry and dvg-location notification categories
                 // (with View Code, Mark as Used, and Snooze action buttons).
                 // Registering here (on @MainActor via .task) avoids calling a
@@ -194,6 +217,25 @@ struct FastyDiscountApp: App {
             )
         }
     }
+}
+
+// MARK: - ATT Helper
+
+/// Requests App Tracking Transparency authorization when the status is `.notDetermined`.
+/// Must be called from the main actor after the first window appears (not from init).
+/// The async/await wrapper uses a continuation so the result can be awaited.
+@MainActor
+private func requestTrackingAuthorizationIfNeeded() async {
+    // Only request on iOS; ATT is not applicable on Mac Catalyst.
+    #if !targetEnvironment(macCatalyst)
+    guard ATTrackingManager.trackingAuthorizationStatus == .notDetermined else { return }
+
+    await withCheckedContinuation { (continuation: CheckedContinuation<Void, Never>) in
+        ATTrackingManager.requestTrackingAuthorization { _ in
+            continuation.resume()
+        }
+    }
+    #endif
 }
 
 // MARK: - MacMenuAction

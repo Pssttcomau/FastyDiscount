@@ -10,6 +10,22 @@ enum AppConstants {
         static let dvgPath = "dvg"
     }
 
+    // MARK: - AdMob
+
+    enum AdMob {
+        // MARK: Test Ad Unit IDs
+        // Replace with real production ad unit IDs before App Store submission.
+        // Real IDs are provisioned in the Google AdMob console (https://admob.google.com).
+
+        /// Test banner ad unit ID (Google-provided, safe for development builds).
+        /// Production: replace with your app-specific banner ad unit ID.
+        static let bannerAdUnitID = "ca-app-pub-3940256099942544/2435281174"
+
+        /// Test interstitial ad unit ID (Google-provided, safe for development builds).
+        /// Production: replace with your app-specific interstitial ad unit ID.
+        static let interstitialAdUnitID = "ca-app-pub-3940256099942544/4411468910"
+    }
+
     enum PassKit {
         /// Pass Type ID registered in Apple Developer portal.
         /// Must match the identifier provisioned in the developer account.

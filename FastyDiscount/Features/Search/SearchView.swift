@@ -17,6 +17,7 @@ struct SearchView: View {
 
     @Environment(\.modelContext) private var modelContext
     @Environment(NavigationRouter.self) private var router
+    @Environment(MockAdMobService.self) private var adService
 
     // MARK: - State
 
@@ -70,6 +71,13 @@ struct SearchView: View {
 
             // Results list
             resultsList(viewModel: viewModel)
+
+            // Banner ad at the bottom of the Search view.
+            // Hidden automatically when the user is ad-free.
+            BannerAdView(
+                adUnitID: AppConstants.AdMob.bannerAdUnitID,
+                adService: adService
+            )
         }
         .searchable(
             text: Binding(

@@ -267,8 +267,11 @@ struct CameraScannerView: View {
     /// Navigates to the scan results view with the detected barcode as input.
     ///
     /// The scanner session is stopped before navigation so the camera is released.
+    /// Also records the scan in `ScanCounter` to track interstitial ad thresholds.
     private func createDVG(from barcode: DetectedBarcode) {
         viewModel.stopSession()
+        // Record the completed scan so the interstitial threshold can be tracked.
+        ScanCounter.shared.recordScan()
         let inputData = ScanInputData.barcodeOnly(
             barcode: barcode,
             originalImageData: barcode.imageData

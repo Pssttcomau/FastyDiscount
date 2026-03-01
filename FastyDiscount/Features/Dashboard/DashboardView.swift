@@ -19,6 +19,7 @@ struct DashboardView: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @Environment(NavigationRouter.self) private var router
     @Environment(LocationPermissionManager.self) private var locationManager
+    @Environment(MockAdMobService.self) private var adService
 
     // MARK: - State
 
@@ -75,17 +76,26 @@ struct DashboardView: View {
 
     @ViewBuilder
     private func scrollableContent(viewModel: DashboardViewModel) -> some View {
-        ScrollView {
-            if horizontalSizeClass == .regular {
-                iPadLayout(viewModel: viewModel)
-            } else {
-                iPhoneLayout(viewModel: viewModel)
+        VStack(spacing: 0) {
+            ScrollView {
+                if horizontalSizeClass == .regular {
+                    iPadLayout(viewModel: viewModel)
+                } else {
+                    iPhoneLayout(viewModel: viewModel)
+                }
             }
+            .refreshable {
+                await viewModel.refresh()
+            }
+            .background(Theme.Colors.background)
+
+            // Banner ad at the bottom of the Dashboard.
+            // Hidden automatically when the user is ad-free.
+            BannerAdView(
+                adUnitID: AppConstants.AdMob.bannerAdUnitID,
+                adService: adService
+            )
         }
-        .refreshable {
-            await viewModel.refresh()
-        }
-        .background(Theme.Colors.background)
     }
 
     // MARK: - iPhone Layout (Single Column)

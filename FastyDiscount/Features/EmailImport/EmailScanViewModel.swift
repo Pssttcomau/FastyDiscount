@@ -386,6 +386,8 @@ final class EmailScanViewModel {
                     needReview: needReviewCount
                 )
                 scanState = .complete
+                // Record the completed email scan for interstitial ad tracking.
+                ScanCounter.shared.recordScan()
             }
         }
 
@@ -401,6 +403,8 @@ final class EmailScanViewModel {
                 needReview: needReviewCount
             )
             scanState = .complete
+            // Record the completed email scan for interstitial ad tracking.
+            ScanCounter.shared.recordScan()
         }
     }
 

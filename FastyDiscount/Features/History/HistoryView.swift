@@ -18,6 +18,7 @@ struct HistoryView: View {
 
     @Environment(\.modelContext) private var modelContext
     @Environment(NavigationRouter.self) private var router
+    @Environment(MockAdMobService.self) private var adService
 
     // MARK: - State
 
@@ -64,6 +65,13 @@ struct HistoryView: View {
                     placement: .navigationBarDrawer(displayMode: .always),
                     prompt: "Search history"
                 )
+
+            // Banner ad at the bottom of the History view.
+            // Hidden automatically when the user is ad-free.
+            BannerAdView(
+                adUnitID: AppConstants.AdMob.bannerAdUnitID,
+                adService: adService
+            )
         }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {

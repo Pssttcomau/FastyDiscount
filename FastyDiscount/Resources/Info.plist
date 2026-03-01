@@ -37,5 +37,7 @@
 	<string>FastyDiscount uses the camera to scan barcodes and QR codes on discount vouchers.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>FastyDiscount accesses your photo library to import images of discount vouchers.</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>FastyDiscount uses advertising identifiers to show you personalised ads. You can opt out at any time in iOS Settings.</string>
 </dict>
 </plist>

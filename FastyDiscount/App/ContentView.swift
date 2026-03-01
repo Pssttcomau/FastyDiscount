@@ -17,6 +17,7 @@ import SwiftUI
 /// - Drag-and-drop file import via `droppedImageURL` / `droppedPDFURL`
 struct ContentView: View {
     @Environment(AppState.self) private var appState
+    @Environment(MockAdMobService.self) private var adService
     @State private var router = NavigationRouter()
     // Not @State — OnboardingPendingAction is a reference type singleton; @State would
     // not observe mutations made through other reference paths (e.g., from OnboardingView).
@@ -53,6 +54,10 @@ struct ContentView: View {
             .environment(router)
             // MARK: Mac Catalyst: enforce minimum window size (800 x 600)
             .macWindowSizeConstraints()
+            // Observe scan count and show interstitial ad after every 5th scan.
+            // Placed here (on the persistent content view) so it lives beyond
+            // the scanner's lifetime and receives the trigger from ScanCounter.
+            .interstitialAdOverlay(adService: adService)
             .onOpenURL { url in
                 router.handleDeepLink(url)
             }
