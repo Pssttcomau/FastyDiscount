@@ -36,7 +36,8 @@ struct OnboardingView: View {
                     }
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))
-                .animation(.easeInOut(duration: 0.3), value: viewModel.currentPageIndex)
+                // Note: no extra .animation modifier here — .page style has its own
+                // built-in paging animation; adding one causes double-animation/stutter.
 
                 // Bottom controls
                 bottomControls
@@ -68,13 +69,17 @@ struct OnboardingView: View {
 
     @ViewBuilder
     private func pageContent(for page: OnboardingPage) -> some View {
+        // Pass currentPageIndex so each page can gate its animation on whether
+        // it is the actually-visible page. With .page TabViewStyle all pages are
+        // rendered at startup, so .onAppear fires for every page simultaneously.
         switch page {
         case .valueProp:
-            ValuePropPage()
+            ValuePropPage(currentPageIndex: $viewModel.currentPageIndex)
         case .features:
-            FeaturesPage()
+            FeaturesPage(currentPageIndex: $viewModel.currentPageIndex)
         case .addFirst:
-            AddFirstPage(onActionSelected: handleAddFirstAction)
+            AddFirstPage(currentPageIndex: $viewModel.currentPageIndex,
+                         onActionSelected: handleAddFirstAction)
         }
     }
 
@@ -87,9 +92,9 @@ struct OnboardingView: View {
 
             // Next / Get Started button
             if viewModel.isOnLastPage {
-                // On Screen 3 the primary CTA is handled inside the page itself;
-                // we only show the dot indicator here.
-                EmptyView()
+                // "Get Started" lets users complete onboarding without choosing
+                // a specific action on Screen 3.
+                getStartedButton
             } else {
                 nextButton
             }
@@ -128,6 +133,24 @@ struct OnboardingView: View {
         }
         .accessibilityLabel("Next page")
         .accessibilityHint("Go to the next onboarding screen")
+    }
+
+    /// Shown on Screen 3 — completes onboarding without selecting a specific action.
+    private var getStartedButton: some View {
+        Button {
+            viewModel.completeOnboarding()
+            onComplete()
+        } label: {
+            Text("Get Started")
+                .font(Theme.Typography.headline)
+                .fontWeight(.semibold)
+                .foregroundStyle(.white)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, Theme.Spacing.md)
+                .background(Theme.Colors.primary, in: RoundedRectangle(cornerRadius: Theme.CornerRadius.medium))
+        }
+        .accessibilityLabel("Get started")
+        .accessibilityHint("Complete onboarding and go to the dashboard")
     }
 
     // MARK: - Add First Action Handler
@@ -171,6 +194,11 @@ private struct ValuePropPage: View {
     @State private var illustrationOpacity: Double = 0
     @State private var contentOffset: CGFloat = 20
 
+    /// Binding to the parent's currentPageIndex so we know when this page is active.
+    @Binding var currentPageIndex: Int
+
+    private var isCurrentPage: Bool { currentPageIndex == OnboardingPage.valueProp.rawValue }
+
     var body: some View {
         ScrollView {
             VStack(spacing: Theme.Spacing.xl) {
@@ -203,7 +231,10 @@ private struct ValuePropPage: View {
             .padding(.horizontal, Theme.Spacing.lg)
             .padding(.vertical, Theme.Spacing.lg)
         }
-        .onAppear {
+        // .onChange fires only when this page becomes the visible one, avoiding the
+        // problem where all .onAppear callbacks fire simultaneously at startup.
+        .onChange(of: isCurrentPage, initial: true) { _, visible in
+            guard visible else { return }
             illustrationOpacity = 1
             contentOffset = 0
         }
@@ -259,6 +290,11 @@ private struct FeaturesPage: View {
     @State private var illustrationOpacity: Double = 0
     @State private var contentOffset: CGFloat = 20
 
+    /// Binding to the parent's currentPageIndex so we know when this page is active.
+    @Binding var currentPageIndex: Int
+
+    private var isCurrentPage: Bool { currentPageIndex == OnboardingPage.features.rawValue }
+
     var body: some View {
         ScrollView {
             VStack(spacing: Theme.Spacing.xl) {
@@ -291,7 +327,10 @@ private struct FeaturesPage: View {
             .padding(.horizontal, Theme.Spacing.lg)
             .padding(.vertical, Theme.Spacing.lg)
         }
-        .onAppear {
+        // .onChange fires only when this page becomes the visible one, avoiding the
+        // problem where all .onAppear callbacks fire simultaneously at startup.
+        .onChange(of: isCurrentPage, initial: true) { _, visible in
+            guard visible else { return }
             illustrationOpacity = 1
             contentOffset = 0
         }
@@ -350,7 +389,12 @@ private struct AddFirstPage: View {
     @State private var illustrationOpacity: Double = 0
     @State private var contentOffset: CGFloat = 20
 
+    /// Binding to the parent's currentPageIndex so we know when this page is active.
+    @Binding var currentPageIndex: Int
+
     var onActionSelected: (AddFirstAction) -> Void
+
+    private var isCurrentPage: Bool { currentPageIndex == OnboardingPage.addFirst.rawValue }
 
     var body: some View {
         ScrollView {
@@ -384,7 +428,10 @@ private struct AddFirstPage: View {
             .padding(.horizontal, Theme.Spacing.lg)
             .padding(.vertical, Theme.Spacing.lg)
         }
-        .onAppear {
+        // .onChange fires only when this page becomes the visible one, avoiding the
+        // problem where all .onAppear callbacks fire simultaneously at startup.
+        .onChange(of: isCurrentPage, initial: true) { _, visible in
+            guard visible else { return }
             illustrationOpacity = 1
             contentOffset = 0
         }

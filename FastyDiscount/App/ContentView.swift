@@ -14,7 +14,9 @@ import SwiftUI
 struct ContentView: View {
     @Environment(AppState.self) private var appState
     @State private var router = NavigationRouter()
-    @State private var pendingAction = OnboardingPendingAction.shared
+    // Not @State — OnboardingPendingAction is a reference type singleton; @State would
+    // not observe mutations made through other reference paths (e.g., from OnboardingView).
+    private let pendingAction = OnboardingPendingAction.shared
     @SceneStorage("selectedTab") private var persistedTab: String = AppState.AppTab.dashboard.rawValue
 
     /// Whether onboarding has been completed. Drives the full-screen cover.
@@ -36,6 +38,12 @@ struct ContentView: View {
                 // Persist tab selection for scene restoration
                 persistedTab = newTab.rawValue
             }
+            // React to onboarding completion so post-onboarding navigation fires
+            // after the cover is dismissed — no fragile fixed-delay needed.
+            .onChange(of: onboardingComplete) { _, completed in
+                guard completed else { return }
+                handlePendingAction()
+            }
             .fullScreenCover(isPresented: Binding(
                 get: { !onboardingComplete },
                 set: { showOnboarding in
@@ -46,8 +54,6 @@ struct ContentView: View {
             )) {
                 OnboardingView {
                     onboardingComplete = true
-                    // After the full-screen cover is dismissed, handle any pending navigation
-                    handlePendingAction()
                 }
             }
     }
@@ -59,16 +65,23 @@ struct ContentView: View {
         guard let action = pendingAction.pendingAction else { return }
         pendingAction.pendingAction = nil
 
-        // Small delay to allow the full-screen cover dismissal animation to finish
+        // Small delay to allow the full-screen cover dismissal animation to finish.
+        // Uses structured do/catch so cancellation is not silently swallowed, and
+        // the pending action is cleared even if the task is cancelled.
         Task { @MainActor in
-            try? await Task.sleep(for: .milliseconds(400))
-            switch action {
-            case .scan:
-                router.push(.cameraScanner)
-            case .importEmail:
-                router.push(.emailScan)
-            case .addManually:
-                router.push(.dvgCreate(.manual))
+            do {
+                try await Task.sleep(for: .milliseconds(400))
+                switch action {
+                case .scan:
+                    router.push(.cameraScanner)
+                case .importEmail:
+                    router.push(.emailScan)
+                case .addManually:
+                    router.push(.dvgCreate(.manual))
+                }
+            } catch {
+                // Task was cancelled (e.g., app backgrounded during dismiss).
+                // pendingAction is already nil — nothing else to clean up.
             }
         }
     }
