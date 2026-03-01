@@ -55,6 +55,8 @@ targets:
           - iCloud.com.fastydiscount.app
         com.apple.developer.icloud-services:
           - CloudKit
+        com.apple.developer.applesignin:
+          - Default
     dependencies:
       - target: FastyDiscountWidget
         embed: true
@@ -102,6 +104,8 @@ targets:
       - path: FastyDiscount/Core/Services
         excludes:
           - "**/.gitkeep"
+          - "AuthenticationService.swift"
+          - "MockAuthenticationService.swift"
       - path: FastyDiscount/App/AppConstants.swift
     resources:
       - path: FastyDiscountWidget/Assets.xcassets
@@ -135,6 +139,8 @@ targets:
       - path: FastyDiscount/Core/Services
         excludes:
           - "**/.gitkeep"
+          - "AuthenticationService.swift"
+          - "MockAuthenticationService.swift"
       - path: FastyDiscount/App/AppConstants.swift
     settings:
       base:

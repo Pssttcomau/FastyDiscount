@@ -4,6 +4,7 @@ import SwiftData
 @main
 struct FastyDiscountApp: App {
     @State private var appState = AppState()
+    @State private var authViewModel: AuthViewModel
 
     /// Shared ModelContainer configured with CloudKit sync and App Group storage.
     /// Initialized once at app startup; errors are surfaced via AppState.
@@ -11,6 +12,9 @@ struct FastyDiscountApp: App {
 
     init() {
         let state = AppState()
+        let authService = AppleAuthenticationService()
+        let viewModel = AuthViewModel(authService: authService)
+
         do {
             modelContainer = try ModelContainerFactory.makeContainer()
         } catch {
@@ -25,12 +29,14 @@ struct FastyDiscountApp: App {
                 fatalError("Failed to create even an in-memory ModelContainer: \(error)")
             }()
         }
+
         _appState = State(initialValue: state)
+        _authViewModel = State(initialValue: viewModel)
     }
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AuthGateView(authViewModel: authViewModel)
                 .environment(appState)
                 .alert(
                     "Data Unavailable",
@@ -47,6 +53,39 @@ struct FastyDiscountApp: App {
         .modelContainer(modelContainer)
     }
 }
+
+// MARK: - AuthGateView
+
+/// Routes between `SignInView` and the main `ContentView` based on auth state.
+/// Shows a neutral loading state while credentials are being checked.
+private struct AuthGateView: View {
+    @State var authViewModel: AuthViewModel
+
+    var body: some View {
+        Group {
+            switch authViewModel.state {
+            case .checking:
+                // Splash / loading — neutral background, no spinner to avoid flash
+                Color(.systemBackground)
+                    .ignoresSafeArea()
+
+            case .unauthenticated:
+                SignInView(viewModel: authViewModel)
+                    .transition(.opacity)
+
+            case .authenticated:
+                ContentView()
+                    .transition(.opacity)
+            }
+        }
+        .animation(.easeInOut(duration: 0.25), value: authViewModel.state)
+        .task {
+            await authViewModel.checkCredentialStateOnLaunch()
+        }
+    }
+}
+
+// MARK: - ContentView
 
 struct ContentView: View {
     @Environment(AppState.self) private var appState
