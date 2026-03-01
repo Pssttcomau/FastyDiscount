@@ -39,5 +39,55 @@
 	<string>FastyDiscount accesses your photo library to import images of discount vouchers.</string>
 	<key>NSUserTrackingUsageDescription</key>
 	<string>FastyDiscount uses advertising identifiers to show you personalised ads. You can opt out at any time in iOS Settings.</string>
+
+	<!-- ── Required Device Capabilities ──────────────────────────────────── -->
+	<!--
+	     Declaring these capabilities restricts the app to devices that support
+	     them. Only declare capabilities that are strictly required to run the app.
+	     - location-services: required for geofencing and map features
+	     - still-camera:      required for barcode / QR-code scanning
+	-->
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>location-services</string>
+		<string>still-camera</string>
+	</array>
+
+	<!-- ── App Transport Security ─────────────────────────────────────────── -->
+	<!--
+	     FastyDiscount uses HTTPS for all network traffic. No general ATS
+	     exceptions are needed. The entries below document the external
+	     hostnames contacted and confirm they support TLS 1.2+.
+
+	     APIs contacted:
+	       - googleapis.com    — Gmail API, Google Sign-In OAuth
+	       - accounts.google.com — Google OAuth 2.0 token endpoint
+	       - admob.com / googleadservices.com — Google AdMob (HTTPS only)
+	       - icloud.com        — CloudKit (Apple, HTTPS enforced by OS)
+
+	     All of the above support HTTPS with TLS 1.2 or higher; no exceptions
+	     required. NSAllowsArbitraryLoads remains false (default).
+	-->
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<false/>
+	</dict>
+
+	<!-- ── Launch Screen (Info.plist-based, no Storyboard) ───────────────── -->
+	<!--
+	     UILaunchScreen generates a simple branded launch screen directly from
+	     this plist, avoiding the need for a LaunchScreen.storyboard file.
+	     Xcode injects UILaunchScreen_Generation = YES via build settings, which
+	     auto-generates this key; it is listed here for documentation purposes.
+
+	     To customise beyond the auto-generated default, add:
+	       UIImageName  — name of an image in Assets.xcassets (e.g. "AppIcon")
+	       UIColorName  — name of a Color Set in Assets.xcassets (e.g. "LaunchBackground")
+	       UINavigationBar / UITabBar — omit for a clean branded splash
+	-->
+	<!-- Note: UILaunchScreen is injected by Xcode (INFOPLIST_KEY_UILaunchScreen_Generation).
+	     No storyboard file is used. -->
+
 </dict>
 </plist>

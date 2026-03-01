@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- =====================================================================
+	     FastyDiscount — Privacy Manifest (PrivacyInfo.xcprivacy)
+	     Required for iOS 17+ App Store submissions.
+	     See: https://developer.apple.com/documentation/bundleresources/privacy_manifest_files
+	     ===================================================================== -->
+
+	<!-- ── Required Reason API declarations ──────────────────────────────── -->
+	<key>NSPrivacyAccessedAPITypes</key>
+	<array>
+
+		<!-- UserDefaults: used to persist settings (dark mode, ad-free state,
+		     notification preferences, onboarding flag). -->
+		<dict>
+			<key>NSPrivacyAccessedAPIType</key>
+			<string>NSPrivacyAccessedAPICategoryUserDefaults</string>
+			<key>NSPrivacyAccessedAPITypeReasons</key>
+			<array>
+				<!-- CA92.1 — Access info from the same app that wrote it. -->
+				<string>CA92.1</string>
+			</array>
+		</dict>
+
+		<!-- File timestamp: accessed when importing voucher images / PDFs
+		     to order items by creation date and detect duplicates. -->
+		<dict>
+			<key>NSPrivacyAccessedAPIType</key>
+			<string>NSPrivacyAccessedAPICategoryFileTimestamp</string>
+			<key>NSPrivacyAccessedAPITypeReasons</key>
+			<array>
+				<!-- C617.1 — Access the timestamps, size, or other metadata
+				     of files inside the app container. -->
+				<string>C617.1</string>
+			</array>
+		</dict>
+
+		<!-- Disk space: checked before writing imported images or PDF exports
+		     to avoid silent write failures on low-storage devices. -->
+		<dict>
+			<key>NSPrivacyAccessedAPIType</key>
+			<string>NSPrivacyAccessedAPICategoryDiskSpace</string>
+			<key>NSPrivacyAccessedAPITypeReasons</key>
+			<array>
+				<!-- E174.1 — Check available disk space to avoid exceeding
+				     it (not for decision-making about the user). -->
+				<string>E174.1</string>
+			</array>
+		</dict>
+
+	</array>
+
+	<!-- ── Collected data types ───────────────────────────────────────────── -->
+	<!--
+	     Formal per-purpose data-type declarations. These mirror what is
+	     entered manually in App Store Connect > App Privacy, and are also
+	     required in the privacy manifest for third-party SDKs bundled in the app.
+	-->
+	<key>NSPrivacyCollectedDataTypes</key>
+	<array>
+
+		<!-- Precise Location — used for geofencing store alerts -->
+		<dict>
+			<key>NSPrivacyCollectedDataType</key>
+			<string>NSPrivacyCollectedDataTypePreciseLocation</string>
+			<key>NSPrivacyCollectedDataTypeLinked</key>
+			<false/>
+			<key>NSPrivacyCollectedDataTypeTracking</key>
+			<false/>
+			<key>NSPrivacyCollectedDataTypePurposes</key>
+			<array>
+				<string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
+			</array>
+		</dict>
+
+		<!-- Device ID — advertising identifier accessed by AdMob (with ATT) -->
+		<dict>
+			<key>NSPrivacyCollectedDataType</key>
+			<string>NSPrivacyCollectedDataTypeDeviceID</string>
+			<key>NSPrivacyCollectedDataTypeLinked</key>
+			<false/>
+			<key>NSPrivacyCollectedDataTypeTracking</key>
+			<true/>
+			<key>NSPrivacyCollectedDataTypePurposes</key>
+			<array>
+				<string>NSPrivacyCollectedDataTypePurposeThirdPartyAdvertising</string>
+				<string>NSPrivacyCollectedDataTypePurposeAnalytics</string>
+			</array>
+		</dict>
+
+		<!-- Purchase History — IAP "Remove Ads" entitlement via StoreKit 2 -->
+		<dict>
+			<key>NSPrivacyCollectedDataType</key>
+			<string>NSPrivacyCollectedDataTypePurchaseHistory</string>
+			<key>NSPrivacyCollectedDataTypeLinked</key>
+			<true/>
+			<key>NSPrivacyCollectedDataTypeTracking</key>
+			<false/>
+			<key>NSPrivacyCollectedDataTypePurposes</key>
+			<array>
+				<string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
+			</array>
+		</dict>
+
+		<!-- Email Address — accessed via Gmail API (optional, with OAuth consent) -->
+		<dict>
+			<key>NSPrivacyCollectedDataType</key>
+			<string>NSPrivacyCollectedDataTypeEmailAddress</string>
+			<key>NSPrivacyCollectedDataTypeLinked</key>
+			<true/>
+			<key>NSPrivacyCollectedDataTypeTracking</key>
+			<false/>
+			<key>NSPrivacyCollectedDataTypePurposes</key>
+			<array>
+				<string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
+			</array>
+		</dict>
+
+		<!-- User ID — Sign in with Apple stable identifier for iCloud sync -->
+		<dict>
+			<key>NSPrivacyCollectedDataType</key>
+			<string>NSPrivacyCollectedDataTypeUserID</string>
+			<key>NSPrivacyCollectedDataTypeLinked</key>
+			<true/>
+			<key>NSPrivacyCollectedDataTypeTracking</key>
+			<false/>
+			<key>NSPrivacyCollectedDataTypePurposes</key>
+			<array>
+				<string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
+			</array>
+		</dict>
+
+	</array>
+
+	<!-- ── Tracking declaration ───────────────────────────────────────────── -->
+	<!--
+	     NSPrivacyTracking must be true if ANY data is used for tracking
+	     (cross-app / cross-website, typically via AdMob IDFA).
+	     ATT prompt is already shown at app launch (see FastyDiscountApp.swift).
+	-->
+	<key>NSPrivacyTracking</key>
+	<true/>
+
+	<!-- ── Tracking domains ────────────────────────────────────────────────── -->
+	<!--
+	     List domains used for tracking. Required when NSPrivacyTracking = true.
+	     These are the standard Google AdMob / Firebase tracking endpoints.
+	-->
+	<key>NSPrivacyTrackingDomains</key>
+	<array>
+		<string>googleadservices.com</string>
+		<string>googlesyndication.com</string>
+		<string>doubleclick.net</string>
+		<string>admob.com</string>
+		<string>google-analytics.com</string>
+	</array>
+
+</dict>
+</plist>
