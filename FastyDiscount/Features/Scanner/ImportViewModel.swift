@@ -263,6 +263,54 @@ final class ImportViewModel {
         }
     }
 
+    // MARK: - Image URL Import (Mac Catalyst drag-and-drop)
+
+    /// Processes an image file at the given URL.
+    ///
+    /// Used on Mac Catalyst when the user drops an image file onto the window.
+    ///
+    /// - Parameter url: A file URL pointing to an image (JPEG, PNG, HEIC, etc.).
+    func processImageFromURL(_ url: URL) async {
+        importState = .processing(progress: 0.0)
+        resetResults()
+
+        let accessing = url.startAccessingSecurityScopedResource()
+        defer {
+            if accessing { url.stopAccessingSecurityScopedResource() }
+        }
+
+        do {
+            let data = try Data(contentsOf: url)
+
+            guard let uiImage = UIImage(data: data) else {
+                importState = .error(ImportError.processingFailed("Could not decode image.").localizedDescription)
+                return
+            }
+
+            importState = .processing(progress: 0.3)
+
+            thumbnailImage = uiImage
+            barcodeImageData = compressImageSync(uiImage)
+
+            importState = .processing(progress: 0.5)
+
+            guard let ciImage = CIImage(image: uiImage) else {
+                importState = .error(ImportError.invalidImage.localizedDescription)
+                return
+            }
+
+            let result = try await detectionService.detectContent(in: ciImage)
+
+            importState = .processing(progress: 1.0)
+            applyResult(result)
+
+        } catch let importErr as ImportError {
+            importState = .error(importErr.localizedDescription)
+        } catch {
+            importState = .error(ImportError.processingFailed(error.localizedDescription).localizedDescription)
+        }
+    }
+
     // MARK: - Reset
 
     /// Resets all results and returns to idle state.

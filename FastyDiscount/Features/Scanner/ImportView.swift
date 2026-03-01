@@ -10,6 +10,9 @@ import UniformTypeIdentifiers
 /// Presents two import options (photo picker and document picker), processes
 /// the selected content via `ImportViewModel`, and displays the results
 /// with a "Create DVG" button to hand off to the DVG creation form.
+///
+/// Accepts an optional external `viewModel` for cases where the caller already
+/// holds a pre-loaded model (e.g., Mac Catalyst drag-and-drop import).
 struct ImportView: View {
 
     // MARK: - Environment
@@ -18,9 +21,18 @@ struct ImportView: View {
 
     // MARK: - State
 
-    @State private var viewModel = ImportViewModel()
+    /// The view model used by this import view.
+    /// When `nil` on init, a fresh `ImportViewModel` is created internally.
+    /// Pass an existing view model to share state (e.g., from a parent).
+    @State private var viewModel: ImportViewModel
     @State private var selectedPhotoItem: PhotosPickerItem?
     @State private var showDocumentPicker = false
+
+    // MARK: - Init
+
+    init(viewModel: ImportViewModel? = nil) {
+        _viewModel = State(initialValue: viewModel ?? ImportViewModel())
+    }
 
     // MARK: - Body
 

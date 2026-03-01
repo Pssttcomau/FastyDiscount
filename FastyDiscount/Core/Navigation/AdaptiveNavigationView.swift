@@ -12,16 +12,24 @@ import SwiftData
 ///
 /// Both layouts share the same `NavigationRouter` for programmatic navigation
 /// and deep link handling.
+///
+/// On Mac Catalyst, the sidebar layout is always used regardless of size class.
+/// Tabs unavailable on Mac (camera scanner, geofencing/nearby) are hidden.
 struct AdaptiveNavigationView: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @Environment(NavigationRouter.self) private var router
 
     var body: some View {
+        #if targetEnvironment(macCatalyst)
+        // Mac always uses the sidebar (split view) layout
+        RegularNavigationView()
+        #else
         if horizontalSizeClass == .compact {
             CompactNavigationView()
         } else {
             RegularNavigationView()
         }
+        #endif
     }
 }
 
@@ -42,7 +50,7 @@ private struct CompactNavigationView: View {
         @Bindable var router = router
 
         TabView(selection: $router.selectedTab) {
-            ForEach(AppState.AppTab.allCases) { tab in
+            ForEach(AppState.AppTab.platformCases) { tab in
                 Tab(tab.title, systemImage: tab.systemImage, value: tab) {
                     NavigationStack(path: navigationPathBinding(for: tab)) {
                         TabRootView(tab: tab)
@@ -105,11 +113,15 @@ private struct SidebarView: View {
 
     var body: some View {
         List {
-            ForEach(AppState.AppTab.allCases) { tab in
+            ForEach(AppState.AppTab.platformCases) { tab in
                 Button {
                     selection = tab
                 } label: {
+                    #if targetEnvironment(macCatalyst)
+                    Label(tab.macTitle, systemImage: tab.macSystemImage)
+                    #else
                     Label(tab.title, systemImage: tab.systemImage)
+                    #endif
                 }
                 .listRowBackground(
                     tab == selection
@@ -126,8 +138,10 @@ private struct SidebarView: View {
 
 // MARK: - TabRootView
 
-/// Placeholder root view for each tab. These will be replaced with real
-/// feature views in later tasks (Phase 6).
+/// Root view for each tab.
+///
+/// On Mac Catalyst, the scan tab shows `ImportView` directly (no camera scanner).
+/// On iOS/iPadOS, the scan tab shows `ScanPlaceholderView` with both camera and import options.
 struct TabRootView: View {
     let tab: AppState.AppTab
 
@@ -138,7 +152,13 @@ struct TabRootView: View {
         case .nearby:
             NearbyMapView()
         case .scan:
+            #if targetEnvironment(macCatalyst)
+            // On Mac, the scan tab is the import view (no camera available)
+            ImportView()
+                .navigationTitle("Import")
+            #else
             ScanPlaceholderView()
+            #endif
         case .history:
             HistoryView()
         case .settings:

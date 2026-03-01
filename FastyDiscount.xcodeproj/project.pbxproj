@@ -88,6 +88,7 @@
 		A0489EE2A0E705534CBC9C52 /* ScanResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CCE2158FD8C356591E834D /* ScanResult.swift */; };
 		A14ECB903E84334B410980EE /* ReviewQueueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0951F154F4A7BB333B561C /* ReviewQueueViewModel.swift */; };
 		A894220C62BE58B3A22C74AF /* WatchDVGType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B3DE801867032D4BE6D2C8 /* WatchDVGType.swift */; };
+		A8B53BB97F7AE6C6B66CFE12 /* MacDropTargetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A795EC6EC547770C3037D7 /* MacDropTargetView.swift */; };
 		A9E88ADCD5186C43B623BFB5 /* FastyDiscountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCB7E057D51E7199DA790AA /* FastyDiscountTests.swift */; };
 		AAD2A10448748BC03B36E383 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509B58F6E88817E1D7D8094 /* NavigationRouter.swift */; };
 		ACBA56B68D05B23B3C27D225 /* ScanResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CCE2158FD8C356591E834D /* ScanResult.swift */; };
@@ -99,6 +100,7 @@
 		C0DBBC2A7BFD368992258FCB /* DVGFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E13291327FC54DC399957 /* DVGFormView.swift */; };
 		C3A176131ABB2F538A9BA1B5 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D708A035AA0DC1E36B3881E7 /* AppConstants.swift */; };
 		C44EDBE5C1A88338219D9012 /* WatchDVGStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD0B6E36D4AD675E7D91F72 /* WatchDVGStore.swift */; };
+		C8A0664C2D43E2D84BF97055 /* MacCatalystCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951BD57705A6330971ADA74C /* MacCatalystCommands.swift */; };
 		C9EED09391A2D20E651FD04E /* TagManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4651D903786DE79F6DB9EBDA /* TagManagerView.swift */; };
 		CC25A4A07C5C8684F45210D4 /* ImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6DE53C52FE6ABCE6B51AF /* ImportView.swift */; };
 		CE1AC98FE37D9CC1B52B5BA5 /* DVG.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AA7FA8BEF83B6759CF1EA1 /* DVG.swift */; };
@@ -198,6 +200,7 @@
 		464E8F385E730DA9AA5AA899 /* LocationPermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermissionManager.swift; sourceTree = "<group>"; };
 		4651D903786DE79F6DB9EBDA /* TagManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagManagerView.swift; sourceTree = "<group>"; };
 		4673B5A45C26980A97CC3365 /* NotificationActionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationActionHandler.swift; sourceTree = "<group>"; };
+		46A795EC6EC547770C3037D7 /* MacDropTargetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacDropTargetView.swift; sourceTree = "<group>"; };
 		4A91F47B4AAA26EE65968686 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		4F1AF8301D378D3D17B56D19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		533528FAF43C73F0FE5F5B49 /* ReviewQueueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewQueueView.swift; sourceTree = "<group>"; };
@@ -224,6 +227,7 @@
 		88571406C0725018E19E6889 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8A5BEE35D6024275FE15B89F /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		8B8C581F9880F4ED474BF89E /* DVGCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVGCardView.swift; sourceTree = "<group>"; };
+		951BD57705A6330971ADA74C /* MacCatalystCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacCatalystCommands.swift; sourceTree = "<group>"; };
 		95828C9BA2793FB90C346C21 /* PassKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassKitService.swift; sourceTree = "<group>"; };
 		9691929165A7A4D71B132CD9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		979088B9F4216E7CF9915879 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
@@ -578,6 +582,8 @@
 			children = (
 				E8B83589D2581E67E1D4BEF0 /* AdaptiveNavigationView.swift */,
 				ED5F54AB779608CE8ABCB292 /* Destination.swift */,
+				951BD57705A6330971ADA74C /* MacCatalystCommands.swift */,
+				46A795EC6EC547770C3037D7 /* MacDropTargetView.swift */,
 				D509B58F6E88817E1D7D8094 /* NavigationRouter.swift */,
 			);
 			path = Navigation;
@@ -868,6 +874,8 @@
 				784B835AFF8CA8AA8CAA7FD9 /* KeychainService.swift in Sources */,
 				CF93B8692FDE52239A986E82 /* LocationPermissionManager.swift in Sources */,
 				7D94FDBDAB10E0A177EB967A /* LocationPermissionView.swift in Sources */,
+				C8A0664C2D43E2D84BF97055 /* MacCatalystCommands.swift in Sources */,
+				A8B53BB97F7AE6C6B66CFE12 /* MacDropTargetView.swift in Sources */,
 				6E55264149E6D5DF130E10CE /* MockAuthenticationService.swift in Sources */,
 				7BE645C09C5666BB7BB85C1E /* ModelContainerFactory.swift in Sources */,
 				AAD2A10448748BC03B36E383 /* NavigationRouter.swift in Sources */,
@@ -1071,9 +1079,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FastyDiscount/FastyDiscount.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FastyDiscount/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = FastyDiscount;
+				INFOPLIST_KEY_LSMinimumSystemVersion = 14.0;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1084,7 +1094,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fastydiscount.app;
 				SDKROOT = iphoneos;
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_STRICT_CONCURRENCY = complete;
 				SWIFT_VERSION = 6;
@@ -1349,9 +1359,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FastyDiscount/FastyDiscount.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FastyDiscount/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = FastyDiscount;
+				INFOPLIST_KEY_LSMinimumSystemVersion = 14.0;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1362,7 +1374,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fastydiscount.app;
 				SDKROOT = iphoneos;
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_STRICT_CONCURRENCY = complete;
 				SWIFT_VERSION = 6;

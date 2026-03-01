@@ -50,10 +50,46 @@ final class AppState: Sendable {
             switch self {
             case .dashboard: "house.fill"
             case .nearby: "map.fill"
-            case .scan: "barcode.viewfinder"
+            case .scan: "square.and.arrow.down"
             case .history: "clock.fill"
             case .settings: "gearshape.fill"
             }
+        }
+
+        /// Title shown in the Mac sidebar (may differ from tab bar label).
+        var macTitle: String {
+            switch self {
+            case .scan: "Import"
+            default: title
+            }
+        }
+
+        /// SF Symbol shown in the Mac sidebar (may differ from tab bar icon).
+        var macSystemImage: String {
+            switch self {
+            case .scan: "square.and.arrow.down"
+            default: systemImage
+            }
+        }
+
+        /// Whether this tab should be visible when running on Mac Catalyst.
+        /// The camera scanner tab is replaced by the Import view on Mac.
+        /// Geofencing / Nearby features require always-on location which
+        /// is not appropriate for a Mac app; the tab is hidden.
+        var isAvailableOnMac: Bool {
+            #if targetEnvironment(macCatalyst)
+            switch self {
+            case .nearby: return false
+            default: return true
+            }
+            #else
+            return true
+            #endif
+        }
+
+        /// All tabs filtered for the current platform.
+        static var platformCases: [AppTab] {
+            allCases.filter { $0.isAvailableOnMac }
         }
     }
 }
