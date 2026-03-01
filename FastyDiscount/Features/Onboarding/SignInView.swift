@@ -50,25 +50,17 @@ struct SignInView: View {
                         .frame(height: 50)
                         .frame(maxWidth: .infinity)
                 } else {
-                    // Use a custom button wrapping SignInWithAppleButton appearance
-                    // The actual auth flow is handled by ASAuthorizationController in AuthenticationService.
-                    Button {
+                    // Use the system-provided SignInWithAppleButton for App Store branding compliance.
+                    // The completion result is routed through AuthViewModel → AuthenticationService.
+                    SignInWithAppleButton(.signIn) { request in
+                        request.requestedScopes = [.fullName, .email]
+                    } onCompletion: { result in
                         Task {
-                            await viewModel.signIn()
+                            await viewModel.handleAuthorization(result)
                         }
-                    } label: {
-                        HStack(spacing: 8) {
-                            Image(systemName: "apple.logo")
-                                .font(.body.weight(.semibold))
-                            Text("Sign in with Apple")
-                                .font(.body.weight(.semibold))
-                        }
-                        .foregroundStyle(.white)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 50)
-                        .background(Color.black, in: RoundedRectangle(cornerRadius: 10))
                     }
-                    .accessibilityLabel("Sign in with Apple")
+                    .signInWithAppleButtonStyle(.black)
+                    .frame(height: 50)
                     .disabled(viewModel.isSigningIn)
                 }
 

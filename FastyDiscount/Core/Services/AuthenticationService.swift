@@ -11,9 +11,13 @@ import UIKit
 /// Conforming to `Sendable` ensures safe use across concurrency boundaries.
 @MainActor
 protocol AuthenticationService: AnyObject, Sendable {
-    /// Performs Sign in with Apple.
+    /// Performs Sign in with Apple via an internal ASAuthorizationController.
     /// Throws on failure or cancellation.
     func signIn() async throws
+
+    /// Handles an ASAuthorization result produced by the system SignInWithAppleButton.
+    /// Call this from the button's `onCompletion` closure to process the credential.
+    func handleAuthorization(_ result: Result<ASAuthorization, any Error>) async throws
 
     /// Signs the user out, clearing their stored credentials.
     func signOut() async throws
@@ -70,6 +74,23 @@ final class AppleAuthenticationService: NSObject, AuthenticationService {
         }
     }
 
+    func handleAuthorization(_ result: Result<ASAuthorization, any Error>) async throws {
+        switch result {
+        case .success(let authorization):
+            guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential else {
+                throw AuthError.invalidCredential
+            }
+            // Re-use the shared storeCredential path; it sets isAuthenticated or throws.
+            try storeCredentialThrowing(
+                userIdentifier: credential.user,
+                email: credential.email,
+                fullName: credential.fullName
+            )
+        case .failure(let error):
+            throw error
+        }
+    }
+
     func signOut() async throws {
         try keychainService.delete(forKey: KeychainKeys.userIdentifier)
         try keychainService.delete(forKey: KeychainKeys.userEmail)
@@ -121,28 +142,42 @@ final class AppleAuthenticationService: NSObject, AuthenticationService {
 
     // MARK: - Private Helpers
 
+    /// Throws-based credential storage used by `handleAuthorization`.
+    private func storeCredentialThrowing(
+        userIdentifier: String,
+        email: String?,
+        fullName: PersonNameComponents?
+    ) throws {
+        try keychainService.save(userIdentifier, forKey: KeychainKeys.userIdentifier)
+
+        // Email and name are only returned on first sign-in.
+        if let email = email, !email.isEmpty {
+            try keychainService.save(email, forKey: KeychainKeys.userEmail)
+        }
+
+        if let fullName = fullName {
+            let formatter = PersonNameComponentsFormatter()
+            let name = formatter.string(from: fullName)
+            if !name.isEmpty {
+                try keychainService.save(name, forKey: KeychainKeys.userFullName)
+            }
+        }
+
+        isAuthenticated = true
+    }
+
+    /// Continuation-based wrapper called from `ASAuthorizationControllerDelegate`.
     private func storeCredential(
         userIdentifier: String,
         email: String?,
         fullName: PersonNameComponents?
     ) {
         do {
-            try keychainService.save(userIdentifier, forKey: KeychainKeys.userIdentifier)
-
-            // Email and name are only returned on first sign-in.
-            if let email = email, !email.isEmpty {
-                try keychainService.save(email, forKey: KeychainKeys.userEmail)
-            }
-
-            if let fullName = fullName {
-                let formatter = PersonNameComponentsFormatter()
-                let name = formatter.string(from: fullName)
-                if !name.isEmpty {
-                    try keychainService.save(name, forKey: KeychainKeys.userFullName)
-                }
-            }
-
-            isAuthenticated = true
+            try storeCredentialThrowing(
+                userIdentifier: userIdentifier,
+                email: email,
+                fullName: fullName
+            )
         } catch {
             signInContinuation?.resume(throwing: error)
             signInContinuation = nil

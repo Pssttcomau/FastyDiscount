@@ -108,7 +108,11 @@ struct KeychainService: Sendable {
         [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: service,
-            kSecAttrAccount as String: key
+            kSecAttrAccount as String: key,
+            // Restrict access to this device only while the device is unlocked.
+            // Prevents iCloud Keychain sync and ensures credentials are not
+            // accessible from backup restores on other devices.
+            kSecAttrAccessible as String: kSecAttrAccessibleWhenUnlockedThisDeviceOnly
         ]
     }
 }

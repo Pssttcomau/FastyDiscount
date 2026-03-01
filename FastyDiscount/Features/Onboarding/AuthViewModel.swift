@@ -30,6 +30,10 @@ final class AuthViewModel {
 
     private let authService: any AuthenticationService
 
+    /// Guards against stacking duplicate revocation observers when `.task` re-fires
+    /// on scene re-entry (e.g. background → foreground transitions).
+    private var isRevocationObserverRegistered = false
+
     // MARK: - Init
 
     init(authService: any AuthenticationService) {
@@ -56,7 +60,8 @@ final class AuthViewModel {
         state = concreteService.isAuthenticated ? .authenticated : .unauthenticated
     }
 
-    /// Initiates the Sign in with Apple flow.
+    /// Initiates the Sign in with Apple flow via an internal ASAuthorizationController.
+    /// Used as a fallback; prefer `handleAuthorization(_:)` when using SignInWithAppleButton.
     func signIn() async {
         guard !isSigningIn else { return }
         isSigningIn = true
@@ -65,6 +70,27 @@ final class AuthViewModel {
 
         do {
             try await authService.signIn()
+            state = .authenticated
+        } catch let error as ASAuthorizationError where error.code == .canceled {
+            // User canceled — no error message needed
+        } catch {
+            errorMessage = error.localizedDescription
+            hasError = true
+        }
+
+        isSigningIn = false
+    }
+
+    /// Handles the result from the system `SignInWithAppleButton` completion callback.
+    /// Routes the credential through `AuthenticationService` and updates auth state.
+    func handleAuthorization(_ result: Result<ASAuthorization, any Error>) async {
+        guard !isSigningIn else { return }
+        isSigningIn = true
+        errorMessage = nil
+        hasError = false
+
+        do {
+            try await authService.handleAuthorization(result)
             state = .authenticated
         } catch let error as ASAuthorizationError where error.code == .canceled {
             // User canceled — no error message needed
@@ -94,6 +120,9 @@ final class AuthViewModel {
     }
 
     private func registerForRevocationNotification() {
+        guard !isRevocationObserverRegistered else { return }
+        isRevocationObserverRegistered = true
+
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(credentialsRevoked),

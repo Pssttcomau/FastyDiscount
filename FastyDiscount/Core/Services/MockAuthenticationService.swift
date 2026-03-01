@@ -1,4 +1,5 @@
 import Foundation
+import AuthenticationServices
 
 // MARK: - MockAuthenticationService
 
@@ -23,6 +24,15 @@ final class MockAuthenticationService: AuthenticationService {
             throw AuthError.invalidCredential
         }
         isAuthenticated = true
+    }
+
+    func handleAuthorization(_ result: Result<ASAuthorization, any Error>) async throws {
+        switch result {
+        case .success:
+            isAuthenticated = true
+        case .failure(let error):
+            throw error
+        }
     }
 
     func signOut() async throws {

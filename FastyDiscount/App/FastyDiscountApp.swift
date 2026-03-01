@@ -59,7 +59,7 @@ struct FastyDiscountApp: App {
 /// Routes between `SignInView` and the main `ContentView` based on auth state.
 /// Shows a neutral loading state while credentials are being checked.
 private struct AuthGateView: View {
-    @State var authViewModel: AuthViewModel
+    @State private var authViewModel: AuthViewModel
 
     var body: some View {
         Group {
