@@ -55,6 +55,9 @@ Carthage/Checkouts/
 *.cer
 .env
 .env.*
+Secrets.xcconfig
+**/Secrets.xcconfig
+GoogleService-Info.plist
 
 # Archives
 *.ipa

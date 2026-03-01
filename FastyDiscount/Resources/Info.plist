@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>GOOGLE_CLIENT_ID</key>
+	<string>$(GOOGLE_CLIENT_ID)</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -11,6 +13,14 @@
 			</array>
 			<key>CFBundleURLName</key>
 			<string>com.fastydiscount.app</string>
+		</dict>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>$(GOOGLE_CLIENT_ID_REVERSED)</string>
+			</array>
+			<key>CFBundleURLName</key>
+			<string>com.fastydiscount.app.google-oauth</string>
 		</dict>
 	</array>
 	<key>UIBackgroundModes</key>

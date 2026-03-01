@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A1B2C3D4E5F60011AABB0004 /* DVGFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60011AABB0001 /* DVGFormView.swift */; };
-		A1B2C3D4E5F60011AABB0005 /* DVGFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60011AABB0002 /* DVGFormViewModel.swift */; };
-		A1B2C3D4E5F60011AABB0006 /* TagPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60011AABB0003 /* TagPickerView.swift */; };
 		0587928D3A0FFBDA643F0930 /* DVGExtractionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB16084384A7BD4638D8D0FE /* DVGExtractionResult.swift */; };
 		09F278F5D9486C0E4B68ED12 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979088B9F4216E7CF9915879 /* SignInView.swift */; };
 		0A4587770B25881B70520EB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8FE26587864355ABB32C7D9 /* Assets.xcassets */; };
@@ -26,6 +23,7 @@
 		4698C44DD7E0EAA30A604B0A /* FastyDiscountWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB56A38ABDF3CFEFB46968 /* FastyDiscountWidget.swift */; };
 		4BEA1A5DC5F7BB23509AC435 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9691929165A7A4D71B132CD9 /* ContentView.swift */; };
 		4D0CD6AC79AA8D733D7D5307 /* AdaptiveNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B83589D2581E67E1D4BEF0 /* AdaptiveNavigationView.swift */; };
+		54E43A111786FFEB0A123988 /* GmailAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D41E627216E858DF88FAA04 /* GmailAuthService.swift */; };
 		562A4F0C9B8C8D2631F9E2EC /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A460E121AD257B3F78C18E4E /* KeychainService.swift */; };
 		58DC7B7DF248AC5D2C29674F /* ModelContainerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2998DF0B0A158FF469F3C28 /* ModelContainerFactory.swift */; };
 		595DF7E55AF70852C0F02712 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A460E121AD257B3F78C18E4E /* KeychainService.swift */; };
@@ -47,16 +45,19 @@
 		8D5B0FDEB17FFF9107A240DC /* FastyDiscountShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A2DCFE241EFF5D5B0CF9F5CB /* FastyDiscountShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		90B0938261994B030A6496A9 /* TagSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B359E92B98894B367E8F5E /* TagSeeder.swift */; };
 		91B21ACC363E49D8D6D81D88 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D872915DE7DE0AE2465E04 /* AppState.swift */; };
+		93E079CBDD6E620D646A3B20 /* TagPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138A7A96DBE454EC79AF1FD4 /* TagPickerView.swift */; };
 		94D24C53FF96B28E84C4ED01 /* StoreLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0122E3CE8E05D6E9D5F6F20F /* StoreLocation.swift */; };
 		9570548722437F16975BC053 /* FastyDiscountWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 0AA28899713FB7A89571DEEC /* FastyDiscountWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		992190245D6579C6567FC4BD /* DVGRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DD2F4301D309CBAFFD5C90 /* DVGRepository.swift */; };
 		9CB6CF9406EE4A8138251284 /* CloudAIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A256DD3E2644571E164EA549 /* CloudAIClient.swift */; };
+		9D69DF65D39FC4029589893C /* DVGFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823140586BFE58B0B4505742 /* DVGFormViewModel.swift */; };
 		A0489EE2A0E705534CBC9C52 /* ScanResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CCE2158FD8C356591E834D /* ScanResult.swift */; };
 		A9E88ADCD5186C43B623BFB5 /* FastyDiscountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCB7E057D51E7199DA790AA /* FastyDiscountTests.swift */; };
 		AAD2A10448748BC03B36E383 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509B58F6E88817E1D7D8094 /* NavigationRouter.swift */; };
 		ACBA56B68D05B23B3C27D225 /* ScanResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CCE2158FD8C356591E834D /* ScanResult.swift */; };
 		ACC24CD9624428715DCD29B2 /* FastyDiscountApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C0CA48AC46680E5D3CA93D /* FastyDiscountApp.swift */; };
 		B0B2C63772859F4A3EBA13FC /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8441D63ED778CDDD9E70854 /* AuthViewModel.swift */; };
+		C0DBBC2A7BFD368992258FCB /* DVGFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E13291327FC54DC399957 /* DVGFormView.swift */; };
 		C3A176131ABB2F538A9BA1B5 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D708A035AA0DC1E36B3881E7 /* AppConstants.swift */; };
 		CE1AC98FE37D9CC1B52B5BA5 /* DVG.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AA7FA8BEF83B6759CF1EA1 /* DVG.swift */; };
 		CFFD02C3CDE8BB80343ABFB4 /* DVGDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E97FA9D1B4C33ED51C821CE /* DVGDetailView.swift */; };
@@ -119,15 +120,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A1B2C3D4E5F60011AABB0001 /* DVGFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVGFormView.swift; sourceTree = "<group>"; };
-		A1B2C3D4E5F60011AABB0002 /* DVGFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVGFormViewModel.swift; sourceTree = "<group>"; };
-		A1B2C3D4E5F60011AABB0003 /* TagPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPickerView.swift; sourceTree = "<group>"; };
 		0122E3CE8E05D6E9D5F6F20F /* StoreLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreLocation.swift; sourceTree = "<group>"; };
 		09DD2F4301D309CBAFFD5C90 /* DVGRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVGRepository.swift; sourceTree = "<group>"; };
 		0AA28899713FB7A89571DEEC /* FastyDiscountWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = FastyDiscountWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AE09873A9469003EDE2C7A0 /* FastyDiscountUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastyDiscountUITests.swift; sourceTree = "<group>"; };
+		138A7A96DBE454EC79AF1FD4 /* TagPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPickerView.swift; sourceTree = "<group>"; };
 		15C0CA48AC46680E5D3CA93D /* FastyDiscountApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastyDiscountApp.swift; sourceTree = "<group>"; };
 		18EB56A38ABDF3CFEFB46968 /* FastyDiscountWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastyDiscountWidget.swift; sourceTree = "<group>"; };
+		1D41E627216E858DF88FAA04 /* GmailAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GmailAuthService.swift; sourceTree = "<group>"; };
+		284E13291327FC54DC399957 /* DVGFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVGFormView.swift; sourceTree = "<group>"; };
 		29B359E92B98894B367E8F5E /* TagSeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSeeder.swift; sourceTree = "<group>"; };
 		3A12B82D1E0A85CF8C69513B /* AppearanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceManager.swift; sourceTree = "<group>"; };
 		4F1AF8301D378D3D17B56D19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -139,6 +140,7 @@
 		75CEFA93A65CF3BC3C64554B /* FastyDiscountShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FastyDiscountShareExtension.entitlements; sourceTree = "<group>"; };
 		7AFF1D6ECC73513EC3109BBE /* FastyDiscountWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FastyDiscountWatch.entitlements; sourceTree = "<group>"; };
 		7DE277FB8F8E572BB84421FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		823140586BFE58B0B4505742 /* DVGFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVGFormViewModel.swift; sourceTree = "<group>"; };
 		87D37587BDBE0CFC8919E653 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		88571406C0725018E19E6889 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8A5BEE35D6024275FE15B89F /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
@@ -208,20 +210,10 @@
 			isa = PBXGroup;
 			children = (
 				8E1B5D262131F49C22C10647 /* DVGDetail */,
-				A1B2C3D4E5F60011AABB0007 /* DVGForm */,
+				91B3A52A6EAC06146D35369C /* DVGForm */,
 				97A493B6114B43F0ED8CB4A7 /* Onboarding */,
 			);
 			path = Features;
-			sourceTree = "<group>";
-		};
-		A1B2C3D4E5F60011AABB0007 /* DVGForm */ = {
-			isa = PBXGroup;
-			children = (
-				A1B2C3D4E5F60011AABB0001 /* DVGFormView.swift */,
-				A1B2C3D4E5F60011AABB0002 /* DVGFormViewModel.swift */,
-				A1B2C3D4E5F60011AABB0003 /* TagPickerView.swift */,
-			);
-			path = DVGForm;
 			sourceTree = "<group>";
 		};
 		61A0A9F904676FF45348ECA4 = {
@@ -251,6 +243,7 @@
 				87D37587BDBE0CFC8919E653 /* AuthenticationService.swift */,
 				A256DD3E2644571E164EA549 /* CloudAIClient.swift */,
 				09DD2F4301D309CBAFFD5C90 /* DVGRepository.swift */,
+				1D41E627216E858DF88FAA04 /* GmailAuthService.swift */,
 				A460E121AD257B3F78C18E4E /* KeychainService.swift */,
 				DB9803317C52051BDD169F23 /* MockAuthenticationService.swift */,
 				C2998DF0B0A158FF469F3C28 /* ModelContainerFactory.swift */,
@@ -292,6 +285,16 @@
 				EAD6F1CBCC9AE9C141B3AA6C /* DVGDetailViewModel.swift */,
 			);
 			path = DVGDetail;
+			sourceTree = "<group>";
+		};
+		91B3A52A6EAC06146D35369C /* DVGForm */ = {
+			isa = PBXGroup;
+			children = (
+				284E13291327FC54DC399957 /* DVGFormView.swift */,
+				823140586BFE58B0B4505742 /* DVGFormViewModel.swift */,
+				138A7A96DBE454EC79AF1FD4 /* TagPickerView.swift */,
+			);
+			path = DVGForm;
 			sourceTree = "<group>";
 		};
 		97A493B6114B43F0ED8CB4A7 /* Onboarding */ = {
@@ -569,12 +572,12 @@
 				CFFD02C3CDE8BB80343ABFB4 /* DVGDetailView.swift in Sources */,
 				3DF9117C3BC17D39CF0017E5 /* DVGDetailViewModel.swift in Sources */,
 				ECD819BB5408F3732F2E40D7 /* DVGExtractionResult.swift in Sources */,
-				A1B2C3D4E5F60011AABB0004 /* DVGFormView.swift in Sources */,
-				A1B2C3D4E5F60011AABB0005 /* DVGFormViewModel.swift in Sources */,
-				A1B2C3D4E5F60011AABB0006 /* TagPickerView.swift in Sources */,
+				C0DBBC2A7BFD368992258FCB /* DVGFormView.swift in Sources */,
+				9D69DF65D39FC4029589893C /* DVGFormViewModel.swift in Sources */,
 				35EBC3032D296A6CED823AF7 /* DVGRepository.swift in Sources */,
 				2DCA47F6600A97BE9AEE764E /* Destination.swift in Sources */,
 				ACC24CD9624428715DCD29B2 /* FastyDiscountApp.swift in Sources */,
+				54E43A111786FFEB0A123988 /* GmailAuthService.swift in Sources */,
 				784B835AFF8CA8AA8CAA7FD9 /* KeychainService.swift in Sources */,
 				6E55264149E6D5DF130E10CE /* MockAuthenticationService.swift in Sources */,
 				7BE645C09C5666BB7BB85C1E /* ModelContainerFactory.swift in Sources */,
@@ -583,6 +586,7 @@
 				09F278F5D9486C0E4B68ED12 /* SignInView.swift in Sources */,
 				6226F47C230628829668050B /* StoreLocation.swift in Sources */,
 				0BE365C08CAB8B78F6F377BE /* Tag.swift in Sources */,
+				93E079CBDD6E620D646A3B20 /* TagPickerView.swift in Sources */,
 				90B0938261994B030A6496A9 /* TagSeeder.swift in Sources */,
 				8960F834FCA1755261A660AF /* Theme.swift in Sources */,
 			);
