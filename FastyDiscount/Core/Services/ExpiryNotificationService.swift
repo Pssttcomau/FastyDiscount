@@ -308,27 +308,98 @@ actor UNExpiryNotificationService: ExpiryNotificationService {
     }
 }
 
+// MARK: - NotificationActionIdentifier
+
+/// String constants for notification action identifiers used across
+/// both `dvg-expiry` and `dvg-location` notification categories.
+///
+/// Defined here (in `ExpiryNotificationService.swift`) so they are available
+/// to all targets that compile this file (main app, widget, share extension).
+enum NotificationActionIdentifier {
+    /// Opens the app and navigates to the DVG detail view.
+    static let viewCode = "view-code"
+    /// Marks the DVG as used without bringing the app to the foreground.
+    static let markUsed = "mark-used"
+    /// Reschedules the notification for 24 hours later.
+    static let snooze   = "snooze"
+}
+
 // MARK: - NotificationCategoryRegistrar
 
-/// Registers the `dvg-expiry` notification category early at app initialisation.
+/// Registers `UNNotificationCategory` entries for DVG notifications.
 ///
-/// TASK-022 will add action buttons to this category. For now we register it
-/// with an empty actions array so the category identifier is available to
-/// delivered notifications even before TASK-022 ships.
+/// Two categories are registered:
+/// - `dvg-expiry`: Fired when a DVG is approaching its expiration date.
+/// - `dvg-location`: Fired when the user enters the geofence of a store.
+///
+/// Both categories share the same three action buttons:
+/// - **View Code** (`view-code`): foreground action — opens the app and navigates
+///   to the DVG detail view.
+/// - **Mark as Used** (`mark-used`): background action — updates DVG status to
+///   `.used` without bringing the app to the foreground.
+/// - **Snooze** (`snooze`): background action — reschedules the notification
+///   for 24 hours later.
+///
+/// Call `registerCategories()` before the first notification can arrive
+/// (i.e. during `FastyDiscountApp.init()` or as early as possible at launch).
+/// Safe to call multiple times — later registrations replace earlier ones.
 enum NotificationCategoryRegistrar {
 
-    /// Registers the `dvg-expiry` category with `UNUserNotificationCenter`.
+    /// Location-based notification category identifier.
+    static let locationCategoryIdentifier = "dvg-location"
+
+    /// Registers both `dvg-expiry` and `dvg-location` categories with
+    /// `UNUserNotificationCenter`, including their shared action buttons.
     ///
     /// Call this during app startup (e.g. in `FastyDiscountApp.init()`).
-    /// Safe to call multiple times — later registrations replace earlier ones.
     @MainActor
     static func registerCategories() {
+        // MARK: Shared Actions
+
+        // "View Code" — foreground action: tapping this will bring the app to
+        // the front and navigate to the DVG detail view.
+        let viewCodeAction = UNNotificationAction(
+            identifier: NotificationActionIdentifier.viewCode,
+            title: "View Code",
+            options: [.foreground]
+        )
+
+        // "Mark as Used" — background action: the DVG is updated in SwiftData
+        // without the app being brought to the foreground.
+        let markUsedAction = UNNotificationAction(
+            identifier: NotificationActionIdentifier.markUsed,
+            title: "Mark as Used",
+            options: []
+        )
+
+        // "Snooze" — background action: cancels the current notification and
+        // reschedules it for 24 hours later.
+        let snoozeAction = UNNotificationAction(
+            identifier: NotificationActionIdentifier.snooze,
+            title: "Snooze",
+            options: []
+        )
+
+        let sharedActions = [viewCodeAction, markUsedAction, snoozeAction]
+
+        // MARK: Expiry Category
+
         let expiryCategory = UNNotificationCategory(
             identifier: UNExpiryNotificationService.categoryIdentifier,
-            actions: [],        // TASK-022 will populate this
+            actions: sharedActions,
             intentIdentifiers: [],
             options: [.customDismissAction]
         )
-        UNUserNotificationCenter.current().setNotificationCategories([expiryCategory])
+
+        // MARK: Location Category
+
+        let locationCategory = UNNotificationCategory(
+            identifier: locationCategoryIdentifier,
+            actions: sharedActions,
+            intentIdentifiers: [],
+            options: [.customDismissAction]
+        )
+
+        UNUserNotificationCenter.current().setNotificationCategories([expiryCategory, locationCategory])
     }
 }

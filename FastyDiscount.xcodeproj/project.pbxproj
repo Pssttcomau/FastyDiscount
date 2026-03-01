@@ -42,6 +42,7 @@
 		68E07B1E648289F136773685 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D8511326A5401789910BC7 /* CameraPreviewView.swift */; };
 		6A2F598EC41CC34CE537D3B5 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BEE35D6024275FE15B89F /* Tag.swift */; };
 		6DE0D56BF477992554123042 /* NotificationPermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEE1DF7CDC53C1C828C02A9 /* NotificationPermissionManager.swift */; };
+		D01C11468DBD45D799533675 /* NotificationActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF7CCF0523B41EAB996C973 /* NotificationActionHandler.swift */; };
 		6E55264149E6D5DF130E10CE /* MockAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9803317C52051BDD169F23 /* MockAuthenticationService.swift */; };
 		71E00C0C355F30EEB06FBB5D /* EmailScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418F8AC8527C19B7B186AB7B /* EmailScanViewModel.swift */; };
 		73B1A0B0E1A1623BFA086B6E /* ScanResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CCE2158FD8C356591E834D /* ScanResult.swift */; };
@@ -199,6 +200,7 @@
 		DB9803317C52051BDD169F23 /* MockAuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthenticationService.swift; sourceTree = "<group>"; };
 		DBCB7E057D51E7199DA790AA /* FastyDiscountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastyDiscountTests.swift; sourceTree = "<group>"; };
 		DDEE1DF7CDC53C1C828C02A9 /* NotificationPermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPermissionManager.swift; sourceTree = "<group>"; };
+		9FF7CCF0523B41EAB996C973 /* NotificationActionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationActionHandler.swift; sourceTree = "<group>"; };
 		E7D4DF09E6A228B81809144C /* FastyDiscount.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FastyDiscount.entitlements; sourceTree = "<group>"; };
 		E8441D63ED778CDDD9E70854 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		E8B83589D2581E67E1D4BEF0 /* AdaptiveNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveNavigationView.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				A460E121AD257B3F78C18E4E /* KeychainService.swift */,
 				DB9803317C52051BDD169F23 /* MockAuthenticationService.swift */,
 				C2998DF0B0A158FF469F3C28 /* ModelContainerFactory.swift */,
+				9FF7CCF0523B41EAB996C973 /* NotificationActionHandler.swift */,
 				DDEE1DF7CDC53C1C828C02A9 /* NotificationPermissionManager.swift */,
 				29B359E92B98894B367E8F5E /* TagSeeder.swift */,
 				5B17D6ABDE8270A3BA351CE1 /* VisionParsingService.swift */,
@@ -664,6 +667,7 @@
 				7BE645C09C5666BB7BB85C1E /* ModelContainerFactory.swift in Sources */,
 				AAD2A10448748BC03B36E383 /* NavigationRouter.swift in Sources */,
 				6DE0D56BF477992554123042 /* NotificationPermissionManager.swift in Sources */,
+				D01C11468DBD45D799533675 /* NotificationActionHandler.swift in Sources */,
 				BF5790074C51631E31787624 /* ReviewQueueView.swift in Sources */,
 				A14ECB903E84334B410980EE /* ReviewQueueViewModel.swift in Sources */,
 				ACBA56B68D05B23B3C27D225 /* ScanResult.swift in Sources */,

@@ -12,6 +12,13 @@ struct FastyDiscountApp: App {
     /// Initialized once at app startup; errors are surfaced via AppState.
     private let modelContainer: ModelContainer
 
+    /// Notification action handler set as the `UNUserNotificationCenter` delegate.
+    ///
+    /// Retained here (as a strong reference on the `@main` App struct) so it is
+    /// never released while the app is running. The delegate is set in `init()`
+    /// — before any notification can arrive — as required by Apple's documentation.
+    private let notificationActionHandler: NotificationActionHandler
+
     init() {
         let state = AppState()
         let authService = AppleAuthenticationService()
@@ -31,6 +38,20 @@ struct FastyDiscountApp: App {
                 fatalError("Failed to create even an in-memory ModelContainer: \(error)")
             }()
         }
+
+        // Set up the notification delegate BEFORE the app finishes launching
+        // so no notification response is ever missed. The delegate must be set
+        // here in init(), not in .task or .onAppear.
+        let handler = NotificationActionHandler(modelContainer: modelContainer)
+        notificationActionHandler = handler
+        UNUserNotificationCenter.current().delegate = handler
+
+        // Register notification categories early so that any delivered
+        // notifications already in the system use the correct action buttons.
+        // `NotificationCategoryRegistrar.registerCategories()` is @MainActor,
+        // so it is also called in the .task modifier below (on @MainActor).
+        // The call here is intentionally omitted because init() is not isolated
+        // to @MainActor; the .task call below handles this reliably.
 
         _appState = State(initialValue: state)
         _authViewModel = State(initialValue: viewModel)
@@ -54,10 +75,10 @@ struct FastyDiscountApp: App {
                     Text(appState.containerErrorMessage)
                 }
                 .task {
-                    // Register the dvg-expiry notification category.
-                    // TASK-022 will add action buttons to this category. Registering
-                    // here (on @MainActor via .task) avoids calling a @MainActor
-                    // function from init() which can trigger Swift 6 diagnostics.
+                    // Register the dvg-expiry and dvg-location notification categories
+                    // (with View Code, Mark as Used, and Snooze action buttons).
+                    // Registering here (on @MainActor via .task) avoids calling a
+                    // @MainActor function from init() which triggers Swift 6 diagnostics.
                     NotificationCategoryRegistrar.registerCategories()
 
                     // Reschedule all expiry notifications at launch to recover from
