@@ -151,8 +151,7 @@ struct DestinationView: View {
     var body: some View {
         switch destination {
         case .dvgDetail(let id):
-            Text("DVG Detail: \(id.uuidString)")
-                .navigationTitle("Detail")
+            DVGDetailView(dvgID: id)
         case .dvgEdit(let id):
             Text("DVG Edit: \(id.uuidString)")
                 .navigationTitle("Edit")
