@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fastydiscount</string>
+			</array>
+			<key>CFBundleURLName</key>
+			<string>com.fastydiscount.app</string>
+		</dict>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>FastyDiscount uses your location to find nearby discount vouchers and deals.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>FastyDiscount uses your location to show nearby discount vouchers on the map.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>FastyDiscount uses the camera to scan barcodes and QR codes on discount vouchers.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>FastyDiscount accesses your photo library to import images of discount vouchers.</string>
+</dict>
+</plist>

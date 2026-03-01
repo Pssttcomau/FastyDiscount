@@ -1,0 +1,952 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0A4587770B25881B70520EB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8FE26587864355ABB32C7D9 /* Assets.xcassets */; };
+		175C77A38B6C1E908F12F3C9 /* FastyDiscountWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8978A026671871ED9BF176 /* FastyDiscountWatchApp.swift */; };
+		2DCA47F6600A97BE9AEE764E /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5F54AB779608CE8ABCB292 /* Destination.swift */; };
+		4698C44DD7E0EAA30A604B0A /* FastyDiscountWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB56A38ABDF3CFEFB46968 /* FastyDiscountWidget.swift */; };
+		5A95FF5678FC18706CCDC0ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DE277FB8F8E572BB84421FD /* Assets.xcassets */; };
+		65BA105F9A1DF64EB6F9AC37 /* FastyDiscountWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7B84FF304AEF42608A11AD /* FastyDiscountWidgetBundle.swift */; };
+		7840D233C43FA01FCC45D7B8 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E7FED75525299C1FC87BE1 /* ShareViewController.swift */; };
+		8960F834FCA1755261A660AF /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C61E4E9CCEABDDACD1DBEA /* Theme.swift */; };
+		8D5B0FDEB17FFF9107A240DC /* FastyDiscountShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A2DCFE241EFF5D5B0CF9F5CB /* FastyDiscountShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		91B21ACC363E49D8D6D81D88 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D872915DE7DE0AE2465E04 /* AppState.swift */; };
+		9570548722437F16975BC053 /* FastyDiscountWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 0AA28899713FB7A89571DEEC /* FastyDiscountWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A9E88ADCD5186C43B623BFB5 /* FastyDiscountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCB7E057D51E7199DA790AA /* FastyDiscountTests.swift */; };
+		ACC24CD9624428715DCD29B2 /* FastyDiscountApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C0CA48AC46680E5D3CA93D /* FastyDiscountApp.swift */; };
+		EC5C2C5461354C08D2235313 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F1AF8301D378D3D17B56D19 /* Assets.xcassets */; };
+		EF8CFAB6A36DE4400D5EBF6C /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D708A035AA0DC1E36B3881E7 /* AppConstants.swift */; };
+		F0216DED24E97BA82378A1DB /* FastyDiscountUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE09873A9469003EDE2C7A0 /* FastyDiscountUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2590664739DBBA271B249E5A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F30B487CF306B42A1BD23A81 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E139BA4E3444AB525A835E77;
+			remoteInfo = FastyDiscountWidget;
+		};
+		881E81B8090E0F64D0655376 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F30B487CF306B42A1BD23A81 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 75AD45DDEF36B1A3A56EA8C9;
+			remoteInfo = FastyDiscountShareExtension;
+		};
+		9E6A9F20A39D2F0AB154CEFA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F30B487CF306B42A1BD23A81 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E7D7ACD405A159FB224FC7C3;
+			remoteInfo = FastyDiscount;
+		};
+		DF143DC33835015F52FCFA37 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F30B487CF306B42A1BD23A81 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E7D7ACD405A159FB224FC7C3;
+			remoteInfo = FastyDiscount;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		02884645F6AC85C4B19B804A /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				9570548722437F16975BC053 /* FastyDiscountWidget.appex in Embed Foundation Extensions */,
+				8D5B0FDEB17FFF9107A240DC /* FastyDiscountShareExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0AA28899713FB7A89571DEEC /* FastyDiscountWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = FastyDiscountWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		0AE09873A9469003EDE2C7A0 /* FastyDiscountUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastyDiscountUITests.swift; sourceTree = "<group>"; };
+		15C0CA48AC46680E5D3CA93D /* FastyDiscountApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastyDiscountApp.swift; sourceTree = "<group>"; };
+		18EB56A38ABDF3CFEFB46968 /* FastyDiscountWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastyDiscountWidget.swift; sourceTree = "<group>"; };
+		4F1AF8301D378D3D17B56D19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5731DA4F74737134A0331BFB /* FastyDiscountUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = FastyDiscountUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BC12766F92B805DBCA6F59A /* FastyDiscountWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FastyDiscountWidget.entitlements; sourceTree = "<group>"; };
+		68D872915DE7DE0AE2465E04 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		6A8978A026671871ED9BF176 /* FastyDiscountWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastyDiscountWatchApp.swift; sourceTree = "<group>"; };
+		72C61E4E9CCEABDDACD1DBEA /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		75CEFA93A65CF3BC3C64554B /* FastyDiscountShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FastyDiscountShareExtension.entitlements; sourceTree = "<group>"; };
+		7AFF1D6ECC73513EC3109BBE /* FastyDiscountWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FastyDiscountWatch.entitlements; sourceTree = "<group>"; };
+		7DE277FB8F8E572BB84421FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		88571406C0725018E19E6889 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		9C0331FA0754817871D93C9A /* FastyDiscountWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastyDiscountWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2DCFE241EFF5D5B0CF9F5CB /* FastyDiscountShareExtension.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = FastyDiscountShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5E7FED75525299C1FC87BE1 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		D5C4D8F16A7B7E9507498107 /* FastyDiscountTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = FastyDiscountTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D708A035AA0DC1E36B3881E7 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		D9068B67BE8AFE81B073DC97 /* FastyDiscount.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = FastyDiscount.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBCB7E057D51E7199DA790AA /* FastyDiscountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastyDiscountTests.swift; sourceTree = "<group>"; };
+		E7D4DF09E6A228B81809144C /* FastyDiscount.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FastyDiscount.entitlements; sourceTree = "<group>"; };
+		ED5F54AB779608CE8ABCB292 /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
+		F8FE26587864355ABB32C7D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FE7B84FF304AEF42608A11AD /* FastyDiscountWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastyDiscountWidgetBundle.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		08354ECD4D599A77EEC7971B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7DE277FB8F8E572BB84421FD /* Assets.xcassets */,
+				88571406C0725018E19E6889 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		11A243A861CB387F16F375FD /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D708A035AA0DC1E36B3881E7 /* AppConstants.swift */,
+				68D872915DE7DE0AE2465E04 /* AppState.swift */,
+				15C0CA48AC46680E5D3CA93D /* FastyDiscountApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		2F66282E8965785A1FC2A187 /* FastyDiscount */ = {
+			isa = PBXGroup;
+			children = (
+				11A243A861CB387F16F375FD /* App */,
+				B0FC4EB9187097A9C388AC82 /* Core */,
+				438C7B59B9FD8F8346956079 /* Features */,
+				08354ECD4D599A77EEC7971B /* Resources */,
+				E7D4DF09E6A228B81809144C /* FastyDiscount.entitlements */,
+			);
+			path = FastyDiscount;
+			sourceTree = "<group>";
+		};
+		438C7B59B9FD8F8346956079 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		61A0A9F904676FF45348ECA4 = {
+			isa = PBXGroup;
+			children = (
+				2F66282E8965785A1FC2A187 /* FastyDiscount */,
+				A64A19DBB8E370E11A720F3F /* FastyDiscountShareExtension */,
+				9AE9C6FCC1A305C51924FD19 /* FastyDiscountTests */,
+				6C970C7A5510C4498EC3A538 /* FastyDiscountUITests */,
+				F71475AA4753E40149146F98 /* FastyDiscountWatch */,
+				ABB8453A181F6A80B26A57EE /* FastyDiscountWidget */,
+				89AFC277CE3C4C4629F9BD22 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6C970C7A5510C4498EC3A538 /* FastyDiscountUITests */ = {
+			isa = PBXGroup;
+			children = (
+				0AE09873A9469003EDE2C7A0 /* FastyDiscountUITests.swift */,
+			);
+			path = FastyDiscountUITests;
+			sourceTree = "<group>";
+		};
+		89AFC277CE3C4C4629F9BD22 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D9068B67BE8AFE81B073DC97 /* FastyDiscount.app */,
+				A2DCFE241EFF5D5B0CF9F5CB /* FastyDiscountShareExtension.appex */,
+				D5C4D8F16A7B7E9507498107 /* FastyDiscountTests.xctest */,
+				5731DA4F74737134A0331BFB /* FastyDiscountUITests.xctest */,
+				9C0331FA0754817871D93C9A /* FastyDiscountWatch.app */,
+				0AA28899713FB7A89571DEEC /* FastyDiscountWidget.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9AE9C6FCC1A305C51924FD19 /* FastyDiscountTests */ = {
+			isa = PBXGroup;
+			children = (
+				DBCB7E057D51E7199DA790AA /* FastyDiscountTests.swift */,
+			);
+			path = FastyDiscountTests;
+			sourceTree = "<group>";
+		};
+		A64A19DBB8E370E11A720F3F /* FastyDiscountShareExtension */ = {
+			isa = PBXGroup;
+			children = (
+				75CEFA93A65CF3BC3C64554B /* FastyDiscountShareExtension.entitlements */,
+				C5E7FED75525299C1FC87BE1 /* ShareViewController.swift */,
+			);
+			path = FastyDiscountShareExtension;
+			sourceTree = "<group>";
+		};
+		ABB8453A181F6A80B26A57EE /* FastyDiscountWidget */ = {
+			isa = PBXGroup;
+			children = (
+				4F1AF8301D378D3D17B56D19 /* Assets.xcassets */,
+				5BC12766F92B805DBCA6F59A /* FastyDiscountWidget.entitlements */,
+				18EB56A38ABDF3CFEFB46968 /* FastyDiscountWidget.swift */,
+				FE7B84FF304AEF42608A11AD /* FastyDiscountWidgetBundle.swift */,
+			);
+			path = FastyDiscountWidget;
+			sourceTree = "<group>";
+		};
+		AF815E8A0151E921BF44A368 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				72C61E4E9CCEABDDACD1DBEA /* Theme.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		B0FC4EB9187097A9C388AC82 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				B8EB76D4756F292B4DA21C58 /* Navigation */,
+				AF815E8A0151E921BF44A368 /* Theme */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		B8EB76D4756F292B4DA21C58 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				ED5F54AB779608CE8ABCB292 /* Destination.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		F71475AA4753E40149146F98 /* FastyDiscountWatch */ = {
+			isa = PBXGroup;
+			children = (
+				F8FE26587864355ABB32C7D9 /* Assets.xcassets */,
+				7AFF1D6ECC73513EC3109BBE /* FastyDiscountWatch.entitlements */,
+				6A8978A026671871ED9BF176 /* FastyDiscountWatchApp.swift */,
+			);
+			path = FastyDiscountWatch;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1E81863D03BC0F3FD53D0C22 /* FastyDiscountWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 05C46FA92CD6AD1C81BF0DD6 /* Build configuration list for PBXNativeTarget "FastyDiscountWatch" */;
+			buildPhases = (
+				C6CE6AF355CEFF00218251D0 /* Sources */,
+				D9981B8B19AF60E02A74BCC4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FastyDiscountWatch;
+			packageProductDependencies = (
+			);
+			productName = FastyDiscountWatch;
+			productReference = 9C0331FA0754817871D93C9A /* FastyDiscountWatch.app */;
+			productType = "com.apple.product-type.application";
+		};
+		75AD45DDEF36B1A3A56EA8C9 /* FastyDiscountShareExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C6FA961CB974EC44A4DDD15 /* Build configuration list for PBXNativeTarget "FastyDiscountShareExtension" */;
+			buildPhases = (
+				3E34B665B96961F47C88DF09 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FastyDiscountShareExtension;
+			packageProductDependencies = (
+			);
+			productName = FastyDiscountShareExtension;
+			productReference = A2DCFE241EFF5D5B0CF9F5CB /* FastyDiscountShareExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		884A7E713D2ADC1027DCE19C /* FastyDiscountTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AACCCB01366006B4804EA153 /* Build configuration list for PBXNativeTarget "FastyDiscountTests" */;
+			buildPhases = (
+				E03D68AA623A78E968AD2AFA /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1683F8D8B807E4B3642AF7AD /* PBXTargetDependency */,
+			);
+			name = FastyDiscountTests;
+			packageProductDependencies = (
+			);
+			productName = FastyDiscountTests;
+			productReference = D5C4D8F16A7B7E9507498107 /* FastyDiscountTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		DC6D310E4B4F26BDFB0D3110 /* FastyDiscountUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FB80B01884CDF0A3AFE3D1D7 /* Build configuration list for PBXNativeTarget "FastyDiscountUITests" */;
+			buildPhases = (
+				3E271EA7E0603238276733D9 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B1DA6E4F93FE4653C77A6E7D /* PBXTargetDependency */,
+			);
+			name = FastyDiscountUITests;
+			packageProductDependencies = (
+			);
+			productName = FastyDiscountUITests;
+			productReference = 5731DA4F74737134A0331BFB /* FastyDiscountUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		E139BA4E3444AB525A835E77 /* FastyDiscountWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C498F8DC5F7E5B69388C4D20 /* Build configuration list for PBXNativeTarget "FastyDiscountWidget" */;
+			buildPhases = (
+				F280A7D09C84A9EFF7BE3144 /* Sources */,
+				BDF3B1830D87F08861517597 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FastyDiscountWidget;
+			packageProductDependencies = (
+			);
+			productName = FastyDiscountWidget;
+			productReference = 0AA28899713FB7A89571DEEC /* FastyDiscountWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		E7D7ACD405A159FB224FC7C3 /* FastyDiscount */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 732A54DC1CA8C3C1FE5A793F /* Build configuration list for PBXNativeTarget "FastyDiscount" */;
+			buildPhases = (
+				1330C2E65BA37B04E45FCE73 /* Sources */,
+				FDBD17EEAB87EC336491445E /* Resources */,
+				02884645F6AC85C4B19B804A /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D560B36D759B483A6CA45F2B /* PBXTargetDependency */,
+				D36787CC25C73B31FBA42A53 /* PBXTargetDependency */,
+			);
+			name = FastyDiscount;
+			packageProductDependencies = (
+			);
+			productName = FastyDiscount;
+			productReference = D9068B67BE8AFE81B073DC97 /* FastyDiscount.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F30B487CF306B42A1BD23A81 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 2620;
+				TargetAttributes = {
+					DC6D310E4B4F26BDFB0D3110 = {
+						TestTargetID = E7D7ACD405A159FB224FC7C3;
+					};
+				};
+			};
+			buildConfigurationList = CC05A744E270C52486308053 /* Build configuration list for PBXProject "FastyDiscount" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 61A0A9F904676FF45348ECA4;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E7D7ACD405A159FB224FC7C3 /* FastyDiscount */,
+				75AD45DDEF36B1A3A56EA8C9 /* FastyDiscountShareExtension */,
+				884A7E713D2ADC1027DCE19C /* FastyDiscountTests */,
+				DC6D310E4B4F26BDFB0D3110 /* FastyDiscountUITests */,
+				1E81863D03BC0F3FD53D0C22 /* FastyDiscountWatch */,
+				E139BA4E3444AB525A835E77 /* FastyDiscountWidget */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BDF3B1830D87F08861517597 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC5C2C5461354C08D2235313 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9981B8B19AF60E02A74BCC4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A4587770B25881B70520EB7 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FDBD17EEAB87EC336491445E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A95FF5678FC18706CCDC0ED /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1330C2E65BA37B04E45FCE73 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF8CFAB6A36DE4400D5EBF6C /* AppConstants.swift in Sources */,
+				91B21ACC363E49D8D6D81D88 /* AppState.swift in Sources */,
+				2DCA47F6600A97BE9AEE764E /* Destination.swift in Sources */,
+				ACC24CD9624428715DCD29B2 /* FastyDiscountApp.swift in Sources */,
+				8960F834FCA1755261A660AF /* Theme.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3E271EA7E0603238276733D9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0216DED24E97BA82378A1DB /* FastyDiscountUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3E34B665B96961F47C88DF09 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7840D233C43FA01FCC45D7B8 /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6CE6AF355CEFF00218251D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				175C77A38B6C1E908F12F3C9 /* FastyDiscountWatchApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E03D68AA623A78E968AD2AFA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9E88ADCD5186C43B623BFB5 /* FastyDiscountTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F280A7D09C84A9EFF7BE3144 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4698C44DD7E0EAA30A604B0A /* FastyDiscountWidget.swift in Sources */,
+				65BA105F9A1DF64EB6F9AC37 /* FastyDiscountWidgetBundle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1683F8D8B807E4B3642AF7AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E7D7ACD405A159FB224FC7C3 /* FastyDiscount */;
+			targetProxy = 9E6A9F20A39D2F0AB154CEFA /* PBXContainerItemProxy */;
+		};
+		B1DA6E4F93FE4653C77A6E7D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E7D7ACD405A159FB224FC7C3 /* FastyDiscount */;
+			targetProxy = DF143DC33835015F52FCFA37 /* PBXContainerItemProxy */;
+		};
+		D36787CC25C73B31FBA42A53 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 75AD45DDEF36B1A3A56EA8C9 /* FastyDiscountShareExtension */;
+			targetProxy = 881E81B8090E0F64D0655376 /* PBXContainerItemProxy */;
+		};
+		D560B36D759B483A6CA45F2B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E139BA4E3444AB525A835E77 /* FastyDiscountWidget */;
+			targetProxy = 2590664739DBBA271B249E5A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		038CDC1920143FB9743CA47D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = FastyDiscountShareExtension/FastyDiscountShareExtension.entitlements;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FastyDiscountShareExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fastydiscount.app.share-extension";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2D72466183A3970BB5569DD7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FastyDiscountWatch/FastyDiscountWatch.entitlements;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = FastyDiscount;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.fastydiscount.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fastydiscount.app.watchkitapp;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 26.0;
+			};
+			name = Release;
+		};
+		3B6248CACFEF718EF7FBD21F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fastydiscount.app.tests;
+				SDKROOT = iphoneos;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FastyDiscount.app/FastyDiscount";
+			};
+			name = Release;
+		};
+		3D35F188BC91179E0D9E1D82 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FastyDiscount/FastyDiscount.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FastyDiscount/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FastyDiscount;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fastydiscount.app;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		419C810A7CCC257F7A0A88FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6;
+				WATCHOS_DEPLOYMENT_TARGET = 26.0;
+			};
+			name = Release;
+		};
+		6684C32CACC85913D3C127B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FastyDiscountWidget/FastyDiscountWidget.entitlements;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "FastyDiscount Widget";
+				INFOPLIST_KEY_NSExtension_NSExtensionPointIdentifier = "com.apple.widgetkit-extension";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fastydiscount.app.widget;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		704E04C3C47DC898F4C7E473 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6;
+				WATCHOS_DEPLOYMENT_TARGET = 26.0;
+			};
+			name = Debug;
+		};
+		9EC3B8A82D53B194CF11451A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FastyDiscountWidget/FastyDiscountWidget.entitlements;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "FastyDiscount Widget";
+				INFOPLIST_KEY_NSExtension_NSExtensionPointIdentifier = "com.apple.widgetkit-extension";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fastydiscount.app.widget;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B48420EEF7136D0DF3BD3B85 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fastydiscount.app.uitests;
+				SDKROOT = iphoneos;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FastyDiscount;
+			};
+			name = Debug;
+		};
+		C0E1B169072EAE4F15CBD9FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = FastyDiscountShareExtension/FastyDiscountShareExtension.entitlements;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FastyDiscountShareExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fastydiscount.app.share-extension";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D11E102F305C578B7A8CA42D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fastydiscount.app.tests;
+				SDKROOT = iphoneos;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FastyDiscount.app/FastyDiscount";
+			};
+			name = Debug;
+		};
+		E995BEBBFE82F8F499BD1A48 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FastyDiscountWatch/FastyDiscountWatch.entitlements;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = FastyDiscount;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.fastydiscount.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fastydiscount.app.watchkitapp;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 26.0;
+			};
+			name = Debug;
+		};
+		EBE1BD3F7294CB295B0D44F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FastyDiscount/FastyDiscount.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FastyDiscount/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FastyDiscount;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fastydiscount.app;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		FADCA3ED49A8A71BB348AF41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fastydiscount.app.uitests;
+				SDKROOT = iphoneos;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FastyDiscount;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		05C46FA92CD6AD1C81BF0DD6 /* Build configuration list for PBXNativeTarget "FastyDiscountWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E995BEBBFE82F8F499BD1A48 /* Debug */,
+				2D72466183A3970BB5569DD7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		3C6FA961CB974EC44A4DDD15 /* Build configuration list for PBXNativeTarget "FastyDiscountShareExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0E1B169072EAE4F15CBD9FB /* Debug */,
+				038CDC1920143FB9743CA47D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		732A54DC1CA8C3C1FE5A793F /* Build configuration list for PBXNativeTarget "FastyDiscount" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D35F188BC91179E0D9E1D82 /* Debug */,
+				EBE1BD3F7294CB295B0D44F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		AACCCB01366006B4804EA153 /* Build configuration list for PBXNativeTarget "FastyDiscountTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D11E102F305C578B7A8CA42D /* Debug */,
+				3B6248CACFEF718EF7FBD21F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C498F8DC5F7E5B69388C4D20 /* Build configuration list for PBXNativeTarget "FastyDiscountWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6684C32CACC85913D3C127B7 /* Debug */,
+				9EC3B8A82D53B194CF11451A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		CC05A744E270C52486308053 /* Build configuration list for PBXProject "FastyDiscount" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				704E04C3C47DC898F4C7E473 /* Debug */,
+				419C810A7CCC257F7A0A88FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FB80B01884CDF0A3AFE3D1D7 /* Build configuration list for PBXNativeTarget "FastyDiscountUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B48420EEF7136D0DF3BD3B85 /* Debug */,
+				FADCA3ED49A8A71BB348AF41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F30B487CF306B42A1BD23A81 /* Project object */;
+}
