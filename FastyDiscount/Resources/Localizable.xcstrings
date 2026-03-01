@@ -1,0 +1,2123 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+
+    "common.ok" : {
+      "comment" : "Generic OK button label",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "OK" } }
+      }
+    },
+    "common.cancel" : {
+      "comment" : "Generic Cancel button label",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Cancel" } }
+      }
+    },
+    "common.save" : {
+      "comment" : "Generic Save button label",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Save" } }
+      }
+    },
+    "common.done" : {
+      "comment" : "Generic Done button label, also used to dismiss keyboard",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Done" } }
+      }
+    },
+    "common.error" : {
+      "comment" : "Generic Error alert title",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Error" } }
+      }
+    },
+    "common.loading" : {
+      "comment" : "Loading indicator label shown while content is being fetched",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Loading..." } }
+      }
+    },
+    "common.retry" : {
+      "comment" : "Generic Retry button label",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Retry" } }
+      }
+    },
+    "common.delete" : {
+      "comment" : "Generic Delete button label",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Delete" } }
+      }
+    },
+    "common.edit" : {
+      "comment" : "Generic Edit button label",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Edit" } }
+      }
+    },
+    "common.add" : {
+      "comment" : "Generic Add button label",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add" } }
+      }
+    },
+    "common.unknown.error" : {
+      "comment" : "Fallback error message when no specific error message is available",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "An unknown error occurred." } }
+      }
+    },
+
+    "dashboard.title" : {
+      "comment" : "Navigation title for the Dashboard tab",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Dashboard" } }
+      }
+    },
+    "dashboard.loading" : {
+      "comment" : "Text shown beneath the loading spinner on the Dashboard first load",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Loading your discounts..." } }
+      }
+    },
+    "dashboard.expiringSoon.title" : {
+      "comment" : "Section header for discounts expiring within 7 days",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Expiring Soon" } }
+      }
+    },
+    "dashboard.expiringSoon.empty.message" : {
+      "comment" : "Empty state message when no discounts are expiring soon",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "No items expiring soon" } }
+      }
+    },
+    "dashboard.expiringSoon.empty.detail" : {
+      "comment" : "Empty state detail text for the Expiring Soon section",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "You're all caught up!" } }
+      }
+    },
+    "dashboard.nearby.title" : {
+      "comment" : "Section header for nearby store discounts",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Nearby" } }
+      }
+    },
+    "dashboard.recentlyAdded.title" : {
+      "comment" : "Section header for recently added discounts",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Recently Added" } }
+      }
+    },
+    "dashboard.recentlyAdded.empty.message" : {
+      "comment" : "Empty state message when no discounts have been added yet",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "No items yet" } }
+      }
+    },
+    "dashboard.recentlyAdded.empty.detail" : {
+      "comment" : "Empty state detail text for the Recently Added section",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add your first discount to get started." } }
+      }
+    },
+    "dashboard.seeAll.button" : {
+      "comment" : "Button label to navigate to the full list for a section",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "See All" } }
+      }
+    },
+    "dashboard.empty.title" : {
+      "comment" : "Title on the overall empty state when the user has no discounts",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add your first discount!" } }
+      }
+    },
+    "dashboard.empty.body" : {
+      "comment" : "Body text on the overall empty state when the user has no discounts",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Scan a barcode, import from email, or add manually to keep all your discounts, vouchers, and gift cards in one place." } }
+      }
+    },
+    "dashboard.action.scanBarcode" : {
+      "comment" : "Button label to open the barcode camera scanner",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Scan Barcode" } }
+      }
+    },
+    "dashboard.action.addManually" : {
+      "comment" : "Button label to add a discount manually via a form",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add Manually" } }
+      }
+    },
+    "dashboard.action.emailScan" : {
+      "comment" : "Menu item label to trigger an email inbox scan",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Email Scan" } }
+      }
+    },
+    "dashboard.action.importPhoto" : {
+      "comment" : "Menu item label to import from a photo or PDF",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Import Photo/PDF" } }
+      }
+    },
+    "dashboard.action.addNew.accessibility" : {
+      "comment" : "Accessibility label for the + toolbar button that opens the add-new menu",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add new discount" } }
+      }
+    },
+
+    "dvgCard.untitled" : {
+      "comment" : "Placeholder title when a discount item has no title set",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Untitled" } }
+      }
+    },
+    "dvgCard.expiry.today" : {
+      "comment" : "Expiry badge when the item expires today",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Today" } }
+      }
+    },
+    "dvgCard.expiry.days" : {
+      "comment" : "Expiry badge showing number of days. Uses plural rules: one = '1 day', other = '%d days'",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one"   : { "stringUnit" : { "state" : "translated", "value" : "1 day" } },
+              "other" : { "stringUnit" : { "state" : "translated", "value" : "%d days" } }
+            }
+          }
+        }
+      }
+    },
+    "dvgCard.favourite.add.accessibility" : {
+      "comment" : "Accessibility label for the heart button when item is not yet favourited",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add to favourites" } }
+      }
+    },
+    "dvgCard.favourite.remove.accessibility" : {
+      "comment" : "Accessibility label for the heart button when item is already favourited",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Remove from favourites" } }
+      }
+    },
+
+    "dvgDetail.title" : {
+      "comment" : "Navigation title fallback when the DVG title is empty",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Detail" } }
+      }
+    },
+    "dvgDetail.notFound.title" : {
+      "comment" : "Title shown in ContentUnavailableView when the DVG cannot be found",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Item Not Found" } }
+      }
+    },
+    "dvgDetail.notFound.description" : {
+      "comment" : "Description shown in ContentUnavailableView when the DVG cannot be found",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "This discount item could not be found." } }
+      }
+    },
+    "dvgDetail.section.barcode" : {
+      "comment" : "Section header for the barcode display area",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Barcode" } }
+      }
+    },
+    "dvgDetail.section.code" : {
+      "comment" : "Section header for the discount code display area",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Code" } }
+      }
+    },
+    "dvgDetail.section.details" : {
+      "comment" : "Section header for the DVG details card",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Details" } }
+      }
+    },
+    "dvgDetail.section.notes" : {
+      "comment" : "Section header for the notes text area",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Notes" } }
+      }
+    },
+    "dvgDetail.section.termsAndConditions" : {
+      "comment" : "Section header for the terms and conditions text area",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Terms & Conditions" } }
+      }
+    },
+    "dvgDetail.section.storeLocation" : {
+      "comment" : "Section header for the store location map card",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Store Location" } }
+      }
+    },
+    "dvgDetail.section.tags" : {
+      "comment" : "Section header for the tag chips area",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Tags" } }
+      }
+    },
+    "dvgDetail.detail.store" : {
+      "comment" : "Label for the store name row in Details section",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Store" } }
+      }
+    },
+    "dvgDetail.detail.description" : {
+      "comment" : "Label for the discount description row in Details section",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Description" } }
+      }
+    },
+    "dvgDetail.detail.value" : {
+      "comment" : "Label for the monetary value row in Details section",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Value" } }
+      }
+    },
+    "dvgDetail.detail.minimumSpend" : {
+      "comment" : "Label for the minimum spend row in Details section",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Minimum Spend" } }
+      }
+    },
+    "dvgDetail.detail.expiry" : {
+      "comment" : "Label for the expiry date row in Details section",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Expiry" } }
+      }
+    },
+    "dvgDetail.detail.added" : {
+      "comment" : "Label for the date-added row in Details section",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Added" } }
+      }
+    },
+    "dvgDetail.detail.source" : {
+      "comment" : "Label for the source row in Details section (e.g. Camera, Email, Manual)",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Source" } }
+      }
+    },
+    "dvgDetail.barcode.generating" : {
+      "comment" : "Progress label while the barcode image is being generated",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Generating barcode..." } }
+      }
+    },
+    "dvgDetail.barcode.unavailable" : {
+      "comment" : "Title in ContentUnavailableView when barcode cannot be generated",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Barcode Unavailable" } }
+      }
+    },
+    "dvgDetail.barcode.unavailable.description" : {
+      "comment" : "Description in ContentUnavailableView when barcode cannot be generated",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unable to generate barcode image." } }
+      }
+    },
+    "dvgDetail.action.markUsed" : {
+      "comment" : "Bottom toolbar button label to mark the item as used/redeemed",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Mark Used" } }
+      }
+    },
+    "dvgDetail.action.favourite" : {
+      "comment" : "Bottom toolbar button label to mark item as a favourite",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Favourite" } }
+      }
+    },
+    "dvgDetail.action.unfavourite" : {
+      "comment" : "Bottom toolbar button label to remove item from favourites",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unfavourite" } }
+      }
+    },
+    "dvgDetail.action.share" : {
+      "comment" : "Bottom toolbar button label to share the item",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Share" } }
+      }
+    },
+    "dvgDetail.markUsed.alert.title" : {
+      "comment" : "Alert title when user taps Mark as Used",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Mark as Used" } }
+      }
+    },
+    "dvgDetail.markUsed.alert.message" : {
+      "comment" : "Alert message body when user taps Mark as Used",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Are you sure you want to mark this item as used? This action cannot be undone." } }
+      }
+    },
+    "dvgDetail.markUsed.alert.confirm" : {
+      "comment" : "Destructive confirm button in the Mark as Used alert",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Mark as Used" } }
+      }
+    },
+    "dvgDetail.removeWallet.alert.title" : {
+      "comment" : "Alert title when removing a pass from Apple Wallet",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Remove from Wallet" } }
+      }
+    },
+    "dvgDetail.removeWallet.alert.message" : {
+      "comment" : "Alert message when removing a pass from Apple Wallet",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Remove this pass from Apple Wallet?" } }
+      }
+    },
+    "dvgDetail.removeWallet.alert.confirm" : {
+      "comment" : "Confirm button label in the Remove from Wallet alert",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Remove" } }
+      }
+    },
+    "dvgDetail.copiedToast" : {
+      "comment" : "Toast notification shown briefly after copying the code to clipboard",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Copied!" } }
+      }
+    },
+    "dvgDetail.balance.originalOf" : {
+      "comment" : "Label showing original gift card value below the current balance. %@ is the formatted currency amount.",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "of %@ original" } }
+      }
+    },
+    "dvgDetail.balance.recordUsage.button" : {
+      "comment" : "Button label to open the record usage sheet for gift cards and loyalty points",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Record Usage" } }
+      }
+    },
+    "dvgDetail.recordUsage.title" : {
+      "comment" : "Navigation title for the Record Usage bottom sheet",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Record Usage" } }
+      }
+    },
+    "dvgDetail.recordUsage.currentBalance.label" : {
+      "comment" : "Label above the current balance in the Record Usage sheet. %@ is replaced by 'Balance' or 'Points'.",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Current %@" } }
+      }
+    },
+    "dvgDetail.recordUsage.amountToDeduct.label" : {
+      "comment" : "Label above the deduction amount field in the Record Usage sheet",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Amount to deduct" } }
+      }
+    },
+    "dvgDetail.recordUsage.placeholder.amount" : {
+      "comment" : "Placeholder in the deduction amount text field for monetary amounts",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Amount" } }
+      }
+    },
+    "dvgDetail.recordUsage.placeholder.points" : {
+      "comment" : "Placeholder in the deduction amount text field for loyalty points",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Points" } }
+      }
+    },
+    "dvgDetail.recordUsage.record.button" : {
+      "comment" : "Button label to confirm recording the usage deduction",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Record" } }
+      }
+    },
+    "dvgDetail.mapMarker.store.fallback" : {
+      "comment" : "Fallback name for a map marker when the store has no name",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Store" } }
+      }
+    },
+
+    "dvgForm.title.label" : {
+      "comment" : "Navigation title shown in DVGFormView when creating a new item",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "New Item" } }
+      }
+    },
+    "dvgForm.section.essential" : {
+      "comment" : "Section header for the essential fields in the DVG form",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Essential Information" } }
+      }
+    },
+    "dvgForm.field.title.placeholder" : {
+      "comment" : "Placeholder text for the Title field in DVGFormView",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Title" } }
+      }
+    },
+    "dvgForm.field.code.placeholder" : {
+      "comment" : "Placeholder text for the Code field in DVGFormView",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Code (e.g., SAVE20)" } }
+      }
+    },
+    "dvgForm.field.storeName.placeholder" : {
+      "comment" : "Placeholder text for the Store Name field in DVGFormView",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Store Name" } }
+      }
+    },
+    "dvgForm.section.expiration" : {
+      "comment" : "Section header for the expiration date section in DVGFormView",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Expiration" } }
+      }
+    },
+    "dvgForm.field.hasExpirationDate.label" : {
+      "comment" : "Toggle label for enabling/disabling expiration date on a DVG",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Has Expiration Date" } }
+      }
+    },
+    "dvgForm.field.expirationDate.label" : {
+      "comment" : "DatePicker label for selecting the expiration date",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Expiration Date" } }
+      }
+    },
+    "dvgForm.expandToggle.showMore" : {
+      "comment" : "Button label to expand and show additional form fields",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Show More Fields" } }
+      }
+    },
+    "dvgForm.expandToggle.showFewer" : {
+      "comment" : "Button label to collapse and hide additional form fields",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Show Fewer Fields" } }
+      }
+    },
+    "dvgForm.section.type" : {
+      "comment" : "Section header for the DVG type picker section",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Type" } }
+      }
+    },
+    "dvgForm.field.type.label" : {
+      "comment" : "Picker label for the DVG type segmented control",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Type" } }
+      }
+    },
+    "dvgForm.field.favourite.label" : {
+      "comment" : "Toggle label for marking a DVG as a favourite in the form",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Favourite" } }
+      }
+    },
+    "dvgForm.section.giftCardBalance" : {
+      "comment" : "Section header for gift card original value and remaining balance fields",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gift Card Balance" } }
+      }
+    },
+    "dvgForm.field.originalValue.label" : {
+      "comment" : "Label for the original value field in the gift card balance section",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Original Value" } }
+      }
+    },
+    "dvgForm.field.remainingBalance.label" : {
+      "comment" : "Label for the remaining balance field in the gift card balance section",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Remaining Balance" } }
+      }
+    },
+    "dvgForm.section.loyaltyPoints" : {
+      "comment" : "Section header for loyalty points balance field",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Loyalty Points" } }
+      }
+    },
+    "dvgForm.field.pointsBalance.label" : {
+      "comment" : "Label for the points balance field in the loyalty points section",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Points Balance" } }
+      }
+    },
+    "dvgForm.section.details" : {
+      "comment" : "Section header for the additional details section in DVGFormView",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Details" } }
+      }
+    },
+    "dvgForm.field.description.placeholder" : {
+      "comment" : "Placeholder for the discount description text field",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Description" } }
+      }
+    },
+    "dvgForm.field.value.label" : {
+      "comment" : "Label for the value field in the details section (non-gift-card types)",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Value" } }
+      }
+    },
+    "dvgForm.field.minimumSpend.label" : {
+      "comment" : "Label for the minimum spend field in the details section",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Minimum Spend" } }
+      }
+    },
+    "dvgForm.field.currencyAmount.placeholder" : {
+      "comment" : "Placeholder for currency amount input fields like value, balance, minimum spend",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "0.00" } }
+      }
+    },
+    "dvgForm.field.pointsAmount.placeholder" : {
+      "comment" : "Placeholder for integer points input fields",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "0" } }
+      }
+    },
+    "dvgForm.section.tags" : {
+      "comment" : "Section header for the tag selection section in DVGFormView",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Tags" } }
+      }
+    },
+    "dvgForm.tags.selectTags.button" : {
+      "comment" : "Button label to open the tag picker sheet",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Select Tags" } }
+      }
+    },
+    "dvgForm.tags.selected.count" : {
+      "comment" : "Shows how many tags are currently selected. %d is the count.",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one"   : { "stringUnit" : { "state" : "translated", "value" : "1 selected" } },
+              "other" : { "stringUnit" : { "state" : "translated", "value" : "%d selected" } }
+            }
+          }
+        }
+      }
+    },
+    "dvgForm.section.notifications" : {
+      "comment" : "Section header for the notification/reminder section in DVGFormView",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Notifications" } }
+      }
+    },
+    "dvgForm.field.reminder.label" : {
+      "comment" : "Picker label for the expiry reminder setting",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Reminder" } }
+      }
+    },
+    "dvgForm.section.notes" : {
+      "comment" : "Section header for notes and terms section in DVGFormView",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Notes & Terms" } }
+      }
+    },
+    "dvgForm.field.notes.placeholder" : {
+      "comment" : "Placeholder for the notes text field",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Notes" } }
+      }
+    },
+    "dvgForm.field.termsAndConditions.placeholder" : {
+      "comment" : "Placeholder for the terms and conditions text field",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Terms & Conditions" } }
+      }
+    },
+    "dvgForm.duplicate.alert.title" : {
+      "comment" : "Alert title when a duplicate discount item is detected",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Duplicate Warning" } }
+      }
+    },
+    "dvgForm.save.button" : {
+      "comment" : "Toolbar Save button in DVGFormView",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Save" } }
+      }
+    },
+
+    "search.title" : {
+      "comment" : "Navigation title for the Search screen",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Search" } }
+      }
+    },
+    "search.prompt" : {
+      "comment" : "Searchable prompt text shown inside the search bar",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Search by title, store, code, or notes" } }
+      }
+    },
+    "search.empty.title" : {
+      "comment" : "Title of the empty state when no search results are found",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "No Results Found" } }
+      }
+    },
+    "search.empty.body.default" : {
+      "comment" : "Body text of the empty state when search query and filters are both empty",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Search for discounts, vouchers, gift cards, and more." } }
+      }
+    },
+    "search.empty.body.filtered" : {
+      "comment" : "Body text of the empty state when a query or filters are active but return no results",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Try adjusting your search query or filters." } }
+      }
+    },
+    "search.filter.active.count" : {
+      "comment" : "Filter bar label showing how many filters are active. %d is the count.",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one"   : { "stringUnit" : { "state" : "translated", "value" : "1 filter active" } },
+              "other" : { "stringUnit" : { "state" : "translated", "value" : "%d filters active" } }
+            }
+          }
+        }
+      }
+    },
+    "search.filter.clearAll" : {
+      "comment" : "Button label to clear all active search filters",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Clear All" } }
+      }
+    },
+    "search.filter.clearFilters" : {
+      "comment" : "Button label shown inside the empty state to clear filters",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Clear Filters" } }
+      }
+    },
+    "search.swipe.delete" : {
+      "comment" : "Swipe action label to delete a search result item",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Delete" } }
+      }
+    },
+    "search.swipe.markUsed" : {
+      "comment" : "Swipe action label to mark a search result item as used",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Mark Used" } }
+      }
+    },
+    "search.swipe.favourite" : {
+      "comment" : "Swipe action label to mark a search result item as favourite",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Favourite" } }
+      }
+    },
+    "search.swipe.unfavourite" : {
+      "comment" : "Swipe action label to remove a search result item from favourites",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unfavourite" } }
+      }
+    },
+    "search.filterSheet.title" : {
+      "comment" : "Navigation title for the filter sheet",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Filters" } }
+      }
+    },
+    "search.filterSheet.section.type" : {
+      "comment" : "Section header in the filter sheet for DVG type toggles",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Type" } }
+      }
+    },
+    "search.filterSheet.section.status" : {
+      "comment" : "Section header in the filter sheet for status toggles",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Status" } }
+      }
+    },
+    "search.filterSheet.section.tag" : {
+      "comment" : "Section header in the filter sheet for tag filter",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Tag" } }
+      }
+    },
+    "search.filterSheet.tag.allTags" : {
+      "comment" : "Option label in the tag filter to show all tags (no filter)",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "All Tags" } }
+      }
+    },
+    "search.filterSheet.section.expiryRange" : {
+      "comment" : "Section header for the expiry date range filter in the filter sheet",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Expiry Date Range" } }
+      }
+    },
+    "search.filterSheet.expiryRange.footer" : {
+      "comment" : "Footer text describing the expiry date range filter",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Filter items expiring within the selected date range." } }
+      }
+    },
+    "search.filterSheet.date.from" : {
+      "comment" : "DatePicker label for the start of the expiry date range",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "From" } }
+      }
+    },
+    "search.filterSheet.date.to" : {
+      "comment" : "DatePicker label for the end of the expiry date range",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "To" } }
+      }
+    },
+    "search.filterSheet.date.clearFrom" : {
+      "comment" : "Button label to clear the start date filter",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Clear From Date" } }
+      }
+    },
+    "search.filterSheet.date.clearTo" : {
+      "comment" : "Button label to clear the end date filter",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Clear To Date" } }
+      }
+    },
+
+    "history.title" : {
+      "comment" : "Navigation title for the History tab",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "History" } }
+      }
+    },
+    "history.search.prompt" : {
+      "comment" : "Searchable prompt text in the History search bar",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Search history" } }
+      }
+    },
+    "history.swipe.reactivate" : {
+      "comment" : "Swipe action label to reactivate a history item back to active status",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Reactivate" } }
+      }
+    },
+    "history.swipe.delete" : {
+      "comment" : "Swipe action label to permanently delete a history item",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Delete" } }
+      }
+    },
+    "history.permanentDelete.title" : {
+      "comment" : "Confirmation dialog title for permanently deleting a history item",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Permanently Delete?" } }
+      }
+    },
+    "history.permanentDelete.confirm" : {
+      "comment" : "Destructive confirm button label for permanent delete dialog",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Delete Permanently" } }
+      }
+    },
+    "history.permanentDelete.message.fallback" : {
+      "comment" : "Fallback message in the permanent delete dialog when item title is not available",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "This item will be permanently deleted. This cannot be undone." } }
+      }
+    },
+
+    "scanner.title" : {
+      "comment" : "Navigation title for the Camera Scanner screen (Mac Catalyst placeholder)",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Scanner" } }
+      }
+    },
+    "scanner.close.accessibility" : {
+      "comment" : "Accessibility label for the X close button on the camera scanner",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Close scanner" } }
+      }
+    },
+    "scanner.overlay.instruction" : {
+      "comment" : "Instruction text shown inside the camera scanning overlay",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Align barcode within the frame" } }
+      }
+    },
+    "scanner.torch.on.accessibility" : {
+      "comment" : "Accessibility label for torch button when torch is currently on",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Turn off flashlight" } }
+      }
+    },
+    "scanner.torch.off.accessibility" : {
+      "comment" : "Accessibility label for torch button when torch is currently off",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Turn on flashlight" } }
+      }
+    },
+    "scanner.textOCR.button" : {
+      "comment" : "Button label to switch from barcode scanning to text OCR mode",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Text OCR" } }
+      }
+    },
+    "scanner.permission.denied.title" : {
+      "comment" : "Title shown when camera permission has been denied",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Camera Access Required" } }
+      }
+    },
+    "scanner.permission.denied.body" : {
+      "comment" : "Body text shown when camera permission has been denied",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "FastyDiscount needs camera access to scan barcodes and QR codes on your discount vouchers." } }
+      }
+    },
+    "scanner.permission.denied.openSettings" : {
+      "comment" : "Button label to open iOS Settings from the camera permission denied screen",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Open Settings" } }
+      }
+    },
+    "scanner.permission.requesting" : {
+      "comment" : "Label shown while the app is requesting camera permission",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Requesting camera access..." } }
+      }
+    },
+    "scanner.macCatalyst.notAvailable.title" : {
+      "comment" : "Title shown on Mac Catalyst where camera scanning is not available",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Camera Not Available" } }
+      }
+    },
+    "scanner.macCatalyst.notAvailable.body" : {
+      "comment" : "Body text shown on Mac Catalyst where camera scanning is not available",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Camera scanning is not available on Mac.\nPlease use photo or PDF import instead." } }
+      }
+    },
+    "scanner.macCatalyst.goBack.button" : {
+      "comment" : "Button label to go back from the Mac Catalyst camera unavailable screen",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Go Back" } }
+      }
+    },
+    "scanner.result.barcodeDetected" : {
+      "comment" : "Header in the scan result card after a barcode is successfully detected",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Barcode Detected" } }
+      }
+    },
+    "scanner.result.value.label" : {
+      "comment" : "Label above the decoded barcode value in the scan result card",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Value" } }
+      }
+    },
+    "scanner.result.type.label" : {
+      "comment" : "Label for the barcode type badge in the scan result card",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Type" } }
+      }
+    },
+    "scanner.result.createDVG.button" : {
+      "comment" : "Button label to create a new DVG from the detected barcode",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Create DVG" } }
+      }
+    },
+    "scanner.result.scanAgain.button" : {
+      "comment" : "Button label to dismiss the result card and scan another barcode",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Scan Again" } }
+      }
+    },
+
+    "emailScan.title" : {
+      "comment" : "Navigation title for the Email Scan feature screen",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Email Scan" } }
+      }
+    },
+    "emailScan.gmail.connected.title" : {
+      "comment" : "Status title when Gmail is connected",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gmail Connected" } }
+      }
+    },
+    "emailScan.gmail.notConnected.title" : {
+      "comment" : "Status title when Gmail is not connected",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gmail Not Connected" } }
+      }
+    },
+    "emailScan.gmail.connected.subtitle" : {
+      "comment" : "Subtitle when Gmail account is connected and ready to scan",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Your Gmail account is ready to scan." } }
+      }
+    },
+    "emailScan.gmail.notConnected.subtitle" : {
+      "comment" : "Subtitle prompting the user to connect Gmail",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Connect your Gmail account to scan for discounts." } }
+      }
+    },
+    "emailScan.gmail.connect.button" : {
+      "comment" : "Button label to connect a Gmail account",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Connect Gmail" } }
+      }
+    },
+    "emailScan.gmail.disconnect.button" : {
+      "comment" : "Destructive button label to disconnect a Gmail account",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Disconnect" } }
+      }
+    },
+    "emailScan.gmail.connecting" : {
+      "comment" : "Label shown while connecting to Gmail",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Connecting..." } }
+      }
+    },
+    "emailScan.section.scanScope" : {
+      "comment" : "Section header for the scan scope configuration area",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Scan Scope" } }
+      }
+    },
+    "emailScan.scope.labels.allSenders" : {
+      "comment" : "Scope row value when scanning emails from all senders",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "All senders" } }
+      }
+    },
+    "emailScan.scope.whitelisted.count" : {
+      "comment" : "Scope row value showing how many senders are whitelisted. %d is the count.",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one"   : { "stringUnit" : { "state" : "translated", "value" : "1 whitelisted" } },
+              "other" : { "stringUnit" : { "state" : "translated", "value" : "%d whitelisted" } }
+            }
+          }
+        }
+      }
+    },
+    "emailScan.scope.fullInbox" : {
+      "comment" : "Scope row value shown when Full Inbox scan is enabled",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Full Inbox" } }
+      }
+    },
+    "emailScan.scope.promotions.default" : {
+      "comment" : "Scope row default value when no specific labels are selected",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Promotions" } }
+      }
+    },
+    "emailScan.scan.button" : {
+      "comment" : "Primary button to start scanning the inbox",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Scan Inbox" } }
+      }
+    },
+    "emailScan.cancel.button" : {
+      "comment" : "Button to cancel an in-progress inbox scan",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Cancel Scan" } }
+      }
+    },
+    "emailScan.progress.fetching" : {
+      "comment" : "Label shown while fetching emails from Gmail",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Fetching emails from Gmail..." } }
+      }
+    },
+    "emailScan.progress.parsing.title" : {
+      "comment" : "Title shown while parsing emails with AI",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Parsing Emails" } }
+      }
+    },
+    "emailScan.status.pending" : {
+      "comment" : "Per-email status label while waiting to be processed",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Pending" } }
+      }
+    },
+    "emailScan.status.parsing" : {
+      "comment" : "Per-email status label while the email is being parsed",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Parsing..." } }
+      }
+    },
+    "emailScan.status.done" : {
+      "comment" : "Per-email status label when the email has been successfully parsed",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Done" } }
+      }
+    },
+    "emailScan.status.failed" : {
+      "comment" : "Per-email status label when email parsing failed",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Failed" } }
+      }
+    },
+    "emailScan.complete.title" : {
+      "comment" : "Title shown after the email scan completes successfully",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Scan Complete" } }
+      }
+    },
+    "emailScan.complete.dvgsFound.label" : {
+      "comment" : "Summary stat label for total DVGs found during scan",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "DVGs Found" } }
+      }
+    },
+    "emailScan.complete.autoSaved.label" : {
+      "comment" : "Summary stat label for DVGs automatically saved during scan",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Auto-Saved" } }
+      }
+    },
+    "emailScan.complete.needReview.label" : {
+      "comment" : "Summary stat label for DVGs needing manual review after scan",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Need Review" } }
+      }
+    },
+    "emailScan.complete.viewReviewQueue.button" : {
+      "comment" : "Button label to navigate to the review queue after scan",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "View Review Queue" } }
+      }
+    },
+    "emailScan.complete.scanAgain.button" : {
+      "comment" : "Button label to start another inbox scan",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Scan Again" } }
+      }
+    },
+    "emailScan.failed.title" : {
+      "comment" : "Title shown when the email scan fails",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Scan Failed" } }
+      }
+    },
+    "emailScan.tryAgain.button" : {
+      "comment" : "Button label to retry after a failed scan",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Try Again" } }
+      }
+    },
+    "emailScan.fullInbox.alert.title" : {
+      "comment" : "Alert title for the full inbox scan warning",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Full Inbox Scan" } }
+      }
+    },
+    "emailScan.fullInbox.alert.message" : {
+      "comment" : "Alert message body warning about the full inbox scan",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Scanning your full inbox may take longer and will process all emails, not just promotions. This may use more AI API quota." } }
+      }
+    },
+    "emailScan.fullInbox.alert.confirm" : {
+      "comment" : "Destructive confirm button in the full inbox scan warning alert",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Scan Full Inbox" } }
+      }
+    },
+    "emailScan.scopeSettings.title" : {
+      "comment" : "Navigation title for the email scan scope settings sheet",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Scan Settings" } }
+      }
+    },
+    "emailScan.scopeSettings.section.labels" : {
+      "comment" : "Section header for the Gmail labels list in scope settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gmail Labels" } }
+      }
+    },
+    "emailScan.scopeSettings.section.senderWhitelist" : {
+      "comment" : "Section header for the sender whitelist in scope settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sender Whitelist" } }
+      }
+    },
+    "emailScan.scopeSettings.section.fullInbox" : {
+      "comment" : "Section header for the full inbox toggle in scope settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Full Inbox" } }
+      }
+    },
+    "emailScan.scopeSettings.section.dateFilter" : {
+      "comment" : "Section header for the date filter in scope settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Date Filter" } }
+      }
+    },
+    "emailScan.scopeSettings.loadingLabels" : {
+      "comment" : "Label shown while Gmail labels are being loaded",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Loading labels..." } }
+      }
+    },
+    "emailScan.scopeSettings.senderPlaceholder" : {
+      "comment" : "Placeholder in the new sender text field in scope settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "sender@example.com" } }
+      }
+    },
+    "emailScan.scopeSettings.fullInbox.toggle" : {
+      "comment" : "Toggle label to enable scanning the full inbox",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Scan Full Inbox" } }
+      }
+    },
+    "emailScan.scopeSettings.filterByDate.toggle" : {
+      "comment" : "Toggle label to enable filtering emails by date",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Filter by Date" } }
+      }
+    },
+    "emailScan.scopeSettings.since.label" : {
+      "comment" : "DatePicker label for the since-date filter in scope settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Since" } }
+      }
+    },
+
+    "nearby.title" : {
+      "comment" : "Navigation title for the Nearby Map tab",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Nearby" } }
+      }
+    },
+    "nearby.loading" : {
+      "comment" : "Loading label shown while the map is initialising",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Loading map..." } }
+      }
+    },
+    "nearby.findingStores" : {
+      "comment" : "Label shown while nearby stores are being located",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Finding nearby stores..." } }
+      }
+    },
+    "nearby.empty.title" : {
+      "comment" : "Title of the empty state when no stores have locations set",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "No Nearby Stores" } }
+      }
+    },
+    "nearby.empty.body" : {
+      "comment" : "Body text of the empty state when no stores have locations set",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "None of your saved discounts have store locations yet. Add a store location to a discount to see it on the map." } }
+      }
+    },
+    "nearby.locationPermission.notDetermined.title" : {
+      "comment" : "Title shown when location permission has not been requested yet on the map screen",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Enable Location to See Nearby Stores" } }
+      }
+    },
+    "nearby.locationPermission.notDetermined.body" : {
+      "comment" : "Body text explaining why location access is needed on the map screen",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Allow location access to discover discounts, vouchers, and gift cards available at stores near you." } }
+      }
+    },
+    "nearby.locationPermission.enable.button" : {
+      "comment" : "Button label to request location permission from the map screen",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Enable Location" } }
+      }
+    },
+    "nearby.search.placeholder" : {
+      "comment" : "Placeholder text in the store search bar overlay on the map",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Search stores..." } }
+      }
+    },
+    "nearby.storeSummary.away" : {
+      "comment" : "Suffix shown after a distance value, e.g. '1.2 km away'",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "away" } }
+      }
+    },
+    "nearby.storeSummary.discounts.count" : {
+      "comment" : "Count label below the distance in a store summary card. %d is the number of discounts.",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one"   : { "stringUnit" : { "state" : "translated", "value" : "1 discount available" } },
+              "other" : { "stringUnit" : { "state" : "translated", "value" : "%d discounts available" } }
+            }
+          }
+        }
+      }
+    },
+    "nearby.storeSummary.directions.button" : {
+      "comment" : "Button label to open Apple Maps directions from the store summary card",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Directions" } }
+      }
+    },
+    "nearby.storeSummary.view.button" : {
+      "comment" : "Button label to view a specific DVG from the store summary card",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "View" } }
+      }
+    },
+    "nearby.expiry.expired" : {
+      "comment" : "Expiry badge text shown when a discount is already expired",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Expired" } }
+      }
+    },
+    "nearby.expiry.today" : {
+      "comment" : "Expiry badge text shown when a discount expires today",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Expires today" } }
+      }
+    },
+    "nearby.expiry.oneDay" : {
+      "comment" : "Expiry badge text shown when a discount has exactly 1 day left",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "1 day left" } }
+      }
+    },
+    "nearby.expiry.daysLeft" : {
+      "comment" : "Expiry badge text for 2–7 days remaining. %d is the count.",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "other" : { "stringUnit" : { "state" : "translated", "value" : "%d days left" } }
+            }
+          }
+        }
+      }
+    },
+    "nearby.expiry.days" : {
+      "comment" : "Expiry badge text for 8–30 days remaining. %d is the count.",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "other" : { "stringUnit" : { "state" : "translated", "value" : "%d days" } }
+            }
+          }
+        }
+      }
+    },
+
+    "settings.title" : {
+      "comment" : "Navigation title for the Settings screen",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Settings" } }
+      }
+    },
+    "settings.section.account" : {
+      "comment" : "Section header for the Account section in Settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Account" } }
+      }
+    },
+    "settings.account.appleID.label" : {
+      "comment" : "Row label for the Apple ID sign-in status in Settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Apple ID" } }
+      }
+    },
+    "settings.account.signedIn" : {
+      "comment" : "Status value for the Apple ID row when signed in",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Signed In" } }
+      }
+    },
+    "settings.account.notSignedIn" : {
+      "comment" : "Status value for the Apple ID row when not signed in",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Not Signed In" } }
+      }
+    },
+    "settings.account.icloudSync.label" : {
+      "comment" : "Row label for the iCloud sync status in Settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "iCloud Sync" } }
+      }
+    },
+    "settings.account.signOut.button" : {
+      "comment" : "Destructive button label to sign out in Settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sign Out" } }
+      }
+    },
+    "settings.section.email" : {
+      "comment" : "Section header for the Email section in Settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Email" } }
+      }
+    },
+    "settings.email.gmail.label" : {
+      "comment" : "Row label for the Gmail connection status in Settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gmail" } }
+      }
+    },
+    "settings.email.gmail.connected" : {
+      "comment" : "Status value when Gmail is connected in Settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Connected" } }
+      }
+    },
+    "settings.email.gmail.notConnected" : {
+      "comment" : "Status value when Gmail is not connected in Settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Not Connected" } }
+      }
+    },
+    "settings.email.connectGmail.button" : {
+      "comment" : "Button label to connect Gmail in Settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Connect Gmail" } }
+      }
+    },
+    "settings.email.disconnectGmail.button" : {
+      "comment" : "Destructive button label to disconnect Gmail in Settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Disconnect Gmail" } }
+      }
+    },
+    "settings.email.scanScope.button" : {
+      "comment" : "Navigation link label to access email scan scope settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Scan Scope Settings" } }
+      }
+    },
+    "settings.email.footer" : {
+      "comment" : "Footer text for the Email section in Settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Connect your Gmail account to automatically scan for discount vouchers." } }
+      }
+    },
+    "settings.section.notifications" : {
+      "comment" : "Section header for the Notifications section in Settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Notifications" } }
+      }
+    },
+    "settings.notifications.disabled.banner" : {
+      "comment" : "Banner text shown when notifications are disabled in iOS Settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Notifications are disabled in Settings." } }
+      }
+    },
+    "settings.notifications.enable.link" : {
+      "comment" : "Link label to enable notifications in iOS Settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Enable" } }
+      }
+    },
+    "settings.notifications.toggle.label" : {
+      "comment" : "Toggle label for the global notifications setting",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Notifications" } }
+      }
+    },
+    "settings.notifications.expiryReminders.label" : {
+      "comment" : "Toggle label for expiry reminder notifications",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Expiry Reminders" } }
+      }
+    },
+    "settings.notifications.nearbyStoreAlerts.label" : {
+      "comment" : "Toggle label for nearby store location notification alerts",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Nearby Store Alerts" } }
+      }
+    },
+    "settings.notifications.footer.denied" : {
+      "comment" : "Footer shown in notifications section when system permission is denied",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Enable notifications in iOS Settings to receive expiry and location alerts." } }
+      }
+    },
+    "settings.notifications.footer.enabled" : {
+      "comment" : "Footer shown in notifications section when system permission is granted",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Control when FastyDiscount reminds you about your discounts." } }
+      }
+    },
+    "settings.section.location" : {
+      "comment" : "Section header for the Location section in Settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Location" } }
+      }
+    },
+    "settings.location.permission.label" : {
+      "comment" : "Row label for the location permission status",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Permission" } }
+      }
+    },
+    "settings.location.openSettings.button" : {
+      "comment" : "Link label to open iOS Location Settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Open Location Settings" } }
+      }
+    },
+    "settings.location.geofencing.label" : {
+      "comment" : "Toggle label for the geofencing feature",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Geofencing" } }
+      }
+    },
+    "settings.location.radius.label" : {
+      "comment" : "Row label for the default geofence radius slider",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Default Radius" } }
+      }
+    },
+    "settings.location.radius.min" : {
+      "comment" : "Minimum value label for the geofence radius slider",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "100m" } }
+      }
+    },
+    "settings.location.radius.max" : {
+      "comment" : "Maximum value label for the geofence radius slider",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "1km" } }
+      }
+    },
+    "settings.location.footer" : {
+      "comment" : "Footer text for the Location section in Settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Geofencing lets FastyDiscount alert you when you're near a store where you have an active discount." } }
+      }
+    },
+    "settings.section.ai" : {
+      "comment" : "Section header for the AI section in Settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "AI" } }
+      }
+    },
+    "settings.ai.provider.label" : {
+      "comment" : "Row label for the AI provider name in Settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Provider" } }
+      }
+    },
+    "settings.ai.provider.anthropic" : {
+      "comment" : "AI provider name displayed in Settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Anthropic" } }
+      }
+    },
+    "settings.ai.apiKey.label" : {
+      "comment" : "Row label for the Anthropic API key field in Settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "API Key" } }
+      }
+    },
+    "settings.ai.apiKey.placeholder" : {
+      "comment" : "Placeholder for the Anthropic API key text field in Settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Enter Anthropic API key" } }
+      }
+    },
+    "settings.ai.totalParses.label" : {
+      "comment" : "Row label showing the total number of AI parses performed",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Total Parses" } }
+      }
+    },
+    "settings.section.appearance" : {
+      "comment" : "Section header for the Appearance section in Settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Appearance" } }
+      }
+    },
+    "settings.appearance.colorScheme.label" : {
+      "comment" : "Picker label for the color scheme preference in Settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Color Scheme" } }
+      }
+    },
+    "settings.section.data" : {
+      "comment" : "Section header for the Data section in Settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Data" } }
+      }
+    },
+    "settings.data.manageTags.button" : {
+      "comment" : "Navigation link to the Tag Manager screen from Settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Manage Tags" } }
+      }
+    },
+    "settings.data.footer" : {
+      "comment" : "Footer text for the Data section in Settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Create and manage custom tags to organise your discounts, vouchers, and gift cards." } }
+      }
+    },
+    "settings.section.about" : {
+      "comment" : "Section header for the About section in Settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "About" } }
+      }
+    },
+    "settings.about.version.label" : {
+      "comment" : "Row label for the app version in Settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Version" } }
+      }
+    },
+    "settings.about.privacyPolicy.button" : {
+      "comment" : "Link label to open the Privacy Policy in Settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Privacy Policy" } }
+      }
+    },
+    "settings.about.licenses.button" : {
+      "comment" : "Link label to open the Open Source Licenses page in Settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Open Source Licenses" } }
+      }
+    },
+    "settings.about.feedback.button" : {
+      "comment" : "Link label to open the Contact & Feedback page in Settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Contact & Feedback" } }
+      }
+    },
+    "settings.gmail.error.alert.title" : {
+      "comment" : "Alert title when a Gmail error occurs in Settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gmail Error" } }
+      }
+    },
+
+    "paywall.section.purchases" : {
+      "comment" : "Section header for the Purchases / paywall section in Settings",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Purchases" } }
+      }
+    },
+    "paywall.removeAds.label" : {
+      "comment" : "Label for the Remove Ads product row in the paywall",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Remove Ads" } }
+      }
+    },
+    "paywall.removeAds.description" : {
+      "comment" : "Description text for the Remove Ads product in the paywall",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Enjoy FastyDiscount ad-free. One-time purchase, no subscription." } }
+      }
+    },
+    "paywall.buyNow.button" : {
+      "comment" : "Buy Now button label in the paywall",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Buy Now" } }
+      }
+    },
+    "paywall.restorePurchases.button" : {
+      "comment" : "Restore Purchases button label in the paywall",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Restore Purchases" } }
+      }
+    },
+    "paywall.processing" : {
+      "comment" : "Label shown while an in-app purchase transaction is processing",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Processing\u2026" } }
+      }
+    },
+    "paywall.purchased.title" : {
+      "comment" : "Title shown after the Remove Ads purchase is confirmed",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Ad-Free" } }
+      }
+    },
+    "paywall.purchased.thankyou" : {
+      "comment" : "Thank you text shown after the Remove Ads purchase is confirmed",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Thank You!" } }
+      }
+    },
+    "paywall.purchased.footer" : {
+      "comment" : "Footer text in the paywall section after purchase is complete",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "You've removed all ads. Thank you for supporting FastyDiscount!" } }
+      }
+    },
+    "paywall.footer" : {
+      "comment" : "Footer text in the paywall section before purchase",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Remove Ads is a one-time purchase. Restore Purchases recovers any previous purchases on this Apple ID." } }
+      }
+    },
+    "paywall.unavailable.description" : {
+      "comment" : "Description shown when the Remove Ads product cannot be fetched",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Product temporarily unavailable. Please check your internet connection and try again." } }
+      }
+    },
+    "paywall.error.title" : {
+      "comment" : "Label shown when an in-app purchase error occurs",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Purchase Error" } }
+      }
+    },
+    "paywall.error.tryAgain.button" : {
+      "comment" : "Button label to retry after a purchase error",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Try Again" } }
+      }
+    },
+
+    "onboarding.page1.title" : {
+      "comment" : "Title of the first onboarding screen (Value Proposition)",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Never Waste a Discount Again" } }
+      }
+    },
+    "onboarding.page1.subtitle" : {
+      "comment" : "Subtitle of the first onboarding screen",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "FastyDiscount keeps all your discounts, vouchers, and gift cards in one place — always ready when you need them." } }
+      }
+    },
+    "onboarding.page2.title" : {
+      "comment" : "Title of the second onboarding screen (Features)",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Everything You Need" } }
+      }
+    },
+    "onboarding.page2.subtitle" : {
+      "comment" : "Subtitle of the second onboarding screen",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Three powerful ways to save every discount before it slips away." } }
+      }
+    },
+    "onboarding.page3.title" : {
+      "comment" : "Title of the third onboarding screen (Add First Discount)",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add Your First Discount" } }
+      }
+    },
+    "onboarding.page3.subtitle" : {
+      "comment" : "Subtitle of the third onboarding screen",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Choose how you'd like to get started. You can always add more later." } }
+      }
+    },
+    "onboarding.skip.button" : {
+      "comment" : "Button to skip the onboarding flow",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Skip" } }
+      }
+    },
+    "onboarding.next.button" : {
+      "comment" : "Button to advance to the next onboarding page",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Next" } }
+      }
+    },
+    "onboarding.getStarted.button" : {
+      "comment" : "Button on the last onboarding screen to complete onboarding",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Get Started" } }
+      }
+    },
+    "onboarding.benefit1.title" : {
+      "comment" : "Title for the first benefit bullet on onboarding screen 1",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Never miss an expiry" } }
+      }
+    },
+    "onboarding.benefit1.description" : {
+      "comment" : "Description for the first benefit bullet on onboarding screen 1",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Get notified before your discounts expire." } }
+      }
+    },
+    "onboarding.benefit2.title" : {
+      "comment" : "Title for the second benefit bullet on onboarding screen 1",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Scan in seconds" } }
+      }
+    },
+    "onboarding.benefit2.description" : {
+      "comment" : "Description for the second benefit bullet on onboarding screen 1",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Camera and email scanning add discounts instantly." } }
+      }
+    },
+    "onboarding.benefit3.title" : {
+      "comment" : "Title for the third benefit bullet on onboarding screen 1",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Alerts near stores" } }
+      }
+    },
+    "onboarding.benefit3.description" : {
+      "comment" : "Description for the third benefit bullet on onboarding screen 1",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Know when you're close to a store where a discount applies." } }
+      }
+    },
+    "onboarding.feature1.title" : {
+      "comment" : "Title for the Camera Scanning feature card on onboarding screen 2",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Camera Scanning" } }
+      }
+    },
+    "onboarding.feature1.description" : {
+      "comment" : "Description for the Camera Scanning feature card on onboarding screen 2",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Point your camera at any barcode, QR code, or printed coupon to capture it instantly." } }
+      }
+    },
+    "onboarding.feature2.title" : {
+      "comment" : "Title for the Email Import feature card on onboarding screen 2",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Email Import" } }
+      }
+    },
+    "onboarding.feature2.description" : {
+      "comment" : "Description for the Email Import feature card on onboarding screen 2",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Connect your inbox to automatically find and import discount codes from promotional emails." } }
+      }
+    },
+    "onboarding.feature3.title" : {
+      "comment" : "Title for the Location Alerts feature card on onboarding screen 2",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Location Alerts" } }
+      }
+    },
+    "onboarding.feature3.description" : {
+      "comment" : "Description for the Location Alerts feature card on onboarding screen 2",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Get a notification when you're near a store where one of your saved discounts applies." } }
+      }
+    },
+    "onboarding.addFirst.scan.title" : {
+      "comment" : "Title for the Scan a Barcode action on onboarding screen 3",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Scan a Barcode" } }
+      }
+    },
+    "onboarding.addFirst.scan.description" : {
+      "comment" : "Description for the Scan a Barcode action on onboarding screen 3",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Use your camera to scan a barcode or QR code" } }
+      }
+    },
+    "onboarding.addFirst.email.title" : {
+      "comment" : "Title for the Import from Email action on onboarding screen 3",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Import from Email" } }
+      }
+    },
+    "onboarding.addFirst.email.description" : {
+      "comment" : "Description for the Import from Email action on onboarding screen 3",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Scan your inbox for discount codes" } }
+      }
+    },
+    "onboarding.addFirst.manual.title" : {
+      "comment" : "Title for the Add Manually action on onboarding screen 3",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add Manually" } }
+      }
+    },
+    "onboarding.addFirst.manual.description" : {
+      "comment" : "Description for the Add Manually action on onboarding screen 3",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Type in a code, name, or other details" } }
+      }
+    },
+
+    "signIn.appName" : {
+      "comment" : "App name displayed on the Sign In screen",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "FastyDiscount" } }
+      }
+    },
+    "signIn.tagline" : {
+      "comment" : "Tagline displayed below the app name on the Sign In screen",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Your discount companion" } }
+      }
+    },
+    "signIn.termsNotice" : {
+      "comment" : "Small print below the Sign In button noting Apple terms of service",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "By signing in, you agree to use this app\nin accordance with Apple's terms of service." } }
+      }
+    },
+    "signIn.failed.alert.title" : {
+      "comment" : "Alert title when Sign In with Apple fails",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sign In Failed" } }
+      }
+    },
+    "signIn.failed.tryAgain.button" : {
+      "comment" : "Button in the Sign In Failed alert to retry sign in",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Try Again" } }
+      }
+    },
+
+    "tags.title" : {
+      "comment" : "Navigation title for the Tag Manager screen",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Tags" } }
+      }
+    },
+    "tags.search.prompt" : {
+      "comment" : "Searchable prompt text in the Tag Manager search bar",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Search tags" } }
+      }
+    },
+    "tags.addTag.button" : {
+      "comment" : "Toolbar button label to add a new tag in Tag Manager",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add Tag" } }
+      }
+    },
+    "tags.section.system" : {
+      "comment" : "Section header for built-in system tags in Tag Manager",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "System Tags" } }
+      }
+    },
+    "tags.section.system.footer" : {
+      "comment" : "Footer for the system tags section explaining they cannot be modified",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "System tags are built-in and cannot be modified." } }
+      }
+    },
+    "tags.section.custom" : {
+      "comment" : "Section header for user-created custom tags in Tag Manager",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Custom Tags" } }
+      }
+    },
+    "tags.section.custom.footer" : {
+      "comment" : "Footer for the custom tags section with usage instructions",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Tap a custom tag to rename it. Swipe left to delete." } }
+      }
+    },
+    "tags.empty.system" : {
+      "comment" : "Empty row message when no system tags match the search",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "No system tags" } }
+      }
+    },
+    "tags.empty.system.noMatch" : {
+      "comment" : "Empty row message when no system tags match the current search query",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "No system tags match your search" } }
+      }
+    },
+    "tags.empty.custom" : {
+      "comment" : "Empty row message when no custom tags exist",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "No custom tags yet. Tap + to add one." } }
+      }
+    },
+    "tags.empty.custom.noMatch" : {
+      "comment" : "Empty row message when no custom tags match the current search query",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "No custom tags match your search" } }
+      }
+    },
+    "tags.delete.alert.title" : {
+      "comment" : "Alert title when deleting a custom tag",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Delete Tag?" } }
+      }
+    },
+    "tags.delete.confirm.button" : {
+      "comment" : "Destructive confirm button in the Delete Tag alert",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Remove" } }
+      }
+    },
+    "tags.addTag.sheet.title" : {
+      "comment" : "Navigation title for the Add Tag sheet",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add Tag" } }
+      }
+    },
+    "tags.addTag.name.section" : {
+      "comment" : "Section header for the name field in the Add Tag sheet",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Name" } }
+      }
+    },
+    "tags.addTag.name.placeholder" : {
+      "comment" : "Placeholder for the tag name text field in the Add Tag sheet",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Tag name" } }
+      }
+    },
+    "tags.addTag.color.section" : {
+      "comment" : "Section header for the color picker in the Add Tag sheet",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Color (optional)" } }
+      }
+    },
+    "tags.addTag.color.footer" : {
+      "comment" : "Footer for the color picker section in the Add Tag sheet",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Choose a display color for this tag." } }
+      }
+    },
+    "tags.swipe.delete" : {
+      "comment" : "Swipe action label to delete a custom tag",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Delete" } }
+      }
+    },
+
+    "location.permission.whenInUse.title" : {
+      "comment" : "Navigation title for the When In Use location permission explanation sheet",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Location Access" } }
+      }
+    },
+    "location.permission.always.title" : {
+      "comment" : "Navigation title for the Always location permission explanation sheet",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Background Location" } }
+      }
+    },
+    "location.permission.notNow.button" : {
+      "comment" : "Toolbar button to dismiss the location permission sheet without granting permission",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Not Now" } }
+      }
+    },
+    "location.permission.maybeLater.button" : {
+      "comment" : "Secondary button to dismiss the location permission sheet",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Maybe Later" } }
+      }
+    },
+    "location.permission.whenInUse.primaryButton" : {
+      "comment" : "Primary CTA button on the When In Use location permission sheet",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Continue" } }
+      }
+    },
+    "location.permission.always.primaryButton" : {
+      "comment" : "Primary CTA button on the Always location permission sheet",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Enable Background Alerts" } }
+      }
+    },
+    "location.permission.whenInUse.title.content" : {
+      "comment" : "Content title on the When In Use location permission sheet",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Find Discounts Near You" } }
+      }
+    },
+    "location.permission.always.title.content" : {
+      "comment" : "Content title on the Always location permission sheet",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Never Miss a Nearby Deal" } }
+      }
+    },
+    "location.denied.title" : {
+      "comment" : "Title shown on the Denied Location view",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Location Access Denied" } }
+      }
+    },
+    "location.denied.body" : {
+      "comment" : "Body text on the Denied Location view explaining how to re-enable",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "To see nearby discounts and receive geofence alerts, please allow FastyDiscount to use your location in Settings." } }
+      }
+    },
+    "location.denied.openSettings.button" : {
+      "comment" : "Button label to open iOS Settings from the Denied Location view",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Open Settings" } }
+      }
+    },
+
+    "ads.upgradeBanner.title" : {
+      "comment" : "Title text on the inline Remove Ads upgrade suggestion banner",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Enjoying FastyDiscount?" } }
+      }
+    },
+    "ads.upgradeBanner.subtitle" : {
+      "comment" : "Subtitle on the inline Remove Ads upgrade suggestion banner",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Remove ads with a one-time purchase." } }
+      }
+    },
+    "ads.upgradeBanner.removeAds.button" : {
+      "comment" : "Button label on the inline upgrade banner to navigate to the paywall",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Remove Ads" } }
+      }
+    },
+    "ads.upgradeBanner.dismiss.accessibility" : {
+      "comment" : "Accessibility label for the dismiss X button on the upgrade banner",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Dismiss upgrade banner" } }
+      }
+    }
+
+  },
+  "version" : "1.0"
+}

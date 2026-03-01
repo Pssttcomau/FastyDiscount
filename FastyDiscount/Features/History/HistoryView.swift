@@ -341,26 +341,23 @@ struct HistoryRowView: View {
         }
     }
 
-    /// Returns the most appropriate date label for the DVG status.
+    /// Returns the most appropriate date label for the DVG status using locale-aware formatting.
     ///
     /// - Used: show `lastModified` (when it was marked used)
     /// - Expired: show `expirationDate` if available, otherwise `lastModified`
     /// - Archived: show `lastModified` (when it was archived)
     private var statusDateLabel: String {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
-
         switch dvg.statusEnum {
         case .used, .archived:
-            return formatter.string(from: dvg.lastModified)
+            return LocaleFormatters.abbreviatedDate.string(from: dvg.lastModified)
         case .expired:
             if let expiryDate = dvg.expirationDate {
-                return "Expired \(formatter.string(from: expiryDate))"
+                let dateString = LocaleFormatters.abbreviatedDate.string(from: expiryDate)
+                return String(localized: "Expired \(dateString)", comment: "History row date label for an expired item. %@ is the locale-formatted expiry date.")
             }
-            return formatter.string(from: dvg.lastModified)
+            return LocaleFormatters.abbreviatedDate.string(from: dvg.lastModified)
         case .active:
-            return formatter.string(from: dvg.lastModified)
+            return LocaleFormatters.abbreviatedDate.string(from: dvg.lastModified)
         }
     }
 

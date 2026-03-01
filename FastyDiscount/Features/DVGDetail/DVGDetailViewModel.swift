@@ -327,38 +327,24 @@ final class DVGDetailViewModel {
         dvg.dvgTypeEnum == .giftCard || dvg.dvgTypeEnum == .loyaltyPoints
     }
 
-    /// The current balance formatted for display.
+    /// The current balance formatted for display using locale-aware formatters.
     var formattedBalance: String {
         if dvg.dvgTypeEnum == .loyaltyPoints {
-            return "\(Int(dvg.pointsBalance)) points"
+            let formatted = LocaleFormatters.integer(for: Int(dvg.pointsBalance))
+            return String(localized: "\(formatted) points", comment: "Loyalty points balance, e.g. '1,250 points'")
         } else {
-            let formatter = NumberFormatter()
-            formatter.numberStyle = .currency
-            formatter.maximumFractionDigits = 2
-            formatter.minimumFractionDigits = 2
-            return formatter.string(from: NSNumber(value: dvg.remainingBalance))
-                ?? String(format: "$%.2f", dvg.remainingBalance)
+            return LocaleFormatters.currency(for: dvg.remainingBalance)
         }
     }
 
-    /// The original value formatted for display.
+    /// The original value formatted for display using a locale-aware currency formatter.
     var formattedOriginalValue: String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.maximumFractionDigits = 2
-        formatter.minimumFractionDigits = 2
-        return formatter.string(from: NSNumber(value: dvg.originalValue))
-            ?? String(format: "$%.2f", dvg.originalValue)
+        LocaleFormatters.currency(for: dvg.originalValue)
     }
 
-    /// The minimum spend formatted for display.
+    /// The minimum spend formatted for display using a locale-aware currency formatter.
     var formattedMinimumSpend: String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.maximumFractionDigits = 2
-        formatter.minimumFractionDigits = 2
-        return formatter.string(from: NSNumber(value: dvg.minimumSpend))
-            ?? String(format: "$%.2f", dvg.minimumSpend)
+        LocaleFormatters.currency(for: dvg.minimumSpend)
     }
 
     /// Color for the expiry date indicator.
@@ -376,27 +362,23 @@ final class DVGDetailViewModel {
         }
     }
 
-    /// Human-readable expiry description.
+    /// Human-readable expiry description using locale-aware date formatting.
     var expiryDescription: String {
         guard let expirationDate = dvg.expirationDate else {
-            return "No expiration"
+            return String(localized: "No expiration", comment: "Shown when a DVG has no expiration date set")
         }
 
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
-
-        let dateString = formatter.string(from: expirationDate)
+        let dateString = LocaleFormatters.abbreviatedDate.string(from: expirationDate)
 
         if let days = dvg.daysUntilExpiry {
             if days < 0 {
-                return "Expired on \(dateString)"
+                return String(localized: "Expired on \(dateString)", comment: "Expiry description when the item has already expired. %@ is the formatted expiry date.")
             } else if days == 0 {
-                return "Expires today"
+                return String(localized: "Expires today", comment: "Expiry description when the item expires on the current day")
             } else if days == 1 {
-                return "Expires tomorrow"
+                return String(localized: "Expires tomorrow", comment: "Expiry description when the item expires tomorrow")
             } else {
-                return "Expires in \(days) days (\(dateString))"
+                return String(localized: "Expires in \(days) days (\(dateString))", comment: "Expiry description showing remaining days and date. First %d is days, second %@ is the formatted date.")
             }
         }
 
@@ -419,12 +401,9 @@ final class DVGDetailViewModel {
         (dvg.tags ?? []).filter { !$0.isDeleted }
     }
 
-    /// Formatted date added string.
+    /// Formatted date added string using a locale-aware formatter.
     var formattedDateAdded: String {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .short
-        return formatter.string(from: dvg.dateAdded)
+        LocaleFormatters.mediumDateShortTime.string(from: dvg.dateAdded)
     }
 
     /// The balance label used in the Record Usage sheet.
