@@ -117,6 +117,7 @@ targets:
           - "ExpiryNotificationService.swift"
           - "NotificationPermissionManager.swift"
           - "GeofenceManager.swift"
+          - "LocationPermissionManager.swift"
       - path: FastyDiscount/App/AppConstants.swift
     resources:
       - path: FastyDiscountWidget/Assets.xcassets
@@ -163,6 +164,7 @@ targets:
           - "ExpiryNotificationService.swift"
           - "NotificationPermissionManager.swift"
           - "GeofenceManager.swift"
+          - "LocationPermissionManager.swift"
       - path: FastyDiscount/App/AppConstants.swift
     settings:
       base:

@@ -88,6 +88,13 @@ final class GeofenceManager: NSObject, CLLocationManagerDelegate {
     private let locationManager: CLLocationManager
     private let modelContainer: ModelContainer
 
+    /// Observed permission manager. GeofenceManager watches its `authorizationState`
+    /// so it can start/stop monitoring when the user grants or revokes permission.
+    ///
+    /// Held as a strong reference; the app creates exactly one shared instance and
+    /// passes it into both `GeofenceManager` and the UI layer.
+    private let permissionManager: LocationPermissionManager
+
     /// Structured logger for geofence and significant-location-change events.
     private let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "FastyDiscount",
                                 category: "GeofenceManager")
@@ -105,14 +112,19 @@ final class GeofenceManager: NSObject, CLLocationManagerDelegate {
 
     // MARK: - Init
 
-    /// Creates a `GeofenceManager` with the given `ModelContainer`.
+    /// Creates a `GeofenceManager` with the given `ModelContainer` and permission manager.
     ///
     /// The `CLLocationManager` is created on `@MainActor`, ensuring all delegate
     /// callbacks arrive on the main thread.
     ///
-    /// - Parameter modelContainer: The SwiftData container for fetching DVGs.
-    init(modelContainer: ModelContainer) {
+    /// - Parameters:
+    ///   - modelContainer: The SwiftData container for fetching DVGs.
+    ///   - permissionManager: The shared `LocationPermissionManager` instance.
+    ///     `GeofenceManager` observes its `authorizationState` to know when to
+    ///     start or stop region monitoring.
+    init(modelContainer: ModelContainer, permissionManager: LocationPermissionManager) {
         self.modelContainer = modelContainer
+        self.permissionManager = permissionManager
         self.locationManager = CLLocationManager()
         super.init()
         locationManager.delegate = self
@@ -543,12 +555,15 @@ final class GeofenceManager: NSObject, CLLocationManagerDelegate {
 
     /// Checks whether the app has sufficient location authorisation for region monitoring.
     ///
-    /// Region monitoring requires `.authorizedAlways` or `.authorizedWhenInUse`.
-    /// Note: `.authorizedWhenInUse` allows region monitoring on iOS 14+ but
-    /// notifications from region monitoring while terminated require `.authorizedAlways`.
+    /// Delegates to `LocationPermissionManager.authorizationState` so that this
+    /// check is always consistent with the observable permission state used by the UI.
+    ///
+    /// Region monitoring requires `.whenInUse` or `.always`.
+    /// Note: `.whenInUse` allows region monitoring on iOS 14+ but geofence
+    /// notifications from a *terminated* app require `.always`.
     private func isAuthorizedForRegionMonitoring() -> Bool {
-        let status = locationManager.authorizationStatus
-        return status == .authorizedAlways || status == .authorizedWhenInUse
+        let state = permissionManager.authorizationState
+        return state == .whenInUse || state == .always
     }
 
     /// Removes all geofence regions managed by this service.

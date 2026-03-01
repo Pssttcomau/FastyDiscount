@@ -53,6 +53,7 @@
 		7A686B2039D061C9EEC5D731 /* TagSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B359E92B98894B367E8F5E /* TagSeeder.swift */; };
 		7A876E035A51AF7B894AF762 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BEE35D6024275FE15B89F /* Tag.swift */; };
 		7BE645C09C5666BB7BB85C1E /* ModelContainerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2998DF0B0A158FF469F3C28 /* ModelContainerFactory.swift */; };
+		7D94FDBDAB10E0A177EB967A /* LocationPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D70BD24BB11C1C427FD6C0 /* LocationPermissionView.swift */; };
 		83AA06CC8644B6C8046A4508 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D37587BDBE0CFC8919E653 /* AuthenticationService.swift */; };
 		8960F834FCA1755261A660AF /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C61E4E9CCEABDDACD1DBEA /* Theme.swift */; };
 		8D5B0FDEB17FFF9107A240DC /* FastyDiscountShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A2DCFE241EFF5D5B0CF9F5CB /* FastyDiscountShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -77,6 +78,7 @@
 		C3A176131ABB2F538A9BA1B5 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D708A035AA0DC1E36B3881E7 /* AppConstants.swift */; };
 		CC25A4A07C5C8684F45210D4 /* ImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6DE53C52FE6ABCE6B51AF /* ImportView.swift */; };
 		CE1AC98FE37D9CC1B52B5BA5 /* DVG.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AA7FA8BEF83B6759CF1EA1 /* DVG.swift */; };
+		CF93B8692FDE52239A986E82 /* LocationPermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464E8F385E730DA9AA5AA899 /* LocationPermissionManager.swift */; };
 		CFFD02C3CDE8BB80343ABFB4 /* DVGDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E97FA9D1B4C33ED51C821CE /* DVGDetailView.swift */; };
 		DAADA0EF61C2A6C2FB1E97AD /* CameraScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D1E03B5D5E24E7C90E581 /* CameraScannerView.swift */; };
 		DC2B015CE6054B620143D4C7 /* VisionParsingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B17D6ABDE8270A3BA351CE1 /* VisionParsingService.swift */; };
@@ -158,6 +160,7 @@
 		34ADD43197A98E99D9295967 /* GmailAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GmailAPIClient.swift; sourceTree = "<group>"; };
 		3A12B82D1E0A85CF8C69513B /* AppearanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceManager.swift; sourceTree = "<group>"; };
 		418F8AC8527C19B7B186AB7B /* EmailScanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailScanViewModel.swift; sourceTree = "<group>"; };
+		464E8F385E730DA9AA5AA899 /* LocationPermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermissionManager.swift; sourceTree = "<group>"; };
 		4673B5A45C26980A97CC3365 /* NotificationActionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationActionHandler.swift; sourceTree = "<group>"; };
 		4F1AF8301D378D3D17B56D19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		533528FAF43C73F0FE5F5B49 /* ReviewQueueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewQueueView.swift; sourceTree = "<group>"; };
@@ -165,6 +168,7 @@
 		5B17D6ABDE8270A3BA351CE1 /* VisionParsingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionParsingService.swift; sourceTree = "<group>"; };
 		5BC12766F92B805DBCA6F59A /* FastyDiscountWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FastyDiscountWidget.entitlements; sourceTree = "<group>"; };
 		60D6DE53C52FE6ABCE6B51AF /* ImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportView.swift; sourceTree = "<group>"; };
+		62D70BD24BB11C1C427FD6C0 /* LocationPermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermissionView.swift; sourceTree = "<group>"; };
 		68D872915DE7DE0AE2465E04 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		6A8978A026671871ED9BF176 /* FastyDiscountWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastyDiscountWatchApp.swift; sourceTree = "<group>"; };
 		72C61E4E9CCEABDDACD1DBEA /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -253,6 +257,7 @@
 				91B3A52A6EAC06146D35369C /* DVGForm */,
 				9D045C7ED479AAEFA0CC8E8A /* EmailImport */,
 				97A493B6114B43F0ED8CB4A7 /* Onboarding */,
+				BF9A536FF920EAED82502EEF /* Permissions */,
 				BD3CC2725B318CE20CDD4050 /* Scanner */,
 			);
 			path = Features;
@@ -292,6 +297,7 @@
 				34ADD43197A98E99D9295967 /* GmailAPIClient.swift */,
 				1D41E627216E858DF88FAA04 /* GmailAuthService.swift */,
 				A460E121AD257B3F78C18E4E /* KeychainService.swift */,
+				464E8F385E730DA9AA5AA899 /* LocationPermissionManager.swift */,
 				DB9803317C52051BDD169F23 /* MockAuthenticationService.swift */,
 				C2998DF0B0A158FF469F3C28 /* ModelContainerFactory.swift */,
 				4673B5A45C26980A97CC3365 /* NotificationActionHandler.swift */,
@@ -438,6 +444,14 @@
 				EA171A817400E92C7D402F26 /* ScanResultsViewModel.swift */,
 			);
 			path = Scanner;
+			sourceTree = "<group>";
+		};
+		BF9A536FF920EAED82502EEF /* Permissions */ = {
+			isa = PBXGroup;
+			children = (
+				62D70BD24BB11C1C427FD6C0 /* LocationPermissionView.swift */,
+			);
+			path = Permissions;
 			sourceTree = "<group>";
 		};
 		F71475AA4753E40149146F98 /* FastyDiscountWatch */ = {
@@ -665,6 +679,8 @@
 				CC25A4A07C5C8684F45210D4 /* ImportView.swift in Sources */,
 				31CB6D324D3594EFFA3A06DB /* ImportViewModel.swift in Sources */,
 				784B835AFF8CA8AA8CAA7FD9 /* KeychainService.swift in Sources */,
+				CF93B8692FDE52239A986E82 /* LocationPermissionManager.swift in Sources */,
+				7D94FDBDAB10E0A177EB967A /* LocationPermissionView.swift in Sources */,
 				6E55264149E6D5DF130E10CE /* MockAuthenticationService.swift in Sources */,
 				7BE645C09C5666BB7BB85C1E /* ModelContainerFactory.swift in Sources */,
 				AAD2A10448748BC03B36E383 /* NavigationRouter.swift in Sources */,

@@ -25,6 +25,12 @@ struct FastyDiscountApp: App {
     /// `CLLocationManager` (and its delegate) live for the entire app lifecycle.
     private let geofenceManager: GeofenceManager
 
+    /// Shared location permission manager. Owns the two-step permission flow and
+    /// exposes the current `authorizationState` as an observable property. Passed
+    /// to `GeofenceManager` and made available to the environment so child views
+    /// (map, DVG form) can trigger permission requests.
+    private let locationPermissionManager: LocationPermissionManager
+
     init() {
         let state = AppState()
         let authService = AppleAuthenticationService()
@@ -52,9 +58,14 @@ struct FastyDiscountApp: App {
         notificationActionHandler = handler
         UNUserNotificationCenter.current().delegate = handler
 
+        // Create the shared location permission manager. This is the single source
+        // of truth for location authorization state, used by both the UI and GeofenceManager.
+        let permManager = LocationPermissionManager()
+        locationPermissionManager = permManager
+
         // Initialise the geofence manager. It creates and owns a CLLocationManager
         // on the main thread. Actual geofence registration happens in .task below.
-        geofenceManager = GeofenceManager(modelContainer: modelContainer)
+        geofenceManager = GeofenceManager(modelContainer: modelContainer, permissionManager: permManager)
 
         // Register notification categories early so that any delivered
         // notifications already in the system use the correct action buttons.
@@ -72,6 +83,7 @@ struct FastyDiscountApp: App {
             AuthGateView(authViewModel: authViewModel)
                 .environment(appState)
                 .environment(appearanceManager)
+                .environment(locationPermissionManager)
                 .preferredColorScheme(appearanceManager.colorScheme)
                 .alert(
                     "Data Unavailable",

@@ -30,9 +30,9 @@
 		<string>remote-notification</string>
 	</array>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>FastyDiscount uses your location to find nearby discount vouchers and deals.</string>
+	<string>FastyDiscount uses your background location to alert you the moment you walk past a store with one of your saved discounts — even when the app is closed. Your location is never stored or shared.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>FastyDiscount uses your location to show nearby discount vouchers on the map.</string>
+	<string>FastyDiscount uses your location to show your saved discount vouchers on the map and help you find the nearest stores where they can be redeemed.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>FastyDiscount uses the camera to scan barcodes and QR codes on discount vouchers.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
