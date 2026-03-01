@@ -66,7 +66,7 @@ enum DVGSortOrder: String, Sendable, CaseIterable {
 ///
 /// All filter fields are optional. When `nil`, the corresponding filter
 /// is not applied (AND semantics: all non-nil filters must match).
-struct DVGFilter: Sendable {
+struct DVGFilter: Sendable, Hashable {
     /// Filter by DVG type.
     var type: DVGType?
     /// Filter by status.

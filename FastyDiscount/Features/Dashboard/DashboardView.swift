@@ -142,9 +142,15 @@ struct DashboardView: View {
     private func expiringSoonSection(viewModel: DashboardViewModel) -> some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.sm) {
             sectionHeader(title: "Expiring Soon", systemImage: "clock.badge.exclamationmark") {
-                // TODO: Navigate to search view with expiry filter pre-set
-                // once the search feature is built. For now, switch to history tab.
-                router.selectedTab = .history
+                // Navigate to search with an expiry range pre-set to the next 7 days.
+                let now = Date()
+                let sevenDays = Calendar.current.date(byAdding: .day, value: 7, to: now) ?? now
+                let filter = DVGFilter(
+                    status: .active,
+                    expiryDateFrom: now,
+                    expiryDateTo: sevenDays
+                )
+                router.push(.search(filter))
             }
 
             if viewModel.expiringSoon.isEmpty {
@@ -212,7 +218,7 @@ struct DashboardView: View {
     private func recentlyAddedSection(viewModel: DashboardViewModel) -> some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.sm) {
             sectionHeader(title: "Recently Added", systemImage: "plus.circle") {
-                router.selectedTab = .history
+                router.push(.search(nil))
             }
 
             if viewModel.recentlyAdded.isEmpty {

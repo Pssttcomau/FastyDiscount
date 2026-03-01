@@ -184,6 +184,8 @@ struct DestinationView: View {
             ImportView()
         case .scanResults(let inputData):
             ScanResultsView(inputData: inputData)
+        case .search(let initialFilter):
+            SearchView(initialFilter: initialFilter)
         }
     }
 }

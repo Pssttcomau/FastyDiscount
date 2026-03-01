@@ -25,6 +25,8 @@ enum AppDestination: Hashable, Sendable {
     case importScan
     /// Scan results view: bridges scanning output to DVG creation.
     case scanResults(ScanInputData)
+    /// Search view with optional pre-populated filter (e.g. from dashboard "See All" buttons).
+    case search(DVGFilter?)
 }
 
 // MARK: - ScanInputData + Hashable
