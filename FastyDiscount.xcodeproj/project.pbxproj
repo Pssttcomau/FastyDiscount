@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0587928D3A0FFBDA643F0930 /* DVGExtractionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB16084384A7BD4638D8D0FE /* DVGExtractionResult.swift */; };
+		088F1A7DB498D993B05629D1 /* AdService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE8B47472BB8783EC59C651 /* AdService.swift */; };
 		09F278F5D9486C0E4B68ED12 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979088B9F4216E7CF9915879 /* SignInView.swift */; };
 		0A4587770B25881B70520EB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8FE26587864355ABB32C7D9 /* Assets.xcassets */; };
 		0BE365C08CAB8B78F6F377BE /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BEE35D6024275FE15B89F /* Tag.swift */; };
@@ -19,6 +20,7 @@
 		1FC8B09252CAE91E4CF195F1 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F788FED15B83B44BB5626BE /* SearchView.swift */; };
 		20B6D44D877BD0FE9E44A137 /* CloudAIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A256DD3E2644571E164EA549 /* CloudAIClient.swift */; };
 		25EDC8517A5EC5F44137960D /* ModelContainerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2998DF0B0A158FF469F3C28 /* ModelContainerFactory.swift */; };
+		27021A672EB45D7EF91CAC8A /* StoreKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0345467F45BC7AEDFF9F683 /* StoreKitService.swift */; };
 		27D95A5A73E47BCC76D9EB6B /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A91F47B4AAA26EE65968686 /* OnboardingView.swift */; };
 		2872C846043C3179973FF14D /* ScanResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA171A817400E92C7D402F26 /* ScanResultsViewModel.swift */; };
 		2AA3712CDC4FCEE163B36FC6 /* DVG.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AA7FA8BEF83B6759CF1EA1 /* DVG.swift */; };
@@ -37,12 +39,14 @@
 		4C6D0846DA87A83DDF6548C7 /* NearbyMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A965BB6303D31430FFB4824 /* NearbyMapViewModel.swift */; };
 		4D0CD6AC79AA8D733D7D5307 /* AdaptiveNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B83589D2581E67E1D4BEF0 /* AdaptiveNavigationView.swift */; };
 		4E16AAC8EE9C983403147EDC /* GeofenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A773607AA3C3400734D1366 /* GeofenceManager.swift */; };
+		4EB9BA8A15D9546A4265EFFA /* AdService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE8B47472BB8783EC59C651 /* AdService.swift */; };
 		4F3CA851F0C1ED0E091C39C8 /* ShareExtensionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9450DE3BAF57B7EAACAA2A /* ShareExtensionViewModel.swift */; };
 		54E43A111786FFEB0A123988 /* GmailAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D41E627216E858DF88FAA04 /* GmailAuthService.swift */; };
 		58DC7B7DF248AC5D2C29674F /* ModelContainerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2998DF0B0A158FF469F3C28 /* ModelContainerFactory.swift */; };
 		595DF7E55AF70852C0F02712 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A460E121AD257B3F78C18E4E /* KeychainService.swift */; };
 		5A95FF5678FC18706CCDC0ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DE277FB8F8E572BB84421FD /* Assets.xcassets */; };
 		5A977DAA6D4121F3A470E235 /* GmailAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34ADD43197A98E99D9295967 /* GmailAPIClient.swift */; };
+		5B47EAED24B1210D82499736 /* MacWindowConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3A3BBF4CF599A30117364B /* MacWindowConfiguration.swift */; };
 		5BFC757CF60B557F810E068D /* EmailParsingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30713F707819CB262EF6757 /* EmailParsingService.swift */; };
 		5E4D99748264E371BD993CB8 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDE3256E196AC5FA5007C4B /* HistoryViewModel.swift */; };
 		5FE9E922B2FFE07F6D944A2B /* AddToWalletButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3002916AE905402DE1F090 /* AddToWalletButton.swift */; };
@@ -56,6 +60,7 @@
 		68E07B1E648289F136773685 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D8511326A5401789910BC7 /* CameraPreviewView.swift */; };
 		6A2F598EC41CC34CE537D3B5 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BEE35D6024275FE15B89F /* Tag.swift */; };
 		6DE0D56BF477992554123042 /* NotificationPermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEE1DF7CDC53C1C828C02A9 /* NotificationPermissionManager.swift */; };
+		6E1F441CBF9281966DDC59C0 /* ScanCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DB7DD3032F264A8CF7EC65 /* ScanCounter.swift */; };
 		6E55264149E6D5DF130E10CE /* MockAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9803317C52051BDD169F23 /* MockAuthenticationService.swift */; };
 		6F8E7C7BDCD80C4723DDD83B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E84BA2A1CB3AF071BD2383 /* SettingsView.swift */; };
 		70C311CB7891D835F90BFEAA /* WatchDVG.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8287F7AA78D47417E6C901E /* WatchDVG.swift */; };
@@ -69,11 +74,14 @@
 		7BE645C09C5666BB7BB85C1E /* ModelContainerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2998DF0B0A158FF469F3C28 /* ModelContainerFactory.swift */; };
 		7D94FDBDAB10E0A177EB967A /* LocationPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D70BD24BB11C1C427FD6C0 /* LocationPermissionView.swift */; };
 		7E9B76EBE4565084A90A60DE /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49137CA3F5B583B4C0768D0 /* SettingsViewModel.swift */; };
+		832F3270B3EBCCB0FD78D3B2 /* AdService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE8B47472BB8783EC59C651 /* AdService.swift */; };
 		83AA06CC8644B6C8046A4508 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D37587BDBE0CFC8919E653 /* AuthenticationService.swift */; };
 		884B7EECF721E031449DB308 /* NearbyMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D9A68CB4D52B6C03B6F2CD /* NearbyMapView.swift */; };
 		8960F834FCA1755261A660AF /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C61E4E9CCEABDDACD1DBEA /* Theme.swift */; };
+		8A8DF276994DE86D273D2C9C /* BannerAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912792372382AE998FB62910 /* BannerAdView.swift */; };
 		8D003A052D7C5EADEE402887 /* WatchEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CB308D867D0C39BC9841EC /* WatchEmptyStateView.swift */; };
 		8D5B0FDEB17FFF9107A240DC /* FastyDiscountShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A2DCFE241EFF5D5B0CF9F5CB /* FastyDiscountShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8EAE272D81E6E4E72E85CE4D /* Products.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 7001DA424C0C3024B3574231 /* Products.storekit */; };
 		90B0938261994B030A6496A9 /* TagSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B359E92B98894B367E8F5E /* TagSeeder.swift */; };
 		91B21ACC363E49D8D6D81D88 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D872915DE7DE0AE2465E04 /* AppState.swift */; };
 		924C90635AD2FAA89AADCF1C /* DVGListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D775CDAFF1384C26C51ED9 /* DVGListView.swift */; };
@@ -102,13 +110,17 @@
 		C44EDBE5C1A88338219D9012 /* WatchDVGStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD0B6E36D4AD675E7D91F72 /* WatchDVGStore.swift */; };
 		C8A0664C2D43E2D84BF97055 /* MacCatalystCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951BD57705A6330971ADA74C /* MacCatalystCommands.swift */; };
 		C9EED09391A2D20E651FD04E /* TagManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4651D903786DE79F6DB9EBDA /* TagManagerView.swift */; };
+		C9FD479E7061763EA5C67357 /* InterstitialAdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5EF9233BA3473F9905192A /* InterstitialAdManager.swift */; };
 		CC25A4A07C5C8684F45210D4 /* ImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6DE53C52FE6ABCE6B51AF /* ImportView.swift */; };
 		CE1AC98FE37D9CC1B52B5BA5 /* DVG.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AA7FA8BEF83B6759CF1EA1 /* DVG.swift */; };
 		CF131CC792D00A8581383257 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFD92DF54632F92670E8BD1 /* DashboardViewModel.swift */; };
 		CF93B8692FDE52239A986E82 /* LocationPermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464E8F385E730DA9AA5AA899 /* LocationPermissionManager.swift */; };
 		CFFD02C3CDE8BB80343ABFB4 /* DVGDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E97FA9D1B4C33ED51C821CE /* DVGDetailView.swift */; };
+		D14D2B7DE449CD6CD70991E6 /* ScanCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DB7DD3032F264A8CF7EC65 /* ScanCounter.swift */; };
 		D1FC65C937ED18EE0604AA5D /* ShareExtensionContentProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989D4F2BC44DE6DB21E2A7FF /* ShareExtensionContentProcessor.swift */; };
 		D67EE80A628D11920B8C2B2F /* WatchBarcodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1874F0E834CCEE9F421D359 /* WatchBarcodeType.swift */; };
+		D85B504BD9526CA158CB5444 /* StoreKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0345467F45BC7AEDFF9F683 /* StoreKitService.swift */; };
+		D8FAB807A02B6584BFE3C8C9 /* StoreKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0345467F45BC7AEDFF9F683 /* StoreKitService.swift */; };
 		DAADA0EF61C2A6C2FB1E97AD /* CameraScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D1E03B5D5E24E7C90E581 /* CameraScannerView.swift */; };
 		DC2B015CE6054B620143D4C7 /* VisionParsingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B17D6ABDE8270A3BA351CE1 /* VisionParsingService.swift */; };
 		DE7CEE167DC2082041DAC7CC /* DVG.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AA7FA8BEF83B6759CF1EA1 /* DVG.swift */; };
@@ -124,6 +136,7 @@
 		F159A4AF52BE2C840AC3ECE9 /* PassKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95828C9BA2793FB90C346C21 /* PassKitService.swift */; };
 		F2990B96F059ABAE05148E35 /* CardModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4434E354363F5E5955D7658 /* CardModifier.swift */; };
 		F58C44901B37C630C7BFF2FC /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42B0365DA56C5B5C57F0A62 /* OnboardingViewModel.swift */; };
+		FAA3E8731DA53CDC0DD291B2 /* ScanCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DB7DD3032F264A8CF7EC65 /* ScanCounter.swift */; };
 		FAF9711ED7487C56762D0DEE /* ScanResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB09B8C2A9112F7D9406C5 /* ScanResultsView.swift */; };
 /* End PBXBuildFile section */
 
@@ -191,8 +204,10 @@
 		1ABCA7F6D60DC7446B4073A3 /* EmailScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailScanView.swift; sourceTree = "<group>"; };
 		1BD0B6E36D4AD675E7D91F72 /* WatchDVGStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchDVGStore.swift; sourceTree = "<group>"; };
 		1D41E627216E858DF88FAA04 /* GmailAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GmailAuthService.swift; sourceTree = "<group>"; };
+		1F3A3BBF4CF599A30117364B /* MacWindowConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacWindowConfiguration.swift; sourceTree = "<group>"; };
 		284E13291327FC54DC399957 /* DVGFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVGFormView.swift; sourceTree = "<group>"; };
 		29B359E92B98894B367E8F5E /* TagSeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSeeder.swift; sourceTree = "<group>"; };
+		2A5EF9233BA3473F9905192A /* InterstitialAdManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterstitialAdManager.swift; sourceTree = "<group>"; };
 		34ADD43197A98E99D9295967 /* GmailAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GmailAPIClient.swift; sourceTree = "<group>"; };
 		392072F13D30B4C9EDA8159B /* DVGBarcodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVGBarcodeView.swift; sourceTree = "<group>"; };
 		3A12B82D1E0A85CF8C69513B /* AppearanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceManager.swift; sourceTree = "<group>"; };
@@ -215,7 +230,9 @@
 		66CB308D867D0C39BC9841EC /* WatchEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchEmptyStateView.swift; sourceTree = "<group>"; };
 		68D872915DE7DE0AE2465E04 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		6A8978A026671871ED9BF176 /* FastyDiscountWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastyDiscountWatchApp.swift; sourceTree = "<group>"; };
+		6BE8B47472BB8783EC59C651 /* AdService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdService.swift; sourceTree = "<group>"; };
 		6F9450DE3BAF57B7EAACAA2A /* ShareExtensionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareExtensionViewModel.swift; sourceTree = "<group>"; };
+		7001DA424C0C3024B3574231 /* Products.storekit */ = {isa = PBXFileReference; path = Products.storekit; sourceTree = "<group>"; };
 		71B41B7E4D0013CD8487441F /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		72C61E4E9CCEABDDACD1DBEA /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		75CEFA93A65CF3BC3C64554B /* FastyDiscountShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FastyDiscountShareExtension.entitlements; sourceTree = "<group>"; };
@@ -223,10 +240,12 @@
 		7DE277FB8F8E572BB84421FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		823140586BFE58B0B4505742 /* DVGFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVGFormViewModel.swift; sourceTree = "<group>"; };
 		82E84BA2A1CB3AF071BD2383 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		85DB7DD3032F264A8CF7EC65 /* ScanCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanCounter.swift; sourceTree = "<group>"; };
 		87D37587BDBE0CFC8919E653 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		88571406C0725018E19E6889 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8A5BEE35D6024275FE15B89F /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		8B8C581F9880F4ED474BF89E /* DVGCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVGCardView.swift; sourceTree = "<group>"; };
+		912792372382AE998FB62910 /* BannerAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAdView.swift; sourceTree = "<group>"; };
 		951BD57705A6330971ADA74C /* MacCatalystCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacCatalystCommands.swift; sourceTree = "<group>"; };
 		95828C9BA2793FB90C346C21 /* PassKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassKitService.swift; sourceTree = "<group>"; };
 		9691929165A7A4D71B132CD9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -247,6 +266,7 @@
 		ABAE83108F7F7A98F025A18A /* BarcodeDetectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeDetectionService.swift; sourceTree = "<group>"; };
 		AE53C2D149AD5277D36BC769 /* WatchConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityManager.swift; sourceTree = "<group>"; };
 		AFFD92DF54632F92670E8BD1 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		B0345467F45BC7AEDFF9F683 /* StoreKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitService.swift; sourceTree = "<group>"; };
 		BB16084384A7BD4638D8D0FE /* DVGExtractionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVGExtractionResult.swift; sourceTree = "<group>"; };
 		C0233E6C953AA607C9494679 /* ShareExtensionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareExtensionView.swift; sourceTree = "<group>"; };
 		C166D35CEFED21A97E6EAD05 /* DVGExpiryComplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVGExpiryComplication.swift; sourceTree = "<group>"; };
@@ -298,6 +318,7 @@
 			children = (
 				7DE277FB8F8E572BB84421FD /* Assets.xcassets */,
 				88571406C0725018E19E6889 /* Info.plist */,
+				7001DA424C0C3024B3574231 /* Products.storekit */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -321,6 +342,15 @@
 				1BD0B6E36D4AD675E7D91F72 /* WatchDVGStore.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		1854DFAE22B5C87944A848EC /* Ads */ = {
+			isa = PBXGroup;
+			children = (
+				912792372382AE998FB62910 /* BannerAdView.swift */,
+				2A5EF9233BA3473F9905192A /* InterstitialAdManager.swift */,
+			);
+			path = Ads;
 			sourceTree = "<group>";
 		};
 		1B495E4077EA3B3CEC99602F /* TagManagement */ = {
@@ -367,6 +397,7 @@
 		438C7B59B9FD8F8346956079 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				1854DFAE22B5C87944A848EC /* Ads */,
 				6BE5DD430E4CB1F6B58D785A /* Dashboard */,
 				8E1B5D262131F49C22C10647 /* DVGDetail */,
 				91B3A52A6EAC06146D35369C /* DVGForm */,
@@ -434,6 +465,7 @@
 		84A2467B1BF33FA5324EB400 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				6BE8B47472BB8783EC59C651 /* AdService.swift */,
 				87D37587BDBE0CFC8919E653 /* AuthenticationService.swift */,
 				ABAE83108F7F7A98F025A18A /* BarcodeDetectionService.swift */,
 				A256DD3E2644571E164EA549 /* CloudAIClient.swift */,
@@ -450,6 +482,8 @@
 				4673B5A45C26980A97CC3365 /* NotificationActionHandler.swift */,
 				DDEE1DF7CDC53C1C828C02A9 /* NotificationPermissionManager.swift */,
 				95828C9BA2793FB90C346C21 /* PassKitService.swift */,
+				85DB7DD3032F264A8CF7EC65 /* ScanCounter.swift */,
+				B0345467F45BC7AEDFF9F683 /* StoreKitService.swift */,
 				29B359E92B98894B367E8F5E /* TagSeeder.swift */,
 				5B17D6ABDE8270A3BA351CE1 /* VisionParsingService.swift */,
 				5B62DBB5AE36F8303E8D0A77 /* WatchConnectivityService.swift */,
@@ -501,6 +535,14 @@
 				138A7A96DBE454EC79AF1FD4 /* TagPickerView.swift */,
 			);
 			path = DVGForm;
+			sourceTree = "<group>";
+		};
+		9239166EF411048DE692E728 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				1F3A3BBF4CF599A30117364B /* MacWindowConfiguration.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		97A493B6114B43F0ED8CB4A7 /* Onboarding */ = {
@@ -573,6 +615,7 @@
 				B8EB76D4756F292B4DA21C58 /* Navigation */,
 				84A2467B1BF33FA5324EB400 /* Services */,
 				AF815E8A0151E921BF44A368 /* Theme */,
+				9239166EF411048DE692E728 /* Utilities */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -824,6 +867,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A95FF5678FC18706CCDC0ED /* Assets.xcassets in Resources */,
+				8EAE272D81E6E4E72E85CE4D /* Products.storekit in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -834,6 +878,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				088F1A7DB498D993B05629D1 /* AdService.swift in Sources */,
 				4D0CD6AC79AA8D733D7D5307 /* AdaptiveNavigationView.swift in Sources */,
 				5FE9E922B2FFE07F6D944A2B /* AddToWalletButton.swift in Sources */,
 				EF8CFAB6A36DE4400D5EBF6C /* AppConstants.swift in Sources */,
@@ -841,6 +886,7 @@
 				75E28C5711E9E2A0EAE03A88 /* AppearanceManager.swift in Sources */,
 				B0B2C63772859F4A3EBA13FC /* AuthViewModel.swift in Sources */,
 				83AA06CC8644B6C8046A4508 /* AuthenticationService.swift in Sources */,
+				8A8DF276994DE86D273D2C9C /* BannerAdView.swift in Sources */,
 				1F4CB9A5AFEC38B614DE061C /* BarcodeDetectionService.swift in Sources */,
 				E929ACD515BD003A47B3AC65 /* BarcodeGenerator.swift in Sources */,
 				68E07B1E648289F136773685 /* CameraPreviewView.swift in Sources */,
@@ -871,11 +917,13 @@
 				5E4D99748264E371BD993CB8 /* HistoryViewModel.swift in Sources */,
 				CC25A4A07C5C8684F45210D4 /* ImportView.swift in Sources */,
 				31CB6D324D3594EFFA3A06DB /* ImportViewModel.swift in Sources */,
+				C9FD479E7061763EA5C67357 /* InterstitialAdManager.swift in Sources */,
 				784B835AFF8CA8AA8CAA7FD9 /* KeychainService.swift in Sources */,
 				CF93B8692FDE52239A986E82 /* LocationPermissionManager.swift in Sources */,
 				7D94FDBDAB10E0A177EB967A /* LocationPermissionView.swift in Sources */,
 				C8A0664C2D43E2D84BF97055 /* MacCatalystCommands.swift in Sources */,
 				A8B53BB97F7AE6C6B66CFE12 /* MacDropTargetView.swift in Sources */,
+				5B47EAED24B1210D82499736 /* MacWindowConfiguration.swift in Sources */,
 				6E55264149E6D5DF130E10CE /* MockAuthenticationService.swift in Sources */,
 				7BE645C09C5666BB7BB85C1E /* ModelContainerFactory.swift in Sources */,
 				AAD2A10448748BC03B36E383 /* NavigationRouter.swift in Sources */,
@@ -888,6 +936,7 @@
 				F159A4AF52BE2C840AC3ECE9 /* PassKitService.swift in Sources */,
 				BF5790074C51631E31787624 /* ReviewQueueView.swift in Sources */,
 				A14ECB903E84334B410980EE /* ReviewQueueViewModel.swift in Sources */,
+				D14D2B7DE449CD6CD70991E6 /* ScanCounter.swift in Sources */,
 				ACBA56B68D05B23B3C27D225 /* ScanResult.swift in Sources */,
 				FAF9711ED7487C56762D0DEE /* ScanResultsView.swift in Sources */,
 				2872C846043C3179973FF14D /* ScanResultsViewModel.swift in Sources */,
@@ -897,6 +946,7 @@
 				6F8E7C7BDCD80C4723DDD83B /* SettingsView.swift in Sources */,
 				7E9B76EBE4565084A90A60DE /* SettingsViewModel.swift in Sources */,
 				09F278F5D9486C0E4B68ED12 /* SignInView.swift in Sources */,
+				D8FAB807A02B6584BFE3C8C9 /* StoreKitService.swift in Sources */,
 				6226F47C230628829668050B /* StoreLocation.swift in Sources */,
 				0BE365C08CAB8B78F6F377BE /* Tag.swift in Sources */,
 				C9EED09391A2D20E651FD04E /* TagManagerView.swift in Sources */,
@@ -921,15 +971,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				832F3270B3EBCCB0FD78D3B2 /* AdService.swift in Sources */,
 				36EB75D6F3264AC6D8B6238B /* AppConstants.swift in Sources */,
 				DE7CEE167DC2082041DAC7CC /* DVG.swift in Sources */,
 				0587928D3A0FFBDA643F0930 /* DVGExtractionResult.swift in Sources */,
 				25EDC8517A5EC5F44137960D /* ModelContainerFactory.swift in Sources */,
+				6E1F441CBF9281966DDC59C0 /* ScanCounter.swift in Sources */,
 				A0489EE2A0E705534CBC9C52 /* ScanResult.swift in Sources */,
 				D1FC65C937ED18EE0604AA5D /* ShareExtensionContentProcessor.swift in Sources */,
 				777665D22B62F7AD1243B899 /* ShareExtensionView.swift in Sources */,
 				4F3CA851F0C1ED0E091C39C8 /* ShareExtensionViewModel.swift in Sources */,
 				7840D233C43FA01FCC45D7B8 /* ShareViewController.swift in Sources */,
+				27021A672EB45D7EF91CAC8A /* StoreKitService.swift in Sources */,
 				EA59EBD76B8139FF946C7DD1 /* StoreLocation.swift in Sources */,
 				7A876E035A51AF7B894AF762 /* Tag.swift in Sources */,
 			);
@@ -966,6 +1019,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EB9BA8A15D9546A4265EFFA /* AdService.swift in Sources */,
 				C3A176131ABB2F538A9BA1B5 /* AppConstants.swift in Sources */,
 				6853198EE51AD7E9B9AAAA48 /* CloudAIClient.swift in Sources */,
 				2AA3712CDC4FCEE163B36FC6 /* DVG.swift in Sources */,
@@ -977,7 +1031,9 @@
 				58DC7B7DF248AC5D2C29674F /* ModelContainerFactory.swift in Sources */,
 				4AB2F1203C12E78B5391649A /* NotificationActionHandler.swift in Sources */,
 				EEBE22C09B39AD1AD0769BEA /* PassKitService.swift in Sources */,
+				FAA3E8731DA53CDC0DD291B2 /* ScanCounter.swift in Sources */,
 				73B1A0B0E1A1623BFA086B6E /* ScanResult.swift in Sources */,
+				D85B504BD9526CA158CB5444 /* StoreKitService.swift in Sources */,
 				94D24C53FF96B28E84C4ED01 /* StoreLocation.swift in Sources */,
 				6A2F598EC41CC34CE537D3B5 /* Tag.swift in Sources */,
 				E0B668B4CD295DA829909D23 /* TagSeeder.swift in Sources */,

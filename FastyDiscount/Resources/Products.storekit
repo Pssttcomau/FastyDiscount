@@ -1,0 +1,27 @@
+{
+  "identifier" : "FastyDiscountProducts",
+  "nonConsumableProducts" : [
+    {
+      "displayPrice" : "1.99",
+      "familySharable" : false,
+      "internalID" : "com.fastydiscount.removeads",
+      "localizations" : [
+        {
+          "description" : "Remove all banner and interstitial ads from the app permanently.",
+          "displayName" : "Remove Ads",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.fastydiscount.removeads",
+      "referenceName" : "Remove Ads",
+      "type" : "NonConsumable"
+    }
+  ],
+  "consumableProducts" : [],
+  "autoRenewableSubscriptions" : [],
+  "nonRenewingSubscriptions" : [],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

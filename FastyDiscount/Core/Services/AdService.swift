@@ -54,9 +54,12 @@ final class MockAdMobService: AdService {
 
     // MARK: - AdService
 
-    var isAdFree: Bool {
-        UserDefaults.standard.bool(forKey: .adFreeKey)
-    }
+    /// Whether the user has an active ad-free entitlement.
+    /// Stored as a plain `@Observable` property so SwiftUI views track it reactively.
+    /// `AppStoreKitService` updates this directly when a purchase is verified or revoked.
+    /// The initial value is read from UserDefaults so the app starts in the correct state
+    /// before StoreKit entitlement verification completes.
+    var isAdFree: Bool = UserDefaults.standard.bool(forKey: .adFreeKey)
 
     private(set) var isInterstitialReady: Bool = false
 

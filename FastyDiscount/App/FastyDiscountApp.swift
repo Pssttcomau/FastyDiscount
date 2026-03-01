@@ -42,6 +42,11 @@ struct FastyDiscountApp: App {
     /// `@Environment(MockAdMobService.self)` declarations in views accordingly.
     private let adService = MockAdMobService()
 
+    /// StoreKit 2 service that manages the "Remove Ads" non-consumable purchase.
+    /// Injected into the SwiftUI environment so purchase/settings views can drive the flow.
+    /// Also holds a weak reference to `adService` so it can update `isAdFree` reactively.
+    private let storeKitService: AppStoreKitService
+
     /// Geofence manager responsible for monitoring store-location regions and
     /// sending location-based notifications. Retained here so the
     /// `CLLocationManager` (and its delegate) live for the entire app lifecycle.
@@ -57,6 +62,12 @@ struct FastyDiscountApp: App {
         let state = AppState()
         let authService = AppleAuthenticationService()
         let viewModel = AuthViewModel(authService: authService)
+
+        // Initialise StoreKit service with the ad service so it can update isAdFree reactively.
+        // `adService` is initialised at the declaration site before init() runs, making this safe.
+        // The transaction listener is started in the .task modifier (on @MainActor) rather than
+        // here so that calling @MainActor-isolated methods from a non-isolated init() is avoided.
+        storeKitService = AppStoreKitService(adService: adService)
 
         do {
             modelContainer = try ModelContainerFactory.makeContainer()
@@ -112,6 +123,7 @@ struct FastyDiscountApp: App {
             .environment(appearanceManager)
             .environment(locationPermissionManager)
             .environment(adService)
+            .environment(storeKitService)
             .preferredColorScheme(appearanceManager.colorScheme)
             .alert(
                 "Data Unavailable",
@@ -141,7 +153,24 @@ struct FastyDiscountApp: App {
                 //
                 // Example:
                 // GADMobileAds.sharedInstance().start { _ in }
+
                 await requestTrackingAuthorizationIfNeeded()
+
+                // MARK: StoreKit 2 — Start listener, load products, and verify entitlements
+                //
+                // The transaction listener is started here (on @MainActor via .task) rather
+                // than in init() so that @MainActor-isolated methods are not called from a
+                // non-isolated initialiser (Swift 6 strict concurrency compliance).
+                storeKitService.startTransactionListener()
+
+                // Load available IAP products from the App Store so purchase
+                // views can display price and product information immediately.
+                await storeKitService.loadProducts()
+
+                // Re-verify cached ad-free entitlement against StoreKit's current
+                // entitlements. This handles refunds, revocations, and first-launch
+                // scenarios where UserDefaults may be stale.
+                await storeKitService.checkEntitlementsOnLaunch()
 
                 // Register the dvg-expiry and dvg-location notification categories
                 // (with View Code, Mark as Used, and Snooze action buttons).

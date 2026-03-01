@@ -26,6 +26,14 @@ enum AppConstants {
         static let interstitialAdUnitID = "ca-app-pub-3940256099942544/4411468910"
     }
 
+    // MARK: - IAP
+
+    enum IAP {
+        /// Product ID for the non-consumable "Remove Ads" in-app purchase.
+        /// Registered in App Store Connect under the bundle ID `com.fastydiscount.app`.
+        static let removeAdsProductID = "com.fastydiscount.removeads"
+    }
+
     enum PassKit {
         /// Pass Type ID registered in Apple Developer portal.
         /// Must match the identifier provisioned in the developer account.
