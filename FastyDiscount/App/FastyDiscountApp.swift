@@ -5,6 +5,7 @@ import SwiftData
 struct FastyDiscountApp: App {
     @State private var appState = AppState()
     @State private var authViewModel: AuthViewModel
+    @State private var appearanceManager = AppearanceManager()
 
     /// Shared ModelContainer configured with CloudKit sync and App Group storage.
     /// Initialized once at app startup; errors are surfaced via AppState.
@@ -38,6 +39,8 @@ struct FastyDiscountApp: App {
         WindowGroup {
             AuthGateView(authViewModel: authViewModel)
                 .environment(appState)
+                .environment(appearanceManager)
+                .preferredColorScheme(appearanceManager.colorScheme)
                 .alert(
                     "Data Unavailable",
                     isPresented: Binding(
