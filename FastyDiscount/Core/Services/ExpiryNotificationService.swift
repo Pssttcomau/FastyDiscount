@@ -204,7 +204,10 @@ actor UNExpiryNotificationService: ExpiryNotificationService {
     }
 
     /// Returns `true` if the global notifications-enabled flag is set (default true).
-    private func isNotificationsGloballyEnabled() -> Bool {
+    ///
+    /// Marked `nonisolated` so it can be called without an actor hop.
+    /// `UserDefaults.standard` is safe to access from any context.
+    nonisolated private func isNotificationsGloballyEnabled() -> Bool {
         // When the key has never been set, UserDefaults.standard.bool returns false.
         // We treat absence as enabled (default true).
         if UserDefaults.standard.object(forKey: Self.notificationsEnabledKey) == nil {

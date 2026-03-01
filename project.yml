@@ -114,6 +114,8 @@ targets:
           - "EmailParsingService.swift"
           - "BarcodeDetectionService.swift"
           - "VisionParsingService.swift"
+          - "ExpiryNotificationService.swift"
+          - "NotificationPermissionManager.swift"
       - path: FastyDiscount/App/AppConstants.swift
     resources:
       - path: FastyDiscountWidget/Assets.xcassets
@@ -157,6 +159,8 @@ targets:
           - "EmailParsingService.swift"
           - "BarcodeDetectionService.swift"
           - "VisionParsingService.swift"
+          - "ExpiryNotificationService.swift"
+          - "NotificationPermissionManager.swift"
       - path: FastyDiscount/App/AppConstants.swift
     settings:
       base:

@@ -34,11 +34,6 @@ struct FastyDiscountApp: App {
 
         _appState = State(initialValue: state)
         _authViewModel = State(initialValue: viewModel)
-
-        // Register the dvg-expiry notification category early at startup.
-        // TASK-022 will add action buttons to this category. Registering here
-        // ensures the category identifier is available to all delivered notifications.
-        NotificationCategoryRegistrar.registerCategories()
     }
 
     var body: some Scene {
@@ -57,6 +52,21 @@ struct FastyDiscountApp: App {
                     Button("OK", role: .cancel) { }
                 } message: {
                     Text(appState.containerErrorMessage)
+                }
+                .task {
+                    // Register the dvg-expiry notification category.
+                    // TASK-022 will add action buttons to this category. Registering
+                    // here (on @MainActor via .task) avoids calling a @MainActor
+                    // function from init() which can trigger Swift 6 diagnostics.
+                    NotificationCategoryRegistrar.registerCategories()
+
+                    // Reschedule all expiry notifications at launch to recover from
+                    // clock changes, app kills, or missed rescheduling events.
+                    let context = modelContainer.mainContext
+                    let repository = SwiftDataDVGRepository(modelContext: context)
+                    let activeDVGs = (try? await repository.fetchActive()) ?? []
+                    let service = UNExpiryNotificationService()
+                    await service.rescheduleAll(activeDVGs: activeDVGs.map(DVGSnapshot.init))
                 }
         }
         .modelContainer(modelContainer)
