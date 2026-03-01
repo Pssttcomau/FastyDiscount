@@ -112,6 +112,8 @@ final class MockAdMobService: AdService {
 //         UserDefaults.standard.bool(forKey: "com.fastydiscount.adFree")
 //     }
 //
+//     var adImpressionCount: Int = 0
+//
 //     private(set) var isInterstitialReady: Bool = false
 //     private var interstitial: GADInterstitialAd?
 //

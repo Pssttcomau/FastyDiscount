@@ -99,7 +99,7 @@ final class PaywallViewModel {
             case .pending:
                 state = .error("Purchase pending approval. It will activate once approved.")
             default:
-                state = .error(error.localizedDescription ?? "An error occurred. Please try again.")
+                state = .error(error.errorDescription ?? "An error occurred. Please try again.")
             }
             return
         }

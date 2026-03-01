@@ -47,25 +47,28 @@ struct PaywallView: View {
 
     @ViewBuilder
     private var paywallContent: some View {
-        switch viewModel.state {
-        case .loading:
-            loadingRow
+        Group {
+            switch viewModel.state {
+            case .loading:
+                loadingRow
 
-        case .available:
-            availableRows
+            case .available:
+                availableRows
 
-        case .purchasing:
-            purchasingRow
+            case .purchasing:
+                purchasingRow
 
-        case .purchased:
-            purchasedRow
+            case .purchased:
+                purchasedRow
 
-        case .unavailable:
-            unavailableRow
+            case .unavailable:
+                unavailableRow
 
-        case .error(let message):
-            errorRow(message: message)
+            case .error(let message):
+                errorRow(message: message)
+            }
         }
+        .animation(.easeInOut, value: viewModel.state)
     }
 
     // MARK: - State Rows
@@ -161,7 +164,6 @@ struct PaywallView: View {
             Spacer()
         }
         .padding(.vertical, Theme.Spacing.xs)
-        .animation(.easeInOut, value: true)
     }
 
     private var unavailableRow: some View {
@@ -210,11 +212,9 @@ struct PaywallView: View {
 
 #if DEBUG
 #Preview("PaywallView - Loading") {
-    let service = MockStoreKitService()
-    service.simulateLoading = true
-    return NavigationStack {
+    NavigationStack {
         Form {
-            PaywallView(storeKitService: service)
+            PaywallView(storeKitService: MockStoreKitService())
         }
         .navigationTitle("Settings")
     }
@@ -231,7 +231,7 @@ struct PaywallView: View {
 
 #Preview("PaywallView - Purchased") {
     let service = MockStoreKitService()
-    service.simulatePurchased = true
+    service.isAdFree = true
     return NavigationStack {
         Form {
             PaywallView(storeKitService: service)
@@ -249,9 +249,6 @@ private final class MockStoreKitService: StoreKitService {
     var isAdFree: Bool = false
     var isPurchasing: Bool = false
     var purchaseError: StoreKitPurchaseError?
-
-    var simulateLoading: Bool = false
-    var simulatePurchased: Bool = false
 
     func loadProducts() async {}
 
