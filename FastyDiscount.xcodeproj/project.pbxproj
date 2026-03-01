@@ -101,6 +101,8 @@
 		F2990B96F059ABAE05148E35 /* CardModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4434E354363F5E5955D7658 /* CardModifier.swift */; };
 		F904B56FFF0AA366B8D6AFE4 /* DVGRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DD2F4301D309CBAFFD5C90 /* DVGRepository.swift */; };
 		FAF9711ED7487C56762D0DEE /* ScanResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB09B8C2A9112F7D9406C5 /* ScanResultsView.swift */; };
+		40E8AE97ECFA4BA2A00F8A70 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45540A5241F4787895F4C35 /* SettingsView.swift */; };
+		156079ABCCF042D7B3EAB367 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FC03FA1977465D8BC1072B /* SettingsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -229,6 +231,8 @@
 		F8FE26587864355ABB32C7D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA0951F154F4A7BB333B561C /* ReviewQueueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewQueueViewModel.swift; sourceTree = "<group>"; };
 		FE7B84FF304AEF42608A11AD /* FastyDiscountWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastyDiscountWidgetBundle.swift; sourceTree = "<group>"; };
+		F45540A5241F4787895F4C35 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		F6FC03FA1977465D8BC1072B /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -276,8 +280,18 @@
 				BF9A536FF920EAED82502EEF /* Permissions */,
 				BD3CC2725B318CE20CDD4050 /* Scanner */,
 				C66AFB7432D6FD4DDF782BCB /* Search */,
+				8C576C3827CE45BFA6DF1C75 /* Settings */,
 			);
 			path = Features;
+			sourceTree = "<group>";
+		};
+		8C576C3827CE45BFA6DF1C75 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				F45540A5241F4787895F4C35 /* SettingsView.swift */,
+				F6FC03FA1977465D8BC1072B /* SettingsViewModel.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		61A0A9F904676FF45348ECA4 = {
@@ -752,6 +766,8 @@
 				61F31247BA5B85CA4AEA99E6 /* ScannerViewModel.swift in Sources */,
 				1FC8B09252CAE91E4CF195F1 /* SearchView.swift in Sources */,
 				490A58DCAFE356B4B601D696 /* SearchViewModel.swift in Sources */,
+				40E8AE97ECFA4BA2A00F8A70 /* SettingsView.swift in Sources */,
+				156079ABCCF042D7B3EAB367 /* SettingsViewModel.swift in Sources */,
 				09F278F5D9486C0E4B68ED12 /* SignInView.swift in Sources */,
 				6226F47C230628829668050B /* StoreLocation.swift in Sources */,
 				0BE365C08CAB8B78F6F377BE /* Tag.swift in Sources */,

@@ -142,7 +142,7 @@ struct TabRootView: View {
         case .history:
             HistoryPlaceholderView()
         case .settings:
-            SettingsPlaceholderView()
+            SettingsView()
         }
     }
 }
@@ -307,11 +307,3 @@ private struct HistoryPlaceholderView: View {
     }
 }
 
-private struct SettingsPlaceholderView: View {
-    var body: some View {
-        Text("Settings")
-            .font(.largeTitle)
-            .foregroundStyle(.secondary)
-            .navigationTitle("Settings")
-    }
-}
