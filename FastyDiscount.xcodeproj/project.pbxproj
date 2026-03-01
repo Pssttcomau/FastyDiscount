@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A1B2C3D4E5F60011AABB0004 /* DVGFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60011AABB0001 /* DVGFormView.swift */; };
+		A1B2C3D4E5F60011AABB0005 /* DVGFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60011AABB0002 /* DVGFormViewModel.swift */; };
+		A1B2C3D4E5F60011AABB0006 /* TagPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60011AABB0003 /* TagPickerView.swift */; };
 		0587928D3A0FFBDA643F0930 /* DVGExtractionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB16084384A7BD4638D8D0FE /* DVGExtractionResult.swift */; };
 		09F278F5D9486C0E4B68ED12 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979088B9F4216E7CF9915879 /* SignInView.swift */; };
 		0A4587770B25881B70520EB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8FE26587864355ABB32C7D9 /* Assets.xcassets */; };
@@ -116,6 +119,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A1B2C3D4E5F60011AABB0001 /* DVGFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVGFormView.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F60011AABB0002 /* DVGFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVGFormViewModel.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F60011AABB0003 /* TagPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPickerView.swift; sourceTree = "<group>"; };
 		0122E3CE8E05D6E9D5F6F20F /* StoreLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreLocation.swift; sourceTree = "<group>"; };
 		09DD2F4301D309CBAFFD5C90 /* DVGRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVGRepository.swift; sourceTree = "<group>"; };
 		0AA28899713FB7A89571DEEC /* FastyDiscountWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = FastyDiscountWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,9 +208,20 @@
 			isa = PBXGroup;
 			children = (
 				8E1B5D262131F49C22C10647 /* DVGDetail */,
+				A1B2C3D4E5F60011AABB0007 /* DVGForm */,
 				97A493B6114B43F0ED8CB4A7 /* Onboarding */,
 			);
 			path = Features;
+			sourceTree = "<group>";
+		};
+		A1B2C3D4E5F60011AABB0007 /* DVGForm */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D4E5F60011AABB0001 /* DVGFormView.swift */,
+				A1B2C3D4E5F60011AABB0002 /* DVGFormViewModel.swift */,
+				A1B2C3D4E5F60011AABB0003 /* TagPickerView.swift */,
+			);
+			path = DVGForm;
 			sourceTree = "<group>";
 		};
 		61A0A9F904676FF45348ECA4 = {
@@ -552,6 +569,9 @@
 				CFFD02C3CDE8BB80343ABFB4 /* DVGDetailView.swift in Sources */,
 				3DF9117C3BC17D39CF0017E5 /* DVGDetailViewModel.swift in Sources */,
 				ECD819BB5408F3732F2E40D7 /* DVGExtractionResult.swift in Sources */,
+				A1B2C3D4E5F60011AABB0004 /* DVGFormView.swift in Sources */,
+				A1B2C3D4E5F60011AABB0005 /* DVGFormViewModel.swift in Sources */,
+				A1B2C3D4E5F60011AABB0006 /* TagPickerView.swift in Sources */,
 				35EBC3032D296A6CED823AF7 /* DVGRepository.swift in Sources */,
 				2DCA47F6600A97BE9AEE764E /* Destination.swift in Sources */,
 				ACC24CD9624428715DCD29B2 /* FastyDiscountApp.swift in Sources */,

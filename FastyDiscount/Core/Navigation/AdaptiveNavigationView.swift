@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 // MARK: - AdaptiveNavigationView
 
@@ -153,11 +154,9 @@ struct DestinationView: View {
         case .dvgDetail(let id):
             DVGDetailView(dvgID: id)
         case .dvgEdit(let id):
-            Text("DVG Edit: \(id.uuidString)")
-                .navigationTitle("Edit")
+            DVGEditDestinationView(dvgID: id)
         case .dvgCreate(let source):
-            Text("DVG Create from: \(source.rawValue)")
-                .navigationTitle("New DVG")
+            DVGFormView(mode: .create(source), isEmbedded: true)
         case .emailScanResults:
             Text("Email Scan Results")
                 .navigationTitle("Scan Results")
@@ -171,6 +170,51 @@ struct DestinationView: View {
             Text("Store Location Picker: \(id.uuidString)")
                 .navigationTitle("Pick Location")
         }
+    }
+}
+
+// MARK: - DVGEditDestinationView
+
+/// A helper view that fetches a DVG by UUID from SwiftData and presents
+/// the `DVGFormView` in edit mode. Shows "Item Not Found" if the DVG
+/// cannot be located (e.g., it was deleted).
+private struct DVGEditDestinationView: View {
+    @Environment(\.modelContext) private var modelContext
+
+    let dvgID: UUID
+
+    @State private var dvg: DVG?
+    @State private var didLoad = false
+
+    var body: some View {
+        Group {
+            if let dvg {
+                DVGFormView(mode: .edit(dvg), isEmbedded: true)
+            } else if didLoad {
+                ContentUnavailableView(
+                    "Item Not Found",
+                    systemImage: "questionmark.circle",
+                    description: Text("This item could not be found for editing.")
+                )
+            } else {
+                ProgressView("Loading...")
+            }
+        }
+        .task {
+            loadDVG()
+        }
+    }
+
+    private func loadDVG() {
+        guard !didLoad else { return }
+
+        let id = dvgID
+        let descriptor = FetchDescriptor<DVG>(
+            predicate: #Predicate<DVG> { $0.id == id && $0.isDeleted == false }
+        )
+
+        dvg = try? modelContext.fetch(descriptor).first
+        didLoad = true
     }
 }
 
