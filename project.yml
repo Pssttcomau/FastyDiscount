@@ -101,6 +101,9 @@ targets:
       - path: FastyDiscountWidget
         excludes:
           - "**/.gitkeep"
+      - path: FastyDiscount/Core/Models
+        excludes:
+          - "**/.gitkeep"
       - path: FastyDiscount/Core/Services
         excludes:
           - "**/.gitkeep"
@@ -136,6 +139,9 @@ targets:
         excludes:
           - "**/.gitkeep"
           - Info.plist
+      - path: FastyDiscount/Core/Models
+        excludes:
+          - "**/.gitkeep"
       - path: FastyDiscount/Core/Services
         excludes:
           - "**/.gitkeep"

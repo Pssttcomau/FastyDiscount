@@ -1,28 +1,6 @@
 import SwiftData
 import Foundation
 
-// MARK: - Placeholder Model
-
-/// Placeholder model used to verify container setup.
-/// Real @Model classes will be defined in TASK-007/008.
-/// CloudKit compatibility rules are enforced:
-///   - No unique constraints (client-side dedup only)
-///   - All relationships optional
-///   - Default values for all non-optional properties
-///   - Soft-delete via `isDeleted` flag
-@Model
-final class PlaceholderItem {
-    var id: UUID
-    var createdAt: Date
-    var isDeleted: Bool
-
-    init(id: UUID = UUID(), createdAt: Date = Date(), isDeleted: Bool = false) {
-        self.id = id
-        self.createdAt = createdAt
-        self.isDeleted = isDeleted
-    }
-}
-
 // MARK: - ModelContainerFactory
 
 /// Shared factory that creates a `ModelContainer` configured with:
@@ -30,6 +8,12 @@ final class PlaceholderItem {
 /// - CloudKit sync via `.cloudKitDatabase(.automatic)` — uses server-wins conflict resolution
 ///   by default when CloudKit sync is active.
 /// - Lightweight read-only variant for widget and share extension targets.
+///
+/// ### Registered Models
+/// - `DVG` — primary discount/voucher/gift-card item
+/// - `StoreLocation` — physical store location (geofence target, many-to-many with DVG)
+/// - `Tag` — user/system label applied to DVG items (many-to-many with DVG)
+/// - `ScanResult` — raw scan/email extraction result (one-to-one with DVG)
 ///
 /// Usage:
 /// ```swift
@@ -42,7 +26,13 @@ final class PlaceholderItem {
 enum ModelContainerFactory {
 
     /// The SwiftData schema used across all targets.
-    static let schema = Schema([PlaceholderItem.self])
+    /// All models must be listed here for SwiftData and CloudKit to manage them.
+    static let schema = Schema([
+        DVG.self,
+        StoreLocation.self,
+        Tag.self,
+        ScanResult.self
+    ])
 
     // MARK: - Main Container (CloudKit sync enabled)
 

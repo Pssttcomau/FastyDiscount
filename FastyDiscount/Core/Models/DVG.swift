@@ -210,20 +210,23 @@ final class DVG {
     /// eventually purged; SwiftData's physical deletion is deferred.
     var isDeleted: Bool = false
 
-    // MARK: - Relationships (stubs)
+    // MARK: - Relationships
 
     /// Store-location objects associated with this DVG (geofence targets).
-    /// Defined as an optional array to satisfy CloudKit's optional-relationship requirement.
-    @Relationship(deleteRule: .cascade)
-    var storeLocations: [DVGStoreLocation]? = nil
+    /// Uses `.nullify` delete rule for CloudKit compatibility (cascade is handled
+    /// at the application layer). Optional per CloudKit requirement.
+    @Relationship(deleteRule: .nullify)
+    var storeLocations: [StoreLocation]? = nil
 
     /// User-defined tags attached to this item.
-    @Relationship(deleteRule: .cascade)
-    var tags: [DVGTag]? = nil
+    /// Uses `.nullify` delete rule for CloudKit compatibility. Optional per CloudKit requirement.
+    @Relationship(deleteRule: .nullify)
+    var tags: [Tag]? = nil
 
     /// Raw scan result captured during barcode/camera scan, if any.
-    @Relationship(deleteRule: .cascade)
-    var scanResult: DVGScanResult? = nil
+    /// Uses `.nullify` delete rule for CloudKit compatibility. Optional per CloudKit requirement.
+    @Relationship(deleteRule: .nullify)
+    var scanResult: ScanResult? = nil
 
     // MARK: - Init
 
@@ -425,82 +428,3 @@ extension DVG {
     }
 }
 
-// MARK: - Relationship Stub Models
-
-/// Stub model for a store location associated with a DVG (geofence / store finder).
-/// Full implementation will be expanded in a later task.
-@Model
-final class DVGStoreLocation {
-    var id: UUID = UUID()
-    var name: String = ""
-    var latitude: Double = 0.0
-    var longitude: Double = 0.0
-    var isDeleted: Bool = false
-    var lastModified: Date = Date()
-
-    init(
-        id: UUID = UUID(),
-        name: String = "",
-        latitude: Double = 0.0,
-        longitude: Double = 0.0,
-        isDeleted: Bool = false,
-        lastModified: Date = Date()
-    ) {
-        self.id = id
-        self.name = name
-        self.latitude = latitude
-        self.longitude = longitude
-        self.isDeleted = isDeleted
-        self.lastModified = lastModified
-    }
-}
-
-/// Stub model for a user-defined tag applied to a DVG.
-/// Full implementation will be expanded in a later task.
-@Model
-final class DVGTag {
-    var id: UUID = UUID()
-    var name: String = ""
-    var colorHex: String = ""
-    var isDeleted: Bool = false
-    var lastModified: Date = Date()
-
-    init(
-        id: UUID = UUID(),
-        name: String = "",
-        colorHex: String = "",
-        isDeleted: Bool = false,
-        lastModified: Date = Date()
-    ) {
-        self.id = id
-        self.name = name
-        self.colorHex = colorHex
-        self.isDeleted = isDeleted
-        self.lastModified = lastModified
-    }
-}
-
-/// Stub model for a raw scan result captured during a camera or barcode scan.
-/// Full implementation will be expanded in a later task.
-@Model
-final class DVGScanResult {
-    var id: UUID = UUID()
-    var rawValue: String = ""
-    var scannedAt: Date = Date()
-    var isDeleted: Bool = false
-    var lastModified: Date = Date()
-
-    init(
-        id: UUID = UUID(),
-        rawValue: String = "",
-        scannedAt: Date = Date(),
-        isDeleted: Bool = false,
-        lastModified: Date = Date()
-    ) {
-        self.id = id
-        self.rawValue = rawValue
-        self.scannedAt = scannedAt
-        self.isDeleted = isDeleted
-        self.lastModified = lastModified
-    }
-}
