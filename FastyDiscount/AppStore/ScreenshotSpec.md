@@ -40,7 +40,7 @@ where applicable (Dashboard + Detail side-by-side).
 
 | # | Screen | Caption |
 |---|---|---|
-| 1 | Watch complication on Infograph face | "Glanceable at a glance" |
+| 1 | Watch complication on Infograph face | "Always on your wrist" |
 | 2 | Voucher list on Watch | "Your vouchers on your wrist" |
 | 3 | Full-screen barcode on Watch | "Pay directly from Apple Watch" |
 

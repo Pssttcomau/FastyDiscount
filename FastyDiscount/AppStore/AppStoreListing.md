@@ -4,7 +4,7 @@
 **FastyDiscount**
 
 ## Subtitle (30 characters max)
-Discount Codes & Voucher Wallet
+Voucher Wallet & Deal Scanner
 
 ## Category
 - **Primary**: Shopping
