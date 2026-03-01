@@ -36,6 +36,7 @@
 		5A95FF5678FC18706CCDC0ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DE277FB8F8E572BB84421FD /* Assets.xcassets */; };
 		5A977DAA6D4121F3A470E235 /* GmailAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34ADD43197A98E99D9295967 /* GmailAPIClient.swift */; };
 		5BFC757CF60B557F810E068D /* EmailParsingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30713F707819CB262EF6757 /* EmailParsingService.swift */; };
+		618994305288B7A2F70AB025 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1541EAAC1EEB2B955BFF77B1 /* DashboardView.swift */; };
 		61F31247BA5B85CA4AEA99E6 /* ScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070725435C8F9CB463CF9DEF /* ScannerViewModel.swift */; };
 		6226F47C230628829668050B /* StoreLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0122E3CE8E05D6E9D5F6F20F /* StoreLocation.swift */; };
 		65BA105F9A1DF64EB6F9AC37 /* FastyDiscountWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7B84FF304AEF42608A11AD /* FastyDiscountWidgetBundle.swift */; };
@@ -63,6 +64,7 @@
 		93E079CBDD6E620D646A3B20 /* TagPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138A7A96DBE454EC79AF1FD4 /* TagPickerView.swift */; };
 		94D24C53FF96B28E84C4ED01 /* StoreLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0122E3CE8E05D6E9D5F6F20F /* StoreLocation.swift */; };
 		9570548722437F16975BC053 /* FastyDiscountWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 0AA28899713FB7A89571DEEC /* FastyDiscountWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		981011272E01EF6D22D6315E /* DVGCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8C581F9880F4ED474BF89E /* DVGCardView.swift */; };
 		992190245D6579C6567FC4BD /* DVGRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DD2F4301D309CBAFFD5C90 /* DVGRepository.swift */; };
 		9CB6CF9406EE4A8138251284 /* CloudAIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A256DD3E2644571E164EA549 /* CloudAIClient.swift */; };
 		9D69DF65D39FC4029589893C /* DVGFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823140586BFE58B0B4505742 /* DVGFormViewModel.swift */; };
@@ -78,6 +80,7 @@
 		C3A176131ABB2F538A9BA1B5 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D708A035AA0DC1E36B3881E7 /* AppConstants.swift */; };
 		CC25A4A07C5C8684F45210D4 /* ImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6DE53C52FE6ABCE6B51AF /* ImportView.swift */; };
 		CE1AC98FE37D9CC1B52B5BA5 /* DVG.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AA7FA8BEF83B6759CF1EA1 /* DVG.swift */; };
+		CF131CC792D00A8581383257 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFD92DF54632F92670E8BD1 /* DashboardViewModel.swift */; };
 		CF93B8692FDE52239A986E82 /* LocationPermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464E8F385E730DA9AA5AA899 /* LocationPermissionManager.swift */; };
 		CFFD02C3CDE8BB80343ABFB4 /* DVGDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E97FA9D1B4C33ED51C821CE /* DVGDetailView.swift */; };
 		DAADA0EF61C2A6C2FB1E97AD /* CameraScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D1E03B5D5E24E7C90E581 /* CameraScannerView.swift */; };
@@ -151,6 +154,7 @@
 		0AA28899713FB7A89571DEEC /* FastyDiscountWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = FastyDiscountWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AE09873A9469003EDE2C7A0 /* FastyDiscountUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastyDiscountUITests.swift; sourceTree = "<group>"; };
 		138A7A96DBE454EC79AF1FD4 /* TagPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPickerView.swift; sourceTree = "<group>"; };
+		1541EAAC1EEB2B955BFF77B1 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		15C0CA48AC46680E5D3CA93D /* FastyDiscountApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastyDiscountApp.swift; sourceTree = "<group>"; };
 		18EB56A38ABDF3CFEFB46968 /* FastyDiscountWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastyDiscountWidget.swift; sourceTree = "<group>"; };
 		1ABCA7F6D60DC7446B4073A3 /* EmailScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailScanView.swift; sourceTree = "<group>"; };
@@ -179,6 +183,7 @@
 		87D37587BDBE0CFC8919E653 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		88571406C0725018E19E6889 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8A5BEE35D6024275FE15B89F /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		8B8C581F9880F4ED474BF89E /* DVGCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVGCardView.swift; sourceTree = "<group>"; };
 		9691929165A7A4D71B132CD9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		979088B9F4216E7CF9915879 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		99EF8CF6CB3F135673A09194 /* BarcodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeGenerator.swift; sourceTree = "<group>"; };
@@ -193,6 +198,7 @@
 		A7AA7FA8BEF83B6759CF1EA1 /* DVG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVG.swift; sourceTree = "<group>"; };
 		AB8C15894DAB11688E8B4D2C /* ExpiryNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpiryNotificationService.swift; sourceTree = "<group>"; };
 		ABAE83108F7F7A98F025A18A /* BarcodeDetectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeDetectionService.swift; sourceTree = "<group>"; };
+		AFFD92DF54632F92670E8BD1 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		BB16084384A7BD4638D8D0FE /* DVGExtractionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVGExtractionResult.swift; sourceTree = "<group>"; };
 		C2998DF0B0A158FF469F3C28 /* ModelContainerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelContainerFactory.swift; sourceTree = "<group>"; };
 		C5E7FED75525299C1FC87BE1 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
@@ -253,6 +259,7 @@
 		438C7B59B9FD8F8346956079 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				6BE5DD430E4CB1F6B58D785A /* Dashboard */,
 				8E1B5D262131F49C22C10647 /* DVGDetail */,
 				91B3A52A6EAC06146D35369C /* DVGForm */,
 				9D045C7ED479AAEFA0CC8E8A /* EmailImport */,
@@ -274,6 +281,16 @@
 				ABB8453A181F6A80B26A57EE /* FastyDiscountWidget */,
 				89AFC277CE3C4C4629F9BD22 /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		6BE5DD430E4CB1F6B58D785A /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				FB697BE3FF42DB06E2271CE7 /* Components */,
+				1541EAAC1EEB2B955BFF77B1 /* DashboardView.swift */,
+				AFFD92DF54632F92670E8BD1 /* DashboardViewModel.swift */,
+			);
+			path = Dashboard;
 			sourceTree = "<group>";
 		};
 		6C970C7A5510C4498EC3A538 /* FastyDiscountUITests */ = {
@@ -462,6 +479,14 @@
 				6A8978A026671871ED9BF176 /* FastyDiscountWatchApp.swift */,
 			);
 			path = FastyDiscountWatch;
+			sourceTree = "<group>";
+		};
+		FB697BE3FF42DB06E2271CE7 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				8B8C581F9880F4ED474BF89E /* DVGCardView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -661,12 +686,15 @@
 				20B6D44D877BD0FE9E44A137 /* CloudAIClient.swift in Sources */,
 				4BEA1A5DC5F7BB23509AC435 /* ContentView.swift in Sources */,
 				CE1AC98FE37D9CC1B52B5BA5 /* DVG.swift in Sources */,
+				981011272E01EF6D22D6315E /* DVGCardView.swift in Sources */,
 				CFFD02C3CDE8BB80343ABFB4 /* DVGDetailView.swift in Sources */,
 				3DF9117C3BC17D39CF0017E5 /* DVGDetailViewModel.swift in Sources */,
 				ECD819BB5408F3732F2E40D7 /* DVGExtractionResult.swift in Sources */,
 				C0DBBC2A7BFD368992258FCB /* DVGFormView.swift in Sources */,
 				9D69DF65D39FC4029589893C /* DVGFormViewModel.swift in Sources */,
 				35EBC3032D296A6CED823AF7 /* DVGRepository.swift in Sources */,
+				618994305288B7A2F70AB025 /* DashboardView.swift in Sources */,
+				CF131CC792D00A8581383257 /* DashboardViewModel.swift in Sources */,
 				2DCA47F6600A97BE9AEE764E /* Destination.swift in Sources */,
 				5BFC757CF60B557F810E068D /* EmailParsingService.swift in Sources */,
 				678FF87A74DE34E825EC4C6A /* EmailScanView.swift in Sources */,

@@ -134,7 +134,7 @@ struct TabRootView: View {
     var body: some View {
         switch tab {
         case .dashboard:
-            DashboardPlaceholderView()
+            DashboardView()
         case .nearby:
             NearbyPlaceholderView()
         case .scan:
@@ -237,15 +237,6 @@ private struct DVGEditDestinationView: View {
 
 /// Placeholder views for each tab. These are simple text views that will
 /// be replaced with full feature implementations in Phase 6.
-
-private struct DashboardPlaceholderView: View {
-    var body: some View {
-        Text("Dashboard")
-            .font(.largeTitle)
-            .foregroundStyle(.secondary)
-            .navigationTitle("Dashboard")
-    }
-}
 
 private struct NearbyPlaceholderView: View {
     var body: some View {
