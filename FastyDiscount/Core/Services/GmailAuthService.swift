@@ -1,8 +1,19 @@
 import AuthenticationServices
 import Foundation
+import ObjectiveC
 #if canImport(UIKit)
 import UIKit
 #endif
+
+// MARK: - Shared Formatter
+
+/// File-scope ISO 8601 formatter to avoid instantiating `ISO8601DateFormatter`
+/// (an `NSObject` subclass) in `nonisolated` async contexts, which triggers
+/// a strict-concurrency `actor-isolated-call` warning under Swift 6.
+private nonisolated(unsafe) let sharedISO8601Formatter: ISO8601DateFormatter = {
+    let formatter = ISO8601DateFormatter()
+    return formatter
+}()
 
 // MARK: - GmailAuthError
 
@@ -266,7 +277,7 @@ struct GoogleGmailAuthService: GmailAuthService {
 
         // Check if token is still valid with safety margin
         if let expiresAtString = try readKeychain(forKey: KeychainKeys.expiresAt),
-           let expiresAt = ISO8601DateFormatter().date(from: expiresAtString) {
+           let expiresAt = sharedISO8601Formatter.date(from: expiresAtString) {
             let now = Date()
             let marginDate = expiresAt.addingTimeInterval(-GmailOAuthConfig.tokenExpirationMargin)
 
@@ -384,15 +395,25 @@ struct GoogleGmailAuthService: GmailAuthService {
                 let contextProvider = WebAuthPresentationContextProvider()
                 authSession.presentationContextProvider = contextProvider
 
-                // Keep a strong reference until the session completes
-                withExtendedLifetime(contextProvider) {
-                    if !authSession.start() {
-                        continuation.resume(
-                            throwing: GmailAuthError.authorizationFailed(
-                                detail: "Failed to start authentication session."
-                            )
+                // ASWebAuthenticationSession holds its presentationContextProvider
+                // as a weak reference. `withExtendedLifetime` only keeps it alive
+                // until its closure returns, but `authSession.start()` is
+                // non-blocking — the OAuth flow continues asynchronously. Use an
+                // associated object to tie contextProvider's lifetime to the
+                // session itself so it stays alive until the session is deallocated.
+                objc_setAssociatedObject(
+                    authSession,
+                    "contextProvider",
+                    contextProvider,
+                    .OBJC_ASSOCIATION_RETAIN
+                )
+
+                if !authSession.start() {
+                    continuation.resume(
+                        throwing: GmailAuthError.authorizationFailed(
+                            detail: "Failed to start authentication session."
                         )
-                    }
+                    )
                 }
             }
         }
@@ -578,7 +599,7 @@ struct GoogleGmailAuthService: GmailAuthService {
     /// Persists tokens and computed expiration timestamp in the Keychain.
     private func storeTokens(accessToken: String, refreshToken: String, expiresIn: Int) throws {
         let expiresAt = Date().addingTimeInterval(TimeInterval(expiresIn))
-        let expiresAtString = ISO8601DateFormatter().string(from: expiresAt)
+        let expiresAtString = sharedISO8601Formatter.string(from: expiresAt)
 
         do {
             try keychain.save(accessToken, forKey: KeychainKeys.accessCredential)
@@ -611,9 +632,16 @@ struct GoogleGmailAuthService: GmailAuthService {
 
     // MARK: - Private: Helpers
 
-    /// Percent-encodes a string for use in URL-encoded form bodies.
+    /// Percent-encodes a string for use in `application/x-www-form-urlencoded` bodies.
+    ///
+    /// Uses a restricted character set that additionally removes `&`, `=`, `+`, `%`, and `#`
+    /// from `.urlQueryAllowed`. These characters are valid in query strings but must be
+    /// percent-encoded when they appear in individual parameter values (e.g. OAuth
+    /// authorization codes may contain base64url characters).
     private func urlEncode(_ string: String) -> String {
-        string.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? string
+        var allowed = CharacterSet.urlQueryAllowed
+        allowed.remove(charactersIn: "&=+%#")
+        return string.addingPercentEncoding(withAllowedCharacters: allowed) ?? string
     }
 }
 
