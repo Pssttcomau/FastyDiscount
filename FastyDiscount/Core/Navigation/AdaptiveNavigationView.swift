@@ -162,8 +162,7 @@ struct DestinationView: View {
         case .emailScanResults:
             EmailScanView()
         case .reviewQueue:
-            Text("Review Queue")
-                .navigationTitle("Review")
+            ReviewQueueView()
         case .tagManager:
             Text("Tag Manager")
                 .navigationTitle("Tags")

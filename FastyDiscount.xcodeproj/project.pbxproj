@@ -56,11 +56,13 @@
 		9CB6CF9406EE4A8138251284 /* CloudAIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A256DD3E2644571E164EA549 /* CloudAIClient.swift */; };
 		9D69DF65D39FC4029589893C /* DVGFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823140586BFE58B0B4505742 /* DVGFormViewModel.swift */; };
 		A0489EE2A0E705534CBC9C52 /* ScanResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CCE2158FD8C356591E834D /* ScanResult.swift */; };
+		A14ECB903E84334B410980EE /* ReviewQueueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0951F154F4A7BB333B561C /* ReviewQueueViewModel.swift */; };
 		A9E88ADCD5186C43B623BFB5 /* FastyDiscountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCB7E057D51E7199DA790AA /* FastyDiscountTests.swift */; };
 		AAD2A10448748BC03B36E383 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509B58F6E88817E1D7D8094 /* NavigationRouter.swift */; };
 		ACBA56B68D05B23B3C27D225 /* ScanResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CCE2158FD8C356591E834D /* ScanResult.swift */; };
 		ACC24CD9624428715DCD29B2 /* FastyDiscountApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C0CA48AC46680E5D3CA93D /* FastyDiscountApp.swift */; };
 		B0B2C63772859F4A3EBA13FC /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8441D63ED778CDDD9E70854 /* AuthViewModel.swift */; };
+		BF5790074C51631E31787624 /* ReviewQueueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533528FAF43C73F0FE5F5B49 /* ReviewQueueView.swift */; };
 		C0DBBC2A7BFD368992258FCB /* DVGFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284E13291327FC54DC399957 /* DVGFormView.swift */; };
 		C3A176131ABB2F538A9BA1B5 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D708A035AA0DC1E36B3881E7 /* AppConstants.swift */; };
 		CE1AC98FE37D9CC1B52B5BA5 /* DVG.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AA7FA8BEF83B6759CF1EA1 /* DVG.swift */; };
@@ -139,6 +141,7 @@
 		3A12B82D1E0A85CF8C69513B /* AppearanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceManager.swift; sourceTree = "<group>"; };
 		418F8AC8527C19B7B186AB7B /* EmailScanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailScanViewModel.swift; sourceTree = "<group>"; };
 		4F1AF8301D378D3D17B56D19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		533528FAF43C73F0FE5F5B49 /* ReviewQueueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewQueueView.swift; sourceTree = "<group>"; };
 		5731DA4F74737134A0331BFB /* FastyDiscountUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = FastyDiscountUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BC12766F92B805DBCA6F59A /* FastyDiscountWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FastyDiscountWidget.entitlements; sourceTree = "<group>"; };
 		68D872915DE7DE0AE2465E04 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -178,6 +181,7 @@
 		ED5F54AB779608CE8ABCB292 /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 		F4434E354363F5E5955D7658 /* CardModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModifier.swift; sourceTree = "<group>"; };
 		F8FE26587864355ABB32C7D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FA0951F154F4A7BB333B561C /* ReviewQueueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewQueueViewModel.swift; sourceTree = "<group>"; };
 		FE7B84FF304AEF42608A11AD /* FastyDiscountWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastyDiscountWidgetBundle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -330,6 +334,8 @@
 			children = (
 				1ABCA7F6D60DC7446B4073A3 /* EmailScanView.swift */,
 				418F8AC8527C19B7B186AB7B /* EmailScanViewModel.swift */,
+				533528FAF43C73F0FE5F5B49 /* ReviewQueueView.swift */,
+				FA0951F154F4A7BB333B561C /* ReviewQueueViewModel.swift */,
 			);
 			path = EmailImport;
 			sourceTree = "<group>";
@@ -606,6 +612,8 @@
 				6E55264149E6D5DF130E10CE /* MockAuthenticationService.swift in Sources */,
 				7BE645C09C5666BB7BB85C1E /* ModelContainerFactory.swift in Sources */,
 				AAD2A10448748BC03B36E383 /* NavigationRouter.swift in Sources */,
+				BF5790074C51631E31787624 /* ReviewQueueView.swift in Sources */,
+				A14ECB903E84334B410980EE /* ReviewQueueViewModel.swift in Sources */,
 				ACBA56B68D05B23B3C27D225 /* ScanResult.swift in Sources */,
 				09F278F5D9486C0E4B68ED12 /* SignInView.swift in Sources */,
 				6226F47C230628829668050B /* StoreLocation.swift in Sources */,
