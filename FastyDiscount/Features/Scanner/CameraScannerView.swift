@@ -264,10 +264,16 @@ struct CameraScannerView: View {
 
     // MARK: - Actions
 
-    /// Creates a DVG from the detected barcode and navigates to the DVG creation form.
+    /// Navigates to the scan results view with the detected barcode as input.
+    ///
+    /// The scanner session is stopped before navigation so the camera is released.
     private func createDVG(from barcode: DetectedBarcode) {
         viewModel.stopSession()
-        router.push(.dvgCreate(.scan))
+        let inputData = ScanInputData.barcodeOnly(
+            barcode: barcode,
+            originalImageData: barcode.imageData
+        )
+        router.push(.scanResults(inputData))
     }
 
     /// Switches to text OCR mode.

@@ -182,6 +182,8 @@ struct DestinationView: View {
                 .navigationTitle("Text OCR")
         case .importScan:
             ImportView()
+        case .scanResults(let inputData):
+            ScanResultsView(inputData: inputData)
         }
     }
 }

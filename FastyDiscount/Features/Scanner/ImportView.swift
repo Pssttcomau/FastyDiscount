@@ -21,7 +21,6 @@ struct ImportView: View {
     @State private var viewModel = ImportViewModel()
     @State private var selectedPhotoItem: PhotosPickerItem?
     @State private var showDocumentPicker = false
-    @State private var showDVGForm = false
 
     // MARK: - Body
 
@@ -55,9 +54,6 @@ struct ImportView: View {
                     await viewModel.processPDF(at: url)
                 }
             }
-        }
-        .sheet(isPresented: $showDVGForm) {
-            DVGFormView(mode: .create(viewModel.dvgSource))
         }
         .toolbar {
             if viewModel.hasResults {
@@ -293,7 +289,7 @@ struct ImportView: View {
 
     private var createDVGButton: some View {
         Button {
-            showDVGForm = true
+            navigateToScanResults()
         } label: {
             Label("Create DVG", systemImage: "plus.circle.fill")
                 .font(Theme.Typography.headline)
@@ -303,7 +299,32 @@ struct ImportView: View {
                 .background(Theme.Colors.primary, in: RoundedRectangle(cornerRadius: Theme.CornerRadius.medium))
         }
         .accessibilityLabel("Create new DVG from scan results")
-        .accessibilityHint("Opens the form to save this barcode as a new discount, voucher, or gift card")
+        .accessibilityHint("Opens the scan results form to save this barcode as a new discount, voucher, or gift card")
+    }
+
+    // MARK: - Navigation Helper
+
+    /// Builds a `ScanInputData` from the current import results and pushes to `.scanResults`.
+    private func navigateToScanResults() {
+        let inputData: ScanInputData
+
+        if viewModel.detectedBarcodes.isEmpty {
+            // OCR text only
+            let text = viewModel.extractedTextCombined
+            inputData = ScanInputData.ocrTextOnly(
+                text: text,
+                originalImageData: viewModel.barcodeImageData
+            )
+        } else {
+            // Barcode detected — use highest-confidence barcode
+            let primaryBarcode = viewModel.detectedBarcodes[0]
+            inputData = ScanInputData.barcodeOnly(
+                barcode: primaryBarcode,
+                originalImageData: viewModel.barcodeImageData
+            )
+        }
+
+        router.push(.scanResults(inputData))
     }
 
     // MARK: - Error Content
