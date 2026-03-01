@@ -102,6 +102,11 @@ struct FastyDiscountApp: App {
                     // Recalculate geofences at launch so the top-20 monitored
                     // regions reflect current DVG state and user location.
                     await geofenceManager.recalculateGeofences()
+
+                    // Start monitoring for significant location changes so geofences
+                    // are recalculated when the user moves 500m+. This also handles
+                    // background and cold-launch wakeups triggered by the OS.
+                    geofenceManager.startSignificantLocationMonitoring()
                 }
         }
         .modelContainer(modelContainer)

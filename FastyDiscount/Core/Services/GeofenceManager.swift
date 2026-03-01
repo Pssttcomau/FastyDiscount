@@ -2,6 +2,7 @@ import Foundation
 import CoreLocation
 import UserNotifications
 import SwiftData
+import OSLog
 
 // MARK: - GeofenceSnapshot
 
@@ -77,14 +78,30 @@ final class GeofenceManager: NSObject, CLLocationManagerDelegate {
     /// Region identifier prefix used for all geofence regions managed by this service.
     static let regionIdentifierPrefix = "dvg-"
 
+    /// Minimum distance (metres) the user must move before geofences are recalculated.
+    /// Significant-location-change events fire approximately every 500m, so this
+    /// threshold avoids redundant recalculations from small jitter.
+    static let minimumRecalculationDistance: Double = 500.0
+
     // MARK: - Properties
 
     private let locationManager: CLLocationManager
     private let modelContainer: ModelContainer
 
+    /// Structured logger for geofence and significant-location-change events.
+    private let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "FastyDiscount",
+                                category: "GeofenceManager")
+
     /// Tracks the last time a notification was sent for each region identifier.
     /// Used to enforce the cooldown interval.
     private var lastNotificationTimes: [String: Date] = [:]
+
+    /// The location at which geofences were last recalculated.
+    ///
+    /// Used to implement the 500m threshold: geofences are only recalculated when
+    /// the user has moved at least `minimumRecalculationDistance` from this point.
+    /// `nil` means no recalculation has occurred yet (first recalculation always runs).
+    private var lastRecalculationLocation: CLLocation?
 
     // MARK: - Init
 
@@ -100,10 +117,33 @@ final class GeofenceManager: NSObject, CLLocationManagerDelegate {
         super.init()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-        locationManager.allowsBackgroundLocationUpdates = false
+        // Background location updates must be enabled so the system can deliver
+        // significant-location-change events and geofence transitions while the
+        // app is running in the background. The app may also be cold-launched by
+        // the OS specifically to handle these events.
+        locationManager.allowsBackgroundLocationUpdates = true
     }
 
     // MARK: - Public API
+
+    /// Starts monitoring for significant location changes.
+    ///
+    /// Significant-location changes fire approximately every 500m or when the
+    /// device connects to a different cell tower. This is a low-power alternative
+    /// to continuous GPS: the system batches events and can even relaunch the app
+    /// from a terminated state to deliver them.
+    ///
+    /// Only starts monitoring when the app has sufficient location authorisation
+    /// (`.authorizedAlways` or `.authorizedWhenInUse`). Calling this when already
+    /// monitoring is a no-op (the system deduplicates the request).
+    func startSignificantLocationMonitoring() {
+        guard isAuthorizedForRegionMonitoring() else {
+            logger.info("Significant location monitoring not started: insufficient authorisation")
+            return
+        }
+        locationManager.startMonitoringSignificantLocationChanges()
+        logger.info("Significant location change monitoring started")
+    }
 
     /// Re-ranks all active DVGs with store locations, removes old geofence regions,
     /// and registers the top 20 by priority score.
@@ -139,15 +179,18 @@ final class GeofenceManager: NSObject, CLLocationManagerDelegate {
 
         // Remove regions that are no longer in the top 20
         let currentRegions = locationManager.monitoredRegions
+        var removedCount = 0
         for region in currentRegions {
             if region.identifier.hasPrefix(Self.regionIdentifierPrefix)
                 && !desiredIdentifiers.contains(region.identifier) {
                 locationManager.stopMonitoring(for: region)
+                removedCount += 1
             }
         }
 
         // Register new top regions (skip already-monitored ones)
         let currentIdentifiers = Set(currentRegions.map(\.identifier))
+        var addedCount = 0
         for snapshot in topRegions {
             if !currentIdentifiers.contains(snapshot.regionIdentifier) {
                 let region = CLCircularRegion(
@@ -161,8 +204,17 @@ final class GeofenceManager: NSObject, CLLocationManagerDelegate {
                 region.notifyOnEntry = true
                 region.notifyOnExit = false
                 locationManager.startMonitoring(for: region)
+                addedCount += 1
             }
         }
+
+        // Update the recalculation anchor so future significant-location-change
+        // events can skip unnecessary recalculations via the 500m threshold.
+        if let location = lastLocation {
+            lastRecalculationLocation = location
+        }
+
+        logger.info("Geofence recalculation complete — added: \(addedCount), removed: \(removedCount), total monitored: \(topRegions.count)")
     }
 
     // MARK: - CLLocationManagerDelegate
@@ -187,6 +239,30 @@ final class GeofenceManager: NSObject, CLLocationManagerDelegate {
         }
     }
 
+    /// Called when significant location changes are delivered by the system.
+    ///
+    /// This delegate method is the callback for `startMonitoringSignificantLocationChanges()`.
+    /// It fires approximately every 500m or on a cell-tower change. The app may be
+    /// cold-launched into the background by the OS specifically to receive this event.
+    ///
+    /// ### Swift 6 Concurrency
+    /// This method is `nonisolated` because `CLLocationManagerDelegate` is not
+    /// `@MainActor`-bound. Location data is extracted from `CLLocation` (a `Sendable`
+    /// type) here on the calling thread, then the main-actor work is dispatched via
+    /// a `Task { @MainActor }` closure. This avoids any data-race issues.
+    nonisolated func locationManager(
+        _ manager: CLLocationManager,
+        didUpdateLocations locations: [CLLocation]
+    ) {
+        // Extract the most recent location. `CLLocation` is Sendable, so this is
+        // safe to capture and pass across actor boundaries.
+        guard let newLocation = locations.last else { return }
+
+        Task { @MainActor [weak self] in
+            await self?.handleSignificantLocationChange(to: newLocation)
+        }
+    }
+
     /// Called when region monitoring fails for a specific region.
     nonisolated func locationManager(
         _ manager: CLLocationManager,
@@ -200,8 +276,42 @@ final class GeofenceManager: NSObject, CLLocationManagerDelegate {
     /// Called when the location manager's authorisation status changes.
     nonisolated func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         Task { @MainActor [weak self] in
-            await self?.recalculateGeofences()
+            guard let self else { return }
+            // (Re)start significant-location monitoring in case we just gained authorisation.
+            self.startSignificantLocationMonitoring()
+            await self.recalculateGeofences()
         }
+    }
+
+    // MARK: - Significant Location Change Handling
+
+    /// Processes a significant location change event.
+    ///
+    /// Only triggers a full geofence recalculation if the user has moved at least
+    /// `minimumRecalculationDistance` (500m) from the location used for the last
+    /// recalculation. This guards against multiple rapid events firing in quick
+    /// succession without meaningful movement.
+    ///
+    /// If no previous recalculation has occurred (`lastRecalculationLocation == nil`),
+    /// the recalculation always runs.
+    ///
+    /// - Parameter newLocation: The most recent significant location fix.
+    private func handleSignificantLocationChange(to newLocation: CLLocation) async {
+        let distanceMoved: CLLocationDistance
+        if let lastLocation = lastRecalculationLocation {
+            distanceMoved = newLocation.distance(from: lastLocation)
+        } else {
+            // First ever recalculation — always proceed.
+            distanceMoved = Self.minimumRecalculationDistance
+        }
+
+        guard distanceMoved >= Self.minimumRecalculationDistance else {
+            logger.debug("Significant location change ignored: moved \(distanceMoved, format: .fixed(precision: 0))m (threshold: \(Self.minimumRecalculationDistance)m)")
+            return
+        }
+
+        logger.info("Significant location change: moved \(distanceMoved, format: .fixed(precision: 0))m — recalculating geofences")
+        await recalculateGeofences()
     }
 
     // MARK: - Region Entry Handling
