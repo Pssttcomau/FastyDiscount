@@ -119,6 +119,24 @@ struct FastyDiscountApp: App {
                     // are recalculated when the user moves 500m+. This also handles
                     // background and cold-launch wakeups triggered by the OS.
                     geofenceManager.startSignificantLocationMonitoring()
+
+                    // Activate Watch Connectivity and perform the initial DVG sync.
+                    // This must run after the modelContainer is ready.
+                    WatchConnectivityService.shared.activate()
+                    await WatchConnectivityService.shared.syncDVGsToWatch(repository: repository)
+
+                    // Observe "mark as used" requests forwarded by WatchConnectivityService
+                    // from the watch. We use a long-running Task to subscribe for the
+                    // lifetime of this .task modifier (i.e., while the view is active).
+                    let container = modelContainer
+                    for await notification in NotificationCenter.default.notifications(
+                        named: WatchConnectivityService.markAsUsedNotification
+                    ) {
+                        await WatchConnectivityService.shared.handleMarkAsUsedNotification(
+                            notification,
+                            modelContainer: container
+                        )
+                    }
                 }
         }
         .modelContainer(modelContainer)
