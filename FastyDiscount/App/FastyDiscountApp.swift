@@ -59,13 +59,13 @@ struct FastyDiscountApp: App {
 /// Routes between `SignInView` and the main `ContentView` based on auth state.
 /// Shows a neutral loading state while credentials are being checked.
 private struct AuthGateView: View {
-    @State private var authViewModel: AuthViewModel
+    @State var authViewModel: AuthViewModel
 
     var body: some View {
         Group {
             switch authViewModel.state {
             case .checking:
-                // Splash / loading — neutral background, no spinner to avoid flash
+                // Splash / loading -- neutral background, no spinner to avoid flash
                 Color(.systemBackground)
                     .ignoresSafeArea()
 
@@ -81,51 +81,6 @@ private struct AuthGateView: View {
         .animation(.easeInOut(duration: 0.25), value: authViewModel.state)
         .task {
             await authViewModel.checkCredentialStateOnLaunch()
-        }
-    }
-}
-
-// MARK: - ContentView
-
-struct ContentView: View {
-    @Environment(AppState.self) private var appState
-
-    var body: some View {
-        TabView {
-            Tab("Dashboard", systemImage: "house.fill") {
-                NavigationStack {
-                    Text("Dashboard")
-                        .navigationTitle("Dashboard")
-                }
-            }
-
-            Tab("Nearby", systemImage: "map.fill") {
-                NavigationStack {
-                    Text("Nearby")
-                        .navigationTitle("Nearby")
-                }
-            }
-
-            Tab("Scan", systemImage: "barcode.viewfinder") {
-                NavigationStack {
-                    Text("Scan")
-                        .navigationTitle("Scan")
-                }
-            }
-
-            Tab("History", systemImage: "clock.fill") {
-                NavigationStack {
-                    Text("History")
-                        .navigationTitle("History")
-                }
-            }
-
-            Tab("Settings", systemImage: "gearshape.fill") {
-                NavigationStack {
-                    Text("Settings")
-                        .navigationTitle("Settings")
-                }
-            }
         }
     }
 }
