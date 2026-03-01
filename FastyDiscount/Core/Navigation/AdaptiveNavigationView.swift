@@ -136,7 +136,7 @@ struct TabRootView: View {
         case .dashboard:
             DashboardView()
         case .nearby:
-            NearbyPlaceholderView()
+            NearbyMapView()
         case .scan:
             ScanPlaceholderView()
         case .history:
@@ -239,15 +239,6 @@ private struct DVGEditDestinationView: View {
 
 /// Placeholder views for each tab. These are simple text views that will
 /// be replaced with full feature implementations in Phase 6.
-
-private struct NearbyPlaceholderView: View {
-    var body: some View {
-        Text("Nearby")
-            .font(.largeTitle)
-            .foregroundStyle(.secondary)
-            .navigationTitle("Nearby")
-    }
-}
 
 private struct ScanPlaceholderView: View {
     @Environment(NavigationRouter.self) private var router
