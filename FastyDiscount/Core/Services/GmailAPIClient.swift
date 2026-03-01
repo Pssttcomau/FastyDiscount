@@ -359,7 +359,7 @@ struct GoogleGmailAPIClient: GmailAPIClient {
             let year = calendar.component(.year, from: sinceDate)
             let month = calendar.component(.month, from: sinceDate)
             let day = calendar.component(.day, from: sinceDate)
-            parts.append("after:\(year)/\(month)/\(day)")
+            parts.append(String(format: "after:%d/%02d/%02d", year, month, day))
         }
 
         return parts.joined(separator: " ")
@@ -702,8 +702,8 @@ struct GoogleGmailAPIClient: GmailAPIClient {
 
     /// Decodes common HTML entities to their plain-text equivalents.
     ///
-    /// Handles named entities (e.g. `&amp;`) and decimal numeric entities
-    /// (e.g. `&#8217;`).
+    /// Handles named entities (e.g. `&amp;`), decimal numeric entities
+    /// (e.g. `&#8217;`), and hexadecimal numeric entities (e.g. `&#x2019;`).
     private static func decodeHTMLEntities(_ string: String) -> String {
         var result = string
 
@@ -737,9 +737,9 @@ struct GoogleGmailAPIClient: GmailAPIClient {
         return result
     }
 
-    /// Replaces numeric HTML entities (e.g. `&#8217;`) with their Unicode characters.
+    /// Replaces numeric HTML entities (e.g. `&#8217;` or `&#x2019;`) with their Unicode characters.
     private static func replaceNumericEntities(in string: String) -> String {
-        guard let regex = try? NSRegularExpression(pattern: "&#(\\d+);") else {
+        guard let regex = try? NSRegularExpression(pattern: "&#(x[0-9a-fA-F]+|[0-9]+);") else {
             return string
         }
 
@@ -755,8 +755,14 @@ struct GoogleGmailAPIClient: GmailAPIClient {
             let numberRange = Range(match.range(at: 1), in: result)!
             let numberString = String(result[numberRange])
 
-            if let codePoint = UInt32(numberString),
-               let scalar = Unicode.Scalar(codePoint) {
+            let codePoint: UInt32?
+            if numberString.hasPrefix("x") || numberString.hasPrefix("X") {
+                codePoint = UInt32(numberString.dropFirst(), radix: 16)
+            } else {
+                codePoint = UInt32(numberString)
+            }
+
+            if let codePoint, let scalar = Unicode.Scalar(codePoint) {
                 result.replaceSubrange(fullRange, with: String(scalar))
             }
         }
