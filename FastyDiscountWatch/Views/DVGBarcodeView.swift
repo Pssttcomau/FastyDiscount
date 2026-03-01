@@ -17,6 +17,7 @@ struct DVGBarcodeView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var isMarkedAsUsed = false
     @State private var showingConfirmation = false
+    @State private var extendedSession: WKExtendedRuntimeSession?
 
     var body: some View {
         ScrollView {
@@ -143,22 +144,31 @@ struct DVGBarcodeView: View {
 
     // MARK: - Brightness Management
 
-    /// Increases screen brightness to maximum for barcode scanner readability.
+    /// Keeps the display active and prevents dimming while the barcode is shown.
+    ///
+    /// watchOS has no public API equivalent to iOS's `UIScreen.main.brightness`.
+    /// Instead, we start a `WKExtendedRuntimeSession` which keeps the display
+    /// active and prevents the screen from dimming or sleeping, ensuring the
+    /// barcode remains visible for scanning.
+    ///
+    /// NOTE: This may require the `com.apple.developer.watchkit.background-mode`
+    /// entitlement with the `self-care` or `smart-alarm` session type configured
+    /// in the app's entitlements file.
     private func increaseBrightness() {
         // Play a subtle haptic to indicate the barcode is ready for scanning
         WKInterfaceDevice.current().play(.click)
 
-        // On watchOS, we keep the screen active by disabling the idle timer.
-        // The system will automatically increase brightness when the display
-        // is being actively viewed. We use the extended runtime session
-        // approach if available, but the primary mechanism is the haptic
-        // feedback which also signals to the user the screen is ready.
+        // Start an extended runtime session to keep the display active
+        let session = WKExtendedRuntimeSession()
+        session.start()
+        extendedSession = session
     }
 
-    /// Restores normal brightness when leaving the barcode view.
+    /// Ends the extended runtime session when leaving the barcode view,
+    /// allowing watchOS to resume normal display dimming behavior.
     private func restoreBrightness() {
-        // No explicit restoration needed -- watchOS manages brightness automatically
-        // when the view is dismissed.
+        extendedSession?.invalidate()
+        extendedSession = nil
     }
 }
 

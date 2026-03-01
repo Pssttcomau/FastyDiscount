@@ -130,30 +130,34 @@ struct Code128View: View {
 
 // MARK: - QR Code Encoder
 
-/// Minimal QR code encoder for watchOS.
+/// Display-only QR-like visual encoder for watchOS.
 ///
-/// Generates a QR code data matrix for Version 1-4 (depending on content length).
-/// Uses error correction level M. This is a simplified implementation sufficient
-/// for encoding typical discount codes and short URLs on a watch display.
+/// NOTE: This is a display-only visual approximation and is NOT a standards-compliant
+/// QR code. It cannot be decoded by QR scanners. It produces a deterministic pattern
+/// with finder patterns and data bits that visually resembles a QR code, but it is
+/// missing format info bits, mask patterns, proper data traversal, mode/count
+/// indicators, and Reed-Solomon error correction required by the QR standard.
 ///
-/// For codes that exceed the capacity, falls back to a simple pattern that
-/// displays the text content visually.
+/// Users should rely on the code text shown below the barcode for manual entry.
+/// Code 128 barcodes (used for 1D types) ARE standards-compliant and scannable.
 enum QRCodeEncoder {
 
     /// Encodes a string into a 2D boolean matrix where `true` = dark module.
+    ///
+    /// For watchOS, we generate a visual QR-like image using finder patterns and raw
+    /// data bits. NOTE: This is a display-only approximation and is NOT a
+    /// standards-compliant QR code. It cannot be decoded by QR scanners. Users should
+    /// use the code text below for manual entry. Code 128 barcodes (used for 1D types)
+    /// ARE standards-compliant and scannable.
     static func encode(_ text: String) -> [[Bool]] {
         guard let data = text.data(using: .utf8) else {
             return []
         }
 
-        // For watchOS, we generate a simple visual representation.
-        // The actual data is shown as text below the barcode for manual entry.
-        // This produces a deterministic pattern from the input data that looks
-        // like a QR code and can be scanned by most modern scanners.
         return generateQRMatrix(from: data)
     }
 
-    /// Generates a QR-like matrix from data bytes.
+    /// Generates a QR-like matrix from data bytes (display-only, NOT scannable).
     /// Uses a hash-based approach to create a visually distinct pattern per input.
     private static func generateQRMatrix(from data: Data) -> [[Bool]] {
         // Determine QR code size based on data length
@@ -333,10 +337,10 @@ enum Code128Encoder {
         [1,3,1,3,2,1], // 35: C
         [1,1,2,3,2,2], // 36: D  (was missing closing, fixed)
         [1,3,2,1,2,2], // 37: E  (was missing closing, fixed)
-        [1,3,2,3,2,0], // 38: F
+        [1,3,2,3,2,1], // 38: F
         [2,1,1,3,2,2], // 39: G  (was missing closing, fixed)
         [2,3,1,1,2,2], // 40: H  (was missing closing, fixed)
-        [2,3,1,3,2,0], // 41: I
+        [2,3,1,3,2,1], // 41: I
         [1,1,2,1,3,3], // 42: J
         [1,1,2,3,3,1], // 43: K
         [1,3,2,1,3,1], // 44: L
