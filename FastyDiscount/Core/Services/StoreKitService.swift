@@ -115,7 +115,12 @@ final class AppStoreKitService: StoreKitService {
     private weak var adService: MockAdMobService?
 
     /// Long-running task observing `Transaction.updates` for the app's lifetime.
-    private var transactionListenerTask: Task<Void, Never>?
+    ///
+    /// Stored via `nonisolated(unsafe)` so the `deinit` (which runs in a `nonisolated`
+    /// context under Swift 6 strict concurrency) can cancel the task without a data-race
+    /// diagnostic. Safe because `deinit` is the final access -- no other code can race
+    /// against it once the object is being deallocated.
+    nonisolated(unsafe) private var transactionListenerTask: Task<Void, Never>?
 
     // MARK: - Init / Deinit
 
