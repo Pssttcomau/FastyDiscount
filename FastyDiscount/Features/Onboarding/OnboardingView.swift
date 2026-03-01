@@ -62,6 +62,7 @@ struct OnboardingView: View {
             .padding(.vertical, Theme.Spacing.md)
             .accessibilityLabel("Skip onboarding")
             .accessibilityHint("Go directly to the main app")
+            .accessibilityIdentifier("onboarding-skip-button")
         }
     }
 
@@ -133,6 +134,7 @@ struct OnboardingView: View {
         }
         .accessibilityLabel("Next page")
         .accessibilityHint("Go to the next onboarding screen")
+        .accessibilityIdentifier("onboarding-next-button")
     }
 
     /// Shown on Screen 3 — completes onboarding without selecting a specific action.
@@ -151,6 +153,7 @@ struct OnboardingView: View {
         }
         .accessibilityLabel("Get started")
         .accessibilityHint("Complete onboarding and go to the dashboard")
+        .accessibilityIdentifier("onboarding-get-started-button")
     }
 
     // MARK: - Add First Action Handler

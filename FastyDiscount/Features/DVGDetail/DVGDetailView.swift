@@ -80,6 +80,7 @@ struct DVGDetailView: View {
                 iPhoneLayout(viewModel: viewModel)
             }
         }
+        .accessibilityIdentifier("dvg-detail-view")
         .background(Theme.Colors.background)
         .overlay(alignment: .top) {
             copiedToastOverlay(viewModel: viewModel)
@@ -288,6 +289,7 @@ struct DVGDetailView: View {
                         .multilineTextAlignment(.center)
                         .lineLimit(3)
                         .minimumScaleFactor(0.5)
+                        .accessibilityIdentifier("dvg-detail-code-text")
 
                     if viewModel.hasCode {
                         Image(systemName: "doc.on.doc")
@@ -302,6 +304,7 @@ struct DVGDetailView: View {
             .accessibilityLabel("Code: \(viewModel.displayCode)")
             .accessibilityHint(viewModel.hasCode ? "Double-tap to copy to clipboard" : "")
             .accessibilityAddTraits(viewModel.hasCode ? .isButton : [])
+            .accessibilityIdentifier("dvg-detail-code-button")
         }
         .padding(Theme.Spacing.md)
         .cardStyle()
@@ -571,6 +574,7 @@ struct DVGDetailView: View {
             .disabled(viewModel.dvg.statusEnum != .active || viewModel.isProcessing)
             .accessibilityLabel("Mark as Used")
             .accessibilityHint("Marks this item as redeemed")
+            .accessibilityIdentifier("dvg-detail-mark-used-button")
 
             Spacer()
 

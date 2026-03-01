@@ -81,6 +81,7 @@ struct DVGFormView: View {
                         dismiss()
                     }
                     .accessibilityLabel("Cancel")
+                    .accessibilityIdentifier("dvg-form-cancel-button")
                 }
             }
 
@@ -100,6 +101,7 @@ struct DVGFormView: View {
                 .disabled(viewModel?.isSaving == true)
                 .accessibilityLabel("Save")
                 .accessibilityHint("Saves the item and closes the form")
+                .accessibilityIdentifier("dvg-form-save-button")
             }
 
             ToolbarItemGroup(placement: .keyboard) {
@@ -153,6 +155,7 @@ struct DVGFormView: View {
     @ViewBuilder
     private func formContent(viewModel: DVGFormViewModel) -> some View {
         Form {
+            // Note: accessibility identifier is set on the Form wrapper
             // Quick-add fields (always visible)
             essentialFieldsSection(viewModel: viewModel)
 
@@ -193,6 +196,7 @@ struct DVGFormView: View {
                     }
                     .accessibilityLabel("Title")
                     .accessibilityHint("Required. Enter a title for this item")
+                    .accessibilityIdentifier("dvg-form-title-field")
 
                 if let error = viewModel.titleError {
                     Text(error)
@@ -212,6 +216,7 @@ struct DVGFormView: View {
                 .onSubmit { advanceFocus(from: .code, viewModel: viewModel) }
                 .accessibilityLabel("Code")
                 .accessibilityHint("Optional. Enter the discount or voucher code")
+                .accessibilityIdentifier("dvg-form-code-field")
 
             // Store Name with autocomplete
             VStack(alignment: .leading, spacing: Theme.Spacing.xs) {
@@ -233,6 +238,7 @@ struct DVGFormView: View {
                     }
                     .accessibilityLabel("Store Name")
                     .accessibilityHint("Required. Enter the store or brand name")
+                    .accessibilityIdentifier("dvg-form-store-name-field")
 
                 if let error = viewModel.storeNameError {
                     Text(error)

@@ -35,6 +35,7 @@ struct HistoryView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
+        .accessibilityIdentifier("history-view")
         .navigationTitle("History")
         .navigationBarTitleDisplayMode(.large)
         .task {
@@ -204,6 +205,7 @@ struct HistoryView: View {
             HistoryRowView(dvg: dvg)
         }
         .buttonStyle(.plain)
+        .accessibilityIdentifier("history-row-\(dvg.id.uuidString)")
         .swipeActions(edge: .leading, allowsFullSwipe: true) {
             Button {
                 Task { await viewModel.reactivate(dvg) }

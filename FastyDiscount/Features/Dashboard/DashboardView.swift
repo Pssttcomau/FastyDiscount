@@ -36,6 +36,7 @@ struct DashboardView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
+        .accessibilityIdentifier("dashboard-view")
         .navigationTitle("Dashboard")
         .toolbar {
             quickActionToolbar
@@ -250,8 +251,10 @@ struct DashboardView: View {
                             )
                         }
                         .buttonStyle(.plain)
+                        .accessibilityIdentifier("dvg-list-row-\(dvg.id.uuidString)")
                     }
                 }
+                .accessibilityIdentifier("recently-added-list")
                 .padding(.horizontal, Theme.Spacing.md)
             }
         }
@@ -390,12 +393,14 @@ struct DashboardView: View {
                 } label: {
                     Label("Scan Barcode", systemImage: "camera.fill")
                 }
+                .accessibilityIdentifier("dashboard-add-scan-barcode")
 
                 Button {
                     router.push(.dvgCreate(.manual))
                 } label: {
                     Label("Add Manually", systemImage: "plus.circle")
                 }
+                .accessibilityIdentifier("dashboard-add-manually")
 
                 Button {
                     router.push(.emailScan)
@@ -415,6 +420,7 @@ struct DashboardView: View {
             }
             .accessibilityLabel("Add new discount")
             .accessibilityHint("Opens a menu with options to add a discount")
+            .accessibilityIdentifier("dashboard-add-menu")
         }
     }
 

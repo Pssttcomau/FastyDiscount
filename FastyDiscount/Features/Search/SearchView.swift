@@ -46,6 +46,7 @@ struct SearchView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
+        .accessibilityIdentifier("search-view")
         .navigationTitle("Search")
         .navigationBarTitleDisplayMode(.large)
         .task {
@@ -150,6 +151,7 @@ struct SearchView: View {
                         )
                     }
                     .buttonStyle(.plain)
+                    .accessibilityIdentifier("search-result-\(dvg.id.uuidString)")
                     .listRowInsets(EdgeInsets(
                         top: Theme.Spacing.xs,
                         leading: Theme.Spacing.md,

@@ -26,6 +26,7 @@ struct SettingsView: View {
             aboutSection
             removeAdsSection
         }
+        .accessibilityIdentifier("settings-view")
         .navigationTitle("Settings")
         .task {
             await viewModel.onAppear()

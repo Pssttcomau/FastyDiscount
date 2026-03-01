@@ -58,9 +58,41 @@ struct FastyDiscountApp: App {
     /// (map, DVG form) can trigger permission requests.
     private let locationPermissionManager: LocationPermissionManager
 
+    // MARK: - UI Test Mode Detection
+
+    /// Returns `true` when launched with the `-UITestMode` launch argument.
+    /// Used to bypass authentication, skip onboarding, and seed mock data.
+    static var isUITestMode: Bool {
+        ProcessInfo.processInfo.arguments.contains("-UITestMode")
+    }
+
+    /// Returns `true` when launched with `-UITestOnboarding`.
+    /// Bypasses auth but does NOT skip onboarding — used for onboarding flow tests.
+    static var isOnboardingTestMode: Bool {
+        ProcessInfo.processInfo.arguments.contains("-UITestOnboarding")
+    }
+
+    /// `true` when any UI test bypass mode is active.
+    static var isAnyUITestMode: Bool {
+        isUITestMode || isOnboardingTestMode
+    }
+
     init() {
         let state = AppState()
-        let authService = AppleAuthenticationService()
+
+        // In UI test mode, use a pre-authenticated mock service so tests can bypass
+        // the Sign In with Apple flow which cannot be automated in XCTest.
+        let authService: any AuthenticationService
+        #if DEBUG
+        if FastyDiscountApp.isAnyUITestMode {
+            authService = MockAuthenticationService(isAuthenticated: true)
+        } else {
+            authService = AppleAuthenticationService()
+        }
+        #else
+        authService = AppleAuthenticationService()
+        #endif
+
         let viewModel = AuthViewModel(authService: authService)
 
         // Initialise StoreKit service with the ad service so it can update isAdFree reactively.
@@ -142,6 +174,33 @@ struct FastyDiscountApp: App {
                 onPDFDrop: { url in droppedPDFURL = url }
             )
             .task {
+                // MARK: UI Test Mode — Skip expensive startup tasks and seed test data
+                // When launched with -UITestMode, bypass analytics, StoreKit, geofencing,
+                // and notification setup. Seed deterministic mock data for UI tests.
+                #if DEBUG
+                if FastyDiscountApp.isUITestMode {
+                    // Disable animations for faster, more reliable UI tests
+                    UIView.setAnimationsEnabled(false)
+
+                    // Mark onboarding complete so tests start on the dashboard
+                    UserDefaults.standard.set(true, forKey: "hasCompletedOnboarding")
+
+                    // Seed deterministic test data into the in-memory store
+                    let context = modelContainer.mainContext
+                    UITestDataSeeder.seed(into: context)
+                    return
+                }
+
+                if FastyDiscountApp.isOnboardingTestMode {
+                    // Disable animations for faster, more reliable UI tests
+                    UIView.setAnimationsEnabled(false)
+
+                    // Reset onboarding state so tests can exercise the onboarding flow
+                    UserDefaults.standard.set(false, forKey: "hasCompletedOnboarding")
+                    return
+                }
+                #endif
+
                 // MARK: App Tracking Transparency (ATT)
                 // Request tracking authorization before loading any ads.
                 // Required by App Store guidelines when using advertising identifiers.
