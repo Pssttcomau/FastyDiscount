@@ -279,7 +279,8 @@ struct DashboardView: View {
                     Text("See All")
                         .font(Theme.Typography.subheadline)
                     Image(systemName: "chevron.right")
-                        .font(.system(size: 12, weight: .semibold))
+                        .font(Theme.Typography.caption2)
+                        .fontWeight(.semibold)
                 }
                 .foregroundStyle(Theme.Colors.primary)
             }
@@ -294,8 +295,9 @@ struct DashboardView: View {
     private func sectionEmptyState(icon: String, message: String, detail: String) -> some View {
         VStack(spacing: Theme.Spacing.sm) {
             Image(systemName: icon)
-                .font(.system(size: 32))
+                .font(Theme.Typography.title)
                 .foregroundStyle(Theme.Colors.textSecondary.opacity(0.5))
+                .accessibilityHidden(true)
 
             Text(message)
                 .font(Theme.Typography.subheadline)
@@ -311,6 +313,8 @@ struct DashboardView: View {
         .padding(.horizontal, Theme.Spacing.md)
         .cardStyle()
         .padding(.horizontal, Theme.Spacing.md)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(message). \(detail)")
     }
 
     // MARK: - Overall Empty State
@@ -320,8 +324,9 @@ struct DashboardView: View {
             Spacer()
 
             Image(systemName: "tag.slash")
-                .font(.system(size: 64))
+                .font(Theme.Typography.largeTitle)
                 .foregroundStyle(Theme.Colors.primary.opacity(0.4))
+                .accessibilityHidden(true)
 
             Text("Add your first discount!")
                 .font(Theme.Typography.title2)

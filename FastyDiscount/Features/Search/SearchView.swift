@@ -115,6 +115,8 @@ struct SearchView: View {
             }
             .font(Theme.Typography.subheadline)
             .foregroundStyle(Theme.Colors.primary)
+            .accessibilityLabel("Clear all filters")
+            .accessibilityHint("Removes all active search filters")
         }
         .padding(.horizontal, Theme.Spacing.md)
         .padding(.vertical, Theme.Spacing.sm)
@@ -122,6 +124,8 @@ struct SearchView: View {
         .overlay(alignment: .bottom) {
             Divider()
         }
+        .accessibilityElement(children: .contain)
+        .accessibilityLabel("\(viewModel.activeFilterCount) filter\(viewModel.activeFilterCount == 1 ? "" : "s") active")
     }
 
     // MARK: - Results List
@@ -179,6 +183,7 @@ struct SearchView: View {
                         }
                         .tint(.pink)
                     }
+                    .accessibilityHint("Double-tap to view details. Swipe for more options.")
                 }
             }
             .listStyle(.plain)
@@ -194,8 +199,9 @@ struct SearchView: View {
             Spacer()
 
             Image(systemName: "magnifyingglass")
-                .font(.system(size: 56))
+                .font(Theme.Typography.largeTitle)
                 .foregroundStyle(Theme.Colors.textSecondary.opacity(0.4))
+                .accessibilityHidden(true)
 
             VStack(spacing: Theme.Spacing.sm) {
                 Text("No Results Found")
@@ -267,11 +273,13 @@ struct SearchView: View {
 
                     if viewModel.activeFilterCount > 0 {
                         Text("\(viewModel.activeFilterCount)")
-                            .font(.system(size: 9, weight: .bold))
+                            .font(Theme.Typography.caption2)
+                            .fontWeight(.bold)
                             .foregroundStyle(.white)
-                            .frame(width: 14, height: 14)
+                            .frame(minWidth: 14, minHeight: 14)
                             .background(Theme.Colors.primary, in: Circle())
                             .offset(x: 6, y: -6)
+                            .accessibilityHidden(true)
                     }
                 }
             }

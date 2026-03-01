@@ -267,6 +267,8 @@ struct SettingsView: View {
                         .foregroundStyle(Theme.Colors.textSecondary)
                 }
                 .disabled(!viewModel.geofencingEnabled)
+                .accessibilityLabel("Default geofence radius: \(Int(viewModel.defaultGeofenceRadius)) meters")
+                .accessibilityHint("Adjust the geofence alert radius from 100 meters to 1 kilometer")
             }
         } header: {
             Text("Location")
@@ -323,6 +325,8 @@ struct SettingsView: View {
                     .textInputAutocapitalization(.never)
                     .multilineTextAlignment(.trailing)
                     .foregroundStyle(Theme.Colors.textPrimary)
+                    .accessibilityLabel("Anthropic API key")
+                    .accessibilityHint("Enter your Anthropic API key for AI-powered email parsing")
                 } else {
                     SecureField(
                         "Enter Anthropic API key",
@@ -332,6 +336,8 @@ struct SettingsView: View {
                         )
                     )
                     .multilineTextAlignment(.trailing)
+                    .accessibilityLabel("Anthropic API key (hidden)")
+                    .accessibilityHint("Enter your Anthropic API key for AI-powered email parsing")
                 }
 
                 Button {
@@ -341,11 +347,13 @@ struct SettingsView: View {
                           ? "eye.slash"
                           : "eye")
                     .foregroundStyle(Theme.Colors.textSecondary)
+                    .frame(minWidth: 44, minHeight: 44)
                 }
                 .buttonStyle(.plain)
                 .accessibilityLabel(viewModel.isAPIKeyRevealed
                                     ? "Hide API key"
                                     : "Reveal API key")
+                .accessibilityHint("Toggles visibility of the API key field")
             }
 
             // Usage stats

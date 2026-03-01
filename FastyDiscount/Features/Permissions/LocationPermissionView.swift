@@ -85,8 +85,9 @@ struct LocationPermissionView: View {
                 .frame(width: 140, height: 140)
 
             Image(systemName: heroSystemImage)
-                .font(.system(size: 60, weight: .medium))
+                .font(Theme.Typography.largeTitle)
                 .foregroundStyle(accentColor)
+                .accessibilityHidden(true)
         }
         .padding(.top, 32)
         .padding(.bottom, 28)
@@ -100,12 +101,12 @@ struct LocationPermissionView: View {
             // Title + subtitle
             VStack(alignment: .leading, spacing: 8) {
                 Text(titleText)
-                    .font(.title2)
+                    .font(Theme.Typography.title2)
                     .fontWeight(.bold)
                     .fixedSize(horizontal: false, vertical: true)
 
                 Text(subtitleText)
-                    .font(.subheadline)
+                    .font(Theme.Typography.subheadline)
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
             }
@@ -128,15 +129,18 @@ struct LocationPermissionView: View {
     private var privacyNote: some View {
         HStack(alignment: .top, spacing: 10) {
             Image(systemName: "lock.shield")
-                .font(.footnote)
+                .font(Theme.Typography.footnote)
                 .foregroundStyle(.secondary)
                 .padding(.top, 1)
+                .accessibilityHidden(true)
 
             Text(privacyText)
-                .font(.footnote)
+                .font(Theme.Typography.footnote)
                 .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Privacy: \(privacyText)")
         .padding(.horizontal, 16)
         .padding(.vertical, 12)
         .background(.quaternary, in: RoundedRectangle(cornerRadius: 10))
@@ -150,19 +154,25 @@ struct LocationPermissionView: View {
             // Primary CTA
             Button(action: primaryAction) {
                 Text(primaryButtonTitle)
-                    .font(.headline)
+                    .font(Theme.Typography.headline)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
                     .background(accentColor, in: RoundedRectangle(cornerRadius: 14))
                     .foregroundStyle(.white)
             }
+            .accessibilityLabel(primaryButtonTitle)
+            .accessibilityHint(step == .whenInUse
+                ? "Presents the system location permission dialog"
+                : "Requests background location access for store alerts")
 
             // Secondary / dismiss
             Button("Maybe Later") {
                 dismiss()
             }
-            .font(.subheadline)
+            .font(Theme.Typography.subheadline)
             .foregroundStyle(.secondary)
+            .accessibilityLabel("Maybe later")
+            .accessibilityHint("Dismiss without granting location permission")
         }
     }
 
@@ -270,16 +280,19 @@ private struct BenefitRow: View {
     var body: some View {
         HStack(alignment: .top, spacing: 14) {
             Image(systemName: icon)
-                .font(.system(size: 22))
+                .font(Theme.Typography.title3)
                 .foregroundStyle(accentColor)
                 .frame(width: 28)
                 .padding(.top, 1)
+                .accessibilityHidden(true)
 
             Text(text)
-                .font(.subheadline)
+                .font(Theme.Typography.subheadline)
                 .fixedSize(horizontal: false, vertical: true)
                 .foregroundStyle(.primary)
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(text)
     }
 }
 
@@ -299,17 +312,18 @@ struct DeniedLocationView: View {
 
             // Icon
             Image(systemName: "location.slash.fill")
-                .font(.system(size: 64, weight: .medium))
+                .font(Theme.Typography.largeTitle)
                 .foregroundStyle(.red.opacity(0.8))
+                .accessibilityHidden(true)
 
             // Message
             VStack(spacing: 10) {
                 Text("Location Access Denied")
-                    .font(.title2)
+                    .font(Theme.Typography.title2)
                     .fontWeight(.bold)
 
                 Text("To see nearby discounts and receive geofence alerts, please allow FastyDiscount to use your location in Settings.")
-                    .font(.subheadline)
+                    .font(Theme.Typography.subheadline)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 32)
@@ -318,13 +332,15 @@ struct DeniedLocationView: View {
             // Open Settings CTA
             Button(action: { permissionManager.openLocationSettings() }) {
                 Label("Open Settings", systemImage: "gear")
-                    .font(.headline)
+                    .font(Theme.Typography.headline)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
                     .background(.blue, in: RoundedRectangle(cornerRadius: 14))
                     .foregroundStyle(.white)
                     .padding(.horizontal, 32)
             }
+            .accessibilityLabel("Open Settings")
+            .accessibilityHint("Opens iOS Settings to change location permission")
 
             Spacer()
         }

@@ -87,7 +87,7 @@ struct ImportView: View {
         VStack(spacing: Theme.Spacing.lg) {
             // Hero icon
             Image(systemName: "square.and.arrow.down")
-                .font(.system(size: 64))
+                .font(Theme.Typography.largeTitle)
                 .foregroundStyle(Theme.Colors.primary)
                 .accessibilityHidden(true)
 
@@ -158,7 +158,7 @@ struct ImportView: View {
                     .frame(height: 150)
                     .overlay {
                         Image(systemName: "doc.text.magnifyingglass")
-                            .font(.system(size: 40))
+                            .font(Theme.Typography.title)
                             .foregroundStyle(Theme.Colors.textSecondary)
                     }
                     .accessibilityHidden(true)
@@ -281,7 +281,7 @@ struct ImportView: View {
     private var noContentView: some View {
         VStack(spacing: Theme.Spacing.sm) {
             Image(systemName: "questionmark.circle")
-                .font(.system(size: 44))
+                .font(Theme.Typography.title)
                 .foregroundStyle(Theme.Colors.textSecondary)
                 .accessibilityHidden(true)
 
@@ -344,7 +344,7 @@ struct ImportView: View {
     private func errorContent(message: String) -> some View {
         VStack(spacing: Theme.Spacing.lg) {
             Image(systemName: "exclamationmark.triangle.fill")
-                .font(.system(size: 52))
+                .font(Theme.Typography.largeTitle)
                 .foregroundStyle(Theme.Colors.warning)
                 .accessibilityHidden(true)
 
@@ -386,7 +386,7 @@ private struct ImportOptionRow: View {
     var body: some View {
         HStack(spacing: Theme.Spacing.md) {
             Image(systemName: icon)
-                .font(.system(size: 28))
+                .font(Theme.Typography.title2)
                 .foregroundStyle(Theme.Colors.primary)
                 .frame(width: 44, height: 44)
                 .accessibilityHidden(true)
@@ -428,7 +428,7 @@ private struct BarcodeResultRow: View {
         HStack(spacing: Theme.Spacing.md) {
             // Barcode type icon
             Image(systemName: barcodeIcon(for: barcode.barcodeType))
-                .font(.system(size: 22))
+                .font(Theme.Typography.title3)
                 .foregroundStyle(Theme.Colors.primary)
                 .frame(width: 32)
                 .accessibilityHidden(true)

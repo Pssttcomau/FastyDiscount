@@ -286,7 +286,8 @@ struct TagManagerView: View {
                         .strokeBorder(Theme.Colors.border, lineWidth: 1.5)
                         .frame(width: 36, height: 36)
                     Image(systemName: "xmark")
-                        .font(.system(size: 12, weight: .semibold))
+                        .font(Theme.Typography.caption2)
+                        .fontWeight(.semibold)
                         .foregroundStyle(Theme.Colors.textSecondary)
                 }
                 .overlay {
@@ -312,7 +313,8 @@ struct TagManagerView: View {
                                 Circle()
                                     .strokeBorder(.white, lineWidth: 2)
                                 Image(systemName: "checkmark")
-                                    .font(.system(size: 10, weight: .bold))
+                                    .font(Theme.Typography.caption2)
+                                    .fontWeight(.bold)
                                     .foregroundStyle(.white)
                             }
                         }

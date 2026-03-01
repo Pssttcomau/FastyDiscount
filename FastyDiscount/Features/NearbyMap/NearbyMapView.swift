@@ -72,8 +72,9 @@ struct NearbyMapView: View {
                 Spacer()
 
                 Image(systemName: "location.circle.fill")
-                    .font(.system(size: 64, weight: .medium))
+                    .font(Theme.Typography.largeTitle)
                     .foregroundStyle(Theme.Colors.primary.opacity(0.6))
+                    .accessibilityHidden(true)
 
                 Text("Enable Location to See Nearby Stores")
                     .font(Theme.Typography.title2)
@@ -235,7 +236,10 @@ struct NearbyMapView: View {
             .animation(.easeInOut(duration: 0.2), value: isSelected)
         }
         .buttonStyle(.plain)
+        .frame(minWidth: 44, minHeight: 44)
         .accessibilityLabel("\(annotation.name), \(annotation.dvgs.count) discount\(annotation.dvgs.count == 1 ? "" : "s"), \(annotation.distanceText) away")
+        .accessibilityHint("Double-tap to view store details and available discounts")
+        .accessibilityAddTraits(.isButton)
     }
 
     /// Returns a color for the pin based on the DVG type.
@@ -264,6 +268,8 @@ struct NearbyMapView: View {
                 .foregroundStyle(Theme.Colors.textPrimary)
                 .autocorrectionDisabled()
                 .textInputAutocapitalization(.never)
+                .accessibilityLabel("Search stores")
+                .accessibilityHint("Filter map pins by store name")
 
             if !viewModel.searchText.isEmpty {
                 Button {
@@ -291,7 +297,8 @@ struct NearbyMapView: View {
             viewModel.centerOnUserLocation()
         } label: {
             Image(systemName: "location.fill")
-                .font(.system(size: 16, weight: .semibold))
+                .font(Theme.Typography.subheadline)
+                .fontWeight(.semibold)
                 .foregroundStyle(Theme.Colors.primary)
                 .frame(width: 44, height: 44)
                 .background(.ultraThinMaterial, in: Circle())
@@ -308,8 +315,9 @@ struct NearbyMapView: View {
             Spacer()
 
             Image(systemName: "map")
-                .font(.system(size: 64))
+                .font(Theme.Typography.largeTitle)
                 .foregroundStyle(Theme.Colors.textSecondary.opacity(0.4))
+                .accessibilityHidden(true)
 
             Text("No Nearby Stores")
                 .font(Theme.Typography.title2)
@@ -423,6 +431,8 @@ private struct StoreSummaryCard: View {
                 .font(Theme.Typography.caption)
                 .foregroundStyle(Theme.Colors.textSecondary)
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(annotation.name), \(annotation.address.isEmpty ? "" : annotation.address + ", ")\(annotation.distanceText) away, \(annotation.dvgs.count) discount\(annotation.dvgs.count == 1 ? "" : "s") available")
     }
 
     // MARK: - DVG List
@@ -495,6 +505,18 @@ private struct StoreSummaryCard: View {
         }
         .padding(Theme.Spacing.sm)
         .background(Theme.Colors.surface, in: RoundedRectangle(cornerRadius: Theme.CornerRadius.small))
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(dvgRowAccessibilityLabel(dvg))
+    }
+
+    private func dvgRowAccessibilityLabel(_ dvg: DVGSummary) -> String {
+        var parts: [String] = []
+        parts.append(dvg.title.isEmpty ? dvg.dvgType.displayName : dvg.title)
+        parts.append(dvg.dvgType.displayName)
+        if let badge = expiryBadgeText(dvg) {
+            parts.append(badge)
+        }
+        return parts.joined(separator: ", ")
     }
 
     /// Returns a color for a DVG type (used in the icon background).

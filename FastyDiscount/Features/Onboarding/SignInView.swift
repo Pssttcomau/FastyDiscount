@@ -23,18 +23,19 @@ struct SignInView: View {
             // App icon and title
             VStack(spacing: 16) {
                 Image(systemName: "tag.fill")
-                    .font(.system(size: 72, weight: .semibold))
+                    .font(Theme.Typography.largeTitle)
+                    .imageScale(.large)
                     .foregroundStyle(Color.accentColor)
                     .accessibilityHidden(true)
 
                 VStack(spacing: 6) {
                     Text("FastyDiscount")
-                        .font(.largeTitle)
+                        .font(Theme.Typography.largeTitle)
                         .fontWeight(.bold)
                         .foregroundStyle(.primary)
 
                     Text("Your discount companion")
-                        .font(.body)
+                        .font(Theme.Typography.body)
                         .foregroundStyle(.secondary)
                 }
             }
@@ -65,9 +66,10 @@ struct SignInView: View {
                 }
 
                 Text("By signing in, you agree to use this app\nin accordance with Apple's terms of service.")
-                    .font(.caption)
+                    .font(Theme.Typography.caption)
                     .foregroundStyle(.tertiary)
                     .multilineTextAlignment(.center)
+                    .accessibilityLabel("By signing in, you agree to use this app in accordance with Apple's terms of service.")
             }
             .padding(.horizontal, 32)
             .padding(.bottom, 48)

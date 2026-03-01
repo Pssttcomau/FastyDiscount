@@ -35,8 +35,10 @@ struct AdUpgradeBanner: View {
     private var bannerContent: some View {
         HStack(spacing: Theme.Spacing.sm) {
             Image(systemName: "sparkles")
-                .font(.system(size: 14, weight: .medium))
+                .font(Theme.Typography.subheadline)
+                .fontWeight(.medium)
                 .foregroundStyle(Theme.Colors.primary)
+                .accessibilityHidden(true)
 
             VStack(alignment: .leading, spacing: 2) {
                 Text("Enjoying FastyDiscount?")
@@ -66,6 +68,9 @@ struct AdUpgradeBanner: View {
                     .background(Theme.Colors.primary, in: RoundedRectangle(cornerRadius: Theme.CornerRadius.small))
             }
             .buttonStyle(.plain)
+            .frame(minWidth: 44, minHeight: 44)
+            .accessibilityLabel("Remove Ads")
+            .accessibilityHint("Opens the in-app purchase to remove ads")
 
             Button {
                 withAnimation(.easeInOut(duration: 0.2)) {
@@ -73,11 +78,13 @@ struct AdUpgradeBanner: View {
                 }
             } label: {
                 Image(systemName: "xmark")
-                    .font(.system(size: 11, weight: .medium))
+                    .font(Theme.Typography.caption2)
+                    .fontWeight(.medium)
                     .foregroundStyle(Theme.Colors.textSecondary)
+                    .frame(minWidth: 44, minHeight: 44)
             }
             .buttonStyle(.plain)
-            .accessibilityLabel("Dismiss")
+            .accessibilityLabel("Dismiss upgrade banner")
         }
         .padding(.horizontal, Theme.Spacing.md)
         .padding(.vertical, Theme.Spacing.sm)

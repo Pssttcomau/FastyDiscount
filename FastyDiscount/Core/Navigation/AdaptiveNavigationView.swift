@@ -129,6 +129,8 @@ private struct SidebarView: View {
                         : Color.clear
                 )
                 .foregroundStyle(tab == selection ? Color.accentColor : .primary)
+                .accessibilityAddTraits(tab == selection ? [.isSelected] : [])
+                .accessibilityLabel(tab.title)
             }
         }
         .navigationTitle("FastyDiscount")
@@ -266,8 +268,9 @@ private struct ScanPlaceholderView: View {
     var body: some View {
         VStack(spacing: Theme.Spacing.lg) {
             Image(systemName: "barcode.viewfinder")
-                .font(.system(size: 60))
+                .font(Theme.Typography.largeTitle)
                 .foregroundStyle(Theme.Colors.primary)
+                .accessibilityHidden(true)
 
             Text("Scan Barcodes & QR Codes")
                 .font(Theme.Typography.title2)

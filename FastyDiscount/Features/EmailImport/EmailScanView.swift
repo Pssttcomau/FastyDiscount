@@ -126,8 +126,9 @@ struct EmailScanView: View {
                         .frame(width: 44, height: 44)
 
                     Image(systemName: viewModel.isGmailConnected ? "checkmark.circle.fill" : "envelope.badge.fill")
-                        .font(.system(size: 20))
+                        .font(Theme.Typography.title3)
                         .foregroundStyle(viewModel.isGmailConnected ? Theme.Colors.success : Theme.Colors.textSecondary)
+                        .accessibilityHidden(true)
                 }
 
                 VStack(alignment: .leading, spacing: Theme.Spacing.xs) {
@@ -247,6 +248,7 @@ struct EmailScanView: View {
                 .font(Theme.Typography.subheadline)
                 .foregroundStyle(Theme.Colors.primary)
                 .frame(width: 20)
+                .accessibilityHidden(true)
 
             Text(title)
                 .font(Theme.Typography.subheadline)
@@ -260,6 +262,8 @@ struct EmailScanView: View {
                 .foregroundStyle(Theme.Colors.textPrimary)
                 .lineLimit(1)
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(title): \(value)")
     }
 
     // MARK: - Scan Control Section
@@ -365,6 +369,7 @@ struct EmailScanView: View {
         HStack(spacing: Theme.Spacing.sm) {
             statusIcon(for: status)
                 .frame(width: 16)
+                .accessibilityHidden(true)
 
             Text("Email \(index + 1)")
                 .font(Theme.Typography.caption)
@@ -373,6 +378,17 @@ struct EmailScanView: View {
             Spacer()
 
             statusLabel(for: status)
+        }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Email \(index + 1): \(statusAccessibilityLabel(for: status))")
+    }
+
+    private func statusAccessibilityLabel(for status: EmailItemStatus) -> String {
+        switch status {
+        case .pending: return "Pending"
+        case .parsing: return "Parsing"
+        case .done: return "Done"
+        case .failed(let msg): return "Failed: \(msg)"
         }
     }
 
@@ -506,6 +522,8 @@ struct EmailScanView: View {
                 .multilineTextAlignment(.center)
         }
         .frame(maxWidth: .infinity)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(label): \(value)")
     }
 
     // MARK: - Error State View

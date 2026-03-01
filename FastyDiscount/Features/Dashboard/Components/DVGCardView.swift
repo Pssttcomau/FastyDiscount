@@ -206,7 +206,8 @@ struct DVGCardView: View {
     private func distanceBadge(_ text: String) -> some View {
         HStack(spacing: 2) {
             Image(systemName: "location.fill")
-                .font(.system(size: 8))
+                .font(Theme.Typography.caption2)
+                .accessibilityHidden(true)
             Text(text)
                 .font(Theme.Typography.caption2)
                 .fontWeight(.medium)

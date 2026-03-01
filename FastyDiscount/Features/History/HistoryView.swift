@@ -328,7 +328,8 @@ struct HistoryRowView: View {
             .padding(.horizontal, 8)
             .padding(.vertical, 3)
             .background(statusBadgeColor, in: Capsule())
-            .accessibilityHidden(true)
+            .accessibilityLabel("Status: \(dvg.statusEnum.displayName)")
+            .accessibilityAddTraits(.isStaticText)
     }
 
     private var statusBadgeColor: Color {

@@ -251,7 +251,8 @@ private struct ValuePropPage: View {
                 .frame(width: 160, height: 160)
 
             Image(systemName: "tag.fill")
-                .font(.system(size: 72))
+                .font(Theme.Typography.largeTitle)
+                .imageScale(.large)
                 .foregroundStyle(Theme.Colors.primary)
                 .symbolEffect(.pulse)
         }
@@ -347,7 +348,8 @@ private struct FeaturesPage: View {
                 .frame(width: 160, height: 160)
 
             Image(systemName: "sparkles")
-                .font(.system(size: 72))
+                .font(Theme.Typography.largeTitle)
+                .imageScale(.large)
                 .foregroundStyle(Theme.Colors.accent)
                 .symbolEffect(.variableColor)
         }
@@ -448,7 +450,8 @@ private struct AddFirstPage: View {
                 .frame(width: 160, height: 160)
 
             Image(systemName: "plus.circle.fill")
-                .font(.system(size: 72))
+                .font(Theme.Typography.largeTitle)
+                .imageScale(.large)
                 .foregroundStyle(Theme.Colors.primary)
                 .symbolEffect(.bounce)
         }
@@ -500,7 +503,7 @@ private struct BenefitRow: View {
     var body: some View {
         HStack(alignment: .top, spacing: Theme.Spacing.md) {
             Image(systemName: icon)
-                .font(.system(size: 22))
+                .font(Theme.Typography.title3)
                 .foregroundStyle(iconColor)
                 .frame(width: 32, height: 32)
                 .accessibilityHidden(true)
@@ -543,7 +546,7 @@ private struct FeatureCard: View {
                 .frame(width: 48, height: 48)
                 .overlay {
                     Image(systemName: icon)
-                        .font(.system(size: 22))
+                        .font(Theme.Typography.title3)
                         .foregroundStyle(iconColor)
                 }
                 .accessibilityHidden(true)
@@ -590,7 +593,7 @@ private struct AddOptionButton: View {
                     .frame(width: 52, height: 52)
                     .overlay {
                         Image(systemName: icon)
-                            .font(.system(size: 24))
+                            .font(Theme.Typography.title3)
                             .foregroundStyle(iconColor)
                     }
                     .accessibilityHidden(true)
@@ -609,7 +612,8 @@ private struct AddOptionButton: View {
                 Spacer()
 
                 Image(systemName: "chevron.right")
-                    .font(.system(size: 14, weight: .semibold))
+                    .font(Theme.Typography.caption)
+                    .fontWeight(.semibold)
                     .foregroundStyle(Theme.Colors.textSecondary)
                     .accessibilityHidden(true)
             }

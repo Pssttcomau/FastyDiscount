@@ -121,12 +121,13 @@ struct CameraScannerView: View {
                 viewModel.toggleTorch()
             } label: {
                 Image(systemName: viewModel.isTorchOn ? "flashlight.on.fill" : "flashlight.off.fill")
-                    .font(.title2)
+                    .font(Theme.Typography.title3)
                     .foregroundStyle(.white)
                     .frame(width: 50, height: 50)
                     .background(.ultraThinMaterial, in: Circle())
             }
             .accessibilityLabel(viewModel.isTorchOn ? "Turn off flashlight" : "Turn on flashlight")
+            .accessibilityHint("Toggles the device flashlight for low-light scanning")
 
             Spacer()
 
@@ -161,12 +162,13 @@ struct CameraScannerView: View {
             dismiss()
         } label: {
             Image(systemName: "xmark")
-                .font(.headline)
+                .font(Theme.Typography.headline)
                 .foregroundStyle(.white)
-                .frame(width: 36, height: 36)
+                .frame(width: 44, height: 44)
                 .background(.ultraThinMaterial, in: Circle())
         }
         .accessibilityLabel("Close scanner")
+        .accessibilityHint("Stops the camera and returns to the previous screen")
     }
 
     // MARK: - Permission Denied View
@@ -179,8 +181,9 @@ struct CameraScannerView: View {
 
             VStack(spacing: Theme.Spacing.lg) {
                 Image(systemName: "camera.fill")
-                    .font(.system(size: 60))
+                    .font(Theme.Typography.largeTitle)
                     .foregroundStyle(Theme.Colors.textSecondary)
+                    .accessibilityHidden(true)
 
                 Text("Camera Access Required")
                     .font(Theme.Typography.title2)
@@ -234,8 +237,9 @@ struct CameraScannerView: View {
     private var macCatalystPlaceholder: some View {
         VStack(spacing: Theme.Spacing.lg) {
             Image(systemName: "camera.metering.unknown")
-                .font(.system(size: 60))
+                .font(Theme.Typography.largeTitle)
                 .foregroundStyle(Theme.Colors.textSecondary)
+                .accessibilityHidden(true)
 
             Text("Camera Not Available")
                 .font(Theme.Typography.title2)
@@ -488,12 +492,14 @@ private struct ScanResultCardView: View {
             // Header
             HStack(spacing: Theme.Spacing.sm) {
                 Image(systemName: "checkmark.circle.fill")
-                    .font(.title2)
+                    .font(Theme.Typography.title3)
                     .foregroundStyle(Theme.Colors.success)
+                    .accessibilityHidden(true)
 
                 Text("Barcode Detected")
                     .font(Theme.Typography.headline)
                     .foregroundStyle(Theme.Colors.textPrimary)
+                    .accessibilityAddTraits(.isHeader)
 
                 Spacer()
             }

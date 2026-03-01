@@ -222,9 +222,11 @@ struct DVGDetailView: View {
         .cardStyle()
         .accessibilityElement(children: .combine)
         .accessibilityLabel(
-            "\(viewModel.dvg.statusEnum.displayName) \(viewModel.dvg.dvgTypeEnum.displayName)"
+            "Status: \(viewModel.dvg.statusEnum.displayName), Type: \(viewModel.dvg.dvgTypeEnum.displayName)"
             + (viewModel.dvg.isFavorite ? ", favourited" : "")
         )
+        .accessibilityAddTraits(.isStaticText)
+        .accessibilityAddTraits(.isSummaryElement)
     }
 
     // MARK: - Barcode Section
@@ -247,8 +249,8 @@ struct DVGDetailView: View {
                         .frame(maxWidth: .infinity)
                         .frame(maxHeight: 200)
                         .padding(Theme.Spacing.md)
-                        .accessibilityLabel("Barcode for \(viewModel.displayCode)")
-                        .accessibilityHint("Shows the scannable barcode")
+                        .accessibilityLabel("Barcode displayed for \(viewModel.dvg.storeName.isEmpty ? viewModel.dvg.title : viewModel.dvg.storeName). Show to cashier.")
+                        .accessibilityHint("Shows the scannable barcode. Code value: \(viewModel.displayCode)")
                 } else {
                     ContentUnavailableView {
                         Label("Barcode Unavailable", systemImage: "barcode.viewfinder")
@@ -261,6 +263,7 @@ struct DVGDetailView: View {
                 Text(viewModel.dvg.barcodeTypeEnum.displayName)
                     .font(Theme.Typography.caption)
                     .foregroundStyle(Theme.Colors.textSecondary)
+                    .accessibilityLabel("Barcode type: \(viewModel.dvg.barcodeTypeEnum.displayName)")
             }
             .padding(Theme.Spacing.md)
             .cardStyle()
@@ -445,7 +448,8 @@ struct DVGDetailView: View {
             .frame(height: 180)
             .clipShape(RoundedRectangle(cornerRadius: Theme.CornerRadius.small))
             .allowsHitTesting(false)
-            .accessibilityLabel("Map showing \(locations.count) store location\(locations.count == 1 ? "" : "s")")
+            .accessibilityLabel("Map showing \(locations.count) store location\(locations.count == 1 ? "" : "s") for \(viewModel.dvg.storeName.isEmpty ? viewModel.dvg.title : viewModel.dvg.storeName)")
+            .accessibilityAddTraits(.isImage)
 
             ForEach(locations, id: \.id) { location in
                 HStack(spacing: Theme.Spacing.sm) {
