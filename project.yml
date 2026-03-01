@@ -112,6 +112,8 @@ targets:
           - "GmailAuthService.swift"
           - "GmailAPIClient.swift"
           - "EmailParsingService.swift"
+          - "BarcodeDetectionService.swift"
+          - "VisionParsingService.swift"
       - path: FastyDiscount/App/AppConstants.swift
     resources:
       - path: FastyDiscountWidget/Assets.xcassets
@@ -153,6 +155,8 @@ targets:
           - "GmailAuthService.swift"
           - "GmailAPIClient.swift"
           - "EmailParsingService.swift"
+          - "BarcodeDetectionService.swift"
+          - "VisionParsingService.swift"
       - path: FastyDiscount/App/AppConstants.swift
     settings:
       base:

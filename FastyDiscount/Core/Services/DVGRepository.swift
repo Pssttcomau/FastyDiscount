@@ -1,6 +1,7 @@
 import Foundation
 import SwiftData
 import CoreLocation
+import UserNotifications
 
 // MARK: - DVGRepositoryError
 
@@ -206,6 +207,10 @@ protocol DVGRepository: AnyObject, Sendable {
 ///
 /// Uses `@MainActor` for thread safety consistent with the rest of the app.
 /// All queries filter out soft-deleted items (`isDeleted == false`) by default.
+///
+/// Notification scheduling is handled automatically:
+/// - `save(_:)` schedules an expiry notification when the DVG has an expiration date.
+/// - `softDelete(_:)`, `markAsUsed(_:)` cancel the pending notification.
 @MainActor
 final class SwiftDataDVGRepository: DVGRepository {
 
@@ -213,13 +218,24 @@ final class SwiftDataDVGRepository: DVGRepository {
 
     private let modelContext: ModelContext
 
+    /// Service used to schedule and cancel expiry reminder notifications.
+    /// Injected at init to allow testing with a mock implementation.
+    private let notificationService: (any ExpiryNotificationService)?
+
     // MARK: - Init
 
     /// Creates a repository operating on the given `ModelContext`.
     ///
-    /// - Parameter modelContext: The SwiftData context to use for all operations.
-    init(modelContext: ModelContext) {
+    /// - Parameters:
+    ///   - modelContext: The SwiftData context to use for all operations.
+    ///   - notificationService: Optional service for scheduling expiry notifications.
+    ///     Pass `nil` to disable notification integration (useful in tests).
+    init(
+        modelContext: ModelContext,
+        notificationService: (any ExpiryNotificationService)? = UNExpiryNotificationService()
+    ) {
         self.modelContext = modelContext
+        self.notificationService = notificationService
     }
 
     // MARK: - Fetch Active
@@ -424,6 +440,13 @@ final class SwiftDataDVGRepository: DVGRepository {
         modelContext.insert(dvg)
         try saveContext()
 
+        // Schedule expiry notification after a successful save.
+        // Only fires when the DVG has an expiration date and lead days > 0.
+        if dvg.expirationDate != nil, dvg.notificationLeadDays > 0 {
+            let snapshot = DVGSnapshot(dvg: dvg)
+            await notificationService?.schedule(for: snapshot)
+        }
+
         if let warning = duplicateWarning {
             return .savedWithDuplicateWarning(warning)
         }
@@ -433,18 +456,28 @@ final class SwiftDataDVGRepository: DVGRepository {
     // MARK: - Soft Delete
 
     func softDelete(_ dvg: DVG) async throws {
+        let dvgID = dvg.id
+
         dvg.isDeleted = true
         dvg.status = DVGStatus.archived.rawValue
         dvg.lastModified = Date()
         try saveContext()
+
+        // Cancel any pending expiry notification for this DVG.
+        await notificationService?.cancel(for: dvgID)
     }
 
     // MARK: - Mark as Used
 
     func markAsUsed(_ dvg: DVG) async throws {
+        let dvgID = dvg.id
+
         dvg.status = DVGStatus.used.rawValue
         dvg.lastModified = Date()
         try saveContext()
+
+        // Cancel any pending expiry notification — the DVG is no longer relevant.
+        await notificationService?.cancel(for: dvgID)
     }
 
     // MARK: - Update Balance
@@ -454,6 +487,9 @@ final class SwiftDataDVGRepository: DVGRepository {
             throw DVGRepositoryError.invalidBalance(newBalance)
         }
 
+        let dvgID = dvg.id
+        let willAutoMarkUsed = dvg.dvgTypeEnum == .giftCard && newBalance == 0
+
         // Update the appropriate balance field based on DVG type
         if dvg.dvgTypeEnum == .loyaltyPoints {
             dvg.pointsBalance = newBalance
@@ -462,12 +498,17 @@ final class SwiftDataDVGRepository: DVGRepository {
         }
 
         // Auto-mark as used if balance reaches zero for gift cards
-        if dvg.dvgTypeEnum == .giftCard && newBalance == 0 {
+        if willAutoMarkUsed {
             dvg.status = DVGStatus.used.rawValue
         }
 
         dvg.lastModified = Date()
         try saveContext()
+
+        // Cancel notification if the DVG was auto-marked as used
+        if willAutoMarkUsed {
+            await notificationService?.cancel(for: dvgID)
+        }
     }
 
     // MARK: - Fetch Review Queue
