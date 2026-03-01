@@ -91,7 +91,7 @@ final class DVGDetailViewModel {
             size = CGSize(width: 250, height: 250)
         case .pdf417:
             size = CGSize(width: 300, height: 120)
-        case .upcA, .upcE, .ean8, .ean13:
+        case .upcA, .upcE, .ean8, .ean13, .code128, .code39:
             size = CGSize(width: 300, height: 120)
         case .text:
             size = .zero

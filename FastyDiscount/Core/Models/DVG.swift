@@ -69,24 +69,28 @@ enum DVGSource: String, Codable, CaseIterable, Hashable, Sendable {
 
 /// The barcode format used to encode the DVG redemption value.
 enum BarcodeType: String, Codable, CaseIterable, Sendable {
-    case qr     = "qr"
-    case upcA   = "upcA"
-    case upcE   = "upcE"
-    case ean8   = "ean8"
-    case ean13  = "ean13"
-    case pdf417 = "pdf417"
-    case text   = "text"
+    case qr      = "qr"
+    case upcA    = "upcA"
+    case upcE    = "upcE"
+    case ean8    = "ean8"
+    case ean13   = "ean13"
+    case pdf417  = "pdf417"
+    case code128 = "code128"
+    case code39  = "code39"
+    case text    = "text"
 
     /// Human-readable display label.
     var displayName: String {
         switch self {
-        case .qr:     return "QR Code"
-        case .upcA:   return "UPC-A"
-        case .upcE:   return "UPC-E"
-        case .ean8:   return "EAN-8"
-        case .ean13:  return "EAN-13"
-        case .pdf417: return "PDF417"
-        case .text:   return "Text"
+        case .qr:      return "QR Code"
+        case .upcA:    return "UPC-A"
+        case .upcE:    return "UPC-E"
+        case .ean8:    return "EAN-8"
+        case .ean13:   return "EAN-13"
+        case .pdf417:  return "PDF417"
+        case .code128: return "Code 128"
+        case .code39:  return "Code 39"
+        case .text:    return "Text"
         }
     }
 }

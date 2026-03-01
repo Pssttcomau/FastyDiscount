@@ -1,5 +1,6 @@
 import AVFoundation
 import CoreImage
+import os
 import SwiftUI
 import Vision
 
@@ -299,19 +300,26 @@ final class ScannerViewModel {
 /// Only `Sendable` types (`DetectedBarcode`, `CGRect?`) are dispatched
 /// to the main actor via closures, satisfying Swift 6 strict concurrency.
 ///
-/// Marked `@unchecked Sendable` because its mutable state (`isPaused`,
-/// `frameCount`) is only accessed from the single serial vision queue.
+/// Mutable state (`isPaused`, `frameCount`) is protected by
+/// `OSAllocatedUnfairLock` so it can be safely written from `@MainActor`
+/// and read on the serial vision queue without data races.
 private final class FrameProcessorDelegate: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, @unchecked Sendable {
 
-    /// When true, the delegate skips frame processing.
-    var isPaused: Bool = false
+    /// Lock-protected pause flag. Written from `@MainActor`, read on the vision queue.
+    private let pauseLock = OSAllocatedUnfairLock(initialState: false)
+
+    /// Thread-safe accessor for the pause state.
+    var isPaused: Bool {
+        get { pauseLock.withLock { $0 } }
+        set { pauseLock.withLock { $0 = newValue } }
+    }
 
     private let symbologies: [VNBarcodeSymbology]
     private let onBarcodeDetected: @Sendable (DetectedBarcode) -> Void
     private let onBoundingBoxUpdate: @Sendable (CGRect?) -> Void
 
-    /// Throttle: only process every Nth frame to reduce CPU usage.
-    private var frameCount: Int = 0
+    /// Lock-protected frame counter. Incremented on the vision queue.
+    private let frameCountLock = OSAllocatedUnfairLock(initialState: 0)
     private let processEveryNthFrame: Int = 3
 
     /// Shared CIContext for image cropping (thread-safe).
@@ -334,8 +342,11 @@ private final class FrameProcessorDelegate: NSObject, AVCaptureVideoDataOutputSa
     ) {
         guard !isPaused else { return }
 
-        frameCount += 1
-        guard frameCount % processEveryNthFrame == 0 else { return }
+        let shouldProcess = frameCountLock.withLock { count -> Bool in
+            count += 1
+            return count % processEveryNthFrame == 0
+        }
+        guard shouldProcess else { return }
 
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
 
@@ -430,8 +441,8 @@ private final class FrameProcessorDelegate: NSObject, AVCaptureVideoDataOutputSa
         case .ean13:   return .ean13
         case .upce:    return .upcE
         case .pdf417:  return .pdf417
-        case .code128: return .text
-        case .code39:  return .text
+        case .code128: return .code128
+        case .code39:  return .code39
         default:       return .text
         }
     }

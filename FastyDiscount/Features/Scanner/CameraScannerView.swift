@@ -302,7 +302,7 @@ private struct ScanningOverlayView: View {
             ZStack {
                 // Darkened overlay outside the guide frame
                 ScannerMaskShape(guideRect: guideRect)
-                    .fill(.black.opacity(0.5))
+                    .fill(.black.opacity(0.5), style: FillStyle(eoFill: true))
                     .ignoresSafeArea()
 
                 // Guide frame corners
@@ -366,11 +366,6 @@ private struct ScannerMaskShape: Shape {
         path.addRect(rect)
         path.addRoundedRect(in: guideRect, cornerSize: CGSize(width: 12, height: 12))
         return path
-    }
-
-    // Use even-odd fill rule to cut out the guide rectangle.
-    var fillStyle: FillStyle {
-        FillStyle(eoFill: true)
     }
 }
 

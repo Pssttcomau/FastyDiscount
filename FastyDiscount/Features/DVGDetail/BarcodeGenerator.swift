@@ -45,8 +45,8 @@ enum BarcodeGenerator {
             ciImage = generateQRCode(from: value)
         case .pdf417:
             ciImage = generatePDF417(from: value)
-        case .upcA, .upcE, .ean8, .ean13:
-            // iOS does not provide dedicated CIFilters for UPC/EAN formats.
+        case .upcA, .upcE, .ean8, .ean13, .code128, .code39:
+            // iOS does not provide dedicated CIFilters for UPC/EAN/Code 39 formats.
             // Code 128 is used as a universal 1D barcode fallback.
             ciImage = generateCode128(from: value)
         case .text:
