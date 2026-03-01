@@ -21,4 +21,6 @@ enum AppDestination: Hashable, Sendable {
     case storeLocationPicker(UUID)
     case cameraScanner
     case textOCR
+    /// Photo library and PDF document import with barcode / OCR extraction.
+    case importScan
 }

@@ -408,42 +408,18 @@ private final class FrameProcessorDelegate: NSObject, AVCaptureVideoDataOutputSa
     ///
     /// The Vision bounding box is normalized (0-1) with origin at bottom-left.
     /// CIImage coordinates have origin at bottom-left, so we can map directly.
+    ///
+    /// Delegates to `BarcodeDetectionService` which provides the canonical
+    /// implementation shared with the photo/PDF import flow.
     private func cropBarcodeRegion(from image: CIImage, boundingBox: CGRect) -> Data? {
-        let imageExtent = image.extent
-        let cropRect = CGRect(
-            x: boundingBox.origin.x * imageExtent.width,
-            y: boundingBox.origin.y * imageExtent.height,
-            width: boundingBox.width * imageExtent.width,
-            height: boundingBox.height * imageExtent.height
-        )
-
-        // Add some padding around the barcode (10%)
-        let paddingX = cropRect.width * 0.1
-        let paddingY = cropRect.height * 0.1
-        let paddedRect = cropRect.insetBy(dx: -paddingX, dy: -paddingY)
-            .intersection(imageExtent)
-
-        let croppedImage = image.cropped(to: paddedRect)
-
-        guard let cgImage = ciContext.createCGImage(croppedImage, from: croppedImage.extent) else {
-            return nil
-        }
-
-        let uiImage = UIImage(cgImage: cgImage)
-        return uiImage.jpegData(compressionQuality: 0.8)
+        BarcodeDetectionService.shared.cropBarcodeRegion(from: image, boundingBox: boundingBox)
     }
 
     /// Maps a Vision `VNBarcodeSymbology` to the app's `BarcodeType`.
+    ///
+    /// Delegates to `BarcodeDetectionService` which provides the canonical
+    /// implementation shared with the photo/PDF import flow.
     private static func mapSymbology(_ symbology: VNBarcodeSymbology) -> BarcodeType {
-        switch symbology {
-        case .qr:      return .qr
-        case .ean8:    return .ean8
-        case .ean13:   return .ean13
-        case .upce:    return .upcE
-        case .pdf417:  return .pdf417
-        case .code128: return .code128
-        case .code39:  return .code39
-        default:       return .text
-        }
+        BarcodeDetectionService.mapSymbology(symbology)
     }
 }

@@ -180,6 +180,8 @@ struct DestinationView: View {
         case .textOCR:
             Text("Text OCR Scanner")
                 .navigationTitle("Text OCR")
+        case .importScan:
+            ImportView()
         }
     }
 }
@@ -266,24 +268,45 @@ private struct ScanPlaceholderView: View {
                 .fontWeight(.bold)
                 .foregroundStyle(Theme.Colors.textPrimary)
 
-            Text("Use your camera to scan discount barcodes, QR codes, and coupons.")
+            Text("Use your camera to scan discount barcodes, QR codes, and coupons — or import from a photo or PDF.")
                 .font(Theme.Typography.body)
                 .foregroundStyle(Theme.Colors.textSecondary)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, Theme.Spacing.lg)
 
+            // Camera scanner button
             Button {
                 router.push(.cameraScanner)
             } label: {
-                Label("Open Scanner", systemImage: "camera.fill")
+                Label("Open Camera Scanner", systemImage: "camera.fill")
                     .font(Theme.Typography.headline)
                     .foregroundStyle(.white)
-                    .padding(.vertical, Theme.Spacing.sm)
-                    .padding(.horizontal, Theme.Spacing.lg)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, Theme.Spacing.md)
                     .background(Theme.Colors.primary, in: RoundedRectangle(cornerRadius: Theme.CornerRadius.medium))
             }
             .accessibilityLabel("Open barcode scanner")
             .accessibilityHint("Opens the camera to scan barcodes and QR codes")
+            .padding(.horizontal, Theme.Spacing.lg)
+
+            // Import from photo or PDF button
+            Button {
+                router.push(.importScan)
+            } label: {
+                Label("Import Photo or PDF", systemImage: "square.and.arrow.down")
+                    .font(Theme.Typography.headline)
+                    .foregroundStyle(Theme.Colors.primary)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, Theme.Spacing.md)
+                    .background(Theme.Colors.primary.opacity(0.1), in: RoundedRectangle(cornerRadius: Theme.CornerRadius.medium))
+                    .overlay {
+                        RoundedRectangle(cornerRadius: Theme.CornerRadius.medium)
+                            .stroke(Theme.Colors.primary.opacity(0.4), lineWidth: 1)
+                    }
+            }
+            .accessibilityLabel("Import from photo or PDF")
+            .accessibilityHint("Opens the import screen to extract barcodes from a photo or PDF document")
+            .padding(.horizontal, Theme.Spacing.lg)
         }
         .navigationTitle("Scan")
     }
