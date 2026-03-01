@@ -1,11 +1,12 @@
 import SwiftUI
 import SwiftData
+import PassKit
 
 // MARK: - DVGDetailViewModel
 
 /// ViewModel for the DVG detail screen. Manages barcode generation, user actions
-/// (mark as used, favourite toggle, balance updates), and transient UI state
-/// such as the "Copied!" toast and confirmation alerts.
+/// (mark as used, favourite toggle, balance updates), Apple Wallet pass operations,
+/// and transient UI state such as the "Copied!" toast and confirmation alerts.
 ///
 /// Requires a `DVGRepository` for persistence operations. The DVG instance is
 /// observed directly via SwiftData's change tracking.
@@ -20,6 +21,9 @@ final class DVGDetailViewModel {
 
     /// Repository used for persistence operations.
     private let repository: any DVGRepository
+
+    /// Service for Apple Wallet pass operations.
+    private let passKitService: any PassKitService
 
     /// Generated barcode image, rendered once and cached.
     private(set) var barcodeImage: UIImage?
@@ -51,11 +55,37 @@ final class DVGDetailViewModel {
     /// Whether the share sheet is presented.
     var showShareSheet: Bool = false
 
+    // MARK: - Apple Wallet Properties
+
+    /// Whether a wallet pass operation is in progress.
+    private(set) var isWalletProcessing: Bool = false
+
+    /// Whether a pass for this DVG is currently in the user's wallet.
+    private(set) var isPassInWallet: Bool = false
+
+    /// Whether the "Remove from Wallet" confirmation alert is shown.
+    var showRemovePassAlert: Bool = false
+
+    /// Whether the device supports adding passes to Apple Wallet.
+    let canAddPasses: Bool
+
+    /// Whether this DVG is eligible for an Apple Wallet pass.
+    var isWalletEligible: Bool {
+        let snapshot = DVGPassSnapshot(dvg: dvg)
+        return snapshot.isWalletEligible
+    }
+
     // MARK: - Init
 
-    init(dvg: DVG, repository: any DVGRepository) {
+    init(
+        dvg: DVG,
+        repository: any DVGRepository,
+        passKitService: (any PassKitService)? = nil
+    ) {
         self.dvg = dvg
         self.repository = repository
+        self.passKitService = passKitService ?? AppleWalletPassKitService()
+        self.canAddPasses = AppleWalletPassKitService.canAddPasses()
     }
 
     // MARK: - Barcode Generation
@@ -183,6 +213,78 @@ final class DVGDetailViewModel {
         }
 
         isProcessing = false
+    }
+
+    // MARK: - Apple Wallet
+
+    /// Checks whether a pass for this DVG is in the user's wallet.
+    /// Called on view appear to set initial wallet button state.
+    func checkWalletStatus() {
+        guard canAddPasses, isWalletEligible else {
+            isPassInWallet = false
+            return
+        }
+
+        let snapshot = DVGPassSnapshot(dvg: dvg)
+        isPassInWallet = passKitService.isPassAdded(for: snapshot)
+    }
+
+    /// Generates a pass for the DVG and attempts to add it to Apple Wallet.
+    ///
+    /// In v1, this generates the full pass data structure but will surface a
+    /// message about signing requirements since client-side `.pkpass` signing
+    /// is not yet implemented.
+    func addToWallet() async {
+        guard !isWalletProcessing else { return }
+        isWalletProcessing = true
+        defer { isWalletProcessing = false }
+
+        let snapshot = DVGPassSnapshot(dvg: dvg)
+
+        do {
+            let passData = try passKitService.generatePass(for: snapshot)
+            try await passKitService.addPass(passData)
+            isPassInWallet = true
+        } catch let error as PassKitServiceError {
+            switch error {
+            case .signingRequired:
+                // Expected in v1: pass data was generated successfully but
+                // signing infrastructure is not yet available.
+                errorMessage = "Apple Wallet pass generation is ready, but server-side "
+                    + "signing is required to create a valid .pkpass file. "
+                    + "This feature will be fully available once the signing service is configured."
+                showError = true
+            default:
+                errorMessage = error.localizedDescription
+                showError = true
+            }
+        } catch {
+            errorMessage = error.localizedDescription
+            showError = true
+        }
+    }
+
+    /// Removes the wallet pass for this DVG from Apple Wallet.
+    func removeFromWallet() {
+        guard canAddPasses else { return }
+
+        let snapshot = DVGPassSnapshot(dvg: dvg)
+
+        do {
+            try passKitService.removePass(for: snapshot)
+            isPassInWallet = false
+        } catch {
+            errorMessage = error.localizedDescription
+            showError = true
+        }
+    }
+
+    /// Suggests removing the pass when a DVG is marked as used or expired.
+    /// Returns `true` if a pass exists that should be removed.
+    func shouldSuggestPassRemoval() -> Bool {
+        guard canAddPasses else { return false }
+        let snapshot = DVGPassSnapshot(dvg: dvg)
+        return passKitService.isPassAdded(for: snapshot)
     }
 
     // MARK: - Share Content

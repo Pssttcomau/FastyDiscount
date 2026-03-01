@@ -63,6 +63,8 @@ struct DVGDetailView: View {
         Task {
             await viewModel?.generateBarcode()
         }
+
+        viewModel?.checkWalletStatus()
     }
 
     // MARK: - Detail Content
@@ -104,6 +106,14 @@ struct DVGDetailView: View {
         } message: {
             Text(viewModel.errorMessage ?? "An unknown error occurred.")
         }
+        .alert("Remove from Wallet", isPresented: bindable(viewModel).showRemovePassAlert) {
+            Button("Remove", role: .destructive) {
+                viewModel.removeFromWallet()
+            }
+            Button("Cancel", role: .cancel) { }
+        } message: {
+            Text("Remove this pass from Apple Wallet?")
+        }
     }
 
     // MARK: - iPhone Layout
@@ -113,6 +123,7 @@ struct DVGDetailView: View {
         VStack(spacing: Theme.Spacing.md) {
             statusBadge(viewModel: viewModel)
             barcodeSection(viewModel: viewModel)
+            walletSection(viewModel: viewModel)
             codeDisplaySection(viewModel: viewModel)
             detailsSection(viewModel: viewModel)
 
@@ -142,9 +153,10 @@ struct DVGDetailView: View {
             statusBadge(viewModel: viewModel)
 
             HStack(alignment: .top, spacing: Theme.Spacing.lg) {
-                // Left column: barcode + code
+                // Left column: barcode + code + wallet
                 VStack(spacing: Theme.Spacing.md) {
                     barcodeSection(viewModel: viewModel)
+                    walletSection(viewModel: viewModel)
                     codeDisplaySection(viewModel: viewModel)
 
                     if viewModel.supportsBalance {
@@ -521,6 +533,24 @@ struct DVGDetailView: View {
             .padding(Theme.Spacing.md)
             .cardStyle()
         }
+    }
+
+    // MARK: - Wallet Section
+
+    @ViewBuilder
+    private func walletSection(viewModel: DVGDetailViewModel) -> some View {
+        WalletSection(
+            canAddPasses: viewModel.canAddPasses,
+            isEligible: viewModel.isWalletEligible,
+            isAlreadyAdded: viewModel.isPassInWallet,
+            isProcessing: viewModel.isWalletProcessing,
+            onAddToWallet: {
+                Task { await viewModel.addToWallet() }
+            },
+            onRemoveFromWallet: {
+                viewModel.showRemovePassAlert = true
+            }
+        )
     }
 
     // MARK: - Action Toolbar

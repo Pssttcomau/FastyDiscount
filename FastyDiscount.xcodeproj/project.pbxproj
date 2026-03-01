@@ -64,6 +64,7 @@
 		784B835AFF8CA8AA8CAA7FD9 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A460E121AD257B3F78C18E4E /* KeychainService.swift */; };
 		7A686B2039D061C9EEC5D731 /* TagSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B359E92B98894B367E8F5E /* TagSeeder.swift */; };
 		7A876E035A51AF7B894AF762 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BEE35D6024275FE15B89F /* Tag.swift */; };
+		790FD8C5E511FC43D418F80D /* AddToWalletButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8345A72D04278F958B8DF59 /* AddToWalletButton.swift */; };
 		7BE645C09C5666BB7BB85C1E /* ModelContainerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2998DF0B0A158FF469F3C28 /* ModelContainerFactory.swift */; };
 		7D94FDBDAB10E0A177EB967A /* LocationPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D70BD24BB11C1C427FD6C0 /* LocationPermissionView.swift */; };
 		7E9B76EBE4565084A90A60DE /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49137CA3F5B583B4C0768D0 /* SettingsViewModel.swift */; };
@@ -89,6 +90,7 @@
 		A14ECB903E84334B410980EE /* ReviewQueueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0951F154F4A7BB333B561C /* ReviewQueueViewModel.swift */; };
 		A894220C62BE58B3A22C74AF /* WatchDVGType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B3DE801867032D4BE6D2C8 /* WatchDVGType.swift */; };
 		A9E88ADCD5186C43B623BFB5 /* FastyDiscountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCB7E057D51E7199DA790AA /* FastyDiscountTests.swift */; };
+		AA711FE46046F1A799A9B935 /* PassKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A2D5E870A88B37557439EB /* PassKitService.swift */; };
 		AAD2A10448748BC03B36E383 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509B58F6E88817E1D7D8094 /* NavigationRouter.swift */; };
 		ACBA56B68D05B23B3C27D225 /* ScanResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CCE2158FD8C356591E834D /* ScanResult.swift */; };
 		ACC24CD9624428715DCD29B2 /* FastyDiscountApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C0CA48AC46680E5D3CA93D /* FastyDiscountApp.swift */; };
@@ -222,6 +224,7 @@
 		9691929165A7A4D71B132CD9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		979088B9F4216E7CF9915879 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		99EF8CF6CB3F135673A09194 /* BarcodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeGenerator.swift; sourceTree = "<group>"; };
+		A8345A72D04278F958B8DF59 /* AddToWalletButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToWalletButton.swift; sourceTree = "<group>"; };
 		9A2D42112B351A5AA4EF8797 /* ImportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportViewModel.swift; sourceTree = "<group>"; };
 		9AEB09B8C2A9112F7D9406C5 /* ScanResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanResultsView.swift; sourceTree = "<group>"; };
 		9C0331FA0754817871D93C9A /* FastyDiscountWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastyDiscountWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -233,6 +236,7 @@
 		A7AA7FA8BEF83B6759CF1EA1 /* DVG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVG.swift; sourceTree = "<group>"; };
 		A8287F7AA78D47417E6C901E /* WatchDVG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchDVG.swift; sourceTree = "<group>"; };
 		AB8C15894DAB11688E8B4D2C /* ExpiryNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpiryNotificationService.swift; sourceTree = "<group>"; };
+		B8A2D5E870A88B37557439EB /* PassKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassKitService.swift; sourceTree = "<group>"; };
 		ABAE83108F7F7A98F025A18A /* BarcodeDetectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeDetectionService.swift; sourceTree = "<group>"; };
 		AE53C2D149AD5277D36BC769 /* WatchConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityManager.swift; sourceTree = "<group>"; };
 		AFFD92DF54632F92670E8BD1 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
@@ -436,6 +440,7 @@
 				C2998DF0B0A158FF469F3C28 /* ModelContainerFactory.swift */,
 				4673B5A45C26980A97CC3365 /* NotificationActionHandler.swift */,
 				DDEE1DF7CDC53C1C828C02A9 /* NotificationPermissionManager.swift */,
+				B8A2D5E870A88B37557439EB /* PassKitService.swift */,
 				29B359E92B98894B367E8F5E /* TagSeeder.swift */,
 				5B17D6ABDE8270A3BA351CE1 /* VisionParsingService.swift */,
 			);
@@ -470,6 +475,7 @@
 		8E1B5D262131F49C22C10647 /* DVGDetail */ = {
 			isa = PBXGroup;
 			children = (
+				A8345A72D04278F958B8DF59 /* AddToWalletButton.swift */,
 				99EF8CF6CB3F135673A09194 /* BarcodeGenerator.swift */,
 				9E97FA9D1B4C33ED51C821CE /* DVGDetailView.swift */,
 				EAD6F1CBCC9AE9C141B3AA6C /* DVGDetailViewModel.swift */,
@@ -820,6 +826,7 @@
 				B0B2C63772859F4A3EBA13FC /* AuthViewModel.swift in Sources */,
 				83AA06CC8644B6C8046A4508 /* AuthenticationService.swift in Sources */,
 				1F4CB9A5AFEC38B614DE061C /* BarcodeDetectionService.swift in Sources */,
+				790FD8C5E511FC43D418F80D /* AddToWalletButton.swift in Sources */,
 				E929ACD515BD003A47B3AC65 /* BarcodeGenerator.swift in Sources */,
 				68E07B1E648289F136773685 /* CameraPreviewView.swift in Sources */,
 				DAADA0EF61C2A6C2FB1E97AD /* CameraScannerView.swift in Sources */,
@@ -859,6 +866,7 @@
 				4C6D0846DA87A83DDF6548C7 /* NearbyMapViewModel.swift in Sources */,
 				E2CA46D1CF304D0A0BD44F7A /* NotificationActionHandler.swift in Sources */,
 				6DE0D56BF477992554123042 /* NotificationPermissionManager.swift in Sources */,
+				AA711FE46046F1A799A9B935 /* PassKitService.swift in Sources */,
 				27D95A5A73E47BCC76D9EB6B /* OnboardingView.swift in Sources */,
 				F58C44901B37C630C7BFF2FC /* OnboardingViewModel.swift in Sources */,
 				BF5790074C51631E31787624 /* ReviewQueueView.swift in Sources */,
