@@ -1,6 +1,19 @@
 {
-  "meta": { "version": 2, "lastRebuilt": "2026-02-23T00:00:00Z", "totalErrors": 0, "totalKnowledge": 0 },
-  "index": {},
-  "errors": [],
+  "meta": { "version": 2, "lastRebuilt": "2026-03-01T00:00:00Z", "totalErrors": 1, "totalKnowledge": 0 },
+  "index": { "ERR-2026-0301-001": 0 },
+  "errors": [
+    {
+      "id": "ERR-2026-0301-001",
+      "ts": "2026-03-01T18:30:00Z",
+      "type": "build_error",
+      "cat": "ios/xcode-project-config",
+      "file": "FastyDiscount/Core/Services/DVGRepository.swift",
+      "msg": "Pre-existing: ExpiryNotificationService and NotificationPermissionManager not included in Widget/ShareExtension targets",
+      "cause": "DVGRepository.swift is compiled in Widget and ShareExtension targets but ExpiryNotificationService.swift is not; cascading missing files across extension targets",
+      "fix": "UNRESOLVED",
+      "status": "unresolved",
+      "agent": "code-agent"
+    }
+  ],
   "knowledge": {}
 }

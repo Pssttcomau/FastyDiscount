@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 import CloudKit
 
 // MARK: - SettingsView
@@ -9,6 +10,7 @@ struct SettingsView: View {
     @State private var viewModel = SettingsViewModel()
     @Environment(AppearanceManager.self) private var appearanceManager
     @Environment(LocationPermissionManager.self) private var locationPermissionManager
+    @Environment(\.modelContext) private var modelContext
 
     var body: some View {
         Form {
@@ -18,6 +20,7 @@ struct SettingsView: View {
             locationSection
             aiSection
             appearanceSection
+            tagsSection
             aboutSection
             removeAdsSection
         }
@@ -376,6 +379,23 @@ struct SettingsView: View {
             .pickerStyle(.segmented)
         } header: {
             Text("Appearance")
+        }
+    }
+
+    // MARK: - Tags Section
+
+    @ViewBuilder
+    private var tagsSection: some View {
+        Section {
+            NavigationLink {
+                TagManagerView(modelContext: modelContext)
+            } label: {
+                Label("Manage Tags", systemImage: "tag")
+            }
+        } header: {
+            Text("Data")
+        } footer: {
+            Text("Create and manage custom tags to organise your discounts, vouchers, and gift cards.")
         }
     }
 
