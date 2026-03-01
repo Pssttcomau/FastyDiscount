@@ -18,6 +18,10 @@ import UIKit
 /// In development (mock), renders a labelled placeholder.
 /// In production (real SDK), renders a `GADBannerView`.
 ///
+/// After every 10th banner ad impression, shows an `AdUpgradeBanner`
+/// suggestion prompting the user to remove ads. The banner is inline,
+/// dismissible, and non-modal.
+///
 /// Place at the bottom of a view hierarchy, inside a `VStack`.
 struct BannerAdView: View {
 
@@ -25,6 +29,14 @@ struct BannerAdView: View {
 
     var adUnitID: String
     var adService: any AdService
+
+    // MARK: - Upgrade Banner State
+
+    /// Whether the inline "Remove Ads" suggestion banner is currently visible.
+    @State private var showUpgradeBanner: Bool = false
+
+    /// Number of impressions between upgrade suggestion threshold checks (every 10th).
+    private static let upgradeSuggestionThreshold = 10
 
     // MARK: - Banner dimensions
 
@@ -37,12 +49,34 @@ struct BannerAdView: View {
         if adService.isAdFree {
             EmptyView()
         } else {
-            bannerContent
-                .frame(maxWidth: .infinity)
-                .frame(height: bannerHeight)
-                .onAppear {
-                    adService.loadBannerAd(adUnitID: adUnitID)
-                }
+            VStack(spacing: 0) {
+                // Inline upgrade suggestion banner — shown every 10th impression.
+                AdUpgradeBanner(isVisible: $showUpgradeBanner)
+                    .animation(.easeInOut(duration: 0.25), value: showUpgradeBanner)
+
+                // The banner ad itself.
+                bannerContent
+                    .frame(maxWidth: .infinity)
+                    .frame(height: bannerHeight)
+            }
+            .onAppear {
+                recordImpressionAndLoadAd()
+            }
+        }
+    }
+
+    // MARK: - Private Helpers
+
+    /// Records a banner ad impression and loads the ad.
+    /// If this is the 10th impression (or a multiple thereof), shows the upgrade banner.
+    private func recordImpressionAndLoadAd() {
+        adService.loadBannerAd(adUnitID: adUnitID)
+        adService.adImpressionCount += 1
+
+        if adService.adImpressionCount % Self.upgradeSuggestionThreshold == 0 {
+            withAnimation(.easeInOut(duration: 0.25)) {
+                showUpgradeBanner = true
+            }
         }
     }
 

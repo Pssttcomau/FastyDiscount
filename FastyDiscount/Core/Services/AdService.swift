@@ -23,6 +23,11 @@ protocol AdService: AnyObject {
     /// This is read from UserDefaults; TASK-040 (StoreKit 2) will write to it.
     var isAdFree: Bool { get }
 
+    /// Cumulative number of banner ad impressions recorded in this app session.
+    /// Reset to 0 on app launch. Incremented by `BannerAdView` each time a banner ad loads.
+    /// Used to trigger the "Remove Ads" upgrade suggestion after every 10th impression.
+    var adImpressionCount: Int { get set }
+
     /// Loads a banner ad for the given ad unit ID.
     /// Should be called when the view hosting the banner appears.
     func loadBannerAd(adUnitID: String)
@@ -62,6 +67,11 @@ final class MockAdMobService: AdService {
     var isAdFree: Bool = UserDefaults.standard.bool(forKey: .adFreeKey) {
         didSet { UserDefaults.standard.set(isAdFree, forKey: .adFreeKey) }
     }
+
+    /// Cumulative number of banner ad impressions in this session.
+    /// Reset to 0 on each app launch (not persisted to UserDefaults).
+    /// Incremented by `BannerAdView` on each banner ad load event.
+    var adImpressionCount: Int = 0
 
     private(set) var isInterstitialReady: Bool = false
 

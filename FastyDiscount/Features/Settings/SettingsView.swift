@@ -1,6 +1,7 @@
 import SwiftUI
 import SwiftData
 import CloudKit
+import StoreKit
 
 // MARK: - SettingsView
 
@@ -10,6 +11,7 @@ struct SettingsView: View {
     @State private var viewModel = SettingsViewModel()
     @Environment(AppearanceManager.self) private var appearanceManager
     @Environment(LocationPermissionManager.self) private var locationPermissionManager
+    @Environment(AppStoreKitService.self) private var storeKitService
     @Environment(\.modelContext) private var modelContext
 
     var body: some View {
@@ -442,33 +444,7 @@ struct SettingsView: View {
 
     @ViewBuilder
     private var removeAdsSection: some View {
-        Section {
-            // Remove Ads IAP button (placeholder — implemented in TASK-041)
-            Button {
-                // TODO: TASK-041 — implement Remove Ads IAP purchase flow
-            } label: {
-                HStack {
-                    Label("Remove Ads", systemImage: "sparkles")
-                    Spacer()
-                    Image(systemName: "chevron.right")
-                        .font(Theme.Typography.caption)
-                        .foregroundStyle(Theme.Colors.textSecondary)
-                }
-            }
-            .foregroundStyle(Theme.Colors.primary)
-
-            // Restore Purchases button (placeholder — implemented in TASK-041)
-            Button {
-                // TODO: TASK-041 — implement Restore Purchases flow
-            } label: {
-                Label("Restore Purchases", systemImage: "arrow.counterclockwise")
-            }
-            .foregroundStyle(Theme.Colors.primary)
-        } header: {
-            Text("Purchases")
-        } footer: {
-            Text("Remove Ads is a one-time purchase. Restore Purchases recovers any previous purchases on this Apple ID.")
-        }
+        PaywallView(storeKitService: storeKitService)
     }
 }
 
@@ -479,5 +455,6 @@ struct SettingsView: View {
         SettingsView()
             .environment(AppearanceManager())
             .environment(LocationPermissionManager())
+            .environment(AppStoreKitService())
     }
 }
