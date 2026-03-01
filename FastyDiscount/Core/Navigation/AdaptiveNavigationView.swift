@@ -140,7 +140,7 @@ struct TabRootView: View {
         case .scan:
             ScanPlaceholderView()
         case .history:
-            HistoryPlaceholderView()
+            HistoryView()
         case .settings:
             SettingsView()
         }
@@ -298,12 +298,4 @@ private struct ScanPlaceholderView: View {
     }
 }
 
-private struct HistoryPlaceholderView: View {
-    var body: some View {
-        Text("History")
-            .font(.largeTitle)
-            .foregroundStyle(.secondary)
-            .navigationTitle("History")
-    }
-}
 
