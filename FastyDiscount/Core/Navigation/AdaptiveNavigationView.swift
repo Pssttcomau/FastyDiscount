@@ -33,6 +33,11 @@ struct AdaptiveNavigationView: View {
 private struct CompactNavigationView: View {
     @Environment(NavigationRouter.self) private var router
 
+    /// Count of `ScanResult` items that still need human review,
+    /// displayed as a badge on the Scan tab.
+    @Query(filter: #Predicate<ScanResult> { $0.needsReview == true && $0.isDeleted == false })
+    private var pendingReviewItems: [ScanResult]
+
     var body: some View {
         @Bindable var router = router
 
@@ -46,6 +51,7 @@ private struct CompactNavigationView: View {
                             }
                     }
                 }
+                .badge(tab == .scan ? pendingReviewItems.count : 0)
             }
         }
     }

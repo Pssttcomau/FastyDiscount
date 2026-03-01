@@ -78,6 +78,13 @@ final class ScanResult {
     /// Date the source email was received.
     var emailDate: Date?
 
+    // MARK: - Per-Field Confidence
+
+    /// JSON-encoded `[String: Double]` mapping field names to their individual
+    /// confidence scores (0.0 -- 1.0). Empty string when unavailable.
+    /// Stored as a plain `String` for CloudKit compatibility.
+    var fieldConfidencesJSON: String = ""
+
     // MARK: - Soft Delete (CloudKit)
 
     /// Soft-delete flag. Items marked `true` are filtered at the repository
@@ -133,6 +140,19 @@ extension ScanResult {
     /// `true` if the result has been reviewed by a user.
     var isReviewed: Bool {
         reviewedAt != nil
+    }
+
+    /// Decoded per-field confidence dictionary.
+    ///
+    /// Returns an empty dictionary when `fieldConfidencesJSON` is empty or
+    /// cannot be decoded.
+    var fieldConfidencesDict: [String: Double] {
+        guard !fieldConfidencesJSON.isEmpty,
+              let data = fieldConfidencesJSON.data(using: .utf8),
+              let dict = try? JSONDecoder().decode([String: Double].self, from: data) else {
+            return [:]
+        }
+        return dict
     }
 }
 

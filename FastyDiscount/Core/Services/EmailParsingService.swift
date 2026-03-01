@@ -459,6 +459,12 @@ final class CloudAIEmailParsingService: EmailParsingService {
             isDeleted: false
         )
 
+        // Persist per-field confidence scores as JSON
+        if let jsonData = try? JSONEncoder().encode(result.fieldConfidences),
+           let jsonString = String(data: jsonData, encoding: .utf8) {
+            scanResult.fieldConfidencesJSON = jsonString
+        }
+
         // Create DVG from extraction result
         let dvg = DVG(
             title: result.title ?? "",

@@ -37,21 +37,11 @@ struct ReviewQueueView: View {
         .navigationTitle("Review Queue")
         .navigationBarTitleDisplayMode(.large)
         .task {
-            setupViewModel()
-        }
-    }
-
-    // MARK: - Setup
-
-    private func setupViewModel() {
-        guard viewModel == nil else { return }
-        let repository = SwiftDataDVGRepository(modelContext: modelContext)
-        viewModel = ReviewQueueViewModel(
-            repository: repository,
-            modelContext: modelContext
-        )
-        Task {
-            await viewModel?.loadReviewQueue()
+            if viewModel == nil {
+                let repo = SwiftDataDVGRepository(modelContext: modelContext)
+                viewModel = ReviewQueueViewModel(repository: repo, modelContext: modelContext)
+            }
+            await viewModel!.loadReviewQueue()
         }
     }
 
@@ -59,6 +49,8 @@ struct ReviewQueueView: View {
 
     @ViewBuilder
     private func mainContent(viewModel: ReviewQueueViewModel) -> some View {
+        @Bindable var vm = viewModel
+
         Group {
             if viewModel.isLoading {
                 loadingView()
@@ -75,19 +67,19 @@ struct ReviewQueueView: View {
                 }
             }
         }
-        .alert("Approve All Items", isPresented: Bindable(viewModel).showApproveAllConfirmation) {
+        .alert("Approve All Items", isPresented: $vm.showApproveAllConfirmation) {
             Button("Approve All") { viewModel.approveAll() }
             Button("Cancel", role: .cancel) { }
         } message: {
             Text("All \(viewModel.pendingCount) items will be accepted as-is and moved to your wallet.")
         }
-        .alert("Discard All Items", isPresented: Bindable(viewModel).showDiscardAllConfirmation) {
+        .alert("Discard All Items", isPresented: $vm.showDiscardAllConfirmation) {
             Button("Discard All", role: .destructive) { viewModel.discardAll() }
             Button("Cancel", role: .cancel) { }
         } message: {
             Text("All \(viewModel.pendingCount) items will be permanently removed.")
         }
-        .alert("Error", isPresented: Bindable(viewModel).hasError) {
+        .alert("Error", isPresented: $vm.hasError) {
             Button("OK", role: .cancel) { }
         } message: {
             Text(viewModel.errorMessage)
@@ -296,29 +288,43 @@ private struct ReviewQueueItemView: View {
 
     @ViewBuilder
     private var fieldsSection: some View {
+        let confidences = dvg.scanResult?.fieldConfidencesDict ?? [:]
+
         VStack(alignment: .leading, spacing: Theme.Spacing.xs) {
             if !dvg.code.isEmpty {
-                fieldRow(label: "Code", value: dvg.code, icon: "number.square.fill")
+                fieldRow(
+                    label: "Code",
+                    value: dvg.code,
+                    icon: "number.square.fill",
+                    confidence: confidences["code"]
+                )
             }
 
             fieldRow(
                 label: "Type",
                 value: dvg.dvgTypeEnum.displayName,
-                icon: "tag.fill"
+                icon: "tag.fill",
+                confidence: confidences["dvgType"]
             )
 
             if let expiry = dvg.expirationDate {
                 fieldRow(
                     label: "Expires",
                     value: expiry.formatted(date: .abbreviated, time: .omitted),
-                    icon: "calendar"
+                    icon: "calendar",
+                    confidence: confidences["expirationDate"]
                 )
             }
         }
     }
 
     @ViewBuilder
-    private func fieldRow(label: String, value: String, icon: String) -> some View {
+    private func fieldRow(
+        label: String,
+        value: String,
+        icon: String,
+        confidence: Double? = nil
+    ) -> some View {
         HStack(spacing: Theme.Spacing.sm) {
             Image(systemName: icon)
                 .font(Theme.Typography.caption)
@@ -337,6 +343,15 @@ private struct ReviewQueueItemView: View {
                 .lineLimit(1)
 
             Spacer()
+
+            if let confidence {
+                Circle()
+                    .fill(confidenceColor(for: confidence))
+                    .frame(width: 6, height: 6)
+                    .accessibilityLabel(
+                        "Field confidence: \(Int(confidence * 100)) percent"
+                    )
+            }
         }
     }
 
