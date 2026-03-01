@@ -91,7 +91,7 @@ struct DVGCardView: View {
             }
         }
         .padding(Theme.Spacing.md)
-        .frame(width: 160, height: 150)
+        .frame(width: 160, minHeight: 150)
         .cardStyle()
         .accessibilityElement(children: .combine)
         .accessibilityLabel(accessibilityDescription)

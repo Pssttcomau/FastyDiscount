@@ -146,6 +146,17 @@ final class LocationPermissionManager: NSObject {
         }
     }
 
+    // MARK: - Current Location
+
+    /// The most recent location reported by the underlying `CLLocationManager`.
+    ///
+    /// Returns `nil` if the manager has not yet received a location update
+    /// (e.g. authorization was recently granted). Callers should guard against
+    /// `nil` and treat it as "location unavailable".
+    var currentCLLocation: CLLocation? {
+        locationManager.location
+    }
+
     // MARK: - Private Helpers
 
     /// Maps `CLAuthorizationStatus` to the app-level `LocationAuthorizationState`.

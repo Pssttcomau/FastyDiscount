@@ -7,8 +7,8 @@ import CoreLocation
 /// ViewModel for the dashboard home screen. Manages loading and state for three
 /// independent sections: Expiring Soon, Nearby, and Recently Added.
 ///
-/// Each section can be loaded independently and in parallel using `async let`.
-/// The ViewModel also handles pull-to-refresh and favourite toggling.
+/// Each section can be loaded independently. Loads execute sequentially on the
+/// main actor. The ViewModel also handles pull-to-refresh and favourite toggling.
 ///
 /// ### Concurrency
 /// `@Observable @MainActor` per project convention. Repository calls are async
@@ -75,9 +75,15 @@ final class DashboardViewModel {
 
     // MARK: - Computed Properties
 
-    /// Returns `true` when no DVGs exist at all (overall empty state).
+    /// Returns `true` when the user has no active DVGs at all (overall empty state).
+    ///
+    /// Uses `recentlyAdded` (sourced from `fetchActive()`) and `expiringSoon` as a
+    /// proxy for the total active DVG count. `nearbyDVGs` is intentionally excluded
+    /// because it is empty whenever location is not authorized, which would
+    /// incorrectly trigger the empty state for users who have DVGs but have not
+    /// granted location permission.
     var hasNoDVGs: Bool {
-        hasLoaded && expiringSoon.isEmpty && nearbyDVGs.isEmpty && recentlyAdded.isEmpty
+        hasLoaded && recentlyAdded.isEmpty && expiringSoon.isEmpty
     }
 
     /// Whether the Nearby section should be visible.
@@ -88,7 +94,7 @@ final class DashboardViewModel {
 
     // MARK: - Load All Sections
 
-    /// Loads all dashboard sections in parallel.
+    /// Loads all dashboard sections.
     /// Call from `.task` or `.refreshable` on the view.
     func loadAll() async {
         if !hasLoaded {
@@ -98,12 +104,11 @@ final class DashboardViewModel {
         // Check location authorization state
         updateLocationAuthState()
 
-        // Load sections in parallel
-        async let expiring: () = loadExpiringSoon()
-        async let nearby: () = loadNearby()
-        async let recent: () = loadRecentlyAdded()
-
-        _ = await (expiring, nearby, recent)
+        // Sections load sequentially on @MainActor — parallelism not possible
+        // since all operations access the same @MainActor-isolated context.
+        await loadExpiringSoon()
+        await loadNearby()
+        await loadRecentlyAdded()
 
         hasLoaded = true
         isLoading = false
@@ -113,11 +118,9 @@ final class DashboardViewModel {
     func refresh() async {
         updateLocationAuthState()
 
-        async let expiring: () = loadExpiringSoon()
-        async let nearby: () = loadNearby()
-        async let recent: () = loadRecentlyAdded()
-
-        _ = await (expiring, nearby, recent)
+        await loadExpiringSoon()
+        await loadNearby()
+        await loadRecentlyAdded()
     }
 
     // MARK: - Load Individual Sections
@@ -191,12 +194,12 @@ final class DashboardViewModel {
     }
 
     /// Returns the user's current location coordinate, if available.
+    ///
+    /// Reads from the `LocationPermissionManager`'s existing `CLLocationManager`
+    /// instance rather than creating a new one (a newly-created manager has no
+    /// cached location and would always return `nil`).
     private func currentUserLocation() -> CLLocationCoordinate2D? {
-        // CLLocationManager.location is available on the main thread
-        // when authorization has been granted.
-        let clManager = CLLocationManager()
-        guard let location = clManager.location else { return nil }
-        return location.coordinate
+        locationManager?.currentCLLocation?.coordinate
     }
 
     /// Calculates human-readable distance strings for nearby DVGs.
