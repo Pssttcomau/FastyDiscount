@@ -14,6 +14,7 @@ enum AppDestination: Hashable, Sendable {
     case dvgDetail(UUID)
     case dvgEdit(UUID)
     case dvgCreate(DVGSource)
+    case emailScan
     case emailScanResults
     case reviewQueue
     case tagManager

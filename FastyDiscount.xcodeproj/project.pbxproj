@@ -32,9 +32,11 @@
 		5BFC757CF60B557F810E068D /* EmailParsingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30713F707819CB262EF6757 /* EmailParsingService.swift */; };
 		6226F47C230628829668050B /* StoreLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0122E3CE8E05D6E9D5F6F20F /* StoreLocation.swift */; };
 		65BA105F9A1DF64EB6F9AC37 /* FastyDiscountWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7B84FF304AEF42608A11AD /* FastyDiscountWidgetBundle.swift */; };
+		678FF87A74DE34E825EC4C6A /* EmailScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABCA7F6D60DC7446B4073A3 /* EmailScanView.swift */; };
 		6853198EE51AD7E9B9AAAA48 /* CloudAIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A256DD3E2644571E164EA549 /* CloudAIClient.swift */; };
 		6A2F598EC41CC34CE537D3B5 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BEE35D6024275FE15B89F /* Tag.swift */; };
 		6E55264149E6D5DF130E10CE /* MockAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9803317C52051BDD169F23 /* MockAuthenticationService.swift */; };
+		71E00C0C355F30EEB06FBB5D /* EmailScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418F8AC8527C19B7B186AB7B /* EmailScanViewModel.swift */; };
 		73B1A0B0E1A1623BFA086B6E /* ScanResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CCE2158FD8C356591E834D /* ScanResult.swift */; };
 		75E28C5711E9E2A0EAE03A88 /* AppearanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A12B82D1E0A85CF8C69513B /* AppearanceManager.swift */; };
 		7840D233C43FA01FCC45D7B8 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E7FED75525299C1FC87BE1 /* ShareViewController.swift */; };
@@ -129,11 +131,13 @@
 		138A7A96DBE454EC79AF1FD4 /* TagPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPickerView.swift; sourceTree = "<group>"; };
 		15C0CA48AC46680E5D3CA93D /* FastyDiscountApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastyDiscountApp.swift; sourceTree = "<group>"; };
 		18EB56A38ABDF3CFEFB46968 /* FastyDiscountWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastyDiscountWidget.swift; sourceTree = "<group>"; };
+		1ABCA7F6D60DC7446B4073A3 /* EmailScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailScanView.swift; sourceTree = "<group>"; };
 		1D41E627216E858DF88FAA04 /* GmailAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GmailAuthService.swift; sourceTree = "<group>"; };
 		284E13291327FC54DC399957 /* DVGFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVGFormView.swift; sourceTree = "<group>"; };
 		29B359E92B98894B367E8F5E /* TagSeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSeeder.swift; sourceTree = "<group>"; };
 		34ADD43197A98E99D9295967 /* GmailAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GmailAPIClient.swift; sourceTree = "<group>"; };
 		3A12B82D1E0A85CF8C69513B /* AppearanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceManager.swift; sourceTree = "<group>"; };
+		418F8AC8527C19B7B186AB7B /* EmailScanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailScanViewModel.swift; sourceTree = "<group>"; };
 		4F1AF8301D378D3D17B56D19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5731DA4F74737134A0331BFB /* FastyDiscountUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = FastyDiscountUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BC12766F92B805DBCA6F59A /* FastyDiscountWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FastyDiscountWidget.entitlements; sourceTree = "<group>"; };
@@ -215,6 +219,7 @@
 			children = (
 				8E1B5D262131F49C22C10647 /* DVGDetail */,
 				91B3A52A6EAC06146D35369C /* DVGForm */,
+				9D045C7ED479AAEFA0CC8E8A /* EmailImport */,
 				97A493B6114B43F0ED8CB4A7 /* Onboarding */,
 			);
 			path = Features;
@@ -318,6 +323,15 @@
 				DBCB7E057D51E7199DA790AA /* FastyDiscountTests.swift */,
 			);
 			path = FastyDiscountTests;
+			sourceTree = "<group>";
+		};
+		9D045C7ED479AAEFA0CC8E8A /* EmailImport */ = {
+			isa = PBXGroup;
+			children = (
+				1ABCA7F6D60DC7446B4073A3 /* EmailScanView.swift */,
+				418F8AC8527C19B7B186AB7B /* EmailScanViewModel.swift */,
+			);
+			path = EmailImport;
 			sourceTree = "<group>";
 		};
 		A64A19DBB8E370E11A720F3F /* FastyDiscountShareExtension */ = {
@@ -583,6 +597,8 @@
 				35EBC3032D296A6CED823AF7 /* DVGRepository.swift in Sources */,
 				2DCA47F6600A97BE9AEE764E /* Destination.swift in Sources */,
 				5BFC757CF60B557F810E068D /* EmailParsingService.swift in Sources */,
+				678FF87A74DE34E825EC4C6A /* EmailScanView.swift in Sources */,
+				71E00C0C355F30EEB06FBB5D /* EmailScanViewModel.swift in Sources */,
 				ACC24CD9624428715DCD29B2 /* FastyDiscountApp.swift in Sources */,
 				5A977DAA6D4121F3A470E235 /* GmailAPIClient.swift in Sources */,
 				54E43A111786FFEB0A123988 /* GmailAuthService.swift in Sources */,

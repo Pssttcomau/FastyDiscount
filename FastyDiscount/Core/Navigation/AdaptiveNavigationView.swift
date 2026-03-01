@@ -157,9 +157,10 @@ struct DestinationView: View {
             DVGEditDestinationView(dvgID: id)
         case .dvgCreate(let source):
             DVGFormView(mode: .create(source), isEmbedded: true)
+        case .emailScan:
+            EmailScanView()
         case .emailScanResults:
-            Text("Email Scan Results")
-                .navigationTitle("Scan Results")
+            EmailScanView()
         case .reviewQueue:
             Text("Review Queue")
                 .navigationTitle("Review")
