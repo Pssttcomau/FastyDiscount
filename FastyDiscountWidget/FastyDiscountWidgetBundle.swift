@@ -5,5 +5,6 @@ import SwiftUI
 struct FastyDiscountWidgetBundle: WidgetBundle {
     var body: some Widget {
         FastyDiscountWidget()
+        ExpiringDVGWidget()
     }
 }

@@ -27,6 +27,22 @@ enum DVGType: String, Codable, CaseIterable, Sendable {
     }
 }
 
+// MARK: - DVGType Icon Extension
+
+extension DVGType {
+
+    /// SF Symbol name representing this DVG type category.
+    var iconName: String {
+        switch self {
+        case .discountCode:  return "percent"
+        case .voucher:       return "ticket"
+        case .giftCard:      return "giftcard"
+        case .loyaltyPoints: return "star.circle"
+        case .barcodeCoupon: return "barcode"
+        }
+    }
+}
+
 // MARK: - DVGStatus
 
 /// The lifecycle state of a DVG item.
