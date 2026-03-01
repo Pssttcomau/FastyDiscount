@@ -64,11 +64,11 @@ enum ModelContainerFactory {
         }
     }
 
-    // MARK: - Read-Only Container (for widget / share extension)
+    // MARK: - Read-Only Container (for widget)
 
-    /// Returns a lightweight read-only `ModelContainer` suitable for extensions.
+    /// Returns a lightweight read-only `ModelContainer` suitable for the widget extension.
     ///
-    /// Extensions read from the same shared App Group store file but do not
+    /// The widget reads from the same shared App Group store file but does not
     /// participate in CloudKit sync, reducing memory pressure and avoiding
     /// write conflicts.
     ///
@@ -80,6 +80,36 @@ enum ModelContainerFactory {
             schema: schema,
             url: storeURL,
             allowsSave: false
+        )
+
+        do {
+            return try ModelContainer(
+                for: schema,
+                migrationPlan: nil,
+                configurations: configuration
+            )
+        } catch {
+            throw ContainerError.storeCreationFailed(error)
+        }
+    }
+
+    // MARK: - Writable Extension Container (for share extension)
+
+    /// Returns a writable `ModelContainer` without CloudKit sync, suitable for
+    /// the share extension.
+    ///
+    /// The share extension needs write access to create new DVG items from shared
+    /// content. CloudKit sync is disabled to reduce memory pressure and avoid
+    /// exceeding the ~120MB extension memory limit.
+    ///
+    /// - Throws: `ModelContainerFactory.ContainerError` if the container cannot be created.
+    static func makeExtensionContainer() throws -> ModelContainer {
+        let storeURL = try sharedStoreURL()
+
+        let configuration = ModelConfiguration(
+            schema: schema,
+            url: storeURL,
+            cloudKitDatabase: .none
         )
 
         do {

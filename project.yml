@@ -159,12 +159,19 @@ targets:
           - "GmailAuthService.swift"
           - "GmailAPIClient.swift"
           - "EmailParsingService.swift"
-          - "BarcodeDetectionService.swift"
           - "VisionParsingService.swift"
           - "ExpiryNotificationService.swift"
           - "NotificationPermissionManager.swift"
+          - "NotificationActionHandler.swift"
           - "GeofenceManager.swift"
           - "LocationPermissionManager.swift"
+          - "PassKitService.swift"
+          - "WatchConnectivityService.swift"
+          - "CloudAIClient.swift"
+          - "TagSeeder.swift"
+          - "DVGRepository.swift"
+          - "KeychainService.swift"
+          - "BarcodeDetectionService.swift"
       - path: FastyDiscount/App/AppConstants.swift
     settings:
       base:

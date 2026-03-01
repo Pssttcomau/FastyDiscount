@@ -67,16 +67,18 @@ enum DVGStatus: String, Codable, CaseIterable, Sendable {
 
 /// How the DVG item was added to the app.
 enum DVGSource: String, Codable, CaseIterable, Hashable, Sendable {
-    case manual = "manual"
-    case email  = "email"
-    case scan   = "scan"
+    case manual         = "manual"
+    case email          = "email"
+    case scan           = "scan"
+    case shareExtension = "shareExtension"
 
     /// Human-readable display label.
     var displayName: String {
         switch self {
-        case .manual: return "Manual Entry"
-        case .email:  return "Email"
-        case .scan:   return "Camera Scan"
+        case .manual:         return "Manual Entry"
+        case .email:          return "Email"
+        case .scan:           return "Camera Scan"
+        case .shareExtension: return "Share Sheet"
         }
     }
 }
