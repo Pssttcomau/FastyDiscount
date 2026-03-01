@@ -59,7 +59,9 @@ final class MockAdMobService: AdService {
     /// `AppStoreKitService` updates this directly when a purchase is verified or revoked.
     /// The initial value is read from UserDefaults so the app starts in the correct state
     /// before StoreKit entitlement verification completes.
-    var isAdFree: Bool = UserDefaults.standard.bool(forKey: .adFreeKey)
+    var isAdFree: Bool = UserDefaults.standard.bool(forKey: .adFreeKey) {
+        didSet { UserDefaults.standard.set(isAdFree, forKey: .adFreeKey) }
+    }
 
     private(set) var isInterstitialReady: Bool = false
 

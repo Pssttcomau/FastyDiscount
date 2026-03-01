@@ -74,7 +74,7 @@ enum StoreKitPurchaseError: Error, LocalizedError, Sendable {
 // MARK: - UserDefaults Key
 
 private extension String {
-    static let adFreeStoreKitKey = "isAdFree"
+    static let adFreeStoreKitKey = "com.fastydiscount.adFree"
 }
 
 // MARK: - AppStoreKitService
@@ -219,6 +219,9 @@ final class AppStoreKitService: StoreKitService {
     /// The task is automatically cancelled when this object is deallocated.
     func startTransactionListener() {
         transactionListenerTask?.cancel()
+        // Inherits @MainActor from the enclosing scope (Swift 6).
+        // handleVerificationResult must remain on @MainActor to safely mutate
+        // @Observable properties; do not move this to a detached task.
         transactionListenerTask = Task { [weak self] in
             for await result in Transaction.updates {
                 await self?.handleVerificationResult(result)
