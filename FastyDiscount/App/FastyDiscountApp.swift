@@ -1,6 +1,7 @@
 import SwiftUI
 import SwiftData
 import UserNotifications
+import CoreLocation
 
 @main
 struct FastyDiscountApp: App {
@@ -18,6 +19,11 @@ struct FastyDiscountApp: App {
     /// never released while the app is running. The delegate is set in `init()`
     /// — before any notification can arrive — as required by Apple's documentation.
     private let notificationActionHandler: NotificationActionHandler
+
+    /// Geofence manager responsible for monitoring store-location regions and
+    /// sending location-based notifications. Retained here so the
+    /// `CLLocationManager` (and its delegate) live for the entire app lifecycle.
+    private let geofenceManager: GeofenceManager
 
     init() {
         let state = AppState()
@@ -45,6 +51,10 @@ struct FastyDiscountApp: App {
         let handler = NotificationActionHandler(modelContainer: modelContainer)
         notificationActionHandler = handler
         UNUserNotificationCenter.current().delegate = handler
+
+        // Initialise the geofence manager. It creates and owns a CLLocationManager
+        // on the main thread. Actual geofence registration happens in .task below.
+        geofenceManager = GeofenceManager(modelContainer: modelContainer)
 
         // Register notification categories early so that any delivered
         // notifications already in the system use the correct action buttons.
@@ -88,6 +98,10 @@ struct FastyDiscountApp: App {
                     let activeDVGs = (try? await repository.fetchActive()) ?? []
                     let service = UNExpiryNotificationService()
                     await service.rescheduleAll(activeDVGs: activeDVGs.map(DVGSnapshot.init))
+
+                    // Recalculate geofences at launch so the top-20 monitored
+                    // regions reflect current DVG state and user location.
+                    await geofenceManager.recalculateGeofences()
                 }
         }
         .modelContainer(modelContainer)
