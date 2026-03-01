@@ -1,18 +1,5 @@
 import Foundation
 
-// MARK: - DVGType
-
-/// Placeholder enum for the type of discount/voucher/gift card.
-/// Full definition will be completed in TASK-007.
-enum DVGType: String, Codable, Sendable, CaseIterable {
-    case discount
-    case voucher
-    case giftCard
-    case coupon
-    case cashback
-    case unknown
-}
-
 // MARK: - DVGExtractionResult
 
 /// The structured result produced by the AI extraction pipeline when parsing
@@ -21,6 +8,9 @@ enum DVGType: String, Codable, Sendable, CaseIterable {
 /// Conforms to `Codable` so it can be serialised to/from JSON (used as the
 /// AI response format and for persistence) and to `Sendable` so it can safely
 /// cross concurrency boundaries in Swift 6 strict-concurrency mode.
+///
+/// - Note: `DVGType` is the canonical enum defined in `DVG.swift`. The
+///   placeholder that previously lived in this file has been replaced.
 struct DVGExtractionResult: Codable, Sendable {
 
     // MARK: - Properties

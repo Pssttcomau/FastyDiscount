@@ -39,6 +39,7 @@
 		B0B2C63772859F4A3EBA13FC /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8441D63ED778CDDD9E70854 /* AuthViewModel.swift */; };
 		C3A176131ABB2F538A9BA1B5 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D708A035AA0DC1E36B3881E7 /* AppConstants.swift */; };
 		EC5C2C5461354C08D2235313 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F1AF8301D378D3D17B56D19 /* Assets.xcassets */; };
+		0C1601CB41434A9096881913 /* DVG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6866C2AC2349E1B03B65E0 /* DVG.swift */; };
 		ECD819BB5408F3732F2E40D7 /* DVGExtractionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB16084384A7BD4638D8D0FE /* DVGExtractionResult.swift */; };
 		EF8CFAB6A36DE4400D5EBF6C /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D708A035AA0DC1E36B3881E7 /* AppConstants.swift */; };
 		F0216DED24E97BA82378A1DB /* FastyDiscountUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE09873A9469003EDE2C7A0 /* FastyDiscountUITests.swift */; };
@@ -112,6 +113,7 @@
 		A256DD3E2644571E164EA549 /* CloudAIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudAIClient.swift; sourceTree = "<group>"; };
 		A2DCFE241EFF5D5B0CF9F5CB /* FastyDiscountShareExtension.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = FastyDiscountShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A460E121AD257B3F78C18E4E /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		3C6866C2AC2349E1B03B65E0 /* DVG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVG.swift; sourceTree = "<group>"; };
 		BB16084384A7BD4638D8D0FE /* DVGExtractionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVGExtractionResult.swift; sourceTree = "<group>"; };
 		C2998DF0B0A158FF469F3C28 /* ModelContainerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelContainerFactory.swift; sourceTree = "<group>"; };
 		C5E7FED75525299C1FC87BE1 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 		88C3634991638123F9A0E5C6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3C6866C2AC2349E1B03B65E0 /* DVG.swift */,
 				BB16084384A7BD4638D8D0FE /* DVGExtractionResult.swift */,
 			);
 			path = Models;
@@ -490,6 +493,7 @@
 				83AA06CC8644B6C8046A4508 /* AuthenticationService.swift in Sources */,
 				20B6D44D877BD0FE9E44A137 /* CloudAIClient.swift in Sources */,
 				4BEA1A5DC5F7BB23509AC435 /* ContentView.swift in Sources */,
+				0C1601CB41434A9096881913 /* DVG.swift in Sources */,
 				ECD819BB5408F3732F2E40D7 /* DVGExtractionResult.swift in Sources */,
 				2DCA47F6600A97BE9AEE764E /* Destination.swift in Sources */,
 				ACC24CD9624428715DCD29B2 /* FastyDiscountApp.swift in Sources */,
