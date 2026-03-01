@@ -29,6 +29,7 @@
 		595DF7E55AF70852C0F02712 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A460E121AD257B3F78C18E4E /* KeychainService.swift */; };
 		5A95FF5678FC18706CCDC0ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DE277FB8F8E572BB84421FD /* Assets.xcassets */; };
 		5A977DAA6D4121F3A470E235 /* GmailAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34ADD43197A98E99D9295967 /* GmailAPIClient.swift */; };
+		5BFC757CF60B557F810E068D /* EmailParsingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30713F707819CB262EF6757 /* EmailParsingService.swift */; };
 		6226F47C230628829668050B /* StoreLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0122E3CE8E05D6E9D5F6F20F /* StoreLocation.swift */; };
 		65BA105F9A1DF64EB6F9AC37 /* FastyDiscountWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7B84FF304AEF42608A11AD /* FastyDiscountWidgetBundle.swift */; };
 		6853198EE51AD7E9B9AAAA48 /* CloudAIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A256DD3E2644571E164EA549 /* CloudAIClient.swift */; };
@@ -153,6 +154,7 @@
 		9E97FA9D1B4C33ED51C821CE /* DVGDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVGDetailView.swift; sourceTree = "<group>"; };
 		A256DD3E2644571E164EA549 /* CloudAIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudAIClient.swift; sourceTree = "<group>"; };
 		A2DCFE241EFF5D5B0CF9F5CB /* FastyDiscountShareExtension.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = FastyDiscountShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A30713F707819CB262EF6757 /* EmailParsingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailParsingService.swift; sourceTree = "<group>"; };
 		A460E121AD257B3F78C18E4E /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		A7AA7FA8BEF83B6759CF1EA1 /* DVG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVG.swift; sourceTree = "<group>"; };
 		BB16084384A7BD4638D8D0FE /* DVGExtractionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVGExtractionResult.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				87D37587BDBE0CFC8919E653 /* AuthenticationService.swift */,
 				A256DD3E2644571E164EA549 /* CloudAIClient.swift */,
 				09DD2F4301D309CBAFFD5C90 /* DVGRepository.swift */,
+				A30713F707819CB262EF6757 /* EmailParsingService.swift */,
 				34ADD43197A98E99D9295967 /* GmailAPIClient.swift */,
 				1D41E627216E858DF88FAA04 /* GmailAuthService.swift */,
 				A460E121AD257B3F78C18E4E /* KeychainService.swift */,
@@ -579,6 +582,7 @@
 				9D69DF65D39FC4029589893C /* DVGFormViewModel.swift in Sources */,
 				35EBC3032D296A6CED823AF7 /* DVGRepository.swift in Sources */,
 				2DCA47F6600A97BE9AEE764E /* Destination.swift in Sources */,
+				5BFC757CF60B557F810E068D /* EmailParsingService.swift in Sources */,
 				ACC24CD9624428715DCD29B2 /* FastyDiscountApp.swift in Sources */,
 				5A977DAA6D4121F3A470E235 /* GmailAPIClient.swift in Sources */,
 				54E43A111786FFEB0A123988 /* GmailAuthService.swift in Sources */,

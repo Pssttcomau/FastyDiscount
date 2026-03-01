@@ -111,6 +111,7 @@ targets:
           - "MockAuthenticationService.swift"
           - "GmailAuthService.swift"
           - "GmailAPIClient.swift"
+          - "EmailParsingService.swift"
       - path: FastyDiscount/App/AppConstants.swift
     resources:
       - path: FastyDiscountWidget/Assets.xcassets
@@ -151,6 +152,7 @@ targets:
           - "MockAuthenticationService.swift"
           - "GmailAuthService.swift"
           - "GmailAPIClient.swift"
+          - "EmailParsingService.swift"
       - path: FastyDiscount/App/AppConstants.swift
     settings:
       base:
