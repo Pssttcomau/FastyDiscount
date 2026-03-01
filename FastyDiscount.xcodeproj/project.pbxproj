@@ -30,10 +30,12 @@
 		5A95FF5678FC18706CCDC0ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DE277FB8F8E572BB84421FD /* Assets.xcassets */; };
 		5A977DAA6D4121F3A470E235 /* GmailAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34ADD43197A98E99D9295967 /* GmailAPIClient.swift */; };
 		5BFC757CF60B557F810E068D /* EmailParsingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30713F707819CB262EF6757 /* EmailParsingService.swift */; };
+		61F31247BA5B85CA4AEA99E6 /* ScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070725435C8F9CB463CF9DEF /* ScannerViewModel.swift */; };
 		6226F47C230628829668050B /* StoreLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0122E3CE8E05D6E9D5F6F20F /* StoreLocation.swift */; };
 		65BA105F9A1DF64EB6F9AC37 /* FastyDiscountWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7B84FF304AEF42608A11AD /* FastyDiscountWidgetBundle.swift */; };
 		678FF87A74DE34E825EC4C6A /* EmailScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABCA7F6D60DC7446B4073A3 /* EmailScanView.swift */; };
 		6853198EE51AD7E9B9AAAA48 /* CloudAIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A256DD3E2644571E164EA549 /* CloudAIClient.swift */; };
+		68E07B1E648289F136773685 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D8511326A5401789910BC7 /* CameraPreviewView.swift */; };
 		6A2F598EC41CC34CE537D3B5 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BEE35D6024275FE15B89F /* Tag.swift */; };
 		6E55264149E6D5DF130E10CE /* MockAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9803317C52051BDD169F23 /* MockAuthenticationService.swift */; };
 		71E00C0C355F30EEB06FBB5D /* EmailScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418F8AC8527C19B7B186AB7B /* EmailScanViewModel.swift */; };
@@ -67,6 +69,7 @@
 		C3A176131ABB2F538A9BA1B5 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D708A035AA0DC1E36B3881E7 /* AppConstants.swift */; };
 		CE1AC98FE37D9CC1B52B5BA5 /* DVG.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AA7FA8BEF83B6759CF1EA1 /* DVG.swift */; };
 		CFFD02C3CDE8BB80343ABFB4 /* DVGDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E97FA9D1B4C33ED51C821CE /* DVGDetailView.swift */; };
+		DAADA0EF61C2A6C2FB1E97AD /* CameraScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D1E03B5D5E24E7C90E581 /* CameraScannerView.swift */; };
 		DE7CEE167DC2082041DAC7CC /* DVG.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AA7FA8BEF83B6759CF1EA1 /* DVG.swift */; };
 		E0B668B4CD295DA829909D23 /* TagSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B359E92B98894B367E8F5E /* TagSeeder.swift */; };
 		E929ACD515BD003A47B3AC65 /* BarcodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EF8CF6CB3F135673A09194 /* BarcodeGenerator.swift */; };
@@ -127,6 +130,8 @@
 
 /* Begin PBXFileReference section */
 		0122E3CE8E05D6E9D5F6F20F /* StoreLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreLocation.swift; sourceTree = "<group>"; };
+		01D8511326A5401789910BC7 /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
+		070725435C8F9CB463CF9DEF /* ScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewModel.swift; sourceTree = "<group>"; };
 		09DD2F4301D309CBAFFD5C90 /* DVGRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVGRepository.swift; sourceTree = "<group>"; };
 		0AA28899713FB7A89571DEEC /* FastyDiscountWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = FastyDiscountWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AE09873A9469003EDE2C7A0 /* FastyDiscountUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastyDiscountUITests.swift; sourceTree = "<group>"; };
@@ -168,6 +173,7 @@
 		C2998DF0B0A158FF469F3C28 /* ModelContainerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelContainerFactory.swift; sourceTree = "<group>"; };
 		C5E7FED75525299C1FC87BE1 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		C6CCE2158FD8C356591E834D /* ScanResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanResult.swift; sourceTree = "<group>"; };
+		D49D1E03B5D5E24E7C90E581 /* CameraScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraScannerView.swift; sourceTree = "<group>"; };
 		D509B58F6E88817E1D7D8094 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
 		D5C4D8F16A7B7E9507498107 /* FastyDiscountTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = FastyDiscountTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D708A035AA0DC1E36B3881E7 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
@@ -225,6 +231,7 @@
 				91B3A52A6EAC06146D35369C /* DVGForm */,
 				9D045C7ED479AAEFA0CC8E8A /* EmailImport */,
 				97A493B6114B43F0ED8CB4A7 /* Onboarding */,
+				BD3CC2725B318CE20CDD4050 /* Scanner */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -389,6 +396,16 @@
 				D509B58F6E88817E1D7D8094 /* NavigationRouter.swift */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		BD3CC2725B318CE20CDD4050 /* Scanner */ = {
+			isa = PBXGroup;
+			children = (
+				01D8511326A5401789910BC7 /* CameraPreviewView.swift */,
+				D49D1E03B5D5E24E7C90E581 /* CameraScannerView.swift */,
+				070725435C8F9CB463CF9DEF /* ScannerViewModel.swift */,
+			);
+			path = Scanner;
 			sourceTree = "<group>";
 		};
 		F71475AA4753E40149146F98 /* FastyDiscountWatch */ = {
@@ -591,6 +608,8 @@
 				B0B2C63772859F4A3EBA13FC /* AuthViewModel.swift in Sources */,
 				83AA06CC8644B6C8046A4508 /* AuthenticationService.swift in Sources */,
 				E929ACD515BD003A47B3AC65 /* BarcodeGenerator.swift in Sources */,
+				68E07B1E648289F136773685 /* CameraPreviewView.swift in Sources */,
+				DAADA0EF61C2A6C2FB1E97AD /* CameraScannerView.swift in Sources */,
 				F2990B96F059ABAE05148E35 /* CardModifier.swift in Sources */,
 				20B6D44D877BD0FE9E44A137 /* CloudAIClient.swift in Sources */,
 				4BEA1A5DC5F7BB23509AC435 /* ContentView.swift in Sources */,
@@ -615,6 +634,7 @@
 				BF5790074C51631E31787624 /* ReviewQueueView.swift in Sources */,
 				A14ECB903E84334B410980EE /* ReviewQueueViewModel.swift in Sources */,
 				ACBA56B68D05B23B3C27D225 /* ScanResult.swift in Sources */,
+				61F31247BA5B85CA4AEA99E6 /* ScannerViewModel.swift in Sources */,
 				09F278F5D9486C0E4B68ED12 /* SignInView.swift in Sources */,
 				6226F47C230628829668050B /* StoreLocation.swift in Sources */,
 				0BE365C08CAB8B78F6F377BE /* Tag.swift in Sources */,

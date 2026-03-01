@@ -19,4 +19,6 @@ enum AppDestination: Hashable, Sendable {
     case reviewQueue
     case tagManager
     case storeLocationPicker(UUID)
+    case cameraScanner
+    case textOCR
 }

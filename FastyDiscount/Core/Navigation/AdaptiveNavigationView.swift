@@ -175,6 +175,11 @@ struct DestinationView: View {
         case .storeLocationPicker(let id):
             Text("Store Location Picker: \(id.uuidString)")
                 .navigationTitle("Pick Location")
+        case .cameraScanner:
+            CameraScannerView()
+        case .textOCR:
+            Text("Text OCR Scanner")
+                .navigationTitle("Text OCR")
         }
     }
 }
@@ -248,11 +253,39 @@ private struct NearbyPlaceholderView: View {
 }
 
 private struct ScanPlaceholderView: View {
+    @Environment(NavigationRouter.self) private var router
+
     var body: some View {
-        Text("Scan")
-            .font(.largeTitle)
-            .foregroundStyle(.secondary)
-            .navigationTitle("Scan")
+        VStack(spacing: Theme.Spacing.lg) {
+            Image(systemName: "barcode.viewfinder")
+                .font(.system(size: 60))
+                .foregroundStyle(Theme.Colors.primary)
+
+            Text("Scan Barcodes & QR Codes")
+                .font(Theme.Typography.title2)
+                .fontWeight(.bold)
+                .foregroundStyle(Theme.Colors.textPrimary)
+
+            Text("Use your camera to scan discount barcodes, QR codes, and coupons.")
+                .font(Theme.Typography.body)
+                .foregroundStyle(Theme.Colors.textSecondary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, Theme.Spacing.lg)
+
+            Button {
+                router.push(.cameraScanner)
+            } label: {
+                Label("Open Scanner", systemImage: "camera.fill")
+                    .font(Theme.Typography.headline)
+                    .foregroundStyle(.white)
+                    .padding(.vertical, Theme.Spacing.sm)
+                    .padding(.horizontal, Theme.Spacing.lg)
+                    .background(Theme.Colors.primary, in: RoundedRectangle(cornerRadius: Theme.CornerRadius.medium))
+            }
+            .accessibilityLabel("Open barcode scanner")
+            .accessibilityHint("Opens the camera to scan barcodes and QR codes")
+        }
+        .navigationTitle("Scan")
     }
 }
 
