@@ -638,7 +638,7 @@ struct DVGDetailView: View {
     private func recordUsageSheet(viewModel: DVGDetailViewModel) -> some View {
         NavigationStack {
             VStack(spacing: Theme.Spacing.lg) {
-                Text("Current \(viewModel.balanceLabel)")
+                Text(String(format: String(localized: "dvgDetail.recordUsage.currentBalance.label"), viewModel.balanceLabel))
                     .font(Theme.Typography.subheadline)
                     .foregroundStyle(Theme.Colors.textSecondary)
 

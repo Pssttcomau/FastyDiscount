@@ -450,6 +450,42 @@
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Store" } }
       }
     },
+    "dvgDetail.code.noCode" : {
+      "comment" : "Placeholder shown in the code display area when the DVG has no barcode or text code",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "No code" } }
+      }
+    },
+    "dvgDetail.recordUsage.invalidAmount.error" : {
+      "comment" : "Error message shown when the user enters a non-positive or invalid number in the Record Usage amount field",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Please enter a valid positive amount." } }
+      }
+    },
+    "dvgDetail.balance.label.points" : {
+      "comment" : "Balance section header and Record Usage sheet label when the DVG is a loyalty points card",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Points" } }
+      }
+    },
+    "dvgDetail.balance.label.balance" : {
+      "comment" : "Balance section header and Record Usage sheet label when the DVG is a gift card",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Balance" } }
+      }
+    },
+    "dvgDetail.balance.pointsFormat" : {
+      "comment" : "Format string for displaying loyalty points balance. %@ is replaced by the locale-formatted integer (e.g. '1,250 points').",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "%@ points" } }
+      }
+    },
+    "dvgDetail.wallet.signingRequired.error" : {
+      "comment" : "Error shown when Apple Wallet pass generation is ready but server-side signing is not yet configured",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Apple Wallet pass generation is ready, but server-side signing is required to create a valid .pkpass file. This feature will be fully available once the signing service is configured." } }
+      }
+    },
 
     "dvgForm.title.label" : {
       "comment" : "Navigation title shown in DVGFormView when creating a new item",

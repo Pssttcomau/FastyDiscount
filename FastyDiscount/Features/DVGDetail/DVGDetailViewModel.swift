@@ -187,7 +187,7 @@ final class DVGDetailViewModel {
 
         let amountString = usageAmountText.trimmingCharacters(in: .whitespacesAndNewlines)
         guard let amount = Double(amountString), amount > 0 else {
-            errorMessage = "Please enter a valid positive amount."
+            errorMessage = String(localized: "dvgDetail.recordUsage.invalidAmount.error")
             showError = true
             return
         }
@@ -250,9 +250,7 @@ final class DVGDetailViewModel {
             case .signingRequired:
                 // Expected in v1: pass data was generated successfully but
                 // signing infrastructure is not yet available.
-                errorMessage = "Apple Wallet pass generation is ready, but server-side "
-                    + "signing is required to create a valid .pkpass file. "
-                    + "This feature will be fully available once the signing service is configured."
+                errorMessage = String(localized: "dvgDetail.wallet.signingRequired.error")
                 showError = true
             default:
                 errorMessage = error.localizedDescription
@@ -314,7 +312,7 @@ final class DVGDetailViewModel {
     /// The code value to display prominently.
     var displayCode: String {
         let code = dvg.code.isEmpty ? dvg.decodedBarcodeValue : dvg.code
-        return code.isEmpty ? "No code" : code
+        return code.isEmpty ? String(localized: "dvgDetail.code.noCode") : code
     }
 
     /// Whether the DVG has a copyable code.
@@ -331,7 +329,7 @@ final class DVGDetailViewModel {
     var formattedBalance: String {
         if dvg.dvgTypeEnum == .loyaltyPoints {
             let formatted = LocaleFormatters.integer(for: Int(dvg.pointsBalance))
-            return String(localized: "\(formatted) points", comment: "Loyalty points balance, e.g. '1,250 points'")
+            return String(format: String(localized: "dvgDetail.balance.pointsFormat"), formatted)
         } else {
             return LocaleFormatters.currency(for: dvg.remainingBalance)
         }
@@ -408,6 +406,8 @@ final class DVGDetailViewModel {
 
     /// The balance label used in the Record Usage sheet.
     var balanceLabel: String {
-        dvg.dvgTypeEnum == .loyaltyPoints ? "Points" : "Balance"
+        dvg.dvgTypeEnum == .loyaltyPoints
+            ? String(localized: "dvgDetail.balance.label.points")
+            : String(localized: "dvgDetail.balance.label.balance")
     }
 }
