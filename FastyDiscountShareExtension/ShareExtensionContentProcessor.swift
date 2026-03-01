@@ -465,7 +465,7 @@ actor ShareExtensionContentProcessor {
         if result.suggestedStoreName.isEmpty, let firstText = texts.first {
             let trimmed = firstText.trimmingCharacters(in: .whitespacesAndNewlines)
             // If the first line is short and doesn't look like a sentence, use it as store name
-            if trimmed.count <= 30 && !trimmed.contains(" ") || trimmed.allSatisfy({ $0.isUppercase || $0.isWhitespace }) {
+            if (trimmed.count <= 30 && !trimmed.contains(" ")) || (trimmed.count <= 30 && trimmed.allSatisfy({ $0.isUppercase || $0.isWhitespace })) {
                 result.suggestedStoreName = trimmed
             }
         }
