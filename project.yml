@@ -99,6 +99,10 @@ targets:
       - path: FastyDiscountWidget
         excludes:
           - "**/.gitkeep"
+      - path: FastyDiscount/Core/Services
+        excludes:
+          - "**/.gitkeep"
+      - path: FastyDiscount/App/AppConstants.swift
     resources:
       - path: FastyDiscountWidget/Assets.xcassets
     settings:
@@ -128,6 +132,10 @@ targets:
         excludes:
           - "**/.gitkeep"
           - Info.plist
+      - path: FastyDiscount/Core/Services
+        excludes:
+          - "**/.gitkeep"
+      - path: FastyDiscount/App/AppConstants.swift
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.fastydiscount.app.share-extension

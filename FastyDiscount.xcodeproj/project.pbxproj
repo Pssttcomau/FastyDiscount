@@ -9,17 +9,22 @@
 /* Begin PBXBuildFile section */
 		0A4587770B25881B70520EB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8FE26587864355ABB32C7D9 /* Assets.xcassets */; };
 		175C77A38B6C1E908F12F3C9 /* FastyDiscountWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8978A026671871ED9BF176 /* FastyDiscountWatchApp.swift */; };
+		25EDC8517A5EC5F44137960D /* ModelContainerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2998DF0B0A158FF469F3C28 /* ModelContainerFactory.swift */; };
 		2DCA47F6600A97BE9AEE764E /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5F54AB779608CE8ABCB292 /* Destination.swift */; };
+		36EB75D6F3264AC6D8B6238B /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D708A035AA0DC1E36B3881E7 /* AppConstants.swift */; };
 		4698C44DD7E0EAA30A604B0A /* FastyDiscountWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB56A38ABDF3CFEFB46968 /* FastyDiscountWidget.swift */; };
+		58DC7B7DF248AC5D2C29674F /* ModelContainerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2998DF0B0A158FF469F3C28 /* ModelContainerFactory.swift */; };
 		5A95FF5678FC18706CCDC0ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DE277FB8F8E572BB84421FD /* Assets.xcassets */; };
 		65BA105F9A1DF64EB6F9AC37 /* FastyDiscountWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7B84FF304AEF42608A11AD /* FastyDiscountWidgetBundle.swift */; };
 		7840D233C43FA01FCC45D7B8 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E7FED75525299C1FC87BE1 /* ShareViewController.swift */; };
+		7BE645C09C5666BB7BB85C1E /* ModelContainerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2998DF0B0A158FF469F3C28 /* ModelContainerFactory.swift */; };
 		8960F834FCA1755261A660AF /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C61E4E9CCEABDDACD1DBEA /* Theme.swift */; };
 		8D5B0FDEB17FFF9107A240DC /* FastyDiscountShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A2DCFE241EFF5D5B0CF9F5CB /* FastyDiscountShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		91B21ACC363E49D8D6D81D88 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D872915DE7DE0AE2465E04 /* AppState.swift */; };
 		9570548722437F16975BC053 /* FastyDiscountWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 0AA28899713FB7A89571DEEC /* FastyDiscountWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A9E88ADCD5186C43B623BFB5 /* FastyDiscountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCB7E057D51E7199DA790AA /* FastyDiscountTests.swift */; };
 		ACC24CD9624428715DCD29B2 /* FastyDiscountApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C0CA48AC46680E5D3CA93D /* FastyDiscountApp.swift */; };
+		C3A176131ABB2F538A9BA1B5 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D708A035AA0DC1E36B3881E7 /* AppConstants.swift */; };
 		EC5C2C5461354C08D2235313 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F1AF8301D378D3D17B56D19 /* Assets.xcassets */; };
 		EF8CFAB6A36DE4400D5EBF6C /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D708A035AA0DC1E36B3881E7 /* AppConstants.swift */; };
 		F0216DED24E97BA82378A1DB /* FastyDiscountUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE09873A9469003EDE2C7A0 /* FastyDiscountUITests.swift */; };
@@ -88,6 +93,7 @@
 		88571406C0725018E19E6889 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9C0331FA0754817871D93C9A /* FastyDiscountWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastyDiscountWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2DCFE241EFF5D5B0CF9F5CB /* FastyDiscountShareExtension.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = FastyDiscountShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2998DF0B0A158FF469F3C28 /* ModelContainerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelContainerFactory.swift; sourceTree = "<group>"; };
 		C5E7FED75525299C1FC87BE1 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		D5C4D8F16A7B7E9507498107 /* FastyDiscountTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = FastyDiscountTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D708A035AA0DC1E36B3881E7 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
@@ -159,6 +165,14 @@
 			path = FastyDiscountUITests;
 			sourceTree = "<group>";
 		};
+		84A2467B1BF33FA5324EB400 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C2998DF0B0A158FF469F3C28 /* ModelContainerFactory.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		89AFC277CE3C4C4629F9BD22 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				B8EB76D4756F292B4DA21C58 /* Navigation */,
+				84A2467B1BF33FA5324EB400 /* Services */,
 				AF815E8A0151E921BF44A368 /* Theme */,
 			);
 			path = Core;
@@ -422,6 +437,7 @@
 				91B21ACC363E49D8D6D81D88 /* AppState.swift in Sources */,
 				2DCA47F6600A97BE9AEE764E /* Destination.swift in Sources */,
 				ACC24CD9624428715DCD29B2 /* FastyDiscountApp.swift in Sources */,
+				7BE645C09C5666BB7BB85C1E /* ModelContainerFactory.swift in Sources */,
 				8960F834FCA1755261A660AF /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,6 +454,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36EB75D6F3264AC6D8B6238B /* AppConstants.swift in Sources */,
+				25EDC8517A5EC5F44137960D /* ModelContainerFactory.swift in Sources */,
 				7840D233C43FA01FCC45D7B8 /* ShareViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -462,8 +480,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3A176131ABB2F538A9BA1B5 /* AppConstants.swift in Sources */,
 				4698C44DD7E0EAA30A604B0A /* FastyDiscountWidget.swift in Sources */,
 				65BA105F9A1DF64EB6F9AC37 /* FastyDiscountWidgetBundle.swift in Sources */,
+				58DC7B7DF248AC5D2C29674F /* ModelContainerFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
