@@ -82,7 +82,7 @@ final class TagManagerViewModel {
     // MARK: - Predefined Colors
 
     /// A grid of predefined tag colors (hex strings) for the color picker.
-    static let predefinedColors: [String] = [
+    nonisolated static let predefinedColors: [String] = [
         "#FF6B35", // Orange
         "#F72585", // Pink
         "#9B5DE5", // Purple

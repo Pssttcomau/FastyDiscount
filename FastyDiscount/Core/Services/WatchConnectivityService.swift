@@ -305,7 +305,7 @@ extension WatchConnectivityService: WCSessionDelegate {
     ///
     /// The FastyDiscountApp observes this notification and calls
     /// `handleMarkAsUsedNotification(_:modelContainer:)` with the correct `ModelContainer`.
-    static let markAsUsedNotification = Notification.Name("WatchConnectivityService.markAsUsed")
+    nonisolated static let markAsUsedNotification = Notification.Name("WatchConnectivityService.markAsUsed")
 }
 
 // MARK: - App Integration Helper

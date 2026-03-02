@@ -22,7 +22,7 @@ final class ScanCounter {
     // MARK: - Constants
 
     /// Number of scans between interstitial ad presentations.
-    static let interstitialThreshold = 5
+    nonisolated static let interstitialThreshold = 5
 
     // MARK: - UserDefaults Keys
 

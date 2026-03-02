@@ -65,15 +65,15 @@ final class GeofenceManager: NSObject, CLLocationManagerDelegate {
     // MARK: - Constants
 
     /// Maximum number of geofence regions iOS allows per app.
-    static let maxMonitoredRegions = 20
+    nonisolated static let maxMonitoredRegions = 20
 
     /// Maximum distance (metres) used for proximity score normalisation.
     /// Locations farther than this distance receive a proximity score of 0.0.
-    static let maxProximityDistance: Double = 50_000.0 // 50 km
+    nonisolated static let maxProximityDistance: Double = 50_000.0 // 50 km
 
     /// Minimum time interval (seconds) between notifications for the same region
     /// to avoid notification spam when the user lingers near a geofence boundary.
-    static let notificationCooldownInterval: TimeInterval = 10.0
+    nonisolated static let notificationCooldownInterval: TimeInterval = 10.0
 
     /// Region identifier prefix used for all geofence regions managed by this service.
     nonisolated static let regionIdentifierPrefix = "dvg-"
@@ -81,7 +81,7 @@ final class GeofenceManager: NSObject, CLLocationManagerDelegate {
     /// Minimum distance (metres) the user must move before geofences are recalculated.
     /// Significant-location-change events fire approximately every 500m, so this
     /// threshold avoids redundant recalculations from small jitter.
-    static let minimumRecalculationDistance: Double = 500.0
+    nonisolated static let minimumRecalculationDistance: Double = 500.0
 
     // MARK: - Properties
 

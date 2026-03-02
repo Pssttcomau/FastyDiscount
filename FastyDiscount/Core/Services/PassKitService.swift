@@ -207,13 +207,13 @@ final class AppleWalletPassKitService: PassKitService {
     // MARK: - Constants
 
     /// Pass type identifier registered in Apple Developer portal.
-    static let passTypeIdentifier = AppConstants.PassKit.passTypeIdentifier
+    nonisolated static let passTypeIdentifier = AppConstants.PassKit.passTypeIdentifier
 
     /// Team identifier from Apple Developer account.
-    static let teamIdentifier = AppConstants.PassKit.teamIdentifier
+    nonisolated static let teamIdentifier = AppConstants.PassKit.teamIdentifier
 
     /// Organization name displayed on the pass.
-    static let defaultOrganizationName = AppConstants.PassKit.organizationName
+    nonisolated static let defaultOrganizationName = AppConstants.PassKit.organizationName
 
     // MARK: - State
 
