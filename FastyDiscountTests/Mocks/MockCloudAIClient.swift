@@ -7,7 +7,7 @@ import Foundation
 ///
 /// Returns pre-configured responses or throws pre-configured errors.
 /// Records all calls for verification.
-final class MockCloudAIClient: CloudAIClient {
+final class MockCloudAIClient: CloudAIClient, @unchecked Sendable {
 
     // MARK: - Recorded Calls
 

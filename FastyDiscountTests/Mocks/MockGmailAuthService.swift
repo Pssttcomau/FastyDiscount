@@ -4,7 +4,7 @@ import Foundation
 // MARK: - MockGmailAuthService
 
 /// Mock implementation of `GmailAuthService` for unit testing.
-final class MockGmailAuthService: GmailAuthService {
+final class MockGmailAuthService: GmailAuthService, @unchecked Sendable {
 
     // MARK: - State
 

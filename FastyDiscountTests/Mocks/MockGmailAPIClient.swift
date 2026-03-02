@@ -4,7 +4,7 @@ import Foundation
 // MARK: - MockGmailAPIClient
 
 /// Mock implementation of `GmailAPIClient` for unit testing.
-final class MockGmailAPIClient: GmailAPIClient {
+final class MockGmailAPIClient: GmailAPIClient, @unchecked Sendable {
 
     // MARK: - Recorded Calls
 
