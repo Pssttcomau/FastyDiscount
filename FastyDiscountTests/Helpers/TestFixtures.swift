@@ -120,6 +120,10 @@ extension DVGExtractionResult {
 extension DVGSnapshot {
 
     /// Creates a test snapshot without requiring an actual DVG model object.
+    ///
+    /// Uses `DVGSnapshot.init(id:title:storeName:expirationDate:notificationLeadDays:statusEnum:isDeleted:)`
+    /// which is nonisolated (no `@MainActor` required), so this factory is safe
+    /// to call from any concurrency context.
     static func testFixture(
         id: UUID = UUID(),
         title: String = "Test DVG",
@@ -129,9 +133,7 @@ extension DVGSnapshot {
         statusEnum: DVGStatus = .active,
         isDeleted: Bool = false
     ) -> DVGSnapshot {
-        // We need to create a DVG to init DVGSnapshot because its init requires @MainActor DVG.
-        // Instead, use a direct memberwise approach via a helper.
-        _DVGSnapshotTestHelper(
+        DVGSnapshot(
             id: id,
             title: title,
             storeName: storeName,
@@ -141,29 +143,6 @@ extension DVGSnapshot {
             isDeleted: isDeleted
         )
     }
-}
-
-/// Helper to create DVGSnapshot values for testing without needing a live DVG model.
-@MainActor
-private func _DVGSnapshotTestHelper(
-    id: UUID,
-    title: String,
-    storeName: String,
-    expirationDate: Date?,
-    notificationLeadDays: Int,
-    statusEnum: DVGStatus,
-    isDeleted: Bool
-) -> DVGSnapshot {
-    let dvg = DVG(
-        id: id,
-        title: title,
-        storeName: storeName,
-        expirationDate: expirationDate,
-        notificationLeadDays: notificationLeadDays,
-        isDeleted: isDeleted
-    )
-    dvg.status = statusEnum.rawValue
-    return DVGSnapshot(dvg: dvg)
 }
 
 // MARK: - GeofenceSnapshot Test Fixtures

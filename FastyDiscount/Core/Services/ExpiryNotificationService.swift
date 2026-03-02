@@ -70,6 +70,30 @@ struct DVGSnapshot: Sendable {
         self.statusEnum = dvg.statusEnum
         self.isDeleted = dvg.isDeleted
     }
+
+    /// Creates a snapshot from individual value-type fields.
+    ///
+    /// Unlike `init(dvg:)`, this initialiser is nonisolated because it does
+    /// not access the `@MainActor`-confined `DVG` model object. Use this when
+    /// you already have the individual field values (e.g. in tests or when
+    /// constructing snapshots across actor boundaries).
+    init(
+        id: UUID,
+        title: String,
+        storeName: String,
+        expirationDate: Date?,
+        notificationLeadDays: Int,
+        statusEnum: DVGStatus,
+        isDeleted: Bool
+    ) {
+        self.id = id
+        self.title = title
+        self.storeName = storeName
+        self.expirationDate = expirationDate
+        self.notificationLeadDays = notificationLeadDays
+        self.statusEnum = statusEnum
+        self.isDeleted = isDeleted
+    }
 }
 
 // MARK: - UNExpiryNotificationService
