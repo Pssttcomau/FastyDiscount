@@ -1,6 +1,6 @@
 {
-  "meta": { "version": 2, "lastRebuilt": "2026-03-01T00:00:00Z", "totalErrors": 1, "totalKnowledge": 0 },
-  "index": { "ERR-2026-0301-001": 0 },
+  "meta": { "version": 2, "lastRebuilt": "2026-03-02T00:00:00Z", "totalErrors": 3, "totalKnowledge": 1 },
+  "index": { "ERR-2026-0301-001": 0, "ERR-2026-0301-002": 1, "ERR-2026-0301-003": 2 },
   "errors": [
     {
       "id": "ERR-2026-0301-001",
@@ -8,12 +8,41 @@
       "type": "build_error",
       "cat": "ios/xcode-project-config",
       "file": "FastyDiscount/Core/Services/DVGRepository.swift",
-      "msg": "Pre-existing: ExpiryNotificationService and NotificationPermissionManager not included in Widget/ShareExtension targets",
-      "cause": "DVGRepository.swift is compiled in Widget and ShareExtension targets but ExpiryNotificationService.swift is not; cascading missing files across extension targets",
-      "fix": "UNRESOLVED",
-      "status": "unresolved",
+      "msg": "ExpiryNotificationService and related types not available in Widget/ShareExtension targets",
+      "cause": "DVGRepository.swift, NotificationActionHandler.swift, WatchConnectivityService.swift included in Widget target but ExpiryNotificationService.swift excluded; cascading missing type errors",
+      "fix": "Added DVGRepository.swift, NotificationActionHandler.swift, WatchConnectivityService.swift to Widget exclusions in project.yml; regenerated xcodeproj via xcodegen. Also fixed pre-existing GeofenceManager nonisolated, Color+Hex duplicate, SortDescriptor<Bool>, and frame API errors.",
+      "kb": "extension-target-source-exclusions",
+      "status": "resolved",
       "agent": "code-agent"
+    },
+    {
+      "id": "ERR-2026-0301-002",
+      "ts": "2026-03-01T18:53:00Z",
+      "type": "build_error",
+      "cat": "watchos/framework-availability",
+      "file": "FastyDiscountWatch/Services/WatchBarcodeGenerator.swift",
+      "msg": "CoreImage (CIFilter) is not available on watchOS -- cannot import CoreImage module",
+      "cause": "Task spec incorrectly stated CIFilter is available on watchOS; CoreImage framework is iOS/macOS/tvOS only",
+      "fix": "Replaced CIFilter-based barcode generation with pure-Swift QR and Code128 encoders using SwiftUI Canvas rendering",
+      "kb": "watchos-no-coreimage",
+      "status": "resolved",
+      "agent": "code-opus-agent"
+    },
+    {
+      "id": "ERR-2026-0301-003",
+      "ts": "2026-03-01T18:54:00Z",
+      "type": "build_error",
+      "cat": "watchos/swift6-concurrency",
+      "file": "FastyDiscountWatch/Services/WatchConnectivityManager.swift",
+      "msg": "Sending [String: Any] across isolation boundaries risks data races in Swift 6 strict concurrency",
+      "cause": "WCSessionDelegate methods receive non-Sendable [String: Any] dicts; passing them into @MainActor Task triggers Swift 6 error",
+      "fix": "Extract Sendable String values from dict on nonisolated thread, decode to Sendable [WatchDVG], then pass to MainActor",
+      "kb": "wcsession-swift6-sendable",
+      "status": "resolved",
+      "agent": "code-opus-agent"
     }
   ],
-  "knowledge": {}
+  "knowledge": {
+    "extension-target-source-exclusions": "When adding new service files to FastyDiscount/Core/Services that reference notification/location types, also update project.yml exclusion lists for FastyDiscountWidget and FastyDiscountShareExtension targets. Run `xcodegen generate` after updating project.yml to regenerate FastyDiscount.xcodeproj."
+  }
 }

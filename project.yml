@@ -118,6 +118,9 @@ targets:
           - "VisionParsingService.swift"
           - "ExpiryNotificationService.swift"
           - "NotificationPermissionManager.swift"
+          - "NotificationActionHandler.swift"
+          - "DVGRepository.swift"
+          - "WatchConnectivityService.swift"
           - "GeofenceManager.swift"
           - "LocationPermissionManager.swift"
       - path: FastyDiscount/App/AppConstants.swift

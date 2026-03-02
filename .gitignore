@@ -81,3 +81,6 @@ playground.xcworkspace
 # Temporary files
 *.tmp
 *.temp
+
+# Duplicate/backup Xcode project directories
+FastyDiscount 2.xcodeproj/

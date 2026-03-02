@@ -259,14 +259,19 @@ final class SearchViewModel {
 
     /// Fetches all non-deleted tags from SwiftData for the tag filter UI.
     private func loadAvailableTags() async {
+        // SwiftData SortDescriptor does not support Bool keyPaths directly.
+        // Fetch sorted by name and re-sort in memory to place system tags first.
         let descriptor = FetchDescriptor<Tag>(
             predicate: #Predicate<Tag> { !$0.isDeleted },
-            sortBy: [
-                SortDescriptor(\.isSystemTag, order: .reverse),
-                SortDescriptor(\.name, order: .forward)
-            ]
+            sortBy: [SortDescriptor(\.name, order: .forward)]
         )
-        availableTags = (try? modelContext.fetch(descriptor)) ?? []
+        let fetched = (try? modelContext.fetch(descriptor)) ?? []
+        availableTags = fetched.sorted { lhs, rhs in
+            if lhs.isSystemTag != rhs.isSystemTag {
+                return lhs.isSystemTag  // system tags first
+            }
+            return lhs.name.localizedCaseInsensitiveCompare(rhs.name) == .orderedAscending
+        }
     }
 
     // MARK: - Private: Initial Filter

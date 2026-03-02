@@ -76,7 +76,7 @@ final class GeofenceManager: NSObject, CLLocationManagerDelegate {
     static let notificationCooldownInterval: TimeInterval = 10.0
 
     /// Region identifier prefix used for all geofence regions managed by this service.
-    static let regionIdentifierPrefix = "dvg-"
+    nonisolated static let regionIdentifierPrefix = "dvg-"
 
     /// Minimum distance (metres) the user must move before geofences are recalculated.
     /// Significant-location-change events fire approximately every 500m, so this

@@ -476,28 +476,6 @@ private struct FilterSheet: View {
     }
 }
 
-// MARK: - Color from Hex
-
-private extension Color {
-    /// Creates a `Color` from a hex string such as `"#FF6B35"` or `"FF6B35"`.
-    /// Returns `nil` if the string cannot be parsed.
-    init?(hex: String) {
-        let cleaned = hex.trimmingCharacters(in: .whitespacesAndNewlines)
-            .trimmingCharacters(in: CharacterSet(charactersIn: "#"))
-
-        guard cleaned.count == 6,
-              let value = UInt64(cleaned, radix: 16) else {
-            return nil
-        }
-
-        let r = Double((value >> 16) & 0xFF) / 255.0
-        let g = Double((value >> 8) & 0xFF) / 255.0
-        let b = Double(value & 0xFF) / 255.0
-
-        self.init(red: r, green: g, blue: b)
-    }
-}
-
 // MARK: - Preview
 
 #if DEBUG
