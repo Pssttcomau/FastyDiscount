@@ -1431,8 +1431,8 @@
 				CODE_SIGN_ENTITLEMENTS = FastyDiscountWidget/FastyDiscountWidget.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FastyDiscountWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "FastyDiscount Widget";
-				INFOPLIST_KEY_NSExtension_NSExtensionPointIdentifier = "com.apple.widgetkit-extension";
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1521,8 +1521,8 @@
 				CODE_SIGN_ENTITLEMENTS = FastyDiscountWidget/FastyDiscountWidget.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FastyDiscountWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "FastyDiscount Widget";
-				INFOPLIST_KEY_NSExtension_NSExtensionPointIdentifier = "com.apple.widgetkit-extension";
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
