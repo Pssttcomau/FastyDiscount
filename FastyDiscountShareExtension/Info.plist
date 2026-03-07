@@ -10,8 +10,10 @@
 		<string>com.apple.share-services</string>
 		<key>NSExtensionPrincipalClass</key>
 		<string>$(PRODUCT_MODULE_NAME).ShareViewController</string>
-		<key>NSExtensionActivationRule</key>
-		<string>SUBQUERY(
+		<key>NSExtensionAttributes</key>
+		<dict>
+			<key>NSExtensionActivationRule</key>
+			<string>SUBQUERY(
   extensionItems,
   $extensionItem,
   SUBQUERY(
@@ -23,6 +25,7 @@
     OR ANY $attachment.registeredTypeIdentifiers UTI-CONFORMS-TO "com.adobe.pdf"
   ).@count >= 1
 ).@count >= 1</string>
+		</dict>
 	</dict>
 </dict>
 </plist>
