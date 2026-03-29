@@ -108,14 +108,22 @@ final class ImportViewModel {
         extractedTextBlocks.joined(separator: "\n")
     }
 
+    /// AI extraction result from `VisionParsingService`, populated after processing.
+    var aiExtractionResult: DVGExtractionResult?
+
     // MARK: - Private Properties
 
     private let detectionService: BarcodeDetectionService
+    private let visionParsingService: any VisionParsingService
 
     // MARK: - Init
 
-    init(detectionService: BarcodeDetectionService = .shared) {
+    init(
+        detectionService: BarcodeDetectionService = .shared,
+        visionParsingService: any VisionParsingService = CloudAIVisionParsingService(aiClient: AnthropicClient())
+    ) {
         self.detectionService = detectionService
+        self.visionParsingService = visionParsingService
     }
 
     // MARK: - Photo Import
@@ -156,6 +164,18 @@ final class ImportViewModel {
             }
 
             let result = try await detectionService.detectContent(in: ciImage)
+
+            importState = .processing(progress: 0.8)
+
+            // Run AI parsing on the compressed image data
+            if let imageData = barcodeImageData {
+                let ocrText = result.extractedText.isEmpty ? nil : result.extractedText.joined(separator: "\n")
+                importState = .processing(progress: 0.9)
+                aiExtractionResult = try? await visionParsingService.parseImage(
+                    imageData: imageData,
+                    ocrText: ocrText
+                )
+            }
 
             importState = .processing(progress: 1.0)
 
@@ -254,6 +274,17 @@ final class ImportViewModel {
 
             detectedBarcodes = uniqueBarcodes
             extractedTextBlocks = uniqueText
+
+            // Run AI parsing on the first-page image data
+            if let imageData = barcodeImageData {
+                let ocrText = uniqueText.isEmpty ? nil : uniqueText.joined(separator: "\n")
+                importState = .processing(progress: 0.9)
+                aiExtractionResult = try? await visionParsingService.parseImage(
+                    imageData: imageData,
+                    ocrText: ocrText
+                )
+            }
+
             importState = .results
 
         } catch let importErr as ImportError {
@@ -301,6 +332,18 @@ final class ImportViewModel {
 
             let result = try await detectionService.detectContent(in: ciImage)
 
+            importState = .processing(progress: 0.8)
+
+            // Run AI parsing on the compressed image data
+            if let imageData = barcodeImageData {
+                let ocrText = result.extractedText.isEmpty ? nil : result.extractedText.joined(separator: "\n")
+                importState = .processing(progress: 0.9)
+                aiExtractionResult = try? await visionParsingService.parseImage(
+                    imageData: imageData,
+                    ocrText: ocrText
+                )
+            }
+
             importState = .processing(progress: 1.0)
             applyResult(result)
 
@@ -331,6 +374,7 @@ final class ImportViewModel {
         extractedTextBlocks = []
         thumbnailImage = nil
         barcodeImageData = nil
+        aiExtractionResult = nil
     }
 
     private func applyResult(_ result: BarcodeDetectionResult) {

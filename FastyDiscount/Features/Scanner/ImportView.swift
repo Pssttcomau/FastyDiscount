@@ -320,15 +320,23 @@ struct ImportView: View {
     private func navigateToScanResults() {
         let inputData: ScanInputData
 
-        if viewModel.detectedBarcodes.isEmpty {
-            // OCR text only
+        // Prefer AI-parsed result when available and has meaningful confidence.
+        if let aiResult = viewModel.aiExtractionResult, aiResult.confidenceScore > 0.0 {
+            let primaryBarcode = viewModel.detectedBarcodes.first
+            inputData = ScanInputData.aiParsed(
+                extraction: aiResult,
+                barcode: primaryBarcode,
+                originalImageData: viewModel.barcodeImageData
+            )
+        } else if viewModel.detectedBarcodes.isEmpty {
+            // No AI result and no barcode — fall back to OCR text only.
             let text = viewModel.extractedTextCombined
             inputData = ScanInputData.ocrTextOnly(
                 text: text,
                 originalImageData: viewModel.barcodeImageData
             )
         } else {
-            // Barcode detected — use highest-confidence barcode
+            // No AI result but a barcode was detected.
             let primaryBarcode = viewModel.detectedBarcodes[0]
             inputData = ScanInputData.barcodeOnly(
                 barcode: primaryBarcode,
