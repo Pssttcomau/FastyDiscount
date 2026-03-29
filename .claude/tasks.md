@@ -71,3 +71,8 @@ last-updated: 2026-03-02T17:00:00Z
 - [x] TASK-044: App Store metadata, screenshots, and privacy nutrition labels ✅ COMPLETED
 - [x] TASK-045: Comprehensive unit test suite for services and view models ✅ COMPLETED
 - [x] TASK-046: UI test suite for critical user flows (add DVG, scan, search) ✅ COMPLETED
+
+### Bug Fixes
+- [x] TASK-047: Wire VisionParsingService into ImportViewModel so photo/PDF import uses AI extraction to populate form fields ✅ COMPLETED
+- [x] TASK-048: Fix barcode+text import: pass OCR text alongside barcode, separate URL from Code field, make URLs tappable ✅ COMPLETED
+- [x] TASK-049: Add "take photo" button to camera scanner for AI text extraction ✅ COMPLETED

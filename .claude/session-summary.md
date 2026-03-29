@@ -123,8 +123,10 @@ last-updated: 2026-03-02T09:00:00Z
 - [2026-03-02] Fix: MARKETING_VERSION/CURRENT_PROJECT_VERSION for all extension targets in project.yml
 - [2026-03-02] Git push SUCCESS: main → origin/main (all 67 commits pushed to GitHub)
 
+- [2026-03-29] TASK-047: Bug fix — wired VisionParsingService into ImportViewModel so photo/PDF import triggers AI extraction to populate form fields (Title, Store Name, Code, etc.) instead of dumping all OCR text into Description. Code agent implemented, review passed.
+
 ## Active Context
-- Working on: PROJECT COMPLETE
+- Working on: Bug fixes
 - All 46 tasks implemented, reviewed, and pushed to https://github.com/Pssttcomau/FastyDiscount
 - Tech debt: snooze-of-snooze duplicate; BarcodeDetectionService CIContext per-call; PDF rendering on MainActor; GeofenceManager monitoringDidFailFor uses print() not logger; Widget/ShareExtension targets missing file references in project.pbxproj; PrivacyInfo.xcprivacy not in Xcode project target
 - Key constraint: iCloud/CloudKit from day one constrains all model design
