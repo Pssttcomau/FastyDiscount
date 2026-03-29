@@ -22,6 +22,9 @@ targets:
     type: application
     platform: iOS
     deploymentTarget: "26.0"
+    configFiles:
+      Debug: FastyDiscount/Config.xcconfig
+      Release: FastyDiscount/Config.xcconfig
     sources:
       - path: FastyDiscount
         excludes:
