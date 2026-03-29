@@ -58,7 +58,7 @@ Carthage/Checkouts/
 Secrets.xcconfig
 **/Secrets.xcconfig
 GoogleService-Info.plist
-FastyDiscount/Config.xcconfig
+FastyDiscount/Config.local.xcconfig
 
 # Archives
 *.ipa

@@ -1,0 +1,14 @@
+// Base configuration — committed to source control.
+// Local overrides with secrets go in Config.local.xcconfig (gitignored).
+//
+// To configure Google OAuth:
+// 1. Copy Config.local.xcconfig.template to Config.local.xcconfig
+// 2. Fill in your GOOGLE_CLIENT_ID and GOOGLE_CLIENT_ID_REVERSED
+//    from the Google Cloud Console.
+
+// Empty defaults (app handles missing values gracefully)
+GOOGLE_CLIENT_ID =
+GOOGLE_CLIENT_ID_REVERSED =
+
+// Include local overrides if present (the ? makes this optional — no error if file is absent)
+#include? "Config.local.xcconfig"

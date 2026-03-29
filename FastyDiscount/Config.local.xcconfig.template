@@ -1,0 +1,8 @@
+// Google OAuth configuration template.
+// Copy this file to Config.local.xcconfig and fill in your values.
+// Config.local.xcconfig is gitignored and will not be committed.
+//
+// Values come from the Google Cloud Console → Credentials → OAuth 2.0 Client IDs.
+
+GOOGLE_CLIENT_ID = <your-client-id>.apps.googleusercontent.com
+GOOGLE_CLIENT_ID_REVERSED = com.googleusercontent.apps.<your-client-id>

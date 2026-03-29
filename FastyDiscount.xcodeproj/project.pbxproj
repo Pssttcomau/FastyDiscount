@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 63;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -124,6 +124,7 @@
 		ACC24CD9624428715DCD29B2 /* FastyDiscountApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C0CA48AC46680E5D3CA93D /* FastyDiscountApp.swift */; };
 		ADABD5561067A71D3B4D1D0F /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0686EA077C14C7EAD6C1EFCA /* Color+Hex.swift */; };
 		B0B2C63772859F4A3EBA13FC /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8441D63ED778CDDD9E70854 /* AuthViewModel.swift */; };
+		B1BF8ABA21D76AD8608C65AC /* Config.local.xcconfig.template in Resources */ = {isa = PBXBuildFile; fileRef = B26B97B682AD94A51794C8B2 /* Config.local.xcconfig.template */; };
 		B440BDD1FE8133FAC4D13F5C /* SearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ACDE81743E42DB2A65031A /* SearchViewModelTests.swift */; };
 		BC7A9493CF5B489EEB685BB2 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F0DFEFEE2D633C7E31D1F44C /* Localizable.xcstrings */; };
 		BF5790074C51631E31787624 /* ReviewQueueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533528FAF43C73F0FE5F5B49 /* ReviewQueueView.swift */; };
@@ -232,9 +233,10 @@
 		0A04D354EF88F823B7822BBC /* PaywallViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallViewModelTests.swift; sourceTree = "<group>"; };
 		0A773607AA3C3400734D1366 /* GeofenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceManager.swift; sourceTree = "<group>"; };
 		0A965BB6303D31430FFB4824 /* NearbyMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyMapViewModel.swift; sourceTree = "<group>"; };
-		0AA28899713FB7A89571DEEC /* FastyDiscountWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FastyDiscountWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		0AA28899713FB7A89571DEEC /* FastyDiscountWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = FastyDiscountWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AE09873A9469003EDE2C7A0 /* FastyDiscountUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastyDiscountUITests.swift; sourceTree = "<group>"; };
 		0F788FED15B83B44BB5626BE /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		114AD9C0F5C2CC42972C94BA /* Config.local.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.local.xcconfig; sourceTree = "<group>"; };
 		138A7A96DBE454EC79AF1FD4 /* TagPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPickerView.swift; sourceTree = "<group>"; };
 		1541EAAC1EEB2B955BFF77B1 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		15C0CA48AC46680E5D3CA93D /* FastyDiscountApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastyDiscountApp.swift; sourceTree = "<group>"; };
@@ -265,7 +267,7 @@
 		4A91F47B4AAA26EE65968686 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		4F1AF8301D378D3D17B56D19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		533528FAF43C73F0FE5F5B49 /* ReviewQueueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewQueueView.swift; sourceTree = "<group>"; };
-		5731DA4F74737134A0331BFB /* FastyDiscountUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper; path = FastyDiscountUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5731DA4F74737134A0331BFB /* FastyDiscountUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = FastyDiscountUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B17D6ABDE8270A3BA351CE1 /* VisionParsingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionParsingService.swift; sourceTree = "<group>"; };
 		5B62DBB5AE36F8303E8D0A77 /* WatchConnectivityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityService.swift; sourceTree = "<group>"; };
 		5BC12766F92B805DBCA6F59A /* FastyDiscountWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FastyDiscountWidget.entitlements; sourceTree = "<group>"; };
@@ -282,7 +284,7 @@
 		6A8978A026671871ED9BF176 /* FastyDiscountWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastyDiscountWatchApp.swift; sourceTree = "<group>"; };
 		6BE8B47472BB8783EC59C651 /* AdService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdService.swift; sourceTree = "<group>"; };
 		6F9450DE3BAF57B7EAACAA2A /* ShareExtensionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareExtensionViewModel.swift; sourceTree = "<group>"; };
-		7001DA424C0C3024B3574231 /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Products.storekit; sourceTree = "<group>"; };
+		7001DA424C0C3024B3574231 /* Products.storekit */ = {isa = PBXFileReference; path = Products.storekit; sourceTree = "<group>"; };
 		71B41B7E4D0013CD8487441F /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		72C61E4E9CCEABDDACD1DBEA /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		73C497C4E140BC7C5EC4C347 /* GmailAuthServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GmailAuthServiceTests.swift; sourceTree = "<group>"; };
@@ -303,7 +305,7 @@
 		912792372382AE998FB62910 /* BannerAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAdView.swift; sourceTree = "<group>"; };
 		951BD57705A6330971ADA74C /* MacCatalystCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacCatalystCommands.swift; sourceTree = "<group>"; };
 		95828C9BA2793FB90C346C21 /* PassKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassKitService.swift; sourceTree = "<group>"; };
-		96285205A7A8CE3382BA6844 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		96285205A7A8CE3382BA6844 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		9691929165A7A4D71B132CD9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		979088B9F4216E7CF9915879 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		989D4F2BC44DE6DB21E2A7FF /* ShareExtensionContentProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareExtensionContentProcessor.swift; sourceTree = "<group>"; };
@@ -313,7 +315,7 @@
 		9C0331FA0754817871D93C9A /* FastyDiscountWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastyDiscountWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E97FA9D1B4C33ED51C821CE /* DVGDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVGDetailView.swift; sourceTree = "<group>"; };
 		A256DD3E2644571E164EA549 /* CloudAIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudAIClient.swift; sourceTree = "<group>"; };
-		A2DCFE241EFF5D5B0CF9F5CB /* FastyDiscountShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FastyDiscountShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2DCFE241EFF5D5B0CF9F5CB /* FastyDiscountShareExtension.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = FastyDiscountShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A30713F707819CB262EF6757 /* EmailParsingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailParsingService.swift; sourceTree = "<group>"; };
 		A460E121AD257B3F78C18E4E /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		A65FE4BE03D1C6F59B42E1BE /* ScreenshotSpec.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ScreenshotSpec.md; sourceTree = "<group>"; };
@@ -327,6 +329,7 @@
 		AF11F40E2BD35656B1DC1FBA /* OnboardingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingUITests.swift; sourceTree = "<group>"; };
 		AFFD92DF54632F92670E8BD1 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		B0345467F45BC7AEDFF9F683 /* StoreKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitService.swift; sourceTree = "<group>"; };
+		B26B97B682AD94A51794C8B2 /* Config.local.xcconfig.template */ = {isa = PBXFileReference; path = Config.local.xcconfig.template; sourceTree = "<group>"; };
 		BB16084384A7BD4638D8D0FE /* DVGExtractionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVGExtractionResult.swift; sourceTree = "<group>"; };
 		BE5FC5BFF70C204710EE8CC5 /* AppStoreListing.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AppStoreListing.md; sourceTree = "<group>"; };
 		C0233E6C953AA607C9494679 /* ShareExtensionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareExtensionView.swift; sourceTree = "<group>"; };
@@ -345,10 +348,10 @@
 		D49D1E03B5D5E24E7C90E581 /* CameraScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraScannerView.swift; sourceTree = "<group>"; };
 		D509B58F6E88817E1D7D8094 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
 		D57C098C00134784A9D31BB7 /* DVGRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVGRowView.swift; sourceTree = "<group>"; };
-		D5C4D8F16A7B7E9507498107 /* FastyDiscountTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper; path = FastyDiscountTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5C4D8F16A7B7E9507498107 /* FastyDiscountTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = FastyDiscountTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D708A035AA0DC1E36B3881E7 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		D7641C6908A6921AA9A3814D /* LocaleFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleFormatters.swift; sourceTree = "<group>"; };
-		D9068B67BE8AFE81B073DC97 /* FastyDiscount.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastyDiscount.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9068B67BE8AFE81B073DC97 /* FastyDiscount.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = FastyDiscount.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9FE44C2C565797A7F95CBA5 /* AdUpgradeBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdUpgradeBanner.swift; sourceTree = "<group>"; };
 		DB9803317C52051BDD169F23 /* MockAuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthenticationService.swift; sourceTree = "<group>"; };
 		DBCB7E057D51E7199DA790AA /* FastyDiscountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastyDiscountTests.swift; sourceTree = "<group>"; };
@@ -486,6 +489,8 @@
 				B0FC4EB9187097A9C388AC82 /* Core */,
 				438C7B59B9FD8F8346956079 /* Features */,
 				08354ECD4D599A77EEC7971B /* Resources */,
+				114AD9C0F5C2CC42972C94BA /* Config.local.xcconfig */,
+				B26B97B682AD94A51794C8B2 /* Config.local.xcconfig.template */,
 				4235E299E97B9FAB31317226 /* Config.xcconfig */,
 				E7D4DF09E6A228B81809144C /* FastyDiscount.entitlements */,
 				96285205A7A8CE3382BA6844 /* PrivacyInfo.xcprivacy */,
@@ -1000,6 +1005,7 @@
 			);
 			mainGroup = 61A0A9F904676FF45348ECA4;
 			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1036,6 +1042,7 @@
 			files = (
 				F9CE1333E4E40048AB793160 /* AppStoreListing.md in Resources */,
 				5A95FF5678FC18706CCDC0ED /* Assets.xcassets in Resources */,
+				B1BF8ABA21D76AD8608C65AC /* Config.local.xcconfig.template in Resources */,
 				BC7A9493CF5B489EEB685BB2 /* Localizable.xcstrings in Resources */,
 				023BF787A9FF3C5974FEFC41 /* PrivacyInfo.xcprivacy in Resources */,
 				F512181C0C516A1AD3681D39 /* PrivacyNutritionLabels.md in Resources */,
@@ -1275,7 +1282,6 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = FastyDiscountShareExtension/FastyDiscountShareExtension.entitlements;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = ZK5CQBQ2C9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FastyDiscountShareExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
@@ -1346,7 +1352,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 2;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
-				DEVELOPMENT_TEAM = ZK5CQBQ2C9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FastyDiscount/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = FastyDiscount;
@@ -1434,7 +1439,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FastyDiscountWidget/FastyDiscountWidget.entitlements;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = ZK5CQBQ2C9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FastyDiscountWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "FastyDiscount Widget";
@@ -1525,7 +1529,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FastyDiscountWidget/FastyDiscountWidget.entitlements;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = ZK5CQBQ2C9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FastyDiscountWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "FastyDiscount Widget";
@@ -1570,7 +1573,6 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = FastyDiscountShareExtension/FastyDiscountShareExtension.entitlements;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = ZK5CQBQ2C9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FastyDiscountShareExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
@@ -1641,7 +1643,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 2;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
-				DEVELOPMENT_TEAM = ZK5CQBQ2C9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FastyDiscount/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = FastyDiscount;
