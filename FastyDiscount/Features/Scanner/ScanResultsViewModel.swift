@@ -69,6 +69,10 @@ final class ScanResultsViewModel {
     var barcodeType: BarcodeType = .text
     var decodedBarcodeValue: String = ""
 
+    /// URL extracted from a barcode value (e.g. QR code linking to a website).
+    /// Populated instead of `code` when the barcode value is a URL.
+    var websiteURL: String = ""
+
     // MARK: - Confidence Data (from AI)
 
     /// Per-field confidence scores from the AI extraction result.
@@ -179,8 +183,10 @@ final class ScanResultsViewModel {
             if let bc = barcode {
                 barcodeType = bc.barcodeType
                 decodedBarcodeValue = bc.value
-                // If code is empty but barcode value is available, use it
-                if code.isEmpty {
+                // Separate URLs from codes: URLs go to websiteURL, codes go to code
+                if isURL(bc.value) {
+                    websiteURL = bc.value
+                } else if code.isEmpty {
                     code = bc.value
                 }
             }
@@ -191,7 +197,12 @@ final class ScanResultsViewModel {
             // Pre-populate from barcode detection only
             barcodeType = barcode.barcodeType
             decodedBarcodeValue = barcode.value
-            code = barcode.value
+            // Separate URLs from codes
+            if isURL(barcode.value) {
+                websiteURL = barcode.value
+            } else {
+                code = barcode.value
+            }
             dvgType = .barcodeCoupon
             showFullForm = false
 
@@ -288,6 +299,12 @@ final class ScanResultsViewModel {
     }
 
     // MARK: - Private Helpers
+
+    /// Returns `true` if the given string looks like a URL (starts with http:// or https://).
+    private func isURL(_ string: String) -> Bool {
+        let lowered = string.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+        return lowered.hasPrefix("http://") || lowered.hasPrefix("https://")
+    }
 
     /// Determines the appropriate `ScanSourceType` based on the input data.
     private func determineScanSourceType() -> ScanSourceType {

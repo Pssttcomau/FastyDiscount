@@ -127,11 +127,32 @@ struct ScanResultsView: View {
                         .foregroundStyle(Theme.Colors.textSecondary)
                 }
 
-                Text(barcode.value)
-                    .font(.system(.body, design: .monospaced))
-                    .foregroundStyle(Theme.Colors.textPrimary)
-                    .textSelection(.enabled)
-                    .lineLimit(3)
+                // Show barcode value as a tappable link when it is a URL
+                if barcode.value.lowercased().hasPrefix("http://") || barcode.value.lowercased().hasPrefix("https://"),
+                   let url = URL(string: barcode.value) {
+                    Link(destination: url) {
+                        HStack(spacing: Theme.Spacing.xs) {
+                            Text(barcode.value)
+                                .font(.system(.body, design: .monospaced))
+                                .foregroundStyle(Theme.Colors.primary)
+                                .lineLimit(3)
+                                .multilineTextAlignment(.leading)
+
+                            Image(systemName: "arrow.up.right.square")
+                                .font(Theme.Typography.caption)
+                                .foregroundStyle(Theme.Colors.primary)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                    .accessibilityLabel("Open URL: \(barcode.value)")
+                    .accessibilityHint("Opens this URL in Safari")
+                } else {
+                    Text(barcode.value)
+                        .font(.system(.body, design: .monospaced))
+                        .foregroundStyle(Theme.Colors.textPrimary)
+                        .textSelection(.enabled)
+                        .lineLimit(3)
+                }
             }
             .padding(Theme.Spacing.md)
             .background(Theme.Colors.surface)
@@ -205,6 +226,9 @@ struct ScanResultsView: View {
                         .submitLabel(.next)
                         .onSubmit { focusedField = .discountDescription }
                 }
+
+                // Website URL (shown when barcode value was a URL)
+                websiteURLField
 
                 // DVG Type Picker
                 VStack(alignment: .leading, spacing: Theme.Spacing.xs) {
@@ -321,6 +345,9 @@ struct ScanResultsView: View {
                         .submitLabel(.done)
                         .onSubmit { focusedField = nil }
                 }
+
+                // Website URL (shown when barcode value was a URL)
+                websiteURLField
 
                 // Description
                 formField(label: "Description") {
@@ -460,6 +487,51 @@ struct ScanResultsView: View {
             }
             .accessibilityLabel("Scan again")
             .accessibilityHint("Returns to the scanner to scan a new barcode")
+        }
+    }
+
+    // MARK: - Website URL Field
+
+    /// Shows a tappable URL link when the barcode value is a URL.
+    @ViewBuilder
+    private var websiteURLField: some View {
+        if !viewModel.websiteURL.isEmpty {
+            VStack(alignment: .leading, spacing: Theme.Spacing.xs) {
+                HStack(spacing: Theme.Spacing.xs) {
+                    Text("Website")
+                        .font(Theme.Typography.subheadline)
+                        .fontWeight(.medium)
+                        .foregroundStyle(Theme.Colors.textSecondary)
+
+                    Spacer()
+
+                    Image(systemName: "arrow.up.right.square")
+                        .font(Theme.Typography.caption)
+                        .foregroundStyle(Theme.Colors.primary)
+                        .accessibilityHidden(true)
+                }
+
+                if let url = URL(string: viewModel.websiteURL) {
+                    Link(destination: url) {
+                        Text(viewModel.websiteURL)
+                            .font(.system(.body, design: .monospaced))
+                            .foregroundStyle(Theme.Colors.primary)
+                            .lineLimit(2)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                    .accessibilityLabel("Open website: \(viewModel.websiteURL)")
+                    .accessibilityHint("Opens this URL in Safari")
+                } else {
+                    Text(viewModel.websiteURL)
+                        .font(.system(.body, design: .monospaced))
+                        .foregroundStyle(Theme.Colors.textPrimary)
+                        .textSelection(.enabled)
+                        .lineLimit(2)
+                }
+            }
+            .padding(Theme.Spacing.md)
+            .background(Theme.Colors.surface)
+            .clipShape(RoundedRectangle(cornerRadius: Theme.CornerRadius.medium))
         }
     }
 
@@ -645,6 +717,7 @@ enum ScanResultField: Hashable {
     case title
     case storeName
     case code
+    case websiteURL
     case discountDescription
     case originalValue
     case termsAndConditions

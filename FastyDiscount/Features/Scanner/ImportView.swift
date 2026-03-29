@@ -338,10 +338,36 @@ struct ImportView: View {
         } else {
             // No AI result but a barcode was detected.
             let primaryBarcode = viewModel.detectedBarcodes[0]
-            inputData = ScanInputData.barcodeOnly(
-                barcode: primaryBarcode,
-                originalImageData: viewModel.barcodeImageData
-            )
+            let ocrText = viewModel.extractedTextCombined
+
+            if !ocrText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                // Barcode + OCR text: wrap both into an .aiParsed with
+                // confidence 0.0 so the results view displays the raw text
+                // alongside the barcode info (routes to ocrFallback scenario).
+                let fallbackExtraction = DVGExtractionResult(
+                    title: nil,
+                    code: nil,
+                    dvgType: nil,
+                    storeName: nil,
+                    originalValue: nil,
+                    discountDescription: ocrText,
+                    expirationDate: nil,
+                    termsAndConditions: nil,
+                    confidenceScore: 0.0,
+                    fieldConfidences: [:]
+                )
+                inputData = ScanInputData.aiParsed(
+                    extraction: fallbackExtraction,
+                    barcode: primaryBarcode,
+                    originalImageData: viewModel.barcodeImageData
+                )
+            } else {
+                // Barcode only, no OCR text available.
+                inputData = ScanInputData.barcodeOnly(
+                    barcode: primaryBarcode,
+                    originalImageData: viewModel.barcodeImageData
+                )
+            }
         }
 
         router.push(.scanResults(inputData))
