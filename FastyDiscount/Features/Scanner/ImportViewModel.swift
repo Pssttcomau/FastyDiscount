@@ -188,6 +188,65 @@ final class ImportViewModel {
         }
     }
 
+    // MARK: - Raw Image Data Import (Camera Capture)
+
+    /// Processes raw image `Data` captured directly from the camera.
+    ///
+    /// This is the equivalent of `processPhoto(_:)` but accepts `Data` directly
+    /// instead of a `PhotosPickerItem`.  Used by the camera scanner "Take Photo" button
+    /// so the captured frame can flow through the same barcode detection + AI parsing
+    /// pipeline as photo-library imports.
+    ///
+    /// - Parameter data: JPEG (or other UIImage-compatible) data of the captured image.
+    func processRawImageData(_ data: Data) async {
+        importState = .processing(progress: 0.0)
+        resetResults()
+
+        do {
+            guard let uiImage = UIImage(data: data) else {
+                importState = .error(ImportError.processingFailed("Could not decode captured image.").localizedDescription)
+                return
+            }
+
+            importState = .processing(progress: 0.3)
+
+            // Set thumbnail
+            thumbnailImage = uiImage
+
+            // Compress for storage (max 1 MB)
+            barcodeImageData = compressImageSync(uiImage)
+
+            importState = .processing(progress: 0.5)
+
+            guard let ciImage = CIImage(image: uiImage) else {
+                importState = .error(ImportError.invalidImage.localizedDescription)
+                return
+            }
+
+            let result = try await detectionService.detectContent(in: ciImage)
+
+            importState = .processing(progress: 0.8)
+
+            // Run AI parsing on the compressed image data
+            if let imageData = barcodeImageData {
+                let ocrText = result.extractedText.isEmpty ? nil : result.extractedText.joined(separator: "\n")
+                importState = .processing(progress: 0.9)
+                aiExtractionResult = try? await visionParsingService.parseImage(
+                    imageData: imageData,
+                    ocrText: ocrText
+                )
+            }
+
+            importState = .processing(progress: 1.0)
+            applyResult(result)
+
+        } catch let importErr as ImportError {
+            importState = .error(importErr.localizedDescription)
+        } catch {
+            importState = .error(ImportError.processingFailed(error.localizedDescription).localizedDescription)
+        }
+    }
+
     // MARK: - PDF Import
 
     /// Processes a PDF file imported via `UIDocumentPickerViewController`.

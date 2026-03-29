@@ -78,16 +78,47 @@ final class ScannerViewModel {
     /// Whether an error alert should be shown.
     var showError: Bool = false
 
+    /// Whether a photo capture is currently in progress.
+    var isCapturing: Bool = false
+
+    /// JPEG data of the most recently captured still photo.
+    /// Set when the user taps "Take Photo"; consumed by the view to trigger navigation.
+    var capturedImageData: Data?
+
     // MARK: - Camera Session
 
     /// The capture session. Accessed by `CameraPreviewView` to display the live feed.
     let captureSession = AVCaptureSession()
+
+    /// Photo output for still-image capture via the "Take Photo" button.
+    private let photoOutput = AVCapturePhotoOutput()
 
     // MARK: - Private Properties
 
     /// The delegate that processes video frames on a background queue.
     /// Stored as a strong reference to keep it alive for the session lifetime.
     private var frameDelegate: FrameProcessorDelegate?
+
+    /// Delegate for still-photo capture. Created on first use and kept alive for the session lifetime.
+    private var _photoDelegate: PhotoCaptureDelegate?
+
+    /// Returns the shared photo capture delegate, creating it on first access.
+    private var photoDelegate: PhotoCaptureDelegate {
+        if let existing = _photoDelegate { return existing }
+        let delegate = PhotoCaptureDelegate { [weak self] data in
+            Task { @MainActor [weak self] in
+                guard let self else { return }
+                self.isCapturing = false
+                if let data {
+                    self.capturedImageData = data
+                } else {
+                    self.presentError("Failed to capture photo. Please try again.")
+                }
+            }
+        }
+        _photoDelegate = delegate
+        return delegate
+    }
 
     /// Background queue for the capture session.
     private let sessionQueue = DispatchQueue(label: "com.fastydiscount.scanner.session", qos: .userInitiated)
@@ -152,6 +183,7 @@ final class ScannerViewModel {
     /// Configures the AVCaptureSession with camera input and video data output.
     private func setupCaptureSession() {
         let session = captureSession
+        let photo = photoOutput
         let symbologies = supportedSymbologies
 
         // The delegate extracts all data from observations on the vision queue
@@ -199,6 +231,11 @@ final class ScannerViewModel {
 
             if session.canAddOutput(videoOutput) {
                 session.addOutput(videoOutput)
+            }
+
+            // Add photo output for still-image capture
+            if session.canAddOutput(photo) {
+                session.addOutput(photo)
             }
 
             session.commitConfiguration()
@@ -281,6 +318,34 @@ final class ScannerViewModel {
         } catch {
             presentError("Failed to toggle flashlight.")
         }
+    }
+
+    // MARK: - Photo Capture
+
+    /// Captures the current camera frame as a still JPEG image.
+    ///
+    /// Sets `isCapturing = true` while the capture is in flight.
+    /// On completion, stores the JPEG data in `capturedImageData` and
+    /// resets `isCapturing`. Callers observe `capturedImageData` to react.
+    func capturePhoto() {
+        guard !isCapturing else { return }
+        isCapturing = true
+
+        let photo = photoOutput
+        let delegate = photoDelegate   // Capture before crossing to sessionQueue
+        let settings = AVCapturePhotoSettings()
+        settings.flashMode = isTorchOn ? .on : .off
+
+        // Capture must be called on sessionQueue per AVFoundation requirements.
+        sessionQueue.async {
+            photo.capturePhoto(with: settings, delegate: delegate)
+        }
+    }
+
+    /// Clears the previously captured photo data, returning to scanning state.
+    func clearCapturedPhoto() {
+        capturedImageData = nil
+        isCapturing = false
     }
 
     // MARK: - Error Presentation
@@ -421,5 +486,37 @@ private final class FrameProcessorDelegate: NSObject, AVCaptureVideoDataOutputSa
     /// implementation shared with the photo/PDF import flow.
     private static func mapSymbology(_ symbology: VNBarcodeSymbology) -> BarcodeType {
         BarcodeDetectionService.mapSymbology(symbology)
+    }
+}
+
+// MARK: - PhotoCaptureDelegate
+
+/// Handles the `AVCapturePhotoCaptureDelegate` callback from `AVCapturePhotoOutput`.
+///
+/// Extracts JPEG data from the captured photo and invokes the provided completion
+/// closure on whatever queue the system calls back on.  The closure is expected
+/// to hop to `@MainActor` to update observable state.
+///
+/// `@unchecked Sendable` is appropriate here: all mutable state is write-once
+/// (set in `init`) and the completion block is itself `@Sendable`.
+private final class PhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate, @unchecked Sendable {
+
+    /// Called with the JPEG `Data` on success, or `nil` on failure.
+    private let onCapture: @Sendable (Data?) -> Void
+
+    init(onCapture: @escaping @Sendable (Data?) -> Void) {
+        self.onCapture = onCapture
+    }
+
+    func photoOutput(
+        _ output: AVCapturePhotoOutput,
+        didFinishProcessingPhoto photo: AVCapturePhoto,
+        error: Error?
+    ) {
+        if error != nil {
+            onCapture(nil)
+            return
+        }
+        onCapture(photo.fileDataRepresentation())
     }
 }

@@ -23,6 +23,8 @@ struct CameraScannerView: View {
     // MARK: - State
 
     @State private var viewModel = ScannerViewModel()
+    @State private var importViewModel = ImportViewModel()
+    @State private var isProcessingPhoto: Bool = false
 
     // MARK: - Body
 
@@ -61,6 +63,12 @@ struct CameraScannerView: View {
         }
         .onDisappear {
             viewModel.stopSession()
+        }
+        .onChange(of: viewModel.capturedImageData) { _, newData in
+            guard let data = newData else { return }
+            Task {
+                await processAndNavigate(imageData: data)
+            }
         }
         .alert("Error", isPresented: $viewModel.showError) {
             Button("OK", role: .cancel) { }
@@ -115,39 +123,68 @@ struct CameraScannerView: View {
 
     @ViewBuilder
     private var scanningControlsBar: some View {
-        HStack(spacing: Theme.Spacing.lg) {
-            // Torch toggle
+        VStack(spacing: Theme.Spacing.md) {
+            // Take Photo button — centered, prominent shutter button
             Button {
-                viewModel.toggleTorch()
+                viewModel.capturePhoto()
             } label: {
-                Image(systemName: viewModel.isTorchOn ? "flashlight.on.fill" : "flashlight.off.fill")
-                    .font(Theme.Typography.title3)
-                    .foregroundStyle(.white)
-                    .frame(width: 50, height: 50)
-                    .background(.ultraThinMaterial, in: Circle())
-            }
-            .accessibilityLabel(viewModel.isTorchOn ? "Turn off flashlight" : "Turn on flashlight")
-            .accessibilityHint("Toggles the device flashlight for low-light scanning")
-
-            Spacer()
-
-            // Switch to OCR
-            Button {
-                switchToTextOCR()
-            } label: {
-                HStack(spacing: Theme.Spacing.xs) {
-                    Image(systemName: "text.viewfinder")
-                    Text("Text OCR")
-                        .font(Theme.Typography.subheadline)
-                        .fontWeight(.medium)
+                ZStack {
+                    Circle()
+                        .fill(.white)
+                        .frame(width: 70, height: 70)
+                    Circle()
+                        .strokeBorder(.white.opacity(0.4), lineWidth: 3)
+                        .frame(width: 82, height: 82)
+                    if viewModel.isCapturing || isProcessingPhoto {
+                        ProgressView()
+                            .tint(Theme.Colors.primary)
+                            .scaleEffect(1.2)
+                    } else {
+                        Image(systemName: "camera.fill")
+                            .font(.system(size: 28, weight: .medium))
+                            .foregroundStyle(Theme.Colors.primary)
+                    }
                 }
-                .foregroundStyle(.white)
-                .padding(.horizontal, Theme.Spacing.md)
-                .padding(.vertical, Theme.Spacing.sm)
-                .background(.ultraThinMaterial, in: Capsule())
             }
-            .accessibilityLabel("Switch to text OCR mode")
-            .accessibilityHint("Use text recognition instead of barcode scanning")
+            .disabled(viewModel.isCapturing || isProcessingPhoto)
+            .accessibilityLabel("Take photo")
+            .accessibilityHint("Captures the current camera frame and extracts coupon details using AI")
+
+            // Secondary controls row
+            HStack(spacing: Theme.Spacing.lg) {
+                // Torch toggle
+                Button {
+                    viewModel.toggleTorch()
+                } label: {
+                    Image(systemName: viewModel.isTorchOn ? "flashlight.on.fill" : "flashlight.off.fill")
+                        .font(Theme.Typography.title3)
+                        .foregroundStyle(.white)
+                        .frame(width: 50, height: 50)
+                        .background(.ultraThinMaterial, in: Circle())
+                }
+                .accessibilityLabel(viewModel.isTorchOn ? "Turn off flashlight" : "Turn on flashlight")
+                .accessibilityHint("Toggles the device flashlight for low-light scanning")
+
+                Spacer()
+
+                // Switch to OCR
+                Button {
+                    switchToTextOCR()
+                } label: {
+                    HStack(spacing: Theme.Spacing.xs) {
+                        Image(systemName: "text.viewfinder")
+                        Text("Text OCR")
+                            .font(Theme.Typography.subheadline)
+                            .fontWeight(.medium)
+                    }
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, Theme.Spacing.md)
+                    .padding(.vertical, Theme.Spacing.sm)
+                    .background(.ultraThinMaterial, in: Capsule())
+                }
+                .accessibilityLabel("Switch to text OCR mode")
+                .accessibilityHint("Use text recognition instead of barcode scanning")
+            }
         }
         .padding(.horizontal, Theme.Spacing.lg)
         .padding(.bottom, Theme.Spacing.xl + 20)
@@ -287,6 +324,48 @@ struct CameraScannerView: View {
     private func switchToTextOCR() {
         viewModel.stopSession()
         router.push(.textOCR)
+    }
+
+    /// Processes captured image data through the import pipeline (barcode detection + OCR + AI),
+    /// then navigates to the scan results view.
+    private func processAndNavigate(imageData: Data) async {
+        // Stop the camera session while processing
+        viewModel.stopSession()
+        viewModel.clearCapturedPhoto()
+        ScanCounter.shared.recordScan()
+
+        isProcessingPhoto = true
+        defer { isProcessingPhoto = false }
+
+        await importViewModel.processRawImageData(imageData)
+
+        // Construct ScanInputData from the processing results
+        let inputData: ScanInputData
+
+        if let aiResult = importViewModel.aiExtractionResult, aiResult.confidenceScore > 0 {
+            // AI parsing succeeded — use the richest result
+            let barcode = importViewModel.detectedBarcodes.first
+            inputData = .aiParsed(
+                extraction: aiResult,
+                barcode: barcode,
+                originalImageData: importViewModel.barcodeImageData
+            )
+        } else if let primaryBarcode = importViewModel.detectedBarcodes.first {
+            // AI not available but a barcode was detected
+            inputData = .barcodeOnly(
+                barcode: primaryBarcode,
+                originalImageData: importViewModel.barcodeImageData
+            )
+        } else {
+            // Fall back to OCR text only
+            let ocrText = importViewModel.extractedTextCombined
+            inputData = .ocrTextOnly(
+                text: ocrText.isEmpty ? "No content detected" : ocrText,
+                originalImageData: importViewModel.barcodeImageData
+            )
+        }
+
+        router.push(.scanResults(inputData))
     }
 }
 
